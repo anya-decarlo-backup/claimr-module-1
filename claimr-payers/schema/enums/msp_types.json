@@ -1,0 +1,5 @@
+{
+  "$id": "enums/msp_types.json",
+  "type": "string",
+  "enum": ["working_aged","disability","esrd","workers_comp","no_fault","liability","black_lung","va","other"]
+}

@@ -1,0 +1,9 @@
+name: Tests
+on: [pull_request]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run golden scenario tests
+        run: echo 'Test placeholder'

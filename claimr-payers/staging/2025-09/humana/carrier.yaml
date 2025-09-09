@@ -1,0 +1,16 @@
+id: null
+name: "Humana"
+brand: "Humana"
+naic: null
+tin: null
+categories: ["national"]
+parent_id: null
+subsidiary_ids: []
+scope:
+  - medicare_advantage
+  - medicare_supplement
+payer_edi_ids: []
+_meta:
+  source: "sources/2025-09/humana/"
+  last_verified_at: "2025-09-08"
+  note: "Initial national carrier stub."

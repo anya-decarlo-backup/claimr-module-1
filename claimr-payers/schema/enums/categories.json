@@ -1,0 +1,15 @@
+{
+  "$id": "enums/categories.json",
+  "type": "string",
+  "enum": [
+    "national",
+    "bcbs_affiliate",
+    "regional",
+    "specialty_narrow",
+    "tpa_aso_admin",
+    "ancillary_only",
+    "provider_sponsored",
+    "union_taft_hartley",
+    "student_health_admin"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "enum": ["professional", "facility", "drug", "dme", "lab", "bundle"],
+  "$id": "enums/service_kinds.json",
+  "type": "string"
+}

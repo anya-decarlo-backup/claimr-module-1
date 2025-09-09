@@ -1,0 +1,9 @@
+# UnitedHealth CA Plan Stubs
+
+# Optional: plan stubs by state
+plans:
+  - plan_id: UH-CA-001
+    state: CA
+    line_of_business: commercial
+    plan_type: ppo
+    active: true

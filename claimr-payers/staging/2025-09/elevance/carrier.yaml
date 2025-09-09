@@ -1,0 +1,19 @@
+id: null
+name: "Elevance Health"
+brand: "Anthem Blue Cross Blue Shield"
+naic: null
+tin: null
+categories: ["national"]
+parent_id: null
+subsidiary_ids: []
+scope:
+  - commercial_fully_insured
+  - commercial_self_funded
+  - individual_on_exchange
+  - medicare_advantage
+  - medicaid_mco
+payer_edi_ids: []
+_meta:
+  source: "sources/2025-09/elevance/"
+  last_verified_at: "2025-09-08"
+  note: "Initial national carrier stub."

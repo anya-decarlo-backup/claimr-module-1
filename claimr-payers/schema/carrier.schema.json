@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Carrier",
+  "type": "object",
+  "properties": {
+    "carrier_id": {"type": "string"},
+    "name": {"type": "string"},
+    "naic": {"type": "string"},
+    "categories": {"type": "array", "items": {"type": "string"}},
+    "active": {"type": "boolean"},
+    "tin": {"type": ["string", "null"]},
+    "payer_edi_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id"],
+        "properties": {
+          "id": {"type": "string"},
+          "clearinghouse": {"type": ["string", "null"]},
+          "transactions": {
+            "type": ["array", "null"],
+            "items": {"enum": ["837P", "837I", "837D", "270", "271", "276", "277", "835"]}
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["carrier_id", "name", "naic", "categories", "active"]
+}

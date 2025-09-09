@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Plan",
+  "type": "object",
+  "properties": {
+    "plan_id": {"type": "string"},
+    "carrier_id": {"type": "string"},
+    "line_of_business": {"type": "string"},
+    "plan_type": {"type": "string"},
+    "state": {"type": "string"},
+    "metadata": {"type": "object"},
+    "hios_id": {"type": ["string", "null"]},
+    "qhp_id": {"type": ["string", "null"]},
+    "qhp_variant_id": {"type": ["string", "null"]},
+    "metal_level": {"type": ["string", "null"], "enum": ["bronze", "silver", "gold", "platinum", "catastrophic", null]},
+    "grandfathered_status": {"type": ["boolean", "null"]},
+    "funding_detail": {"type": ["string", "null"], "enum": ["fully_insured", "aso", "level_funded", null]},
+    "stop_loss_carrier_id": {"type": ["string", "null"]},
+    "counties": {"type": ["array", "null"], "items": {"type": "string"}},
+    "zip_sets": {"type": ["array", "null"], "items": {"type": "string"}},
+    "cob_capabilities": {
+      "type": "object",
+      "properties": {
+        "accepts_secondary_claims": {"type": ["boolean", "null"]},
+        "requires_primary_eob": {"type": ["boolean", "null"]},
+        "supports_835_crossover": {"type": ["boolean", "null"]},
+        "cob_method": {"type": ["string", "null"], "$ref": "enums/cob_methods.json"}
+      },
+      "additionalProperties": false
+    }
+
+  },
+  "required": ["plan_id", "carrier_id", "line_of_business", "plan_type", "state"]
+}

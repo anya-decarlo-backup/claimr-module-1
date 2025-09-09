@@ -1,0 +1,20 @@
+id: null
+name: "Aetna (CVS Health)"
+brand: "Aetna"
+naic: null
+tin: null
+categories: ["national"]
+parent_id: null
+subsidiary_ids: []
+scope:
+  - commercial_fully_insured
+  - commercial_self_funded
+  - individual_on_exchange
+  - medicare_advantage
+  - medicaid_mco
+  - medicare_supplement
+payer_edi_ids: []
+_meta:
+  source: "sources/2025-09/aetna/"
+  last_verified_at: "2025-09-08"
+  note: "Initial national carrier stub."

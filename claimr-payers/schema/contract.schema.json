@@ -1,0 +1,27 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"contract.schema.json",
+  "type":"object",
+  "required":["id","carrier_id","program","effective_start","effective_end","_meta"],
+  "properties":{
+    "id":{"type":"string"},
+    "carrier_id":{"type":"string"},
+    "program":{"enum":["medicare_advantage","medicaid_mco","chip"]},
+    "cms_contract_id":{"type":["string","null"]},
+    "states":{"type":"array","items":{"$ref":"enums/states.json"}},
+    "counties":{"type":"array","items":{"type":"string"}},
+    "network_id":{"type":["string","null"]},
+    "effective_start":{"type":"string","format":"date"},
+    "effective_end":{"type":"string","format":"date"},
+    "_meta":{
+      "type":"object",
+      "required":["source","last_verified_at"],
+      "properties":{
+        "source":{"type":"string"},
+        "last_verified_at":{"type":"string","format":"date"},
+        "note":{"type":"string"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

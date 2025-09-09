@@ -1,0 +1,38 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"network.schema.json",
+  "type":"object",
+  "required":["id","carrier_id","name","_meta"],
+  "properties":{
+    "id":{"type":"string"},
+    "carrier_id":{"type":"string"},
+    "name":{"type":"string"},
+    "tiers":{"type":"array","items":{"type":"string"}},
+    "states":{"type":"array","items":{"$ref":"enums/states.json"}},
+    "delegated_entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["function", "vendor_id"],
+        "properties": {
+          "function": {"enum": ["behavioral", "utilization_mgmt", "radiology", "lab", "dme", "pharmacy_benefit"]},
+          "vendor_id": {"type": "string"},
+          "contract_ref": {"type": ["string", "null"]},
+          "effective_start": {"type": ["string", "null"], "format": "date"},
+          "effective_end": {"type": ["string", "null"], "format": "date"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "_meta":{
+      "type":"object",
+      "required":["source","last_verified_at"],
+      "properties":{
+        "source":{"type":"string"},
+        "last_verified_at":{"type":"string","format":"date"},
+        "note":{"type":"string"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

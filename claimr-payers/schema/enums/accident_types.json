@@ -1,0 +1,5 @@
+{
+  "$id": "enums/accident_types.json",
+  "type": "string",
+  "enum": ["workers_comp","auto_no_fault","liability","other"]
+}

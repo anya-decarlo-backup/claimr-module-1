@@ -1,0 +1,4 @@
+# Example plans YAML for staging
+plans:
+  - plan_id: EX-CA-001
+    state: CA

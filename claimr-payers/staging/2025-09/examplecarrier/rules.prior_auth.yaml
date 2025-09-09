@@ -1,0 +1,4 @@
+# Example prior auth rules YAML for staging
+rules:
+  - rule_id: EX-PA-001
+    type: PRIOR_AUTH

@@ -1,0 +1,5 @@
+{
+  "$id": "enums/plan_types.json",
+  "type": "string",
+  "enum": ["HMO","PPO","EPO","POS","HDHP_HSA","SNP_C","SNP_D","SNP_I"]
+}

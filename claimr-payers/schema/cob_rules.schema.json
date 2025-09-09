@@ -1,0 +1,47 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"cob_rules.schema.json",
+  "type":"object",
+  "required":["id","name","conditions","ordering","_meta"],
+  "properties":{
+    "id":{"type":"string"},
+    "name":{"type":"string"},
+    "conditions":{
+      "type":"object",
+      "properties":{
+        "patient_age_min":{"type":["integer","null"]},
+        "patient_age_max":{"type":["integer","null"]},
+        "employment_status":{"type":["string","null"],"enum":["active","retired","disabled",null]},
+        "employer_size_min":{"type":["integer","null"]},
+        "event":{"type":["string","null"],"$ref":"enums/accident_types.json"},
+        "msp_type":{"type":["string","null"],"$ref":"enums/msp_types.json"},
+        "dual_eligible":{"type":["boolean","null"]},
+        "payer_presence":{"type":"array","items":{"$ref":"enums/payer_kinds.json"}}
+      },
+      "additionalProperties": false
+    },
+    "ordering":{
+      "type":"array",
+      "items":{"$ref":"enums/payer_kinds.json"}
+    },
+    "special_rules":{
+      "type":"object",
+      "properties":{
+        "medicaid_payer_of_last_resort":{"type":"boolean"},
+        "medigap_after_medicare_only":{"type":"boolean"},
+        "ma_replaces_med_a_b":{"type":"boolean"},
+        "tricare_coordination_with_medicare":{"type":["string","null"],"enum":["secondary_to_medicare","wrap","none",null]}
+      },
+      "additionalProperties": false
+    },
+    "_meta":{
+      "type":"object",
+      "required":["source","last_verified_at"],
+      "properties":{
+        "source":{"type":"string"},
+        "last_verified_at":{"type":"string","format":"date"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

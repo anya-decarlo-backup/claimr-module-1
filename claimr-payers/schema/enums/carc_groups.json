@@ -1,0 +1,5 @@
+{
+  "$id": "enums/carc_groups.json",
+  "type": "string",
+  "enum": ["PR","CO","OA","PI"]
+}

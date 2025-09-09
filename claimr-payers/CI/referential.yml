@@ -1,0 +1,9 @@
+name: Referential Integrity
+on: [pull_request]
+jobs:
+  referential:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check Referential Integrity
+        run: echo 'Referential checks placeholder'

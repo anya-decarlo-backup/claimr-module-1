@@ -1,0 +1,19 @@
+{
+  "$id": "enums/line_of_business.json",
+  "type": "string",
+  "enum": [
+    "commercial_fully_insured",
+    "commercial_self_funded",
+    "level_funded",
+    "individual_on_exchange",
+    "individual_off_exchange",
+    "medicare_advantage",
+    "medicare_supplement",
+    "medicaid_mco",
+    "dual_snp",
+    "chip",
+    "ancillary_dental",
+    "ancillary_vision",
+    "short_term"
+  ]
+}

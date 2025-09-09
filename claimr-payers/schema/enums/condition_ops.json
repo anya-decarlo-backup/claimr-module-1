@@ -1,0 +1,5 @@
+{
+  "enum": ["ALL_OF", "ANY_OF", "NONE_OF", "eq", "neq", "in", "range"],
+  "$id": "enums/condition_ops.json",
+  "type": "string"
+}

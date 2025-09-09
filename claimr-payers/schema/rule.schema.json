@@ -1,0 +1,57 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"rule.schema.json",
+  "type":"object",
+  "required":["id","type","scope","effective_start","effective_end","_meta"],
+  "properties":{
+    "id":{"type":"string"},
+    "type":{"enum":["EDIT","PRIOR_AUTH","EXCLUSION","EXPERIMENTAL_INVESTIGATIONAL","POSTPAY_AUDIT"]},
+    "scope":{
+      "type":"object",
+      "properties":{
+        "carrier_id":{"type":["string","null"]},
+        "contract_id":{"type":["string","null"]},
+        "plan_id":{"type":["string","null"]},
+        "lob":{"anyOf":[{"$ref":"enums/line_of_business.json"},{"type":"null"}]},
+        "state":{"anyOf":[{"$ref":"enums/states.json"},{"type":"null"}]},
+        "plan_type":{"anyOf":[{"$ref":"enums/plan_types.json"},{"type":"null"}]},
+        "pos":{"type":["string","null"]},
+        "cpt":{"type":["array","null"],"items":{"type":"string"}},
+        "hcpcs":{"type":["array","null"],"items":{"type":"string"}},
+        "icd10_dx":{"type":["array","null"],"items":{"type":"string"}},
+        "icd10_px":{"type":["array","null"],"items":{"type":"string"}}
+      },
+      "additionalProperties": false
+    },
+    "logic":{"type":"object"},
+    "precedence":{"type":"integer","minimum":0},
+    "effective_start":{"type":"string","format":"date"},
+    "effective_end":{"type":"string","format":"date"},
+    "policy_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": {"type": "string"},
+          "doc_type": {"type": ["string", "null"], "enum": ["medical_policy", "payment_policy", "pa_list", "coding_policy", null]},
+          "version": {"type": ["string", "null"]},
+          "retrieved_at": {"type": ["string", "null"], "format": "date"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "cob_applicability": {"type": ["string", "null"], "enum": ["primary_only", "secondary_only", "any", null]},
+    "requires_primary_eob": {"type": ["boolean", "null"]},
+    "secondary_parameters": {
+      "type": "object",
+      "properties": {
+        "apply_after_adjustment_groups": {"type": "array", "items": {"$ref": "enums/carc_groups.json"}},
+        "honor_primary_denial_codes": {"type": "array", "items": {"type": "string"}},
+        "allow_secondary_if_primary_noncovered": {"type": ["boolean", "null"]}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

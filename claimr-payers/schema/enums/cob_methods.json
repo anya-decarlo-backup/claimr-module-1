@@ -1,0 +1,5 @@
+{
+  "$id": "enums/cob_methods.json",
+  "type": "string",
+  "enum": ["standard","carveout","maintenance_of_benefits"]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "coverage.schema.json",
+  "type": "object",
+  "required": ["id","patient_id","payer_kind","effective_start","_meta"],
+  "properties": {
+    "id": {"type": "string"},
+    "patient_id": {"type": "string"},
+    "payer_kind": {"$ref": "enums/payer_kinds.json"},
+    "carrier_id": {"type": ["string","null"]},
+    "plan_id": {"type": ["string","null"]},
+    "contract_id": {"type": ["string","null"]},
+    "member_id": {"type": ["string","null"]},
+    "group_number": {"type": ["string","null"]},
+    "relationship_to_subscriber": {"enum": ["self","spouse","child","other","unknown"]},
+    "effective_start": {"type": "string","format": "date"},
+    "effective_end": {"type": ["string","null"],"format": "date"},
+    "priority": {"type": ["integer","null"], "minimum": 1},
+    "cob_policy_id": {"type": ["string","null"]},
+    "msp_type": {"type": ["string","null"], "$ref": "enums/msp_types.json"},
+    "crossover_enrolled": {"type": ["boolean","null"]},
+    "_meta": {
+      "type": "object",
+      "required": ["source","last_verified_at"],
+      "properties": {
+        "source": {"type": "string"},
+        "last_verified_at": {"type": "string","format":"date"},
+        "note": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

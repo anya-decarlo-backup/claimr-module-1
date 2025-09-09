@@ -1,0 +1,5 @@
+{
+  "enum": ["EDIT", "PRIOR_AUTH", "EXCLUSION", "EXPERIMENTAL_INVESTIGATIONAL", "POSTPAY_AUDIT"],
+  "$id": "enums/rule_types.json",
+  "type": "string"
+}

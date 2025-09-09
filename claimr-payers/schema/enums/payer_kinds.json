@@ -1,0 +1,12 @@
+{
+  "$id": "enums/payer_kinds.json",
+  "type": "string",
+  "enum": [
+    "medicare_a","medicare_b","medicare_advantage","medigap",
+    "medicaid","chip",
+    "commercial","cobra","retiree","student_health","union_taft_hartley",
+    "tricare","champva","va","ihs",
+    "workers_comp","auto_no_fault","liability",
+    "international","other"
+  ]
+}

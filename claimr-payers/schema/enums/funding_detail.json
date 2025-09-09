@@ -1,0 +1,5 @@
+{
+  "enum": ["fully_insured", "aso", "level_funded"],
+  "$id": "enums/funding_detail.json",
+  "type": "string"
+}

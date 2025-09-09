@@ -1,0 +1,18 @@
+id: null
+name: "Kaiser Foundation Health Plan, Inc."
+brand: "Kaiser Permanente"
+naic: null
+tin: null
+categories: ["provider_sponsored","regional"]
+parent_id: null
+subsidiary_ids: []
+scope:
+  - commercial_fully_insured
+  - individual_on_exchange
+  - medicare_advantage
+  - medicaid_mco
+payer_edi_ids: []
+_meta:
+  source: "sources/2025-09/kaiser-permanente/"
+  last_verified_at: "2025-09-08"
+  note: "Corrected: provider_sponsored + regional."
