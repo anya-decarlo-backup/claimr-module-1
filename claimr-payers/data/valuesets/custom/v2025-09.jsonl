@@ -1,0 +1,2 @@
+{"id":"vs_osteoarthritis_knee_2025_09","name":"Osteoarthritis of Knee","system":"ICD10CM","codes":["M17.10","M17.11","M17.12"],"version":"2025-09","_meta":{"source":"clinical_mapping","last_verified_at":"2025-09-08"}}
+{"id":"vs_pregnancy_2025_09","name":"Pregnancy","system":"ICD10CM","codes":["Z33.1","Z34.90"],"version":"2025-09","_meta":{"source":"clinical_mapping","last_verified_at":"2025-09-08"}}

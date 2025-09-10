@@ -1,0 +1,23 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: PPO
+    market: ""
+  service_ref:
+    service_id: "svc_arth_knee"
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_osteoarthritis_knee_2025_09"
+    none_of:
+      - dx_in_value_set: "vs_pregnancy_2025_09"
+  logic:
+    outcome: "PA_REQUIRED"
+    notes: "OA knee; exclude if pregnancy dx present"
+  precedence: 50
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_policy_arthroscopy_2025.pdf"
+    last_verified_at: "2025-09-08"
