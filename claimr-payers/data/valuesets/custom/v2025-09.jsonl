@@ -1,2 +1,8 @@
 {"id":"vs_osteoarthritis_knee_2025_09","name":"Osteoarthritis of Knee","system":"ICD10CM","codes":["M17.10","M17.11","M17.12"],"version":"2025-09","_meta":{"source":"clinical_mapping","last_verified_at":"2025-09-08"}}
 {"id":"vs_pregnancy_2025_09","name":"Pregnancy","system":"ICD10CM","codes":["Z33.1","Z34.90"],"version":"2025-09","_meta":{"source":"clinical_mapping","last_verified_at":"2025-09-08"}}
+{"id":"vs_diabetes_2025_09","name":"Diabetes Mellitus","system":"ICD10CM","codes":["E10.9","E11.9","E13.9","E14.9"],"version":"2025-09","_meta":{"source":"clinical_mapping","last_verified_at":"2025-09-11"}}
+{"id":"vs_heart_failure_2025_09","name":"Congestive Heart Failure","system":"ICD10CM","codes":["I50.9","I50.1","I50.20","I50.30"],"version":"2025-09","_meta":{"source":"clinical_mapping","last_verified_at":"2025-09-11"}}
+{"id":"vs_cancer_active_2025_09","name":"Active Cancer","system":"ICD10CM","codes":["C78.9","C79.9","C80.1","Z85.9"],"version":"2025-09","_meta":{"source":"clinical_mapping","last_verified_at":"2025-09-11"}}
+{"id":"vs_sleep_apnea_2025_09","name":"Sleep Apnea","system":"ICD10CM","codes":["G47.33","G47.30","G47.39"],"version":"2025-09","_meta":{"source":"clinical_mapping","last_verified_at":"2025-09-11"}}
+{"id":"vs_chest_pain_2025_09","name":"Chest Pain","system":"ICD10CM","codes":["R06.02","R07.89","R07.9"],"version":"2025-09","_meta":{"source":"clinical_mapping","last_verified_at":"2025-09-11"}}
+{"id":"vs_gi_bleeding_2025_09","name":"GI Bleeding","system":"ICD10CM","codes":["K92.2","K92.1","K92.0"],"version":"2025-09","_meta":{"source":"clinical_mapping","last_verified_at":"2025-09-11"}}

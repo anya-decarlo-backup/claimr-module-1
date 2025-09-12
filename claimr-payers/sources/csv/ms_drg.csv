@@ -1,0 +1,52 @@
+code,description,service
+001,Heart Transplant or Implant of Heart Assist System with MCC,Pre-MDC (Heart/Liver/Lung Transplant)
+002,Heart Transplant or Implant of Heart Assist System without MCC,Pre-MDC (Heart/Liver/Lung Transplant)
+023,Craniotomy with Major Device Implant or Acute Complex CNS Principal Diagnosis with MCC or Chemotherapy Implant or Epilepsy with Neurostimulator,MDC 01 - Nervous System
+024,Craniotomy with Major Device Implant or Acute Complex CNS Principal Diagnosis without MCC,MDC 01 - Nervous System
+025,Craniotomy and Endovascular Intracranial Procedures with MCC,MDC 01 - Nervous System
+026,Craniotomy and Endovascular Intracranial Procedures with CC,MDC 01 - Nervous System
+027,Craniotomy and Endovascular Intracranial Procedures without CC/MCC,MDC 01 - Nervous System
+040,"Peripheral, Cranial Nerve and Other Nervous System Procedures with MCC",MDC 01 - Nervous System
+041,"Peripheral, Cranial Nerve and Other Nervous System Procedures with CC or Peripheral Neurostimulator",MDC 01 - Nervous System
+042,"Peripheral, Cranial Nerve and Other Nervous System Procedures without CC/MCC",MDC 01 - Nervous System
+140,Major Head and Neck Procedures with MCC,"MDC 03 - Ear, Nose, Mouth, Throat"
+141,Major Head and Neck Procedures with CC,"MDC 03 - Ear, Nose, Mouth, Throat"
+142,Major Head and Neck Procedures without CC/MCC,"MDC 03 - Ear, Nose, Mouth, Throat"
+215,Other Heart Assist System Implant,MDC 05 - Circulatory System
+216,Cardiac Valve and Other Major Cardiothoracic Procedure with Cardiac Catheterization with MCC,MDC 05 - Circulatory System
+217,Cardiac Valve and Other Major Cardiothoracic Procedure with Cardiac Catheterization with CC,MDC 05 - Circulatory System
+218,Cardiac Valve and Other Major Cardiothoracic Procedure with Cardiac Catheterization without CC/MCC,MDC 05 - Circulatory System
+219,Cardiac Valve and Other Major Cardiothoracic Procedure without Cardiac Catheterization with MCC,MDC 05 - Circulatory System
+220,Cardiac Valve and Other Major Cardiothoracic Procedure without Cardiac Catheterization with CC,MDC 05 - Circulatory System
+221,Cardiac Valve and Other Major Cardiothoracic Procedure without Cardiac Catheterization without CC/MCC,MDC 05 - Circulatory System
+242,Permanent Cardiac Pacemaker Implant with MCC,MDC 05 - Circulatory System
+243,Permanent Cardiac Pacemaker Implant with CC,MDC 05 - Circulatory System
+244,Permanent Cardiac Pacemaker Implant without CC/MCC,MDC 05 - Circulatory System
+245,AICD Generator Procedures,MDC 05 - Circulatory System
+258,Cardiac Pacemaker Device Replacement with MCC,MDC 05 - Circulatory System
+259,Cardiac Pacemaker Device Replacement without MCC,MDC 05 - Circulatory System
+260,Cardiac Pacemaker Revision Except Device Replacement with MCC,MDC 05 - Circulatory System
+261,Cardiac Pacemaker Revision Except Device Replacement with CC,MDC 05 - Circulatory System
+262,Cardiac Pacemaker Revision Except Device Replacement without CC/MCC,MDC 05 - Circulatory System
+265,AICD Lead Procedures,MDC 05 - Circulatory System
+266,Endovascular Cardiac Valve Replacement and Supplement Procedures with MCC,MDC 05 - Circulatory System
+267,Endovascular Cardiac Valve Replacement and Supplement Procedures without MCC,MDC 05 - Circulatory System
+268,Aortic and Heart Assist Procedures Except Pulsation Balloon with MCC,MDC 05 - Circulatory System
+269,Aortic and Heart Assist Procedures Except Pulsation Balloon without MCC,MDC 05 - Circulatory System
+270,Other Major Cardiovascular Procedures with MCC,MDC 05 - Circulatory System
+271,Other Major Cardiovascular Procedures with CC,MDC 05 - Circulatory System
+272,Other Major Cardiovascular Procedures without CC/MCC,MDC 05 - Circulatory System
+275,Cardiac Defibrillator Implant with Cardiac Catheterization and MCC,MDC 05 - Circulatory System
+276,Cardiac Defibrillator Implant with MCC or Carotid Sinus Neurostimulator,MDC 05 - Circulatory System
+277,Cardiac Defibrillator Implant without MCC,MDC 05 - Circulatory System
+319,Other Endovascular Cardiac Valve Procedures with MCC,MDC 05 - Circulatory System
+320,Other Endovascular Cardiac Valve Procedures without MCC,MDC 05 - Circulatory System
+461,Bilateral or Multiple Major Joint Procedures of Lower Extremity with MCC,MDC 08 - Musculoskeletal System
+462,Bilateral or Multiple Major Joint Procedures of Lower Extremity without MCC,MDC 08 - Musculoskeletal System
+466,Revision of Hip or Knee Replacement with MCC,MDC 08 - Musculoskeletal System
+467,Revision of Hip or Knee Replacement with CC,MDC 08 - Musculoskeletal System
+468,Revision of Hip or Knee Replacement without CC/MCC,MDC 08 - Musculoskeletal System
+469,Major Hip and Knee Joint Replacement or Reattachment of Lower Extremity with MCC or Total Ankle Replacement,MDC 08 - Musculoskeletal System
+470,Major Hip and Knee Joint Replacement or Reattachment of Lower Extremity without MCC,MDC 08 - Musculoskeletal System
+521,Hip Replacement with Principal Diagnosis of Hip Fracture with MCC,MDC 08 - Musculoskeletal System
+522,Hip Replacement with Principal Diagnosis of Hip Fracture without MCC,MDC 08 - Musculoskeletal System

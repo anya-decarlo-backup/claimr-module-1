@@ -1,0 +1,12 @@
+{
+  "carrier_id": "crr_7f9b2e1a2b3c",
+  "lob": "commercial_fully_insured",
+  "state": "CA",
+  "plan_type": "PPO",
+  "dos": "2025-06-15",
+  "service_id": "svc_arth_knee",
+  "diagnoses": ["M17.11", "Z33.1"],
+  "age": 28,
+  "sex": "F",
+  "pos": "11"
+}

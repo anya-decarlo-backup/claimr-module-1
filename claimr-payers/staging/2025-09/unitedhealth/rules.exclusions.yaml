@@ -1,0 +1,46 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    service_id: "svc_mammography"
+  conditions:
+    all_of:
+      - max_age: 39
+    none_of:
+      - dx_in_value_set: "vs_cancer_active_2025_09"
+  logic:
+    outcome: "EXCLUDED"
+    notes: "Mammography excluded under age 40 unless active cancer"
+  precedence: 85
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_policy_screening_2025.pdf"
+    last_verified_at: "2025-09-11"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    service_id: "svc_bone_density"
+  conditions:
+    all_of:
+      - max_age: 64
+      - sex: "M"
+  logic:
+    outcome: "EXCLUDED"
+    notes: "Bone density excluded for males under 65"
+  precedence: 80
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_policy_screening_2025.pdf"
+    last_verified_at: "2025-09-11"

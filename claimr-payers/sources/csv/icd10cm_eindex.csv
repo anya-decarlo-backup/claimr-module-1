@@ -1,0 +1,75 @@
+code,description,service
+X58,External cause: Abandonment,ICD-10-CM External Cause Index
+Y08.89,External cause: Acid throwing,ICD-10-CM External Cause Index
+Y93.9,External cause: Activity,ICD-10-CM External Cause Index
+W94.11,External cause: Alpine sickness,ICD-10-CM External Cause Index
+X97,External cause: Arson,ICD-10-CM External Cause Index
+Y09,External cause: Assault,ICD-10-CM External Cause Index
+W55.89,External cause: Attack by mammals NEC,ICD-10-CM External Cause Index
+W26.1,External cause: Bayonet wound,ICD-10-CM External Cause Index
+T17.1,External cause: Bean in nose,ICD-10-CM External Cause Index
+X50.1,"External cause: Bending, injury in",ICD-10-CM External Cause Index
+X37.2,External cause: Blizzard,ICD-10-CM External Cause Index
+Y90.9,External cause: Blood alcohol level,ICD-10-CM External Cause Index
+Y04.0,External cause: Brawl,ICD-10-CM External Cause Index
+W55.82,External cause: Butted by animal,ICD-10-CM External Cause Index
+T75.3,External cause: Car sickness,ICD-10-CM External Cause Index
+X37.8,External cause: Cloudburst,ICD-10-CM External Cause Index
+V89.9,External cause: Collision,ICD-10-CM External Cause Index
+Y84.9,External cause: Complication,ICD-10-CM External Cause Index
+X32,External cause: Coup de soleil,ICD-10-CM External Cause Index
+X37.1,External cause: Cyclone,ICD-10-CM External Cause Index
+W54.0,External cause: Dog bite,ICD-10-CM External Cause Index
+V09.9,External cause: Dragged by transport vehicle NEC,ICD-10-CM External Cause Index
+W04,External cause: Dropped,ICD-10-CM External Cause Index
+W74,External cause: Drowning,ICD-10-CM External Cause Index
+W20.0,External cause: Earth falling,ICD-10-CM External Cause Index
+X34,External cause: Earthquake,ICD-10-CM External Cause Index
+W40.9,External cause: Explosion,ICD-10-CM External Cause Index
+Y99.9,External cause: External cause status,ICD-10-CM External Cause Index
+W19,"External cause: Fall, falling",ICD-10-CM External Cause Index
+W39,External cause: Fireworks,ICD-10-CM External Cause Index
+X38,External cause: Flood,ICD-10-CM External Cause Index
+X39.8,External cause: Forces of nature,ICD-10-CM External Cause Index
+X31,External cause: Frostbite,ICD-10-CM External Cause Index
+W55.22,External cause: Gored by bull,ICD-10-CM External Cause Index
+Y24.9,External cause: Gunshot wound,ICD-10-CM External Cause Index
+T71.162,External cause: Hanged herself or himself,ICD-10-CM External Cause Index
+T71.16,External cause: Hanging,ICD-10-CM External Cause Index
+X30,External cause: Heat,ICD-10-CM External Cause Index
+X37.0,External cause: Hurricane,ICD-10-CM External Cause Index
+X08.8,External cause: Ignition,ICD-10-CM External Cause Index
+W49.9,External cause: Infrasound waves,ICD-10-CM External Cause Index
+X36.1,External cause: Landslide,ICD-10-CM External Cause Index
+X81.8,"External cause: Lying before train, vehicle or other moving object",ICD-10-CM External Cause Index
+Y37.90-,External cause: Military operations,ICD-10-CM External Cause Index
+Y69,External cause: Misadventure,ICD-10-CM External Cause Index
+Y65.0,External cause: Mismatched blood in transfusion,ICD-10-CM External Cause Index
+W42.9,External cause: Noise,ICD-10-CM External Cause Index
+Y95,External cause: Nosocomial condition,ICD-10-CM External Cause Index
+X50.9,External cause: Overexertion,ICD-10-CM External Cause Index
+V97.29,External cause: Parachute descent,ICD-10-CM External Cause Index
+W61.99,External cause: Pecked by bird,ICD-10-CM External Cause Index
+Y07.9,"External cause: Perpetrator, perpetration, of assault, maltreatment and neglect",ICD-10-CM External Cause Index
+Y92.9,External cause: Place of occurrence,ICD-10-CM External Cause Index
+Y66,External cause: Premature cessation,ICD-10-CM External Cause Index
+T74.2-,External cause: Rape,ICD-10-CM External Cause Index
+W53.11,External cause: Rat bite,ICD-10-CM External Cause Index
+W20.8,External cause: Rock falling on or hitting,ICD-10-CM External Cause Index
+X19,"External cause: Scald, scalding",ICD-10-CM External Cause Index
+W01.0,External cause: Slipping,ICD-10-CM External Cause Index
+W45.8,"External cause: Sliver, wood, contact with",ICD-10-CM External Cause Index
+T71,External cause: Suffocation,ICD-10-CM External Cause Index
+X83.8,"External cause: Suicide, suicidal",ICD-10-CM External Cause Index
+W42.0,External cause: Supersonic waves,ICD-10-CM External Cause Index
+W03,External cause: Tackle in sport,ICD-10-CM External Cause Index
+Y38.80,External cause: Terrorism,ICD-10-CM External Cause Index
+W50.2,External cause: Twisted by person,ICD-10-CM External Cause Index
+Y63.6,"External cause: Underdosing of necessary drugs, medicaments or biological substances",ICD-10-CM External Cause Index
+X50.3,External cause: Use of hand as hammer,ICD-10-CM External Cause Index
+X35,External cause: Volcanic eruption,ICD-10-CM External Cause Index
+T17.81-,"External cause: Vomitus, gastric contents in air passages",ICD-10-CM External Cause Index
+W22.09,External cause: Walked into stationary object,ICD-10-CM External Cause Index
+Y36.90,External cause: War operations,ICD-10-CM External Cause Index
+X52,External cause: Weightlessness,ICD-10-CM External Cause Index
+Y99.0,External cause: Work related condition,ICD-10-CM External Cause Index

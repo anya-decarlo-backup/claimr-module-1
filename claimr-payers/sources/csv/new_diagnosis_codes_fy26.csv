@@ -1,0 +1,524 @@
+diagnosis_code,description,cc_status,mdc,ms_drg_list,service
+B88.01,Infestation by Demodex mites,N,09,"606, 607",Skin/Subcutaneous Tissue
+B88.09,Other acariasis,N,09,"606, 607",Skin/Subcutaneous Tissue
+C50.A0,Malignant inflammatory neoplasm of unspecified breast,N,09,"582, 583, 597, 598, 599",Skin/Subcutaneous Tissue
+C50.A1,Malignant inflammatory neoplasm of right breast,N,09,"582, 583, 597, 598, 599",Skin/Subcutaneous Tissue
+C50.A2,Malignant inflammatory neoplasm of left breast,N,09,"582, 583, 597, 598, 599",Skin/Subcutaneous Tissue
+D71.1,Leukocyte adhesion deficiency,N,16,"808, 809, 810",Blood/Blood-forming Organs
+D71.8,Other functional disorders of polymorphonuclear neutrophils,N,16,"808, 809, 810",Blood/Blood-forming Organs
+D71.9,"Functional disorders of polymorphonuclear neutrophils, unspecified",N,16,"808, 809, 810",Blood/Blood-forming Organs
+E11.A,Type 2 diabetes mellitus without complications in remission,N,10,"637, 638, 639",Endocrine/Nutritional/Metabolic
+E72.530,"Primary hyperoxaluria, type 1",C,10,642,Endocrine/Nutritional/Metabolic
+E72.538,Other specified primary hyperoxaluria,C,10,642,Endocrine/Nutritional/Metabolic
+E72.539,"Primary hyperoxaluria, unspecified",C,10,642,Endocrine/Nutritional/Metabolic
+E72.540,Dietary hyperoxaluria,N,11,"695, 696",Kidney/Urinary Tract
+E72.541,Enteric hyperoxaluria,N,11,"695, 696",Kidney/Urinary Tract
+E72.548,Other secondary hyperoxaluria,N,11,"695, 696",Kidney/Urinary Tract
+E72.549,"Secondary hyperoxaluria, unspecified",N,11,"695, 696",Kidney/Urinary Tract
+E78.010,Homozygous familial hypercholesterolemia [HoFH],N,10,642,Endocrine/Nutritional/Metabolic
+E78.011,Heterozygous familial hypercholesterolemia [HeFH],N,10,642,Endocrine/Nutritional/Metabolic
+E78.019,"Familial hypercholesterolemia, unspecified",N,10,642,Endocrine/Nutritional/Metabolic
+E83.820,Generalized arterial calcification of infancy with unspecified genetic causality,C,05,"299, 300, 301",Circulatory System
+"""""",,,15,"791(1), 793(1)",Newborns/Neonates
+E83.821,ENPP1 deficiency causing generalized arterial calcification of infancy,C,05,"299, 300, 301",Circulatory System
+"""""",,,15,"791(1), 793(1)",Newborns/Neonates
+E83.822,ENPP1 deficiency causing autosomal recessive hypophosphatemic rickets type 2,N,10,642,Endocrine/Nutritional/Metabolic
+E83.823,ABCC6 deficiency causing generalized arterial calcification of infancy,C,05,"299, 300, 301",Circulatory System
+"""""",,,15,"791(1), 793(1)",Newborns/Neonates
+E83.824,ABCC6 deficiency causing pseudoxanthoma elasticum,N,10,642,Endocrine/Nutritional/Metabolic
+E83.825,CD73 deficiency causing arterial calcification,C,05,"299, 300, 301",Circulatory System
+E88.10,"Lipodystrophy, unspecified",N,10,642,Endocrine/Nutritional/Metabolic
+E88.11,Partial lipodystrophy,N,10,642,Endocrine/Nutritional/Metabolic
+E88.12,Generalized lipodystrophy,N,10,642,Endocrine/Nutritional/Metabolic
+E88.13,Localized lipodystrophy,N,10,642,Endocrine/Nutritional/Metabolic
+E88.14,HIV-associated lipodystrophy,N,10,642,Endocrine/Nutritional/Metabolic
+"""""",,,25,977(2),HIV Infections
+E88.19,"Other lipodystrophy, not elsewhere classified",N,10,642,Endocrine/Nutritional/Metabolic
+G31.87,Primary progressive apraxia of speech,N,01,"056, 057",Nervous System
+G35.A,Relapsing-remitting multiple sclerosis,N,01,"058, 059, 060",Nervous System
+G35.B0,"Primary progressive multiple sclerosis, unspecified",N,01,"058, 059, 060",Nervous System
+G35.B1,Active primary progressive multiple sclerosis,N,01,"058, 059, 060",Nervous System
+G35.B2,Non-active primary progressive multiple sclerosis,N,01,"058, 059, 060",Nervous System
+G35.C0,"Secondary progressive multiple sclerosis, unspecified",N,01,"058, 059, 060",Nervous System
+G35.C1,Active secondary progressive multiple sclerosis,N,01,"058, 059, 060",Nervous System
+G35.C2,Non-active secondary progressive multiple sclerosis,N,01,"058, 059, 060",Nervous System
+G35.D,"Multiple sclerosis, unspecified",N,01,"058, 059, 060",Nervous System
+G71.036,Limb girdle muscular dystrophy due to fukutin related protein dysfunction,N,01,"091, 092, 093",Nervous System
+H01.81,Other specified inflammation of right upper eyelid,N,02,"124, 125",Eye
+H01.82,Other specified inflammation of right lower eyelid,N,02,"124, 125",Eye
+H01.83,"Other specified inflammation of right eye, unspecified eyelid",N,02,"124, 125",Eye
+H01.84,Other specified inflammation of left upper eyelid,N,02,"124, 125",Eye
+H01.85,Other specified inflammation of left lower eyelid,N,02,"124, 125",Eye
+H01.86,"Other specified inflammation of left eye, unspecified eyelid",N,02,"124, 125",Eye
+H01.89,"Other specified inflammation of unspecified eye, unspecified eyelid",N,02,"124, 125",Eye
+H01.8A,"Other specified inflammation of right eye, upper and lower eyelids",N,02,"124, 125",Eye
+H01.8B,"Other specified inflammation of left eye, upper and lower eyelids",N,02,"124, 125",Eye
+H05.831,"Thyroid orbitopathy, right orbit",N,02,"124, 125",Eye
+H05.832,"Thyroid orbitopathy, left orbit",N,02,"124, 125",Eye
+H05.833,"Thyroid orbitopathy, bilateral",N,02,"124, 125",Eye
+H05.839,"Thyroid orbitopathy, unspecified orbit",N,02,"124, 125",Eye
+H40.841,"Neovascular secondary angle closure glaucoma, right eye",N,02,"124, 125",Eye
+H40.842,"Neovascular secondary angle closure glaucoma, left eye",N,02,"124, 125",Eye
+H40.843,"Neovascular secondary angle closure glaucoma, bilateral",N,02,"124, 125",Eye
+H40.849,"Neovascular secondary angle closure glaucoma, unspecified eye",N,02,"124, 125",Eye
+I27.840,Fontan-associated liver disease [FALD],C,07,"441, 442, 443",Hepatobiliary System
+I27.841,Fontan-associated lymphatic dysfunction,N,16,"808, 809, 810",Blood/Blood-forming Organs
+I27.848,Other Fontan-associated condition,N,05,"314, 315, 316",Circulatory System
+I27.849,"Fontan related circulation, unspecified",N,05,"314, 315, 316",Circulatory System
+L02.217,Cutaneous abscess of flank,C,09,"573, 574, 575, 602, 603",Skin/Subcutaneous Tissue
+"""""",,,15,"791(1), 793(1)",Newborns/Neonates
+L02.227,Furuncle of flank,N,09,"602, 603",Skin/Subcutaneous Tissue
+L03.31A,Cellulitis of flank,C,09,"573, 574, 575, 602, 603",Skin/Subcutaneous Tissue
+"""""",,,15,"791(1), 793(1)",Newborns/Neonates
+L03.32A,Acute lymphangitis of flank,C,09,"573, 574, 575, 602, 603",Skin/Subcutaneous Tissue
+"""""",,,15,"791(1), 793(1)",Newborns/Neonates
+L98.431,Non-pressure chronic ulcer of abdomen limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.432,Non-pressure chronic ulcer of abdomen with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.433,Non-pressure chronic ulcer of abdomen with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.434,Non-pressure chronic ulcer of abdomen with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.435,Non-pressure chronic ulcer of abdomen with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.436,Non-pressure chronic ulcer of abdomen with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.438,Non-pressure chronic ulcer of abdomen with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.439,Non-pressure chronic ulcer of abdomen with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.441,Non-pressure chronic ulcer of chest limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.442,Non-pressure chronic ulcer of chest with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.443,Non-pressure chronic ulcer of chest with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.444,Non-pressure chronic ulcer of chest with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.445,Non-pressure chronic ulcer of chest with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.446,Non-pressure chronic ulcer of chest with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.448,Non-pressure chronic ulcer of chest with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.449,Non-pressure chronic ulcer of chest with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.451,Non-pressure chronic ulcer of neck limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.452,Non-pressure chronic ulcer of neck with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.453,Non-pressure chronic ulcer of neck with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.454,Non-pressure chronic ulcer of neck with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.455,Non-pressure chronic ulcer of neck with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.456,Non-pressure chronic ulcer of neck with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.458,Non-pressure chronic ulcer of neck with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.459,Non-pressure chronic ulcer of neck with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.461,Non-pressure chronic ulcer of face limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.462,Non-pressure chronic ulcer of face with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.463,Non-pressure chronic ulcer of face with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.464,Non-pressure chronic ulcer of face with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.465,Non-pressure chronic ulcer of face with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.466,Non-pressure chronic ulcer of face with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.468,Non-pressure chronic ulcer of face with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.469,Non-pressure chronic ulcer of face with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.471,Non-pressure chronic ulcer of groin limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.472,Non-pressure chronic ulcer of groin with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.473,Non-pressure chronic ulcer of groin with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.474,Non-pressure chronic ulcer of groin with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.475,Non-pressure chronic ulcer of groin with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.476,Non-pressure chronic ulcer of groin with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.478,Non-pressure chronic ulcer of groin with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.479,Non-pressure chronic ulcer of groin with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A111,Non-pressure chronic ulcer of right upper arm limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A112,Non-pressure chronic ulcer of right upper arm with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A113,Non-pressure chronic ulcer of right upper arm with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A114,Non-pressure chronic ulcer of right upper arm with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A115,Non-pressure chronic ulcer of right upper arm with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A116,Non-pressure chronic ulcer of right upper arm with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A118,Non-pressure chronic ulcer of right upper arm with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A119,Non-pressure chronic ulcer of right upper arm with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A121,Non-pressure chronic ulcer of left upper arm limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A122,Non-pressure chronic ulcer of left upper arm with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A123,Non-pressure chronic ulcer of left upper arm with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A124,Non-pressure chronic ulcer of left upper arm with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A125,Non-pressure chronic ulcer of left upper arm with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A126,Non-pressure chronic ulcer of left upper arm with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A128,Non-pressure chronic ulcer of left upper arm with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A129,Non-pressure chronic ulcer of left upper arm with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A191,Non-pressure chronic ulcer of unspecified upper arm limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A192,Non-pressure chronic ulcer of unspecified upper arm with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A193,Non-pressure chronic ulcer of unspecified upper arm with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A194,Non-pressure chronic ulcer of unspecified upper arm with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A195,Non-pressure chronic ulcer of unspecified upper arm with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A196,Non-pressure chronic ulcer of unspecified upper arm with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A198,Non-pressure chronic ulcer of unspecified upper arm with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A199,Non-pressure chronic ulcer of unspecified upper arm with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A211,Non-pressure chronic ulcer of right forearm limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A212,Non-pressure chronic ulcer of right forearm with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A213,Non-pressure chronic ulcer of right forearm with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A214,Non-pressure chronic ulcer of right forearm with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A215,Non-pressure chronic ulcer of right forearm with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A216,Non-pressure chronic ulcer of right forearm with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A218,Non-pressure chronic ulcer of right forearm with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A219,Non-pressure chronic ulcer of right forearm with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A221,Non-pressure chronic ulcer of left forearm limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A222,Non-pressure chronic ulcer of left forearm with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A223,Non-pressure chronic ulcer of left forearm with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A224,Non-pressure chronic ulcer of left forearm with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A225,Non-pressure chronic ulcer of left forearm with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A226,Non-pressure chronic ulcer of left forearm with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A228,Non-pressure chronic ulcer of left forearm with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A229,Non-pressure chronic ulcer of left forearm with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A291,Non-pressure chronic ulcer of unspecified forearm limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A292,Non-pressure chronic ulcer of unspecified forearm with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A293,Non-pressure chronic ulcer of unspecified forearm with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A294,Non-pressure chronic ulcer of unspecified forearm with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A295,Non-pressure chronic ulcer of unspecified forearm with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A296,Non-pressure chronic ulcer of unspecified forearm with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A298,Non-pressure chronic ulcer of unspecified forearm with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A299,Non-pressure chronic ulcer of unspecified forearm with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A311,Non-pressure chronic ulcer of right hand limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A312,Non-pressure chronic ulcer of right hand with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A313,Non-pressure chronic ulcer of right hand with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A314,Non-pressure chronic ulcer of right hand with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A315,Non-pressure chronic ulcer of right hand with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A316,Non-pressure chronic ulcer of right hand with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A318,Non-pressure chronic ulcer of right hand with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A319,Non-pressure chronic ulcer of right hand with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A321,Non-pressure chronic ulcer of left hand limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A322,Non-pressure chronic ulcer of left hand with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A323,Non-pressure chronic ulcer of left hand with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A324,Non-pressure chronic ulcer of left hand with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A325,Non-pressure chronic ulcer of left hand with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A326,Non-pressure chronic ulcer of left hand with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A328,Non-pressure chronic ulcer of left hand with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A329,Non-pressure chronic ulcer of left hand with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A391,Non-pressure chronic ulcer of unspecified hand limited to breakdown of skin,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A392,Non-pressure chronic ulcer of unspecified hand with fat layer exposed,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A393,Non-pressure chronic ulcer of unspecified hand with necrosis of muscle,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A394,Non-pressure chronic ulcer of unspecified hand with necrosis of bone,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A395,Non-pressure chronic ulcer of unspecified hand with muscle involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A396,Non-pressure chronic ulcer of unspecified hand with bone involvement without evidence of necrosis,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A398,Non-pressure chronic ulcer of unspecified hand with other specified severity,C,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+L98.A399,Non-pressure chronic ulcer of unspecified hand with unspecified severity,N,09,"573, 574, 575, 592, 593, 594",Skin/Subcutaneous Tissue
+M05.A,Abnormal rheumatoid factor and anti-citrullinated protein antibody with rheumatoid arthritis,N,08,"545, 546, 547",Musculoskeletal System
+N00.B1,Acute nephritic syndrome with idiopathic immune membranoproliferative glomerulonephritis (IC-MPGN),M,11,"698, 699, 700",Kidney/Urinary Tract
+"""""",,,15,"791(1), 793(1)",Newborns/Neonates
+"""""",,,25,977(2),HIV Infections
+N00.B2,Acute nephritic syndrome with secondary immune complex membranoproliferative glomerulonephritis (IC-MPGN),M,11,"698, 699, 700",Kidney/Urinary Tract
+"""""",,,15,"791(1), 793(1)",Newborns/Neonates
+"""""",,,25,977(2),HIV Infections
+N04.B1,Nephrotic syndrome with idiopathic immune complex membranoproliferative glomerulonephritis (IC-MPGN),C,11,"698, 699, 700",Kidney/Urinary Tract
+"""""",,,25,977(2),HIV Infections
+N04.B2,Nephrotic syndrome with secondary immune complex membranoproliferative glomerulonephritis (IC-MPGN),C,11,"698, 699, 700",Kidney/Urinary Tract
+"""""",,,25,977(2),HIV Infections
+N07.B,"Hereditary nephropathy, not elsewhere classified with APOL1-mediated kidney disease [AMKD]",N,11,"698, 699, 700",Kidney/Urinary Tract
+"""""",,,25,977(2),HIV Infections
+Q87.87,Hao-Fountain Syndrome,C,08,"564, 565, 566",Musculoskeletal System
+Q87.88,CTNNB1 syndrome,C,01,"052, 053",Nervous System
+Q89.81,Kabuki syndrome,C,08,"564, 565, 566",Musculoskeletal System
+Q89.89,Other specified congenital malformations,C,08,"564, 565, 566",Musculoskeletal System
+Q99.811,"Usher syndrome, type 1",C,08,"564, 565, 566",Musculoskeletal System
+Q99.812,"Usher syndrome, type 2",C,08,"564, 565, 566",Musculoskeletal System
+Q99.813,"Usher syndrome, type 3",C,08,"564, 565, 566",Musculoskeletal System
+Q99.818,Other Usher syndrome,C,08,"564, 565, 566",Musculoskeletal System
+Q99.819,"Usher syndrome, unspecified",C,08,"564, 565, 566",Musculoskeletal System
+Q99.89,Other specified chromosome abnormalities,N,12,"729, 730",Male Reproductive System
+"""""",,,13,"742, 743, 760, 761",Female Reproductive System
+QA0.0101,SCN2A-related neurodevelopmental disorder,C,08,"564, 565, 566",Musculoskeletal System
+QA0.0102,CACNA1A-related neurodevelopmental disorder,C,08,"564, 565, 566",Musculoskeletal System
+QA0.0109,Neurodevelopmental disorder related to pathogenic variant in other ion channel gene,C,08,"564, 565, 566",Musculoskeletal System
+QA0.011,"Neurodevelopmental disorders, related to pathogenic variants in glutamate receptor genes",C,08,"564, 565, 566",Musculoskeletal System
+QA0.012,"Neurodevelopmental disorders, related to pathogenic variants in other receptor genes",C,08,"564, 565, 566",Musculoskeletal System
+QA0.0131,SLC6A1-related disorder,C,08,"564, 565, 566",Musculoskeletal System
+QA0.0139,"Neurodevelopmental disorder, related to pathogenic variant in other transporter or solute carrier gene",C,08,"564, 565, 566",Musculoskeletal System
+QA0.0141,Syntaxin-binding protein 1-related disorder,C,08,"564, 565, 566",Musculoskeletal System
+QA0.0142,DLG4-related synaptopathy,C,08,"564, 565, 566",Musculoskeletal System
+QA0.0149,"Neurodevelopmental disorder, related to pathogenic variant in other synapse related gene",C,08,"564, 565, 566",Musculoskeletal System
+QA0.0151,FOXG1 syndrome,C,08,"564, 565, 566",Musculoskeletal System
+QA0.0159,"Neurodevelopmental disorder, related to other genes associated with transcription and gene expression",C,08,"564, 565, 566",Musculoskeletal System
+QA0.8,Other neurodevelopmental disorders related to pathogenic variants in other specific genes,C,08,"564, 565, 566",Musculoskeletal System
+R10.20,Pelvic and perineal pain unspecified side,N,06,"391, 392",Digestive System
+R10.21,Pelvic and perineal pain right side,N,06,"391, 392",Digestive System
+R10.22,Pelvic and perineal pain left side,N,06,"391, 392",Digestive System
+R10.23,Pelvic and perineal pain bilateral,N,06,"391, 392",Digestive System
+R10.24,Suprapubic pain,N,06,"391, 392",Digestive System
+R10.85,Abdominal pain of multiple sites,N,06,"391, 392",Digestive System
+R10.8A1,Right flank tenderness,N,06,"391, 392",Digestive System
+R10.8A2,Left flank tenderness,N,06,"391, 392",Digestive System
+R10.8A3,Suprapubic tenderness,N,06,"391, 392",Digestive System
+R10.8A9,"Flank tenderness, unspecified",N,06,"391, 392",Digestive System
+R10.A0,"Flank pain, unspecified side",N,06,"391, 392",Digestive System
+R10.A1,"Flank pain, right side",N,06,"391, 392",Digestive System
+R10.A2,"Flank pain, left side",N,06,"391, 392",Digestive System
+R10.A3,"Flank pain, bilateral",N,06,"391, 392",Digestive System
+R11.16,Cannabis hyperemesis syndrome,N,06,"391, 392",Digestive System
+R39.851,"Costovertebral (angle) tenderness, right side",N,11,"695, 696",Kidney/Urinary Tract
+R39.852,"Costovertebral (angle) tenderness, left side",N,11,"695, 696",Kidney/Urinary Tract
+R39.853,"Costovertebral (angle) tenderness, bilateral",N,11,"695, 696",Kidney/Urinary Tract
+R39.859,"Costovertebral (angle) tenderness, unspecified side",N,11,"695, 696",Kidney/Urinary Tract
+R76.81,Abnormal rheumatoid factor and anti-citrullinated protein antibody without rheumatoid arthritis,N,16,"814, 815, 816",Blood/Blood-forming Organs
+R76.89,Other specified abnormal immunological findings in serum,N,16,"814, 815, 816",Blood/Blood-forming Organs
+S30.11XA,"Contusion of abdominal wall, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S30.11XD,"Contusion of abdominal wall, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S30.11XS,"Contusion of abdominal wall, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.12XA,"Contusion of groin, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S30.12XD,"Contusion of groin, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S30.12XS,"Contusion of groin, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.13XA,"Contusion of flank (latus) region, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S30.13XD,"Contusion of flank (latus) region, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S30.13XS,"Contusion of flank (latus) region, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.81AA,"Abrasion of flank, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.81AD,"Abrasion of flank, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S30.81AS,"Abrasion of flank, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.82AA,"Blister (nonthermal) of flank, initial encounter",N,09,"606, 607",Skin/Subcutaneous Tissue
+S30.82AD,"Blister (nonthermal) of flank, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S30.82AS,"Blister (nonthermal) of flank, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.84AA,"External constriction of flank, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S30.84AD,"External constriction of flank, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S30.84AS,"External constriction of flank, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.85AA,"Superficial foreign body of flank, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.85AD,"Superficial foreign body of flank, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S30.85AS,"Superficial foreign body of flank, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.86AA,"Insect bite (nonvenomous) of flank, initial encounter",N,09,"606, 607",Skin/Subcutaneous Tissue
+S30.86AD,"Insect bite (nonvenomous) of flank, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S30.86AS,"Insect bite (nonvenomous) of flank, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.87AA,"Other superficial bite of flank, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.87AD,"Other superficial bite of flank, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S30.87AS,"Other superficial bite of flank, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.9AXA,"Unspecified superficial injury of flank, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+S30.9AXD,"Unspecified superficial injury of flank, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S30.9AXS,"Unspecified superficial injury of flank, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.106A,"Unspecified open wound of abdominal wall, right flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.106D,"Unspecified open wound of abdominal wall, right flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.106S,"Unspecified open wound of abdominal wall, right flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.107A,"Unspecified open wound of abdominal wall, left flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.107D,"Unspecified open wound of abdominal wall, left flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.107S,"Unspecified open wound of abdominal wall, left flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.10AA,"Unspecified open wound of abdominal wall, unspecified flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.10AD,"Unspecified open wound of abdominal wall, unspecified flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.10AS,"Unspecified open wound of abdominal wall, unspecified flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.116A,"Laceration without foreign body of abdominal wall, right flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.116D,"Laceration without foreign body of abdominal wall, right flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.116S,"Laceration without foreign body of abdominal wall, right flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.117A,"Laceration without foreign body of abdominal wall, left flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.117D,"Laceration without foreign body of abdominal wall, left flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.117S,"Laceration without foreign body of abdominal wall, left flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.11AA,"Laceration without foreign body of abdominal wall, unspecified flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.11AD,"Laceration without foreign body of abdominal wall, unspecified flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.11AS,"Laceration without foreign body of abdominal wall, unspecified flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.126A,"Laceration with foreign body of abdominal wall, right flank without penetration into peritoneal cavity, initial encounter",N,21,"913, 914",Injuries/Poisoning/Toxic Effects
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.126D,"Laceration with foreign body of abdominal wall, right flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.126S,"Laceration with foreign body of abdominal wall, right flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.127A,"Laceration with foreign body of abdominal wall, left flank without penetration into peritoneal cavity, initial encounter",N,21,"913, 914",Injuries/Poisoning/Toxic Effects
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.127D,"Laceration with foreign body of abdominal wall, left flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.127S,"Laceration with foreign body of abdominal wall, left flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.12AA,"Laceration with foreign body of abdominal wall unspecified flank without penetration into peritoneal cavity, initial encounter",N,21,"913, 914",Injuries/Poisoning/Toxic Effects
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.12AD,"Laceration with foreign body of abdominal wall unspecified flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.12AS,"Laceration with foreign body of abdominal wall unspecified flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.136A,"Puncture wound of abdominal wall without foreign body, right flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.136D,"Puncture wound of abdominal wall without foreign body, right flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.136S,"Puncture wound of abdominal wall without foreign body, right flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.137A,"Puncture wound of abdominal wall without foreign body, left flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.137D,"Puncture wound of abdominal wall without foreign body, left flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.137S,"Puncture wound of abdominal wall without foreign body, left flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.13AA,"Puncture wound of abdominal wall without foreign body, unspecified flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.13AD,"Puncture wound of abdominal wall without foreign body, unspecified flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.13AS,"Puncture wound of abdominal wall without foreign body, unspecified flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.146A,"Puncture wound of abdominal wall with foreign body, right flank without penetration into peritoneal cavity, initial encounter",N,21,"913, 914",Injuries/Poisoning/Toxic Effects
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.146D,"Puncture wound of abdominal wall with foreign body, right flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.146S,"Puncture wound of abdominal wall with foreign body, right flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.147A,"Puncture wound of abdominal wall with foreign body, left flank without penetration into peritoneal cavity, initial encounter",N,21,"913, 914",Injuries/Poisoning/Toxic Effects
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.147D,"Puncture wound of abdominal wall with foreign body, left flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.147S,"Puncture wound of abdominal wall with foreign body, left flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.14AA,"Puncture wound of abdominal wall with foreign body, unspecified flank without penetration into peritoneal cavity, initial encounter",N,21,"913, 914",Injuries/Poisoning/Toxic Effects
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.14AD,"Puncture wound of abdominal wall with foreign body, unspecified flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.14AS,"Puncture wound of abdominal wall with foreign body, unspecified flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.156A,"Open bite of abdominal wall, right flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.156D,"Open bite of abdominal wall, right flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.156S,"Open bite of abdominal wall, right flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.157A,"Open bite of abdominal wall, left flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.157D,"Open bite of abdominal wall, left flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.157S,"Open bite of abdominal wall, left flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.15AA,"Open bite of abdominal wall, unspecified flank without penetration into peritoneal cavity, initial encounter",N,09,"604, 605",Skin/Subcutaneous Tissue
+"""""",,,24,"963, 964, 965",Multiple Significant Trauma
+S31.15AD,"Open bite of abdominal wall, unspecified flank without penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.15AS,"Open bite of abdominal wall, unspecified flank without penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.606A,"Unspecified open wound of abdominal wall, right flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.606D,"Unspecified open wound of abdominal wall, right flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.606S,"Unspecified open wound of abdominal wall, right flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.607A,"Unspecified open wound of abdominal wall, left flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.607D,"Unspecified open wound of abdominal wall, left flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.607S,"Unspecified open wound of abdominal wall, left flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.60AA,"Unspecified open wound of abdominal wall, unspecified flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.60AD,"Unspecified open wound of abdominal wall, unspecified flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.60AS,"Unspecified open wound of abdominal wall, unspecified flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.616A,"Laceration without foreign body of abdominal wall, right flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.616D,"Laceration without foreign body of abdominal wall, right flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.616S,"Laceration without foreign body of abdominal wall, right flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.617A,"Laceration without foreign body of abdominal wall, left flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.617D,"Laceration without foreign body of abdominal wall, left flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.617S,"Laceration without foreign body of abdominal wall, left flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.61AA,"Laceration without foreign body of abdominal wall, unspecified flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.61AD,"Laceration without foreign body of abdominal wall, unspecified flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.61AS,"Laceration without foreign body of abdominal wall, unspecified flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.626A,"Laceration with foreign body of abdominal wall, right flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.626D,"Laceration with foreign body of abdominal wall, right flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.626S,"Laceration with foreign body of abdominal wall, right flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.627A,"Laceration with foreign body of abdominal wall, left flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.627D,"Laceration with foreign body of abdominal wall, left flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.627S,"Laceration with foreign body of abdominal wall, left flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.62AA,"Laceration with foreign body of abdominal wall, unspecified flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.62AD,"Laceration with foreign body of abdominal wall, unspecified flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.62AS,"Laceration with foreign body of abdominal wall, unspecified flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.636A,"Puncture wound of abdominal wall without foreign body, right flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.636D,"Puncture wound of abdominal wall without foreign body, right flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.636S,"Puncture wound of abdominal wall without foreign body, right flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.637A,"Puncture wound of abdominal wall without foreign body, left flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.637D,"Puncture wound of abdominal wall without foreign body, left flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.637S,"Puncture wound of abdominal wall without foreign body, left flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.63AA,"Puncture wound of abdominal wall without foreign body, unspecified flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.63AD,"Puncture wound of abdominal wall without foreign body, unspecified flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.63AS,"Puncture wound of abdominal wall without foreign body, unspecified flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.646A,"Puncture wound of abdominal wall with foreign body, right flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.646D,"Puncture wound of abdominal wall with foreign body, right flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.646S,"Puncture wound of abdominal wall with foreign body, right flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.647A,"Puncture wound of abdominal wall with foreign body, left flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.647D,"Puncture wound of abdominal wall with foreign body, left flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.647S,"Puncture wound of abdominal wall with foreign body, left flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.64AA,"Puncture wound of abdominal wall with foreign body, unspecified flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.64AD,"Puncture wound of abdominal wall with foreign body, unspecified flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.64AS,"Puncture wound of abdominal wall with foreign body, unspecified flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.656A,"Open bite of abdominal wall, right flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.656D,"Open bite of abdominal wall, right flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.656S,"Open bite of abdominal wall, right flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.657A,"Open bite of abdominal wall, left flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.657D,"Open bite of abdominal wall, left flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.657S,"Open bite of abdominal wall, left flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+S31.65AA,"Open bite of abdominal wall, unspecified flank with penetration into peritoneal cavity, initial encounter",M,06,"393, 394, 395",Digestive System
+"""""",,,24,"963(3), 964(3), 965(3)",Multiple Significant Trauma
+S31.65AD,"Open bite of abdominal wall, unspecified flank with penetration into peritoneal cavity, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+S31.65AS,"Open bite of abdominal wall, unspecified flank with penetration into peritoneal cavity, sequela",N,09,"604, 605",Skin/Subcutaneous Tissue
+T36.AX1A,"Poisoning by fluoroquinolone antibiotics, accidental (unintentional), initial encounter",N,21,"917, 918",Injuries/Poisoning/Toxic Effects
+T36.AX1D,"Poisoning by fluoroquinolone antibiotics, accidental (unintentional), subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T36.AX1S,"Poisoning by fluoroquinolone antibiotics, accidental (unintentional), sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T36.AX2A,"Poisoning by fluoroquinolone antibiotics, intentional self-harm, initial encounter",N,21,"917, 918",Injuries/Poisoning/Toxic Effects
+T36.AX2D,"Poisoning by fluoroquinolone antibiotics, intentional self-harm, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T36.AX2S,"Poisoning by fluoroquinolone antibiotics, intentional self-harm, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T36.AX3A,"Poisoning by fluoroquinolone antibiotics, assault, initial encounter",N,21,"917, 918",Injuries/Poisoning/Toxic Effects
+T36.AX3D,"Poisoning by fluoroquinolone antibiotics, assault, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T36.AX3S,"Poisoning by fluoroquinolone antibiotics, assault, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T36.AX4A,"Poisoning by fluoroquinolone antibiotics, undetermined, initial encounter",N,21,"917, 918",Injuries/Poisoning/Toxic Effects
+T36.AX4D,"Poisoning by fluoroquinolone antibiotics, undetermined, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T36.AX4S,"Poisoning by fluoroquinolone antibiotics, undetermined, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T36.AX5A,"Adverse effect of fluoroquinolone antibiotics, initial encounter",N,15,"791(1), 793(1)",Newborns/Neonates
+"""""",,,21,"917, 918",Injuries/Poisoning/Toxic Effects
+T36.AX5D,"Adverse effect of fluoroquinolone antibiotics, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T36.AX5S,"Adverse effect of fluoroquinolone antibiotics, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T36.AX6A,"Underdosing of fluoroquinolone antibiotics, initial encounter",N,23,951,Factors Influencing Health Status
+T36.AX6D,"Underdosing of fluoroquinolone antibiotics, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T36.AX6S,"Underdosing of fluoroquinolone antibiotics, sequela",N,23,"949, 950",Factors Influencing Health Status
+T65.841A,"Toxic effect of xylazine, accidental (unintentional), initial encounter",N,21,"917, 918",Injuries/Poisoning/Toxic Effects
+T65.841D,"Toxic effect of xylazine, accidental (unintentional), subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T65.841S,"Toxic effect of xylazine, accidental (unintentional), sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T65.842A,"Toxic effect of xylazine, intentional self-harm, initial encounter",N,21,"917, 918",Injuries/Poisoning/Toxic Effects
+T65.842D,"Toxic effect of xylazine, intentional self-harm, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T65.842S,"Toxic effect of xylazine, intentional self-harm, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T65.843A,"Toxic effect of xylazine, assault, initial encounter",N,21,"917, 918",Injuries/Poisoning/Toxic Effects
+T65.843D,"Toxic effect of xylazine, assault, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T65.843S,"Toxic effect of xylazine, assault, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T65.844A,"Toxic effect of xylazine, undetermined, initial encounter",N,21,"917, 918",Injuries/Poisoning/Toxic Effects
+T65.844D,"Toxic effect of xylazine, undetermined, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T65.844S,"Toxic effect of xylazine, undetermined, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T75.830A,"Gulf war illness, initial encounter",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T75.830D,"Gulf war illness, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T75.830S,"Gulf war illness, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T75.838A,"Effects of other war theater, initial encounter",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T75.838D,"Effects of other war theater, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T75.838S,"Effects of other war theater, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.070A,"Anaphylactic reaction due to milk and dairy products with tolerance to baked milk, initial encounter",C,21,"915, 916",Injuries/Poisoning/Toxic Effects
+T78.070D,"Anaphylactic reaction due to milk and dairy products with tolerance to baked milk, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.070S,"Anaphylactic reaction due to milk and dairy products with tolerance to baked milk, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.071A,"Anaphylactic reaction due to milk and dairy products with reactivity to baked milk, initial encounter",C,21,"915, 916",Injuries/Poisoning/Toxic Effects
+T78.071D,"Anaphylactic reaction due to milk and dairy products with reactivity to baked milk, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.071S,"Anaphylactic reaction due to milk and dairy products with reactivity to baked milk, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.079A,"Anaphylactic reaction due to milk and dairy products, unspecified, initial encounter",C,21,"915, 916",Injuries/Poisoning/Toxic Effects
+T78.079D,"Anaphylactic reaction due to milk and dairy products, unspecified, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.079S,"Anaphylactic reaction due to milk and dairy products, unspecified, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.080A,"Anaphylactic reaction due to egg with tolerance to baked egg, initial encounter",C,21,"915, 916",Injuries/Poisoning/Toxic Effects
+T78.080D,"Anaphylactic reaction due to egg with tolerance to baked egg, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.080S,"Anaphylactic reaction due to egg with tolerance to baked egg, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.081A,"Anaphylactic reaction due to egg with reactivity to baked egg, initial encounter",C,21,"915, 916",Injuries/Poisoning/Toxic Effects
+T78.081D,"Anaphylactic reaction due to egg with reactivity to baked egg, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.081S,"Anaphylactic reaction due to egg with reactivity to baked egg, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.089A,"Anaphylactic reaction due to eggs, unspecified, initial encounter",C,21,"915, 916",Injuries/Poisoning/Toxic Effects
+T78.089D,"Anaphylactic reaction due to eggs, unspecified, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.089S,"Anaphylactic reaction due to eggs, unspecified, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.110A,"Other adverse food reactions due to milk and dairy products with tolerance to baked milk, initial encounter",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.110D,"Other adverse food reactions due to milk and dairy products with tolerance to baked milk, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.110S,"Other adverse food reactions due to milk and dairy products with tolerance to baked milk, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.111A,"Other adverse food reaction due to milk and dairy products with reactivity to baked milk, initial encounter",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.111D,"Other adverse food reaction due to milk and dairy products with reactivity to baked milk, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.111S,"Other adverse food reaction due to milk and dairy products with reactivity to baked milk, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.119A,"Other adverse food reaction due to milk and dairy products with baked milk tolerance/reactivity, unspecified, initial encounter",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.119D,"Other adverse food reaction due to milk and dairy products with baked milk tolerance/reactivity, unspecified, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.119S,"Other adverse food reaction due to milk and dairy products with baked milk tolerance/reactivity, unspecified, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.120A,"Other adverse food reaction due to egg with tolerance to baked egg, initial encounter",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.120D,"Other adverse food reaction due to egg with tolerance to baked egg, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.120S,"Other adverse food reaction due to egg with tolerance to baked egg, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.121A,"Other adverse food reaction due to egg with reactivity to baked egg, initial encounter",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.121D,"Other adverse food reaction due to egg with reactivity to baked egg, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.121S,"Other adverse food reaction due to egg with reactivity to baked egg, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.129A,"Other adverse food reaction due to egg with baked egg tolerance/reactivity, unspecified, initial encounter",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.129D,"Other adverse food reaction due to egg with baked egg tolerance/reactivity, unspecified, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.129S,"Other adverse food reaction due to egg with baked egg tolerance/reactivity, unspecified, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.19XA,"Other adverse food reactions, not elsewhere classified, initial encounter",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+T78.19XD,"Other adverse food reactions, not elsewhere classified, subsequent encounter",N,23,"949, 950",Factors Influencing Health Status
+T78.19XS,"Other adverse food reactions, not elsewhere classified, sequela",N,21,"922, 923",Injuries/Poisoning/Toxic Effects
+Z15.05,Genetic susceptibility to malignant neoplasm of fallopian tube(s),N,23,951,Factors Influencing Health Status
+Z15.060,Genetic susceptibility to colorectal cancer,N,23,951,Factors Influencing Health Status
+Z15.068,Genetic susceptibility to other malignant neoplasm of digestive system,N,23,951,Factors Influencing Health Status
+Z15.07,Genetic susceptibility to malignant neoplasm of urinary tract,N,23,951,Factors Influencing Health Status
+Z15.3,Genetic susceptibility to kidney disease,N,23,951,Factors Influencing Health Status
+Z40.81,Encounter for prophylactic surgery for removal of ovary(s) for persons without known genetic/familial risk factors,N,13,"742, 743, 760, 761",Female Reproductive System
+Z40.82,Encounter for prophylactic surgery for removal of fallopian tube(s) for persons without known genetic/familial risk factors,N,13,"742, 743, 760, 761",Female Reproductive System
+Z40.89,Encounter for other prophylactic surgery,N,23,951,Factors Influencing Health Status
+Z59.861,"Financial insecurity, difficulty paying for utilities",N,23,951,Factors Influencing Health Status
+Z59.868,Other specified financial insecurity,N,23,951,Factors Influencing Health Status
+Z59.869,"Financial insecurity, unspecified",N,23,951,Factors Influencing Health Status
+Z77.31,Contact with and (suspected) exposure to Gulf War theater,N,23,951,Factors Influencing Health Status
+Z77.39,Contact with and (suspected) exposure to other war theater,N,23,951,Factors Influencing Health Status
+Z80.44,Family history of malignant neoplasm of fallopian tube(s),N,23,951,Factors Influencing Health Status
+Z84.11,Family history of APOL1-mediated kidney disease [AMKD],N,23,951,Factors Influencing Health Status
+Z84.19,Family history of other disorders of kidney and ureter,N,23,951,Factors Influencing Health Status
+Z84.A,Family history of exposure to diethylstilbestrol,N,23,951,Factors Influencing Health Status
+Z85.4A,Personal history of malignant neoplasm of fallopian tube(s),N,17,"826, 827, 828, 829, 830, 843, 844, 845",Myeloproliferative Disorders
+Z86.00A,Personal history of in-situ neoplasm of the fallopian tube(s),N,23,951,Factors Influencing Health Status
+Z91.0110,"Allergy to milk products, unspecified",N,23,951,Factors Influencing Health Status
+Z91.0111,Allergy to milk products with tolerance to baked milk,N,23,951,Factors Influencing Health Status
+Z91.0112,Allergy to milk products with reactivity to baked milk,N,23,951,Factors Influencing Health Status
+Z91.0120,"Allergy to eggs, unspecified",N,23,951,Factors Influencing Health Status
+Z91.0121,Allergy to eggs with tolerance to baked egg,N,23,951,Factors Influencing Health Status
+Z91.0122,Allergy to eggs with reactivity to baked egg,N,23,951,Factors Influencing Health Status
+Z91.B,Personal risk factor of exposure to diethylstilbestrol,N,23,951,Factors Influencing Health Status

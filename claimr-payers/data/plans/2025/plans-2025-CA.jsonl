@@ -1,3 +1,6 @@
 {
   "example": "Append-only NDJSON. One plan per line."
 }
+{"id":"plan_uhc_ca_ppo_lg_2025","carrier_id":"crr_29cbf4500ec6","lob":"commercial_fully_insured","state":"CA","market":"large_group","plan_type":"PPO","service_area":{"states":["CA"],"counties":[],"zip_sets":[]},"effective_start":"2025-01-01","effective_end":"2025-12-31","_meta":{"source":"sources/2025-09/unitedhealth/","last_verified_at":"2025-09-11"}}
+{"id":"plan_uhc_ca_hmo_sg_2025","carrier_id":"crr_29cbf4500ec6","lob":"commercial_fully_insured","state":"CA","market":"small_group","plan_type":"HMO","service_area":{"states":["CA"],"counties":[],"zip_sets":[]},"effective_start":"2025-01-01","effective_end":"2025-12-31","_meta":{"source":"sources/2025-09/unitedhealth/","last_verified_at":"2025-09-11"}}
+{"id":"plan_uhc_ca_epo_ind_2025","carrier_id":"crr_29cbf4500ec6","lob":"individual_on_exchange","state":"CA","market":"individual","plan_type":"EPO","service_area":{"states":["CA"],"counties":[],"zip_sets":[]},"effective_start":"2025-01-01","effective_end":"2025-12-31","_meta":{"source":"sources/2025-09/unitedhealth/","last_verified_at":"2025-09-11"}}

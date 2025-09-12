@@ -1,0 +1,1476 @@
+code,description,service
+T51.3X1,1-propanol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T51.3X2,1-propanol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T51.3X3,1-propanol - Poisoning Assault,ICD-10-CM Drug Index
+T51.3X4,1-propanol - Poisoning Undetermined,ICD-10-CM Drug Index
+--,1-propanol - Adverse effect,ICD-10-CM Drug Index
+T51.2X1,2-propanol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T51.2X2,2-propanol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T51.2X3,2-propanol - Poisoning Assault,ICD-10-CM Drug Index
+T51.2X4,2-propanol - Poisoning Undetermined,ICD-10-CM Drug Index
+T60.3X1,2,4-D - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T60.3X2,2,4-D - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T60.3X3,2,4-D - Poisoning Assault,ICD-10-CM Drug Index
+T60.3X4,2,4-D - Poisoning Undetermined,ICD-10-CM Drug Index
+T65.0X1,2,4-toluene diisocyanate - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.0X2,2,4-toluene diisocyanate - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.0X3,2,4-toluene diisocyanate - Poisoning Assault,ICD-10-CM Drug Index
+T65.0X4,2,4-toluene diisocyanate - Poisoning Undetermined,ICD-10-CM Drug Index
+T60.1X1,2,4,5-T - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T60.1X2,2,4,5-T - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T60.1X3,2,4,5-T - Poisoning Assault,ICD-10-CM Drug Index
+T60.1X4,2,4,5-T - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.641,3,4-methylenedioxymethamphetamine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.642,3,4-methylenedioxymethamphetamine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.643,3,4-methylenedioxymethamphetamine - Poisoning Assault,ICD-10-CM Drug Index
+T43.644,3,4-methylenedioxymethamphetamine - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.2X1,14-hydroxydihydro-morphinone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.2X2,14-hydroxydihydro-morphinone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.2X3,14-hydroxydihydro-morphinone - Poisoning Assault,ICD-10-CM Drug Index
+T40.2X4,14-hydroxydihydro-morphinone - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.2X5,14-hydroxydihydro-morphinone - Adverse effect,ICD-10-CM Drug Index
+T40.2X6,14-hydroxydihydro-morphinone - Underdosing,ICD-10-CM Drug Index
+T37.5X1,ABOB - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T37.5X2,ABOB - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T37.5X3,ABOB - Poisoning Assault,ICD-10-CM Drug Index
+T37.5X4,ABOB - Poisoning Undetermined,ICD-10-CM Drug Index
+T37.5X5,ABOB - Adverse effect,ICD-10-CM Drug Index
+T37.5X6,ABOB - Underdosing,ICD-10-CM Drug Index
+T62.2X1,Abrine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T62.2X2,Abrine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T62.2X3,Abrine - Poisoning Assault,ICD-10-CM Drug Index
+T62.2X4,Abrine - Poisoning Undetermined,ICD-10-CM Drug Index
+T51.0X1,Absinthe - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T51.0X2,Absinthe - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T51.0X3,Absinthe - Poisoning Assault,ICD-10-CM Drug Index
+T51.0X4,Absinthe - Poisoning Undetermined,ICD-10-CM Drug Index
+T60.8X1,Acaricide - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T60.8X2,Acaricide - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T60.8X3,Acaricide - Poisoning Assault,ICD-10-CM Drug Index
+T60.8X4,Acaricide - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.7X1,Acebutolol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T44.7X2,Acebutolol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T44.7X3,Acebutolol - Poisoning Assault,ICD-10-CM Drug Index
+T44.7X4,Acebutolol - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.7X5,Acebutolol - Adverse effect,ICD-10-CM Drug Index
+T44.7X6,Acebutolol - Underdosing,ICD-10-CM Drug Index
+T42.6X1,Acecarbromal - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T42.6X2,Acecarbromal - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T42.6X3,Acecarbromal - Poisoning Assault,ICD-10-CM Drug Index
+T42.6X4,Acecarbromal - Poisoning Undetermined,ICD-10-CM Drug Index
+T42.6X5,Acecarbromal - Adverse effect,ICD-10-CM Drug Index
+T42.6X6,Acecarbromal - Underdosing,ICD-10-CM Drug Index
+T44.1X1,Aceclidine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T44.1X2,Aceclidine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T44.1X3,Aceclidine - Poisoning Assault,ICD-10-CM Drug Index
+T44.1X4,Aceclidine - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.1X5,Aceclidine - Adverse effect,ICD-10-CM Drug Index
+T44.1X6,Aceclidine - Underdosing,ICD-10-CM Drug Index
+T37.0X1,Acedapsone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T37.0X2,Acedapsone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T37.0X3,Acedapsone - Poisoning Assault,ICD-10-CM Drug Index
+T37.0X4,Acedapsone - Poisoning Undetermined,ICD-10-CM Drug Index
+T37.0X5,Acedapsone - Adverse effect,ICD-10-CM Drug Index
+T37.0X6,Acedapsone - Underdosing,ICD-10-CM Drug Index
+T48.6X1,Acefylline piperazine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T48.6X2,Acefylline piperazine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T48.6X3,Acefylline piperazine - Poisoning Assault,ICD-10-CM Drug Index
+T48.6X4,Acefylline piperazine - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.6X5,Acefylline piperazine - Adverse effect,ICD-10-CM Drug Index
+T48.6X6,Acefylline piperazine - Underdosing,ICD-10-CM Drug Index
+T45.511,Acenocoumarin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.512,Acenocoumarin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.513,Acenocoumarin - Poisoning Assault,ICD-10-CM Drug Index
+T45.514,Acenocoumarin - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.515,Acenocoumarin - Adverse effect,ICD-10-CM Drug Index
+T45.516,Acenocoumarin - Underdosing,ICD-10-CM Drug Index
+T43.3X1,Acepromazine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.3X2,Acepromazine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.3X3,Acepromazine - Poisoning Assault,ICD-10-CM Drug Index
+T43.3X4,Acepromazine - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.3X5,Acepromazine - Adverse effect,ICD-10-CM Drug Index
+T43.3X6,Acepromazine - Underdosing,ICD-10-CM Drug Index
+T52.8X1,Acetal - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T52.8X2,Acetal - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T52.8X3,Acetal - Poisoning Assault,ICD-10-CM Drug Index
+T52.8X4,Acetal - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.1X1,P-Acetamidophenol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T39.1X2,P-Acetamidophenol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T39.1X3,P-Acetamidophenol - Poisoning Assault,ICD-10-CM Drug Index
+T39.1X4,P-Acetamidophenol - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.1X5,P-Acetamidophenol - Adverse effect,ICD-10-CM Drug Index
+T39.1X6,P-Acetamidophenol - Underdosing,ICD-10-CM Drug Index
+T37.3X1,Acetarsol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T37.3X2,Acetarsol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T37.3X3,Acetarsol - Poisoning Assault,ICD-10-CM Drug Index
+T37.3X4,Acetarsol - Poisoning Undetermined,ICD-10-CM Drug Index
+T37.3X5,Acetarsol - Adverse effect,ICD-10-CM Drug Index
+T37.3X6,Acetarsol - Underdosing,ICD-10-CM Drug Index
+T50.2X1,Acetazolamide - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.2X2,Acetazolamide - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.2X3,Acetazolamide - Poisoning Assault,ICD-10-CM Drug Index
+T50.2X4,Acetazolamide - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.2X5,Acetazolamide - Adverse effect,ICD-10-CM Drug Index
+T50.2X6,Acetazolamide - Underdosing,ICD-10-CM Drug Index
+T45.2X1,Acetiamine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.2X2,Acetiamine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.2X3,Acetiamine - Poisoning Assault,ICD-10-CM Drug Index
+T45.2X4,Acetiamine - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.2X5,Acetiamine - Adverse effect,ICD-10-CM Drug Index
+T45.2X6,Acetiamine - Underdosing,ICD-10-CM Drug Index
+T38.3X1,Acetohexamide - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.3X2,Acetohexamide - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.3X3,Acetohexamide - Poisoning Assault,ICD-10-CM Drug Index
+T38.3X4,Acetohexamide - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.3X5,Acetohexamide - Adverse effect,ICD-10-CM Drug Index
+T38.3X6,Acetohexamide - Underdosing,ICD-10-CM Drug Index
+T50.991,Acetohydroxamic acid - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.992,Acetohydroxamic acid - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.993,Acetohydroxamic acid - Poisoning Assault,ICD-10-CM Drug Index
+T50.994,Acetohydroxamic acid - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.995,Acetohydroxamic acid - Adverse effect,ICD-10-CM Drug Index
+T50.996,Acetohydroxamic acid - Underdosing,ICD-10-CM Drug Index
+T45.7X1,Acetomenaphthone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.7X2,Acetomenaphthone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.7X3,Acetomenaphthone - Poisoning Assault,ICD-10-CM Drug Index
+T45.7X4,Acetomenaphthone - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.7X5,Acetomenaphthone - Adverse effect,ICD-10-CM Drug Index
+T45.7X6,Acetomenaphthone - Underdosing,ICD-10-CM Drug Index
+T40.1X1,Acetomorphine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.1X2,Acetomorphine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.1X3,Acetomorphine - Poisoning Assault,ICD-10-CM Drug Index
+T40.1X4,Acetomorphine - Poisoning Undetermined,ICD-10-CM Drug Index
+T52.4X1,Acetone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T52.4X2,Acetone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T52.4X3,Acetone - Poisoning Assault,ICD-10-CM Drug Index
+T52.4X4,Acetone - Poisoning Undetermined,ICD-10-CM Drug Index
+T37.1X1,Acetosulfone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T37.1X2,Acetosulfone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T37.1X3,Acetosulfone - Poisoning Assault,ICD-10-CM Drug Index
+T37.1X4,Acetosulfone - Poisoning Undetermined,ICD-10-CM Drug Index
+T37.1X5,Acetosulfone - Adverse effect,ICD-10-CM Drug Index
+T37.1X6,Acetosulfone - Underdosing,ICD-10-CM Drug Index
+T50.8X1,Acetrizoate - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.8X2,Acetrizoate - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.8X3,Acetrizoate - Poisoning Assault,ICD-10-CM Drug Index
+T50.8X4,Acetrizoate - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.8X5,Acetrizoate - Adverse effect,ICD-10-CM Drug Index
+T50.8X6,Acetrizoate - Underdosing,ICD-10-CM Drug Index
+T48.4X1,Acetylcysteine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T48.4X2,Acetylcysteine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T48.4X3,Acetylcysteine - Poisoning Assault,ICD-10-CM Drug Index
+T48.4X4,Acetylcysteine - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.4X5,Acetylcysteine - Adverse effect,ICD-10-CM Drug Index
+T48.4X6,Acetylcysteine - Underdosing,ICD-10-CM Drug Index
+T46.0X1,Acetyldigitoxin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T46.0X2,Acetyldigitoxin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T46.0X3,Acetyldigitoxin - Poisoning Assault,ICD-10-CM Drug Index
+T46.0X4,Acetyldigitoxin - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.0X5,Acetyldigitoxin - Adverse effect,ICD-10-CM Drug Index
+T46.0X6,Acetyldigitoxin - Underdosing,ICD-10-CM Drug Index
+T59.891,Acetylene - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T59.892,Acetylene - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T59.893,Acetylene - Poisoning Assault,ICD-10-CM Drug Index
+T59.894,Acetylene - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.8X1,Acetylphenylhydrazine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T39.8X2,Acetylphenylhydrazine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T39.8X3,Acetylphenylhydrazine - Poisoning Assault,ICD-10-CM Drug Index
+T39.8X4,Acetylphenylhydrazine - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.8X5,Acetylphenylhydrazine - Adverse effect,ICD-10-CM Drug Index
+T39.8X6,Acetylphenylhydrazine - Underdosing,ICD-10-CM Drug Index
+T39.011,Acetylsalicylic acid - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T39.012,Acetylsalicylic acid - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T39.013,Acetylsalicylic acid - Poisoning Assault,ICD-10-CM Drug Index
+T39.014,Acetylsalicylic acid - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.015,Acetylsalicylic acid - Adverse effect,ICD-10-CM Drug Index
+T39.016,Acetylsalicylic acid - Underdosing,ICD-10-CM Drug Index
+T36.4X1,Achromycin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T36.4X2,Achromycin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T36.4X3,Achromycin - Poisoning Assault,ICD-10-CM Drug Index
+T36.4X4,Achromycin - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.4X5,Achromycin - Adverse effect,ICD-10-CM Drug Index
+T36.4X6,Achromycin - Underdosing,ICD-10-CM Drug Index
+T54.2X1,Acid - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T54.2X2,Acid - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T54.2X3,Acid - Poisoning Assault,ICD-10-CM Drug Index
+T54.2X4,Acid - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.901,Acidifying agent NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.902,Acidifying agent NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.903,Acidifying agent NEC - Poisoning Assault,ICD-10-CM Drug Index
+T50.904,Acidifying agent NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.905,Acidifying agent NEC - Adverse effect,ICD-10-CM Drug Index
+T50.906,Acidifying agent NEC - Underdosing,ICD-10-CM Drug Index
+T46.6X1,Acipimox - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T46.6X2,Acipimox - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T46.6X3,Acipimox - Poisoning Assault,ICD-10-CM Drug Index
+T46.6X4,Acipimox - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.6X5,Acipimox - Adverse effect,ICD-10-CM Drug Index
+T46.6X6,Acipimox - Underdosing,ICD-10-CM Drug Index
+T45.1X1,Aclarubicin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.1X2,Aclarubicin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.1X3,Aclarubicin - Poisoning Assault,ICD-10-CM Drug Index
+T45.1X4,Aclarubicin - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.1X5,Aclarubicin - Adverse effect,ICD-10-CM Drug Index
+T45.1X6,Aclarubicin - Underdosing,ICD-10-CM Drug Index
+T48.1X1,Aclatonium napadisilate - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T48.1X2,Aclatonium napadisilate - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T48.1X3,Aclatonium napadisilate - Poisoning Assault,ICD-10-CM Drug Index
+T48.1X4,Aclatonium napadisilate - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.1X5,Aclatonium napadisilate - Adverse effect,ICD-10-CM Drug Index
+T48.1X6,Aclatonium napadisilate - Underdosing,ICD-10-CM Drug Index
+T46.991,Aconite - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T46.992,Aconite - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T46.993,Aconite - Poisoning Assault,ICD-10-CM Drug Index
+T46.994,Aconite - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.995,Aconite - Adverse effect,ICD-10-CM Drug Index
+T46.996,Aconite - Underdosing,ICD-10-CM Drug Index
+T65.6X1,Acridine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.6X2,Acridine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.6X3,Acridine - Poisoning Assault,ICD-10-CM Drug Index
+T65.6X4,Acridine - Poisoning Undetermined,ICD-10-CM Drug Index
+T37.91,Acriflavine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T37.92,Acriflavine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T37.93,Acriflavine - Poisoning Assault,ICD-10-CM Drug Index
+T37.94,Acriflavine - Poisoning Undetermined,ICD-10-CM Drug Index
+T37.95,Acriflavine - Adverse effect,ICD-10-CM Drug Index
+T37.96,Acriflavine - Underdosing,ICD-10-CM Drug Index
+T49.0X1,Acriflavinium chloride - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T49.0X2,Acriflavinium chloride - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T49.0X3,Acriflavinium chloride - Poisoning Assault,ICD-10-CM Drug Index
+T49.0X4,Acriflavinium chloride - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.0X5,Acriflavinium chloride - Adverse effect,ICD-10-CM Drug Index
+T49.0X6,Acriflavinium chloride - Underdosing,ICD-10-CM Drug Index
+T45.0X1,Acrivastine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.0X2,Acrivastine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.0X3,Acrivastine - Poisoning Assault,ICD-10-CM Drug Index
+T45.0X4,Acrivastine - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.0X5,Acrivastine - Adverse effect,ICD-10-CM Drug Index
+T45.0X6,Acrivastine - Underdosing,ICD-10-CM Drug Index
+T65.891,Acrylamide - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.892,Acrylamide - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.893,Acrylamide - Poisoning Assault,ICD-10-CM Drug Index
+T65.894,Acrylamide - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.3X1,Acrylic resin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T49.3X2,Acrylic resin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T49.3X3,Acrylic resin - Poisoning Assault,ICD-10-CM Drug Index
+T49.3X4,Acrylic resin - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.3X5,Acrylic resin - Adverse effect,ICD-10-CM Drug Index
+T49.3X6,Acrylic resin - Underdosing,ICD-10-CM Drug Index
+T38.811,ACTH - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.812,ACTH - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.813,ACTH - Poisoning Assault,ICD-10-CM Drug Index
+T38.814,ACTH - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.815,ACTH - Adverse effect,ICD-10-CM Drug Index
+T38.816,ACTH - Underdosing,ICD-10-CM Drug Index
+T47.6X1,Activated charcoal - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T47.6X2,Activated charcoal - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T47.6X3,Activated charcoal - Poisoning Assault,ICD-10-CM Drug Index
+T47.6X4,Activated charcoal - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.6X5,Activated charcoal - Adverse effect,ICD-10-CM Drug Index
+T47.6X6,Activated charcoal - Underdosing,ICD-10-CM Drug Index
+T46.2X1,Adenosine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T46.2X2,Adenosine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T46.2X3,Adenosine - Poisoning Assault,ICD-10-CM Drug Index
+T46.2X4,Adenosine - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.2X5,Adenosine - Adverse effect,ICD-10-CM Drug Index
+T46.2X6,Adenosine - Underdosing,ICD-10-CM Drug Index
+T38.891,ADH - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.892,ADH - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.893,ADH - Poisoning Assault,ICD-10-CM Drug Index
+T38.894,ADH - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.895,ADH - Adverse effect,ICD-10-CM Drug Index
+T38.896,ADH - Underdosing,ICD-10-CM Drug Index
+T36.0X1,Adicillin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T36.0X2,Adicillin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T36.0X3,Adicillin - Poisoning Assault,ICD-10-CM Drug Index
+T36.0X4,Adicillin - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.0X5,Adicillin - Adverse effect,ICD-10-CM Drug Index
+T36.0X6,Adicillin - Underdosing,ICD-10-CM Drug Index
+T44.3X1,Adiphenine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T44.3X2,Adiphenine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T44.3X3,Adiphenine - Poisoning Assault,ICD-10-CM Drug Index
+T44.3X4,Adiphenine - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.3X5,Adiphenine - Adverse effect,ICD-10-CM Drug Index
+T44.3X6,Adiphenine - Underdosing,ICD-10-CM Drug Index
+T38.0X1,Adrenal - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.0X2,Adrenal - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.0X3,Adrenal - Poisoning Assault,ICD-10-CM Drug Index
+T38.0X4,Adrenal - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.0X5,Adrenal - Adverse effect,ICD-10-CM Drug Index
+T38.0X6,Adrenal - Underdosing,ICD-10-CM Drug Index
+T44.5X1,Adrenaline - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T44.5X2,Adrenaline - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T44.5X3,Adrenaline - Poisoning Assault,ICD-10-CM Drug Index
+T44.5X4,Adrenaline - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.5X5,Adrenaline - Adverse effect,ICD-10-CM Drug Index
+T44.5X6,Adrenaline - Underdosing,ICD-10-CM Drug Index
+T44.901,Adrenergic NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T44.902,Adrenergic NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T44.903,Adrenergic NEC - Poisoning Assault,ICD-10-CM Drug Index
+T44.904,Adrenergic NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.905,Adrenergic NEC - Adverse effect,ICD-10-CM Drug Index
+T44.906,Adrenergic NEC - Underdosing,ICD-10-CM Drug Index
+T65.91,Aerosol spray NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.92,Aerosol spray NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.93,Aerosol spray NEC - Poisoning Assault,ICD-10-CM Drug Index
+T65.94,Aerosol spray NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.8X1,Aerosporin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T36.8X2,Aerosporin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T36.8X3,Aerosporin - Poisoning Assault,ICD-10-CM Drug Index
+T36.8X4,Aerosporin - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.8X5,Aerosporin - Adverse effect,ICD-10-CM Drug Index
+T36.8X6,Aerosporin - Underdosing,ICD-10-CM Drug Index
+T40.711,Afghanistan black - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.712,Afghanistan black - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.713,Afghanistan black - Poisoning Assault,ICD-10-CM Drug Index
+T40.714,Afghanistan black - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.715,Afghanistan black - Adverse effect,ICD-10-CM Drug Index
+T40.716,Afghanistan black - Underdosing,ICD-10-CM Drug Index
+T64.01,Aflatoxin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T64.02,Aflatoxin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T64.03,Aflatoxin - Poisoning Assault,ICD-10-CM Drug Index
+T64.04,Aflatoxin - Poisoning Undetermined,ICD-10-CM Drug Index
+T42.8X1,Afloqualone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T42.8X2,Afloqualone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T42.8X3,Afloqualone - Poisoning Assault,ICD-10-CM Drug Index
+T42.8X4,Afloqualone - Poisoning Undetermined,ICD-10-CM Drug Index
+T42.8X5,Afloqualone - Adverse effect,ICD-10-CM Drug Index
+T42.8X6,Afloqualone - Underdosing,ICD-10-CM Drug Index
+T47.4X1,Agar - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T47.4X2,Agar - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T47.4X3,Agar - Poisoning Assault,ICD-10-CM Drug Index
+T47.4X4,Agar - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.4X5,Agar - Adverse effect,ICD-10-CM Drug Index
+T47.4X6,Agar - Underdosing,ICD-10-CM Drug Index
+T42.3X1,Agrypnal - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T42.3X2,Agrypnal - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T42.3X3,Agrypnal - Poisoning Assault,ICD-10-CM Drug Index
+T42.3X4,Agrypnal - Poisoning Undetermined,ICD-10-CM Drug Index
+T42.3X5,Agrypnal - Adverse effect,ICD-10-CM Drug Index
+T42.3X6,Agrypnal - Underdosing,ICD-10-CM Drug Index
+T50.Z11,AHLG - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.Z12,AHLG - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.Z13,AHLG - Poisoning Assault,ICD-10-CM Drug Index
+T50.Z14,AHLG - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.Z15,AHLG - Adverse effect,ICD-10-CM Drug Index
+T50.Z16,AHLG - Underdosing,ICD-10-CM Drug Index
+T62.1X1,Akee - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T62.1X2,Akee - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T62.1X3,Akee - Poisoning Assault,ICD-10-CM Drug Index
+T62.1X4,Akee - Poisoning Undetermined,ICD-10-CM Drug Index
+T37.8X1,Akritoin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T37.8X2,Akritoin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T37.8X3,Akritoin - Poisoning Assault,ICD-10-CM Drug Index
+T37.8X4,Akritoin - Poisoning Undetermined,ICD-10-CM Drug Index
+T37.8X5,Akritoin - Adverse effect,ICD-10-CM Drug Index
+T37.8X6,Akritoin - Underdosing,ICD-10-CM Drug Index
+T46.4X1,Alacepril - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T46.4X2,Alacepril - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T46.4X3,Alacepril - Poisoning Assault,ICD-10-CM Drug Index
+T46.4X4,Alacepril - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.4X5,Alacepril - Adverse effect,ICD-10-CM Drug Index
+T46.4X6,Alacepril - Underdosing,ICD-10-CM Drug Index
+T37.4X1,Alantolactone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T37.4X2,Alantolactone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T37.4X3,Alantolactone - Poisoning Assault,ICD-10-CM Drug Index
+T37.4X4,Alantolactone - Poisoning Undetermined,ICD-10-CM Drug Index
+T37.4X5,Alantolactone - Adverse effect,ICD-10-CM Drug Index
+T37.4X6,Alantolactone - Underdosing,ICD-10-CM Drug Index
+T42.0X1,Albutoin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T42.0X2,Albutoin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T42.0X3,Albutoin - Poisoning Assault,ICD-10-CM Drug Index
+T42.0X4,Albutoin - Poisoning Undetermined,ICD-10-CM Drug Index
+T42.0X5,Albutoin - Adverse effect,ICD-10-CM Drug Index
+T42.0X6,Albutoin - Underdosing,ICD-10-CM Drug Index
+T51.91,Alcohol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T51.92,Alcohol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T51.93,Alcohol - Poisoning Assault,ICD-10-CM Drug Index
+T51.94,Alcohol - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.0X1,Aldactone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.0X2,Aldactone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.0X3,Aldactone - Poisoning Assault,ICD-10-CM Drug Index
+T50.0X4,Aldactone - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.0X5,Aldactone - Adverse effect,ICD-10-CM Drug Index
+T50.0X6,Aldactone - Underdosing,ICD-10-CM Drug Index
+T60.0X1,Aldicarb - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T60.0X2,Aldicarb - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T60.0X3,Aldicarb - Poisoning Assault,ICD-10-CM Drug Index
+T60.0X4,Aldicarb - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.5X1,Aldomet - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T46.5X2,Aldomet - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T46.5X3,Aldomet - Poisoning Assault,ICD-10-CM Drug Index
+T46.5X4,Aldomet - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.5X5,Aldomet - Adverse effect,ICD-10-CM Drug Index
+T46.5X6,Aldomet - Underdosing,ICD-10-CM Drug Index
+T47.1X1,Alexitol sodium - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T47.1X2,Alexitol sodium - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T47.1X3,Alexitol sodium - Poisoning Assault,ICD-10-CM Drug Index
+T47.1X4,Alexitol sodium - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.1X5,Alexitol sodium - Adverse effect,ICD-10-CM Drug Index
+T47.1X6,Alexitol sodium - Underdosing,ICD-10-CM Drug Index
+T41.1X1,Alfadolone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T41.1X2,Alfadolone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T41.1X3,Alfadolone - Poisoning Assault,ICD-10-CM Drug Index
+T41.1X4,Alfadolone - Poisoning Undetermined,ICD-10-CM Drug Index
+T41.1X5,Alfadolone - Adverse effect,ICD-10-CM Drug Index
+T41.1X6,Alfadolone - Underdosing,ICD-10-CM Drug Index
+T40.411,Alfentanil - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.412,Alfentanil - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.413,Alfentanil - Poisoning Assault,ICD-10-CM Drug Index
+T40.414,Alfentanil - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.415,Alfentanil - Adverse effect,ICD-10-CM Drug Index
+T40.416,Alfentanil - Underdosing,ICD-10-CM Drug Index
+T44.8X1,Alfuzosin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T44.8X2,Alfuzosin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T44.8X3,Alfuzosin - Poisoning Assault,ICD-10-CM Drug Index
+T44.8X4,Alfuzosin - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.8X5,Alfuzosin - Adverse effect,ICD-10-CM Drug Index
+T44.8X6,Alfuzosin - Underdosing,ICD-10-CM Drug Index
+T65.821,Algae - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.822,Algae - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.823,Algae - Poisoning Assault,ICD-10-CM Drug Index
+T65.824,Algae - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.8X1,Algin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T47.8X2,Algin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T47.8X3,Algin - Poisoning Assault,ICD-10-CM Drug Index
+T47.8X4,Algin - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.8X5,Algin - Adverse effect,ICD-10-CM Drug Index
+T47.8X6,Algin - Underdosing,ICD-10-CM Drug Index
+T45.3X1,Alglucerase - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.3X2,Alglucerase - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.3X3,Alglucerase - Poisoning Assault,ICD-10-CM Drug Index
+T45.3X4,Alglucerase - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.3X5,Alglucerase - Adverse effect,ICD-10-CM Drug Index
+T45.3X6,Alglucerase - Underdosing,ICD-10-CM Drug Index
+T54.3X1,Alkali - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T54.3X2,Alkali - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T54.3X3,Alkali - Poisoning Assault,ICD-10-CM Drug Index
+T54.3X4,Alkali - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.6X1,Alkaline antiseptic solution - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T49.6X2,Alkaline antiseptic solution - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T49.6X3,Alkaline antiseptic solution - Poisoning Assault,ICD-10-CM Drug Index
+T49.6X4,Alkaline antiseptic solution - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.6X5,Alkaline antiseptic solution - Adverse effect,ICD-10-CM Drug Index
+T49.6X6,Alkaline antiseptic solution - Underdosing,ICD-10-CM Drug Index
+T49.4X1,Allantoin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T49.4X2,Allantoin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T49.4X3,Allantoin - Poisoning Assault,ICD-10-CM Drug Index
+T49.4X4,Allantoin - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.4X5,Allantoin - Adverse effect,ICD-10-CM Drug Index
+T49.4X6,Allantoin - Underdosing,ICD-10-CM Drug Index
+T43.011,Allegron - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.012,Allegron - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.013,Allegron - Poisoning Assault,ICD-10-CM Drug Index
+T43.014,Allegron - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.015,Allegron - Adverse effect,ICD-10-CM Drug Index
+T43.016,Allegron - Underdosing,ICD-10-CM Drug Index
+T50.4X1,Allopurinol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.4X2,Allopurinol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.4X3,Allopurinol - Poisoning Assault,ICD-10-CM Drug Index
+T50.4X4,Allopurinol - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.4X5,Allopurinol - Adverse effect,ICD-10-CM Drug Index
+T50.4X6,Allopurinol - Underdosing,ICD-10-CM Drug Index
+T38.5X1,Allylestrenol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.5X2,Allylestrenol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.5X3,Allylestrenol - Poisoning Assault,ICD-10-CM Drug Index
+T38.5X4,Allylestrenol - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.5X5,Allylestrenol - Adverse effect,ICD-10-CM Drug Index
+T38.5X6,Allylestrenol - Underdosing,ICD-10-CM Drug Index
+T50.7X1,Almitrine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.7X2,Almitrine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.7X3,Almitrine - Poisoning Assault,ICD-10-CM Drug Index
+T50.7X4,Almitrine - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.7X5,Almitrine - Adverse effect,ICD-10-CM Drug Index
+T50.7X6,Almitrine - Underdosing,ICD-10-CM Drug Index
+T47.2X1,Aloes - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T47.2X2,Aloes - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T47.2X3,Aloes - Poisoning Assault,ICD-10-CM Drug Index
+T47.2X4,Aloes - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.2X5,Aloes - Adverse effect,ICD-10-CM Drug Index
+T47.2X6,Aloes - Underdosing,ICD-10-CM Drug Index
+T42.2X1,Aloxidone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T42.2X2,Aloxidone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T42.2X3,Aloxidone - Poisoning Assault,ICD-10-CM Drug Index
+T42.2X4,Aloxidone - Poisoning Undetermined,ICD-10-CM Drug Index
+T42.2X5,Aloxidone - Adverse effect,ICD-10-CM Drug Index
+T42.2X6,Aloxidone - Underdosing,ICD-10-CM Drug Index
+T40.491,Alphaprodine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.492,Alphaprodine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.493,Alphaprodine - Poisoning Assault,ICD-10-CM Drug Index
+T40.494,Alphaprodine - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.495,Alphaprodine - Adverse effect,ICD-10-CM Drug Index
+T40.496,Alphaprodine - Underdosing,ICD-10-CM Drug Index
+T42.4X1,Alprazolam - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T42.4X2,Alprazolam - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T42.4X3,Alprazolam - Poisoning Assault,ICD-10-CM Drug Index
+T42.4X4,Alprazolam - Poisoning Undetermined,ICD-10-CM Drug Index
+T42.4X5,Alprazolam - Adverse effect,ICD-10-CM Drug Index
+T42.4X6,Alprazolam - Underdosing,ICD-10-CM Drug Index
+T46.7X1,Alprostadil - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T46.7X2,Alprostadil - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T46.7X3,Alprostadil - Poisoning Assault,ICD-10-CM Drug Index
+T46.7X4,Alprostadil - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.7X5,Alprostadil - Adverse effect,ICD-10-CM Drug Index
+T46.7X6,Alprostadil - Underdosing,ICD-10-CM Drug Index
+T45.611,Alteplase - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.612,Alteplase - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.613,Alteplase - Poisoning Assault,ICD-10-CM Drug Index
+T45.614,Alteplase - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.615,Alteplase - Adverse effect,ICD-10-CM Drug Index
+T45.616,Alteplase - Underdosing,ICD-10-CM Drug Index
+T62.0X1,Amanita phalloides - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T62.0X2,Amanita phalloides - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T62.0X3,Amanita phalloides - Poisoning Assault,ICD-10-CM Drug Index
+T62.0X4,Amanita phalloides - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.0X1,Ambenonium - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T44.0X2,Ambenonium - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T44.0X3,Ambenonium - Poisoning Assault,ICD-10-CM Drug Index
+T44.0X4,Ambenonium - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.0X5,Ambenonium - Adverse effect,ICD-10-CM Drug Index
+T44.0X6,Ambenonium - Underdosing,ICD-10-CM Drug Index
+T41.3X1,Amethocaine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T41.3X2,Amethocaine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T41.3X3,Amethocaine - Poisoning Assault,ICD-10-CM Drug Index
+T41.3X4,Amethocaine - Poisoning Undetermined,ICD-10-CM Drug Index
+T41.3X5,Amethocaine - Adverse effect,ICD-10-CM Drug Index
+T41.3X6,Amethocaine - Underdosing,ICD-10-CM Drug Index
+T44.991,Amezinium metilsulfate - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T44.992,Amezinium metilsulfate - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T44.993,Amezinium metilsulfate - Poisoning Assault,ICD-10-CM Drug Index
+T44.994,Amezinium metilsulfate - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.995,Amezinium metilsulfate - Adverse effect,ICD-10-CM Drug Index
+T44.996,Amezinium metilsulfate - Underdosing,ICD-10-CM Drug Index
+T43.291,Amfebutamone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.292,Amfebutamone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.293,Amfebutamone - Poisoning Assault,ICD-10-CM Drug Index
+T43.294,Amfebutamone - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.295,Amfebutamone - Adverse effect,ICD-10-CM Drug Index
+T43.296,Amfebutamone - Underdosing,ICD-10-CM Drug Index
+T50.5X1,Amfepramone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.5X2,Amfepramone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.5X3,Amfepramone - Poisoning Assault,ICD-10-CM Drug Index
+T50.5X4,Amfepramone - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.5X5,Amfepramone - Adverse effect,ICD-10-CM Drug Index
+T50.5X6,Amfepramone - Underdosing,ICD-10-CM Drug Index
+T43.621,Amfetamine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.622,Amfetamine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.623,Amfetamine - Poisoning Assault,ICD-10-CM Drug Index
+T43.624,Amfetamine - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.625,Amfetamine - Adverse effect,ICD-10-CM Drug Index
+T43.626,Amfetamine - Underdosing,ICD-10-CM Drug Index
+T48.5X1,Amidefrine mesilate - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T48.5X2,Amidefrine mesilate - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T48.5X3,Amidefrine mesilate - Poisoning Assault,ICD-10-CM Drug Index
+T48.5X4,Amidefrine mesilate - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.5X5,Amidefrine mesilate - Adverse effect,ICD-10-CM Drug Index
+T48.5X6,Amidefrine mesilate - Underdosing,ICD-10-CM Drug Index
+T40.3X1,Amidone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.3X2,Amidone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.3X3,Amidone - Poisoning Assault,ICD-10-CM Drug Index
+T40.3X4,Amidone - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.3X5,Amidone - Adverse effect,ICD-10-CM Drug Index
+T40.3X6,Amidone - Underdosing,ICD-10-CM Drug Index
+T39.2X1,Amidopyrine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T39.2X2,Amidopyrine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T39.2X3,Amidopyrine - Poisoning Assault,ICD-10-CM Drug Index
+T39.2X4,Amidopyrine - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.2X5,Amidopyrine - Adverse effect,ICD-10-CM Drug Index
+T39.2X6,Amidopyrine - Underdosing,ICD-10-CM Drug Index
+T43.1X1,Amiflamine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.1X2,Amiflamine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.1X3,Amiflamine - Poisoning Assault,ICD-10-CM Drug Index
+T43.1X4,Amiflamine - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.1X5,Amiflamine - Adverse effect,ICD-10-CM Drug Index
+T43.1X6,Amiflamine - Underdosing,ICD-10-CM Drug Index
+T36.5X1,Amikacin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T36.5X2,Amikacin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T36.5X3,Amikacin - Poisoning Assault,ICD-10-CM Drug Index
+T36.5X4,Amikacin - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.5X5,Amikacin - Adverse effect,ICD-10-CM Drug Index
+T36.5X6,Amikacin - Underdosing,ICD-10-CM Drug Index
+T46.3X1,Amikhelline - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T46.3X2,Amikhelline - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T46.3X3,Amikhelline - Poisoning Assault,ICD-10-CM Drug Index
+T46.3X4,Amikhelline - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.3X5,Amikhelline - Adverse effect,ICD-10-CM Drug Index
+T46.3X6,Amikhelline - Underdosing,ICD-10-CM Drug Index
+T50.3X1,Amino acids - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.3X2,Amino acids - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.3X3,Amino acids - Poisoning Assault,ICD-10-CM Drug Index
+T50.3X4,Amino acids - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.3X5,Amino acids - Adverse effect,ICD-10-CM Drug Index
+T50.3X6,Amino acids - Underdosing,ICD-10-CM Drug Index
+T43.8X1,4-Aminobutyric acid - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.8X2,4-Aminobutyric acid - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.8X3,4-Aminobutyric acid - Poisoning Assault,ICD-10-CM Drug Index
+T43.8X4,4-Aminobutyric acid - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.8X5,4-Aminobutyric acid - Adverse effect,ICD-10-CM Drug Index
+T43.8X6,4-Aminobutyric acid - Underdosing,ICD-10-CM Drug Index
+T45.621,Aminocaproic acid - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.622,Aminocaproic acid - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.623,Aminocaproic acid - Poisoning Assault,ICD-10-CM Drug Index
+T45.624,Aminocaproic acid - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.625,Aminocaproic acid - Adverse effect,ICD-10-CM Drug Index
+T45.626,Aminocaproic acid - Underdosing,ICD-10-CM Drug Index
+T45.8X1,Aminoethylisothiourium - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.8X2,Aminoethylisothiourium - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.8X3,Aminoethylisothiourium - Poisoning Assault,ICD-10-CM Drug Index
+T45.8X4,Aminoethylisothiourium - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.8X5,Aminoethylisothiourium - Adverse effect,ICD-10-CM Drug Index
+T45.8X6,Aminoethylisothiourium - Underdosing,ICD-10-CM Drug Index
+T45.691,Aminomethylbenzoic acid - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.692,Aminomethylbenzoic acid - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.693,Aminomethylbenzoic acid - Poisoning Assault,ICD-10-CM Drug Index
+T45.694,Aminomethylbenzoic acid - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.695,Aminomethylbenzoic acid - Adverse effect,ICD-10-CM Drug Index
+T45.696,Aminomethylbenzoic acid - Underdosing,ICD-10-CM Drug Index
+T54.0X1,Aminophenol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T54.0X2,Aminophenol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T54.0X3,Aminophenol - Poisoning Assault,ICD-10-CM Drug Index
+T54.0X4,Aminophenol - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.591,Aminophenylpyridone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.592,Aminophenylpyridone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.593,Aminophenylpyridone - Poisoning Assault,ICD-10-CM Drug Index
+T43.594,Aminophenylpyridone - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.595,Aminophenylpyridone - Adverse effect,ICD-10-CM Drug Index
+T43.596,Aminophenylpyridone - Underdosing,ICD-10-CM Drug Index
+T37.2X1,8-Aminoquinoline drugs - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T37.2X2,8-Aminoquinoline drugs - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T37.2X3,8-Aminoquinoline drugs - Poisoning Assault,ICD-10-CM Drug Index
+T37.2X4,8-Aminoquinoline drugs - Poisoning Undetermined,ICD-10-CM Drug Index
+T37.2X5,8-Aminoquinoline drugs - Adverse effect,ICD-10-CM Drug Index
+T37.2X6,8-Aminoquinoline drugs - Underdosing,ICD-10-CM Drug Index
+T36.7X1,Amphotericin B - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T36.7X2,Amphotericin B - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T36.7X3,Amphotericin B - Poisoning Assault,ICD-10-CM Drug Index
+T36.7X4,Amphotericin B - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.7X5,Amphotericin B - Adverse effect,ICD-10-CM Drug Index
+T36.7X6,Amphotericin B - Underdosing,ICD-10-CM Drug Index
+T47.5X1,Amylase - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T47.5X2,Amylase - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T47.5X3,Amylase - Poisoning Assault,ICD-10-CM Drug Index
+T47.5X4,Amylase - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.5X5,Amylase - Adverse effect,ICD-10-CM Drug Index
+T47.5X6,Amylase - Underdosing,ICD-10-CM Drug Index
+T38.7X1,Anabolic steroid - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.7X2,Anabolic steroid - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.7X3,Anabolic steroid - Poisoning Assault,ICD-10-CM Drug Index
+T38.7X4,Anabolic steroid - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.7X5,Anabolic steroid - Adverse effect,ICD-10-CM Drug Index
+T38.7X6,Anabolic steroid - Underdosing,ICD-10-CM Drug Index
+T39.91,Analgesic - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T39.92,Analgesic - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T39.93,Analgesic - Poisoning Assault,ICD-10-CM Drug Index
+T39.94,Analgesic - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.95,Analgesic - Adverse effect,ICD-10-CM Drug Index
+T39.96,Analgesic - Underdosing,ICD-10-CM Drug Index
+T41.41,Anesthetic NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T41.42,Anesthetic NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T41.43,Anesthetic NEC - Poisoning Assault,ICD-10-CM Drug Index
+T41.44,Anesthetic NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T41.45,Anesthetic NEC - Adverse effect,ICD-10-CM Drug Index
+T41.46,Anesthetic NEC - Underdosing,ICD-10-CM Drug Index
+T65.3X1,Aniline - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.3X2,Aniline - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.3X3,Aniline - Poisoning Assault,ICD-10-CM Drug Index
+T65.3X4,Aniline - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.6X1,Ansamycin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T36.6X2,Ansamycin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T36.6X3,Ansamycin - Poisoning Assault,ICD-10-CM Drug Index
+T36.6X4,Ansamycin - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.6X5,Ansamycin - Adverse effect,ICD-10-CM Drug Index
+T36.6X6,Ansamycin - Underdosing,ICD-10-CM Drug Index
+T63.421,Ant - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.422,Ant - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.423,Ant - Poisoning Assault,ICD-10-CM Drug Index
+T63.424,Ant - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.6X1,Antabuse - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.6X2,Antabuse - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.6X3,Antabuse - Poisoning Assault,ICD-10-CM Drug Index
+T50.6X4,Antabuse - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.6X5,Antabuse - Adverse effect,ICD-10-CM Drug Index
+T50.6X6,Antabuse - Underdosing,ICD-10-CM Drug Index
+T38.6X1,Antiandrogen NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.6X2,Antiandrogen NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.6X3,Antiandrogen NEC - Poisoning Assault,ICD-10-CM Drug Index
+T38.6X4,Antiandrogen NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.6X5,Antiandrogen NEC - Adverse effect,ICD-10-CM Drug Index
+T38.6X6,Antiandrogen NEC - Underdosing,ICD-10-CM Drug Index
+T43.501,Antianxiety drug NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.502,Antianxiety drug NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.503,Antianxiety drug NEC - Poisoning Assault,ICD-10-CM Drug Index
+T43.504,Antianxiety drug NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.505,Antianxiety drug NEC - Adverse effect,ICD-10-CM Drug Index
+T43.506,Antianxiety drug NEC - Underdosing,ICD-10-CM Drug Index
+T36.91,Antibiotic NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T36.92,Antibiotic NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T36.93,Antibiotic NEC - Poisoning Assault,ICD-10-CM Drug Index
+T36.94,Antibiotic NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.95,Antibiotic NEC - Adverse effect,ICD-10-CM Drug Index
+T36.96,Antibiotic NEC - Underdosing,ICD-10-CM Drug Index
+T42.71,Anticonvulsant - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T42.72,Anticonvulsant - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T42.73,Anticonvulsant - Poisoning Assault,ICD-10-CM Drug Index
+T42.74,Anticonvulsant - Poisoning Undetermined,ICD-10-CM Drug Index
+T42.75,Anticonvulsant - Adverse effect,ICD-10-CM Drug Index
+T42.76,Anticonvulsant - Underdosing,ICD-10-CM Drug Index
+T43.201,Antidepressant - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.202,Antidepressant - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.203,Antidepressant - Poisoning Assault,ICD-10-CM Drug Index
+T43.204,Antidepressant - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.205,Antidepressant - Adverse effect,ICD-10-CM Drug Index
+T43.206,Antidepressant - Underdosing,ICD-10-CM Drug Index
+T38.4X1,Antifertility pill - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.4X2,Antifertility pill - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.4X3,Antifertility pill - Poisoning Assault,ICD-10-CM Drug Index
+T38.4X4,Antifertility pill - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.4X5,Antifertility pill - Adverse effect,ICD-10-CM Drug Index
+T38.4X6,Antifertility pill - Underdosing,ICD-10-CM Drug Index
+T49.2X1,Antihemorrhoidal preparation - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T49.2X2,Antihemorrhoidal preparation - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T49.2X3,Antihemorrhoidal preparation - Poisoning Assault,ICD-10-CM Drug Index
+T49.2X4,Antihemorrhoidal preparation - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.2X5,Antihemorrhoidal preparation - Adverse effect,ICD-10-CM Drug Index
+T49.2X6,Antihemorrhoidal preparation - Underdosing,ICD-10-CM Drug Index
+T39.391,Anti-inflammatory drug NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T39.392,Anti-inflammatory drug NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T39.393,Anti-inflammatory drug NEC - Poisoning Assault,ICD-10-CM Drug Index
+T39.394,Anti-inflammatory drug NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.395,Anti-inflammatory drug NEC - Adverse effect,ICD-10-CM Drug Index
+T39.396,Anti-inflammatory drug NEC - Underdosing,ICD-10-CM Drug Index
+T56.0X1,Antiknock - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.0X2,Antiknock - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.0X3,Antiknock - Poisoning Assault,ICD-10-CM Drug Index
+T56.0X4,Antiknock - Poisoning Undetermined,ICD-10-CM Drug Index
+T56.891,Antimony - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.892,Antimony - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.893,Antimony - Poisoning Assault,ICD-10-CM Drug Index
+T56.894,Antimony - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.4X1,Antiphlogistic NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T39.4X2,Antiphlogistic NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T39.4X3,Antiphlogistic NEC - Poisoning Assault,ICD-10-CM Drug Index
+T39.4X4,Antiphlogistic NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.4X5,Antiphlogistic NEC - Adverse effect,ICD-10-CM Drug Index
+T39.4X6,Antiphlogistic NEC - Underdosing,ICD-10-CM Drug Index
+T49.1X1,Antipruritic drug NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T49.1X2,Antipruritic drug NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T49.1X3,Antipruritic drug NEC - Poisoning Assault,ICD-10-CM Drug Index
+T49.1X4,Antipruritic drug NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.1X5,Antipruritic drug NEC - Adverse effect,ICD-10-CM Drug Index
+T49.1X6,Antipruritic drug NEC - Underdosing,ICD-10-CM Drug Index
+T45.521,Antithrombotic - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.522,Antithrombotic - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.523,Antithrombotic - Poisoning Assault,ICD-10-CM Drug Index
+T45.524,Antithrombotic - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.525,Antithrombotic - Adverse effect,ICD-10-CM Drug Index
+T45.526,Antithrombotic - Underdosing,ICD-10-CM Drug Index
+T38.2X1,Antithyroid drug NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.2X2,Antithyroid drug NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.2X3,Antithyroid drug NEC - Poisoning Assault,ICD-10-CM Drug Index
+T38.2X4,Antithyroid drug NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.2X5,Antithyroid drug NEC - Adverse effect,ICD-10-CM Drug Index
+T38.2X6,Antithyroid drug NEC - Underdosing,ICD-10-CM Drug Index
+T48.3X1,Antitussive NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T48.3X2,Antitussive NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T48.3X3,Antitussive NEC - Poisoning Assault,ICD-10-CM Drug Index
+T48.3X4,Antitussive NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.3X5,Antitussive NEC - Adverse effect,ICD-10-CM Drug Index
+T48.3X6,Antitussive NEC - Underdosing,ICD-10-CM Drug Index
+T46.8X1,Antivaricose drug - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T46.8X2,Antivaricose drug - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T46.8X3,Antivaricose drug - Poisoning Assault,ICD-10-CM Drug Index
+T46.8X4,Antivaricose drug - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.8X5,Antivaricose drug - Adverse effect,ICD-10-CM Drug Index
+T46.8X6,Antivaricose drug - Underdosing,ICD-10-CM Drug Index
+T60.91,Antrol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T60.92,Antrol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T60.93,Antrol - Poisoning Assault,ICD-10-CM Drug Index
+T60.94,Antrol - Poisoning Undetermined,ICD-10-CM Drug Index
+T60.4X1,ANTU - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T60.4X2,ANTU - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T60.4X3,ANTU - Poisoning Assault,ICD-10-CM Drug Index
+T60.4X4,ANTU - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.4X1,Aplonidine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T44.4X2,Aplonidine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T44.4X3,Aplonidine - Poisoning Assault,ICD-10-CM Drug Index
+T44.4X4,Aplonidine - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.4X5,Aplonidine - Adverse effect,ICD-10-CM Drug Index
+T44.4X6,Aplonidine - Underdosing,ICD-10-CM Drug Index
+T47.7X1,Apomorphine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T47.7X2,Apomorphine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T47.7X3,Apomorphine - Poisoning Assault,ICD-10-CM Drug Index
+T47.7X4,Apomorphine - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.7X5,Apomorphine - Adverse effect,ICD-10-CM Drug Index
+T47.7X6,Apomorphine - Underdosing,ICD-10-CM Drug Index
+T54.1X1,Aromatics, corrosive - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T54.1X2,Aromatics, corrosive - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T54.1X3,Aromatics, corrosive - Poisoning Assault,ICD-10-CM Drug Index
+T54.1X4,Aromatics, corrosive - Poisoning Undetermined,ICD-10-CM Drug Index
+T57.0X1,Arsenate of lead - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T57.0X2,Arsenate of lead - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T57.0X3,Arsenate of lead - Poisoning Assault,ICD-10-CM Drug Index
+T57.0X4,Arsenate of lead - Poisoning Undetermined,ICD-10-CM Drug Index
+T63.481,Arthropod - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.482,Arthropod - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.483,Arthropod - Poisoning Assault,ICD-10-CM Drug Index
+T63.484,Arthropod - Poisoning Undetermined,ICD-10-CM Drug Index
+T57.8X1,Asbestos - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T57.8X2,Asbestos - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T57.8X3,Asbestos - Poisoning Assault,ICD-10-CM Drug Index
+T57.8X4,Asbestos - Poisoning Undetermined,ICD-10-CM Drug Index
+T52.0X1,Automobile fuel - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T52.0X2,Automobile fuel - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T52.0X3,Automobile fuel - Poisoning Assault,ICD-10-CM Drug Index
+T52.0X4,Automobile fuel - Poisoning Undetermined,ICD-10-CM Drug Index
+T60.2X1,Azadirachta - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T60.2X2,Azadirachta - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T60.2X3,Azadirachta - Poisoning Assault,ICD-10-CM Drug Index
+T60.2X4,Azadirachta - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.3X1,Azithromycin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T36.3X2,Azithromycin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T36.3X3,Azithromycin - Poisoning Assault,ICD-10-CM Drug Index
+T36.3X4,Azithromycin - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.3X5,Azithromycin - Adverse effect,ICD-10-CM Drug Index
+T36.3X6,Azithromycin - Underdosing,ICD-10-CM Drug Index
+T36.1X1,Aztreonam - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T36.1X2,Aztreonam - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T36.1X3,Aztreonam - Poisoning Assault,ICD-10-CM Drug Index
+T36.1X4,Aztreonam - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.1X5,Aztreonam - Adverse effect,ICD-10-CM Drug Index
+T36.1X6,Aztreonam - Underdosing,ICD-10-CM Drug Index
+T51.8X1,Bay rum - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T51.8X2,Bay rum - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T51.8X3,Bay rum - Poisoning Assault,ICD-10-CM Drug Index
+T51.8X4,Bay rum - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.A91,BCG - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.A92,BCG - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.A93,BCG - Poisoning Assault,ICD-10-CM Drug Index
+T50.A94,BCG - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.A95,BCG - Adverse effect,ICD-10-CM Drug Index
+T50.A96,BCG - Underdosing,ICD-10-CM Drug Index
+T63.441,Bee - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.442,Bee - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.443,Bee - Poisoning Assault,ICD-10-CM Drug Index
+T63.444,Bee - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.5X1,Befunolol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T49.5X2,Befunolol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T49.5X3,Befunolol - Poisoning Assault,ICD-10-CM Drug Index
+T49.5X4,Befunolol - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.5X5,Befunolol - Adverse effect,ICD-10-CM Drug Index
+T49.5X6,Befunolol - Underdosing,ICD-10-CM Drug Index
+T49.8X1,Benoquin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T49.8X2,Benoquin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T49.8X3,Benoquin - Poisoning Assault,ICD-10-CM Drug Index
+T49.8X4,Benoquin - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.8X5,Benoquin - Adverse effect,ICD-10-CM Drug Index
+T49.8X6,Benoquin - Underdosing,ICD-10-CM Drug Index
+T43.4X1,Benperidol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.4X2,Benperidol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.4X3,Benperidol - Poisoning Assault,ICD-10-CM Drug Index
+T43.4X4,Benperidol - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.4X5,Benperidol - Adverse effect,ICD-10-CM Drug Index
+T43.4X6,Benperidol - Underdosing,ICD-10-CM Drug Index
+T52.1X1,Benzene - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T52.1X2,Benzene - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T52.1X3,Benzene - Poisoning Assault,ICD-10-CM Drug Index
+T52.1X4,Benzene - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.1X1,Bepridil - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T46.1X2,Bepridil - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T46.1X3,Bepridil - Poisoning Assault,ICD-10-CM Drug Index
+T46.1X4,Bepridil - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.1X5,Bepridil - Adverse effect,ICD-10-CM Drug Index
+T46.1X6,Bepridil - Underdosing,ICD-10-CM Drug Index
+T56.7X1,Beryllium - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.7X2,Beryllium - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.7X3,Beryllium - Poisoning Assault,ICD-10-CM Drug Index
+T56.7X4,Beryllium - Poisoning Undetermined,ICD-10-CM Drug Index
+T62.8X1,Bitter almond oil - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T62.8X2,Bitter almond oil - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T62.8X3,Bitter almond oil - Poisoning Assault,ICD-10-CM Drug Index
+T62.8X4,Bitter almond oil - Poisoning Undetermined,ICD-10-CM Drug Index
+T58.8X1,Blast furnace gas - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T58.8X2,Blast furnace gas - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T58.8X3,Blast furnace gas - Poisoning Assault,ICD-10-CM Drug Index
+T58.8X4,Blast furnace gas - Poisoning Undetermined,ICD-10-CM Drug Index
+T54.91,Bleach - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T54.92,Bleach - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T54.93,Bleach - Poisoning Assault,ICD-10-CM Drug Index
+T54.94,Bleach - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.291,Botox - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T48.292,Botox - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T48.293,Botox - Poisoning Assault,ICD-10-CM Drug Index
+T48.294,Botox - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.295,Botox - Adverse effect,ICD-10-CM Drug Index
+T48.296,Botox - Underdosing,ICD-10-CM Drug Index
+T59.3X1,Brombenzylcyanide - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T59.3X2,Brombenzylcyanide - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T59.3X3,Brombenzylcyanide - Poisoning Assault,ICD-10-CM Drug Index
+T59.3X4,Brombenzylcyanide - Poisoning Undetermined,ICD-10-CM Drug Index
+T63.331,Brown recluse spider - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.332,Brown recluse spider - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.333,Brown recluse spider - Poisoning Assault,ICD-10-CM Drug Index
+T63.334,Brown recluse spider - Poisoning Undetermined,ICD-10-CM Drug Index
+T63.391,Brown spider - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.392,Brown spider - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.393,Brown spider - Poisoning Assault,ICD-10-CM Drug Index
+T63.394,Brown spider - Poisoning Undetermined,ICD-10-CM Drug Index
+T65.1X1,Brucine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.1X2,Brucine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.1X3,Brucine - Poisoning Assault,ICD-10-CM Drug Index
+T65.1X4,Brucine - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.991,Bufotenine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.992,Bufotenine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.993,Bufotenine - Poisoning Assault,ICD-10-CM Drug Index
+T40.994,Bufotenine - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.1X1,Bumetanide - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.1X2,Bumetanide - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.1X3,Bumetanide - Poisoning Assault,ICD-10-CM Drug Index
+T50.1X4,Bumetanide - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.1X5,Bumetanide - Adverse effect,ICD-10-CM Drug Index
+T50.1X6,Bumetanide - Underdosing,ICD-10-CM Drug Index
+T44.6X1,Bunazosin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T44.6X2,Bunazosin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T44.6X3,Bunazosin - Poisoning Assault,ICD-10-CM Drug Index
+T44.6X4,Bunazosin - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.6X5,Bunazosin - Adverse effect,ICD-10-CM Drug Index
+T44.6X6,Bunazosin - Underdosing,ICD-10-CM Drug Index
+T52.2X1,Butyltoluene - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T52.2X2,Butyltoluene - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T52.2X3,Butyltoluene - Poisoning Assault,ICD-10-CM Drug Index
+T52.2X4,Butyltoluene - Poisoning Undetermined,ICD-10-CM Drug Index
+T56.3X1,Cadmium - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.3X2,Cadmium - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.3X3,Cadmium - Poisoning Assault,ICD-10-CM Drug Index
+T56.3X4,Cadmium - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.611,Caffeine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.612,Caffeine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.613,Caffeine - Poisoning Assault,ICD-10-CM Drug Index
+T43.614,Caffeine - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.615,Caffeine - Adverse effect,ICD-10-CM Drug Index
+T43.616,Caffeine - Underdosing,ICD-10-CM Drug Index
+T40.721,Cannabinoids, synthetic - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.722,Cannabinoids, synthetic - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.723,Cannabinoids, synthetic - Poisoning Assault,ICD-10-CM Drug Index
+T40.724,Cannabinoids, synthetic - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.725,Cannabinoids, synthetic - Adverse effect,ICD-10-CM Drug Index
+T40.726,Cannabinoids, synthetic - Underdosing,ICD-10-CM Drug Index
+T51.1X1,Canned heat - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T51.1X2,Canned heat - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T51.1X3,Canned heat - Poisoning Assault,ICD-10-CM Drug Index
+T51.1X4,Canned heat - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.901,Capillary-active drug NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T46.902,Capillary-active drug NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T46.903,Capillary-active drug NEC - Poisoning Assault,ICD-10-CM Drug Index
+T46.904,Capillary-active drug NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T46.905,Capillary-active drug NEC - Adverse effect,ICD-10-CM Drug Index
+T46.906,Capillary-active drug NEC - Underdosing,ICD-10-CM Drug Index
+T42.1X1,Carbamazepine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T42.1X2,Carbamazepine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T42.1X3,Carbamazepine - Poisoning Assault,ICD-10-CM Drug Index
+T42.1X4,Carbamazepine - Poisoning Undetermined,ICD-10-CM Drug Index
+T42.1X5,Carbamazepine - Adverse effect,ICD-10-CM Drug Index
+T42.1X6,Carbamazepine - Underdosing,ICD-10-CM Drug Index
+T47.3X1,Carbamide - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T47.3X2,Carbamide - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T47.3X3,Carbamide - Poisoning Assault,ICD-10-CM Drug Index
+T47.3X4,Carbamide - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.3X5,Carbamide - Adverse effect,ICD-10-CM Drug Index
+T47.3X6,Carbamide - Underdosing,ICD-10-CM Drug Index
+T39.091,Carbethyl salicylate - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T39.092,Carbethyl salicylate - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T39.093,Carbethyl salicylate - Poisoning Assault,ICD-10-CM Drug Index
+T39.094,Carbethyl salicylate - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.095,Carbethyl salicylate - Adverse effect,ICD-10-CM Drug Index
+T39.096,Carbethyl salicylate - Underdosing,ICD-10-CM Drug Index
+T52.3X1,Carbitol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T52.3X2,Carbitol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T52.3X3,Carbitol - Poisoning Assault,ICD-10-CM Drug Index
+T52.3X4,Carbitol - Poisoning Undetermined,ICD-10-CM Drug Index
+T59.7X1,Carbonic acid gas - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T59.7X2,Carbonic acid gas - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T59.7X3,Carbonic acid gas - Poisoning Assault,ICD-10-CM Drug Index
+T59.7X4,Carbonic acid gas - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.0X1,Carboprost - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T48.0X2,Carboprost - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T48.0X3,Carboprost - Poisoning Assault,ICD-10-CM Drug Index
+T48.0X4,Carboprost - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.0X5,Carboprost - Adverse effect,ICD-10-CM Drug Index
+T48.0X6,Carboprost - Underdosing,ICD-10-CM Drug Index
+T39.311,Carprofen - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T39.312,Carprofen - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T39.313,Carprofen - Poisoning Assault,ICD-10-CM Drug Index
+T39.314,Carprofen - Poisoning Undetermined,ICD-10-CM Drug Index
+T39.315,Carprofen - Adverse effect,ICD-10-CM Drug Index
+T39.316,Carprofen - Underdosing,ICD-10-CM Drug Index
+T63.431,Caterpillar - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.432,Caterpillar - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.433,Caterpillar - Poisoning Assault,ICD-10-CM Drug Index
+T63.434,Caterpillar - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.691,Catha - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.692,Catha - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.693,Catha - Poisoning Assault,ICD-10-CM Drug Index
+T43.694,Catha - Poisoning Undetermined,ICD-10-CM Drug Index
+T52.91,Cellosolve - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T52.92,Cellosolve - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T52.93,Cellosolve - Poisoning Assault,ICD-10-CM Drug Index
+T52.94,Cellosolve - Poisoning Undetermined,ICD-10-CM Drug Index
+T63.411,Centipede - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.412,Centipede - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.413,Centipede - Poisoning Assault,ICD-10-CM Drug Index
+T63.414,Centipede - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.601,Cerebral stimulants - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.602,Cerebral stimulants - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.603,Cerebral stimulants - Poisoning Assault,ICD-10-CM Drug Index
+T43.604,Cerebral stimulants - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.605,Cerebral stimulants - Adverse effect,ICD-10-CM Drug Index
+T43.606,Cerebral stimulants - Underdosing,ICD-10-CM Drug Index
+T36.2X1,Chloramphenicol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T36.2X2,Chloramphenicol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T36.2X3,Chloramphenicol - Poisoning Assault,ICD-10-CM Drug Index
+T36.2X4,Chloramphenicol - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.2X5,Chloramphenicol - Adverse effect,ICD-10-CM Drug Index
+T36.2X6,Chloramphenicol - Underdosing,ICD-10-CM Drug Index
+T53.7X1,Chlorbenzene, chlorbenzol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T53.7X2,Chlorbenzene, chlorbenzol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T53.7X3,Chlorbenzene, chlorbenzol - Poisoning Assault,ICD-10-CM Drug Index
+T53.7X4,Chlorbenzene, chlorbenzol - Poisoning Undetermined,ICD-10-CM Drug Index
+T53.6X1,Chlorex - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T53.6X2,Chlorex - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T53.6X3,Chlorex - Poisoning Assault,ICD-10-CM Drug Index
+T53.6X4,Chlorex - Poisoning Undetermined,ICD-10-CM Drug Index
+T59.4X1,Chlorine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T59.4X2,Chlorine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T59.4X3,Chlorine - Poisoning Assault,ICD-10-CM Drug Index
+T59.4X4,Chlorine - Poisoning Undetermined,ICD-10-CM Drug Index
+T53.5X1,Chlorofluorocarbons - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T53.5X2,Chlorofluorocarbons - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T53.5X3,Chlorofluorocarbons - Poisoning Assault,ICD-10-CM Drug Index
+T53.5X4,Chlorofluorocarbons - Poisoning Undetermined,ICD-10-CM Drug Index
+T53.1X1,Chloroform - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T53.1X2,Chloroform - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T53.1X3,Chloroform - Poisoning Assault,ICD-10-CM Drug Index
+T53.1X4,Chloroform - Poisoning Undetermined,ICD-10-CM Drug Index
+T56.2X1,Chromate - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.2X2,Chromate - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.2X3,Chromate - Poisoning Assault,ICD-10-CM Drug Index
+T56.2X4,Chromate - Poisoning Undetermined,ICD-10-CM Drug Index
+T65.221,Cigarettes - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.222,Cigarettes - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.223,Cigarettes - Poisoning Assault,ICD-10-CM Drug Index
+T65.224,Cigarettes - Poisoning Undetermined,ICD-10-CM Drug Index
+T61.01,Ciguatoxin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T61.02,Ciguatoxin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T61.03,Ciguatoxin - Poisoning Assault,ICD-10-CM Drug Index
+T61.04,Ciguatoxin - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.0X1,Cimetidine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T47.0X2,Cimetidine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T47.0X3,Cimetidine - Poisoning Assault,ICD-10-CM Drug Index
+T47.0X4,Cimetidine - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.0X5,Cimetidine - Adverse effect,ICD-10-CM Drug Index
+T47.0X6,Cimetidine - Underdosing,ICD-10-CM Drug Index
+T43.221,Citalopram - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.222,Citalopram - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.223,Citalopram - Poisoning Assault,ICD-10-CM Drug Index
+T43.224,Citalopram - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.225,Citalopram - Adverse effect,ICD-10-CM Drug Index
+T43.226,Citalopram - Underdosing,ICD-10-CM Drug Index
+T58.2X1,Coal - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T58.2X2,Coal - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T58.2X3,Coal - Poisoning Assault,ICD-10-CM Drug Index
+T58.2X4,Coal - Poisoning Undetermined,ICD-10-CM Drug Index
+T63.041,Cobra - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.042,Cobra - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.043,Cobra - Poisoning Assault,ICD-10-CM Drug Index
+T63.044,Cobra - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.5X1,Coca - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.5X2,Coca - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.5X3,Coca - Poisoning Assault,ICD-10-CM Drug Index
+T40.5X4,Coca - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.5X5,Coca - Adverse effect,ICD-10-CM Drug Index
+T40.5X6,Coca - Underdosing,ICD-10-CM Drug Index
+T56.4X1,Copper - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.4X2,Copper - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.4X3,Copper - Poisoning Assault,ICD-10-CM Drug Index
+T56.4X4,Copper - Poisoning Undetermined,ICD-10-CM Drug Index
+T63.061,Copperhead snake - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.062,Copperhead snake - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.063,Copperhead snake - Poisoning Assault,ICD-10-CM Drug Index
+T63.064,Copperhead snake - Poisoning Undetermined,ICD-10-CM Drug Index
+T63.691,Coral - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.692,Coral - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.693,Coral - Poisoning Assault,ICD-10-CM Drug Index
+T63.694,Coral - Poisoning Undetermined,ICD-10-CM Drug Index
+T41.291,Cyclopropane - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T41.292,Cyclopropane - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T41.293,Cyclopropane - Poisoning Assault,ICD-10-CM Drug Index
+T41.294,Cyclopropane - Poisoning Undetermined,ICD-10-CM Drug Index
+T41.295,Cyclopropane - Adverse effect,ICD-10-CM Drug Index
+T41.296,Cyclopropane - Underdosing,ICD-10-CM Drug Index
+T38.1X1,Cytomel - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.1X2,Cytomel - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.1X3,Cytomel - Poisoning Assault,ICD-10-CM Drug Index
+T38.1X4,Cytomel - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.1X5,Cytomel - Adverse effect,ICD-10-CM Drug Index
+T38.1X6,Cytomel - Underdosing,ICD-10-CM Drug Index
+T49.7X1,Dental drug, topical application NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T49.7X2,Dental drug, topical application NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T49.7X3,Dental drug, topical application NEC - Poisoning Assault,ICD-10-CM Drug Index
+T49.7X4,Dental drug, topical application NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.7X5,Dental drug, topical application NEC - Adverse effect,ICD-10-CM Drug Index
+T49.7X6,Dental drug, topical application NEC - Underdosing,ICD-10-CM Drug Index
+T43.651,Desoxyephedrine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.652,Desoxyephedrine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.653,Desoxyephedrine - Poisoning Assault,ICD-10-CM Drug Index
+T43.654,Desoxyephedrine - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.655,Desoxyephedrine - Adverse effect,ICD-10-CM Drug Index
+T43.656,Desoxyephedrine - Underdosing,ICD-10-CM Drug Index
+T45.4X1,Dextriferron - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.4X2,Dextriferron - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.4X3,Dextriferron - Poisoning Assault,ICD-10-CM Drug Index
+T45.4X4,Dextriferron - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.4X5,Dextriferron - Adverse effect,ICD-10-CM Drug Index
+T45.4X6,Dextriferron - Underdosing,ICD-10-CM Drug Index
+T53.4X1,Dichloromethane - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T53.4X2,Dichloromethane - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T53.4X3,Dichloromethane - Poisoning Assault,ICD-10-CM Drug Index
+T53.4X4,Dichloromethane - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.B91,Diplovax - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.B92,Diplovax - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.B93,Diplovax - Poisoning Assault,ICD-10-CM Drug Index
+T50.B94,Diplovax - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.B95,Diplovax - Adverse effect,ICD-10-CM Drug Index
+T50.B96,Diplovax - Underdosing,ICD-10-CM Drug Index
+T41.0X1,Divinyl ether - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T41.0X2,Divinyl ether - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T41.0X3,Divinyl ether - Poisoning Assault,ICD-10-CM Drug Index
+T41.0X4,Divinyl ether - Poisoning Undetermined,ICD-10-CM Drug Index
+T41.0X5,Divinyl ether - Adverse effect,ICD-10-CM Drug Index
+T41.0X6,Divinyl ether - Underdosing,ICD-10-CM Drug Index
+T40.8X1,D-lysergic acid diethylamide - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.8X2,D-lysergic acid diethylamide - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.8X3,D-lysergic acid diethylamide - Poisoning Assault,ICD-10-CM Drug Index
+T40.8X4,D-lysergic acid diethylamide - Poisoning Undetermined,ICD-10-CM Drug Index
+T64.81,Ergot NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T64.82,Ergot NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T64.83,Ergot NEC - Poisoning Assault,ICD-10-CM Drug Index
+T64.84,Ergot NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.695,Etryptamine - Adverse effect,ICD-10-CM Drug Index
+T43.696,Etryptamine - Underdosing,ICD-10-CM Drug Index
+T58.01,Exhaust gas - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T58.02,Exhaust gas - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T58.03,Exhaust gas - Poisoning Assault,ICD-10-CM Drug Index
+T58.04,Exhaust gas - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.91,External medications - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T49.92,External medications - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T49.93,External medications - Poisoning Assault,ICD-10-CM Drug Index
+T49.94,External medications - Poisoning Undetermined,ICD-10-CM Drug Index
+T49.95,External medications - Adverse effect,ICD-10-CM Drug Index
+T49.96,External medications - Underdosing,ICD-10-CM Drug Index
+T65.831,Fiberglass - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.832,Fiberglass - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.833,Fiberglass - Poisoning Assault,ICD-10-CM Drug Index
+T65.834,Fiberglass - Poisoning Undetermined,ICD-10-CM Drug Index
+T61.91,Fish, noxious, nonbacterial - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T61.92,Fish, noxious, nonbacterial - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T61.93,Fish, noxious, nonbacterial - Poisoning Assault,ICD-10-CM Drug Index
+T61.94,Fish, noxious, nonbacterial - Poisoning Undetermined,ICD-10-CM Drug Index
+T59.5X1,Fluorine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T59.5X2,Fluorine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T59.5X3,Fluorine - Poisoning Assault,ICD-10-CM Drug Index
+T59.5X4,Fluorine - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.AX1,Fluoroquinolone antibiotics - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T36.AX2,Fluoroquinolone antibiotics - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T36.AX3,Fluoroquinolone antibiotics - Poisoning Assault,ICD-10-CM Drug Index
+T36.AX4,Fluoroquinolone antibiotics - Poisoning Undetermined,ICD-10-CM Drug Index
+T36.AX5,Fluoroquinolone antibiotics - Adverse effect,ICD-10-CM Drug Index
+T36.AX6,Fluoroquinolone antibiotics - Underdosing,ICD-10-CM Drug Index
+T62.91,Food, foodstuffs, noxious, nonbacterial, NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T62.92,Food, foodstuffs, noxious, nonbacterial, NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T62.93,Food, foodstuffs, noxious, nonbacterial, NEC - Poisoning Assault,ICD-10-CM Drug Index
+T62.94,Food, foodstuffs, noxious, nonbacterial, NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T59.2X1,Formaldehyde - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T59.2X2,Formaldehyde - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T59.2X3,Formaldehyde - Poisoning Assault,ICD-10-CM Drug Index
+T59.2X4,Formaldehyde - Poisoning Undetermined,ICD-10-CM Drug Index
+T56.1X1,Fulminate of mercury - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.1X2,Fulminate of mercury - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.1X3,Fulminate of mercury - Poisoning Assault,ICD-10-CM Drug Index
+T56.1X4,Fulminate of mercury - Poisoning Undetermined,ICD-10-CM Drug Index
+T59.91,Fumes - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T59.92,Fumes - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T59.93,Fumes - Poisoning Assault,ICD-10-CM Drug Index
+T59.94,Fumes - Poisoning Undetermined,ICD-10-CM Drug Index
+T56.821,Gadolinium - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.822,Gadolinium - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.823,Gadolinium - Poisoning Assault,ICD-10-CM Drug Index
+T56.824,Gadolinium - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.2X1,Ganglionic blocking drug NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T44.2X2,Ganglionic blocking drug NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T44.2X3,Ganglionic blocking drug NEC - Poisoning Assault,ICD-10-CM Drug Index
+T44.2X4,Ganglionic blocking drug NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T44.2X5,Ganglionic blocking drug NEC - Adverse effect,ICD-10-CM Drug Index
+T44.2X6,Ganglionic blocking drug NEC - Underdosing,ICD-10-CM Drug Index
+T47.91,Gastrointestinal drug - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T47.92,Gastrointestinal drug - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T47.93,Gastrointestinal drug - Poisoning Assault,ICD-10-CM Drug Index
+T47.94,Gastrointestinal drug - Poisoning Undetermined,ICD-10-CM Drug Index
+T47.95,Gastrointestinal drug - Adverse effect,ICD-10-CM Drug Index
+T47.96,Gastrointestinal drug - Underdosing,ICD-10-CM Drug Index
+T63.111,Gila monster - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.112,Gila monster - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.113,Gila monster - Poisoning Assault,ICD-10-CM Drug Index
+T63.114,Gila monster - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.Z91,Glandular extract - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.Z92,Glandular extract - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.Z93,Glandular extract - Poisoning Assault,ICD-10-CM Drug Index
+T50.Z94,Glandular extract - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.Z95,Glandular extract - Adverse effect,ICD-10-CM Drug Index
+T50.Z96,Glandular extract - Underdosing,ICD-10-CM Drug Index
+T38.901,Gonadal tissue extract - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.902,Gonadal tissue extract - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.903,Gonadal tissue extract - Poisoning Assault,ICD-10-CM Drug Index
+T38.904,Gonadal tissue extract - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.905,Gonadal tissue extract - Adverse effect,ICD-10-CM Drug Index
+T38.906,Gonadal tissue extract - Underdosing,ICD-10-CM Drug Index
+T40.901,Hallucinogen NOS - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.902,Hallucinogen NOS - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.903,Hallucinogen NOS - Poisoning Assault,ICD-10-CM Drug Index
+T40.904,Hallucinogen NOS - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.905,Hallucinogen NOS - Adverse effect,ICD-10-CM Drug Index
+T40.906,Hallucinogen NOS - Underdosing,ICD-10-CM Drug Index
+T57.3X1,HCN - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T57.3X2,HCN - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T57.3X3,HCN - Poisoning Assault,ICD-10-CM Drug Index
+T57.3X4,HCN - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.91,Hematological agent - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.92,Hematological agent - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.93,Hematological agent - Poisoning Assault,ICD-10-CM Drug Index
+T45.94,Hematological agent - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.95,Hematological agent - Adverse effect,ICD-10-CM Drug Index
+T45.96,Hematological agent - Underdosing,ICD-10-CM Drug Index
+T38.801,Hormone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.802,Hormone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.803,Hormone - Poisoning Assault,ICD-10-CM Drug Index
+T38.804,Hormone - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.805,Hormone - Adverse effect,ICD-10-CM Drug Index
+T38.806,Hormone - Underdosing,ICD-10-CM Drug Index
+T63.451,Hornet - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.452,Hornet - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.453,Hornet - Poisoning Assault,ICD-10-CM Drug Index
+T63.454,Hornet - Poisoning Undetermined,ICD-10-CM Drug Index
+T59.6X1,Hydrosulfuric acid - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T59.6X2,Hydrosulfuric acid - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T59.6X3,Hydrosulfuric acid - Poisoning Assault,ICD-10-CM Drug Index
+T59.6X4,Hydrosulfuric acid - Poisoning Undetermined,ICD-10-CM Drug Index
+T58.11,Illuminating gas - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T58.12,Illuminating gas - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T58.13,Illuminating gas - Poisoning Assault,ICD-10-CM Drug Index
+T58.14,Illuminating gas - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.AX1,Immunostimulant drug - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T45.AX2,Immunostimulant drug - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T45.AX3,Immunostimulant drug - Poisoning Assault,ICD-10-CM Drug Index
+T45.AX4,Immunostimulant drug - Poisoning Undetermined,ICD-10-CM Drug Index
+T45.AX5,Immunostimulant drug - Adverse effect,ICD-10-CM Drug Index
+T45.AX6,Immunostimulant drug - Underdosing,ICD-10-CM Drug Index
+T57.91,Inorganic substance NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T57.92,Inorganic substance NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T57.93,Inorganic substance NEC - Poisoning Assault,ICD-10-CM Drug Index
+T57.94,Inorganic substance NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T63.621,Jellyfish - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.622,Jellyfish - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.623,Jellyfish - Poisoning Assault,ICD-10-CM Drug Index
+T63.624,Jellyfish - Poisoning Undetermined,ICD-10-CM Drug Index
+T63.091,Krait - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.092,Krait - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.093,Krait - Poisoning Assault,ICD-10-CM Drug Index
+T63.094,Krait - Poisoning Undetermined,ICD-10-CM Drug Index
+T65.811,Latex - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.812,Latex - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.813,Latex - Poisoning Assault,ICD-10-CM Drug Index
+T65.814,Latex - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.0X1,Laudanum - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.0X2,Laudanum - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.0X3,Laudanum - Poisoning Assault,ICD-10-CM Drug Index
+T40.0X4,Laudanum - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.0X5,Laudanum - Adverse effect,ICD-10-CM Drug Index
+T40.0X6,Laudanum - Underdosing,ICD-10-CM Drug Index
+T63.121,Lizard - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.122,Lizard - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.123,Lizard - Poisoning Assault,ICD-10-CM Drug Index
+T63.124,Lizard - Poisoning Undetermined,ICD-10-CM Drug Index
+T57.2X1,Manganese - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T57.2X2,Manganese - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T57.2X3,Manganese - Poisoning Assault,ICD-10-CM Drug Index
+T57.2X4,Manganese - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.021,Maprotiline - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.022,Maprotiline - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.023,Maprotiline - Poisoning Assault,ICD-10-CM Drug Index
+T43.024,Maprotiline - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.025,Maprotiline - Adverse effect,ICD-10-CM Drug Index
+T43.026,Maprotiline - Underdosing,ICD-10-CM Drug Index
+T56.91,Metals - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.92,Metals - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.93,Metals - Poisoning Assault,ICD-10-CM Drug Index
+T56.94,Metals - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.631,Methylphenidate - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.632,Methylphenidate - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.633,Methylphenidate - Poisoning Assault,ICD-10-CM Drug Index
+T43.634,Methylphenidate - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.635,Methylphenidate - Adverse effect,ICD-10-CM Drug Index
+T43.636,Methylphenidate - Underdosing,ICD-10-CM Drug Index
+T50.911,Multiple unspecified drugs, medicaments and biological substances - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.912,Multiple unspecified drugs, medicaments and biological substances - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.913,Multiple unspecified drugs, medicaments and biological substances - Poisoning Assault,ICD-10-CM Drug Index
+T50.914,Multiple unspecified drugs, medicaments and biological substances - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.915,Multiple unspecified drugs, medicaments and biological substances - Adverse effect,ICD-10-CM Drug Index
+T50.916,Multiple unspecified drugs, medicaments and biological substances - Underdosing,ICD-10-CM Drug Index
+T48.201,Muscle-action drug NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T48.202,Muscle-action drug NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T48.203,Muscle-action drug NEC - Poisoning Assault,ICD-10-CM Drug Index
+T48.204,Muscle-action drug NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.205,Muscle-action drug NEC - Adverse effect,ICD-10-CM Drug Index
+T48.206,Muscle-action drug NEC - Underdosing,ICD-10-CM Drug Index
+T61.781,Mussel, noxious - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T61.782,Mussel, noxious - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T61.783,Mussel, noxious - Poisoning Assault,ICD-10-CM Drug Index
+T61.784,Mussel, noxious - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.601,Narcotic - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.602,Narcotic - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.603,Narcotic - Poisoning Assault,ICD-10-CM Drug Index
+T40.604,Narcotic - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.605,Narcotic - Adverse effect,ICD-10-CM Drug Index
+T40.606,Narcotic - Underdosing,ICD-10-CM Drug Index
+T59.0X1,Nitrogen - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T59.0X2,Nitrogen - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T59.0X3,Nitrogen - Poisoning Assault,ICD-10-CM Drug Index
+T59.0X4,Nitrogen - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.991,Octreotide - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T38.992,Octreotide - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T38.993,Octreotide - Poisoning Assault,ICD-10-CM Drug Index
+T38.994,Octreotide - Poisoning Undetermined,ICD-10-CM Drug Index
+T38.995,Octreotide - Adverse effect,ICD-10-CM Drug Index
+T38.996,Octreotide - Underdosing,ICD-10-CM Drug Index
+T41.5X1,Oxygen - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T41.5X2,Oxygen - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T41.5X3,Oxygen - Poisoning Assault,ICD-10-CM Drug Index
+T41.5X4,Oxygen - Poisoning Undetermined,ICD-10-CM Drug Index
+T41.5X5,Oxygen - Adverse effect,ICD-10-CM Drug Index
+T41.5X6,Oxygen - Underdosing,ICD-10-CM Drug Index
+T53.3X1,Perchloroethylene - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T53.3X2,Perchloroethylene - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T53.3X3,Perchloroethylene - Poisoning Assault,ICD-10-CM Drug Index
+T53.3X4,Perchloroethylene - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.995,Phencyclidine - Adverse effect,ICD-10-CM Drug Index
+T40.996,Phencyclidine - Underdosing,ICD-10-CM Drug Index
+T57.1X1,Phosphine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T57.1X2,Phosphine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T57.1X3,Phosphine - Poisoning Assault,ICD-10-CM Drug Index
+T57.1X4,Phosphine - Poisoning Undetermined,ICD-10-CM Drug Index
+T41.201,Premedication anesthetic - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T41.202,Premedication anesthetic - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T41.203,Premedication anesthetic - Poisoning Assault,ICD-10-CM Drug Index
+T41.204,Premedication anesthetic - Poisoning Undetermined,ICD-10-CM Drug Index
+T41.205,Premedication anesthetic - Adverse effect,ICD-10-CM Drug Index
+T41.206,Premedication anesthetic - Underdosing,ICD-10-CM Drug Index
+T43.91,Psychotherapeutic drug NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.92,Psychotherapeutic drug NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.93,Psychotherapeutic drug NEC - Poisoning Assault,ICD-10-CM Drug Index
+T43.94,Psychotherapeutic drug NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.95,Psychotherapeutic drug NEC - Adverse effect,ICD-10-CM Drug Index
+T43.96,Psychotherapeutic drug NEC - Underdosing,ICD-10-CM Drug Index
+T63.011,Rattlesnake - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.012,Rattlesnake - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.013,Rattlesnake - Poisoning Assault,ICD-10-CM Drug Index
+T63.014,Rattlesnake - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.901,Respiratory drug NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T48.902,Respiratory drug NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T48.903,Respiratory drug NEC - Poisoning Assault,ICD-10-CM Drug Index
+T48.904,Respiratory drug NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T48.905,Respiratory drug NEC - Adverse effect,ICD-10-CM Drug Index
+T48.906,Respiratory drug NEC - Underdosing,ICD-10-CM Drug Index
+T61.11,Scombrotoxin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T61.12,Scombrotoxin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T61.13,Scombrotoxin - Poisoning Assault,ICD-10-CM Drug Index
+T61.14,Scombrotoxin - Poisoning Undetermined,ICD-10-CM Drug Index
+T55.0X1,Shampoo - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T55.0X2,Shampoo - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T55.0X3,Shampoo - Poisoning Assault,ICD-10-CM Drug Index
+T55.0X4,Shampoo - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.B11,Smallpox vaccine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T50.B12,Smallpox vaccine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T50.B13,Smallpox vaccine - Poisoning Assault,ICD-10-CM Drug Index
+T50.B14,Smallpox vaccine - Poisoning Undetermined,ICD-10-CM Drug Index
+T50.B15,Smallpox vaccine - Adverse effect,ICD-10-CM Drug Index
+T50.B16,Smallpox vaccine - Underdosing,ICD-10-CM Drug Index
+T59.1X1,Smog - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T59.1X2,Smog - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T59.1X3,Smog - Poisoning Assault,ICD-10-CM Drug Index
+T59.1X4,Smog - Poisoning Undetermined,ICD-10-CM Drug Index
+T59.811,Smoke NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T59.812,Smoke NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T59.813,Smoke NEC - Poisoning Assault,ICD-10-CM Drug Index
+T59.814,Smoke NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                T63.001,Snake venom or bite - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.002,Snake venom or bite - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.003,Snake venom or bite - Poisoning Assault,ICD-10-CM Drug Index
+T63.004,Snake venom or bite - Poisoning Undetermined,ICD-10-CM Drug Index
+T65.211,Snuff - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.212,Snuff - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.213,Snuff - Poisoning Assault,ICD-10-CM Drug Index
+T65.214,Snuff - Poisoning Undetermined,ICD-10-CM Drug Index
+T63.321,Tarantula - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.322,Tarantula - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.323,Tarantula - Poisoning Assault,ICD-10-CM Drug Index
+T63.324,Tarantula - Poisoning Undetermined,ICD-10-CM Drug Index
+T61.771,Tetradotoxin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T61.772,Tetradotoxin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T61.773,Tetradotoxin - Poisoning Assault,ICD-10-CM Drug Index
+T61.774,Tetradotoxin - Poisoning Undetermined,ICD-10-CM Drug Index
+T56.811,Thallium - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.812,Thallium - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.813,Thallium - Poisoning Assault,ICD-10-CM Drug Index
+T56.814,Thallium - Poisoning Undetermined,ICD-10-CM Drug Index
+T56.6X1,Tin - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.6X2,Tin - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.6X3,Tin - Poisoning Assault,ICD-10-CM Drug Index
+T56.6X4,Tin - Poisoning Undetermined,ICD-10-CM Drug Index
+T65.291,Tobacco NEC - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.292,Tobacco NEC - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.293,Tobacco NEC - Poisoning Assault,ICD-10-CM Drug Index
+T65.294,Tobacco NEC - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.421,Tramadol - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T40.422,Tramadol - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T40.423,Tramadol - Poisoning Assault,ICD-10-CM Drug Index
+T40.424,Tramadol - Poisoning Undetermined,ICD-10-CM Drug Index
+T40.425,Tramadol - Adverse effect,ICD-10-CM Drug Index
+T40.426,Tramadol - Underdosing,ICD-10-CM Drug Index
+T43.211,Trazodone - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T43.212,Trazodone - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T43.213,Trazodone - Poisoning Assault,ICD-10-CM Drug Index
+T43.214,Trazodone - Poisoning Undetermined,ICD-10-CM Drug Index
+T43.215,Trazodone - Adverse effect,ICD-10-CM Drug Index
+T43.216,Trazodone - Underdosing,ICD-10-CM Drug Index
+T53.2X1,Trichlorethane - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T53.2X2,Trichlorethane - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T53.2X3,Trichlorethane - Poisoning Assault,ICD-10-CM Drug Index
+T53.2X4,Trichlorethane - Poisoning Undetermined,ICD-10-CM Drug Index
+T65.4X1,Varnish - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.4X2,Varnish - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.4X3,Varnish - Poisoning Assault,ICD-10-CM Drug Index
+T65.4X4,Varnish - Poisoning Undetermined,ICD-10-CM Drug Index
+T63.91,"Venom, venomous - Poisoning Accidental (unintentional)",ICD-10-CM Drug Index
+T63.92,"Venom, venomous - Poisoning Intentional self-harm",ICD-10-CM Drug Index
+T63.93,"Venom, venomous - Poisoning Assault",ICD-10-CM Drug Index
+T63.94,"Venom, venomous - Poisoning Undetermined",ICD-10-CM Drug Index
+T63.461,Wasp - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T63.462,Wasp - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T63.463,Wasp - Poisoning Assault,ICD-10-CM Drug Index
+T63.464,Wasp - Poisoning Undetermined,ICD-10-CM Drug Index
+T65.841,Xylazine - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T65.842,Xylazine - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T65.843,Xylazine - Poisoning Assault,ICD-10-CM Drug Index
+T65.844,Xylazine - Poisoning Undetermined,ICD-10-CM Drug Index
+T56.5X1,Zinc - Poisoning Accidental (unintentional),ICD-10-CM Drug Index
+T56.5X2,Zinc - Poisoning Intentional self-harm,ICD-10-CM Drug Index
+T56.5X3,Zinc - Poisoning Assault,ICD-10-CM Drug Index
+T56.5X4,Zinc - Poisoning Undetermined,ICD-10-CM Drug Index

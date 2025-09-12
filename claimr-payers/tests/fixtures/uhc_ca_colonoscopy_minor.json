@@ -1,0 +1,13 @@
+{
+  "carrier_id": "crr_7f9b2e1a2b3c",
+  "lob": "commercial_fully_insured",
+  "state": "CA",
+  "plan_type": "HMO",
+  "market": "",
+  "dos": "2025-06-15",
+  "service_id": "svc_colonoscopy",
+  "age": 16,
+  "sex": "M",
+  "pos": "22",
+  "diagnoses": ["K59.00"]
+}

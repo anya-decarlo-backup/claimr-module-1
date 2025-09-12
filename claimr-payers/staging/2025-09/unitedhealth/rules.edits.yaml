@@ -1,0 +1,67 @@
+- type: EDIT
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    service_id: "svc_upper_endoscopy"
+  conditions:
+    none_of:
+      - dx_in_value_set: "vs_gi_bleeding_2025_09"
+      - min_age: 50
+  logic:
+    outcome: "DENY"
+    notes: "Upper endoscopy requires GI bleeding or age 50+"
+  precedence: 65
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_policy_gi_2025.pdf"
+    last_verified_at: "2025-09-11"
+
+- type: EDIT
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    service_id: "svc_stress_test"
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_diabetes_2025_09"
+      - min_age: 40
+  logic:
+    outcome: "APPROVE"
+    notes: "Stress test approved for diabetics over 40"
+  precedence: 30
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_policy_cardiac_2025.pdf"
+    last_verified_at: "2025-09-11"
+
+- type: EDIT
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    service_id: "svc_physical_therapy"
+  conditions:
+    all_of:
+      - pos: "11"  # Office
+  logic:
+    outcome: "APPROVE"
+    notes: "PT approved in office setting"
+  precedence: 20
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_policy_therapy_2025.pdf"
+    last_verified_at: "2025-09-11"

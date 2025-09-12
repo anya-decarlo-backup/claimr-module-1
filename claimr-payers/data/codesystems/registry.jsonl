@@ -1,1 +1,6 @@
-[]
+{"system":"ICD10CM","version":"2025-A","publisher":"NCHS/CDC","_meta":{"source":"sources/2025-09/codes/icd10cm.csv","last_verified_at":"2025-09-11"}}
+{"system":"ICD10PCS","version":"2025","publisher":"CMS","_meta":{"source":"sources/2025-09/codes/icd10pcs.csv","last_verified_at":"2025-09-11"}}
+{"system":"HCPCS","version":"2025","publisher":"CMS","_meta":{"source":"sources/2025-09/codes/hcpcs.csv","last_verified_at":"2025-09-11"}}
+{"system":"CPT","version":"2025","publisher":"AMA","_meta":{"source":"sources/2025-09/codes/cpt.csv","last_verified_at":"2025-09-11"}}
+{"system":"MSDRG","version":"v40","publisher":"CMS","_meta":{"source":"sources/2025-09/codes/ms_drg.csv","last_verified_at":"2025-09-11"}}
+{"system":"REVCODE","version":"2025","publisher":"NUBC","_meta":{"source":"sources/2025-09/codes/rev_codes.csv","last_verified_at":"2025-09-11"}}

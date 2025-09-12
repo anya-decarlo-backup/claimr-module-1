@@ -1,0 +1,13 @@
+{
+  "carrier_id": "crr_7f9b2e1a2b3c",
+  "lob": "commercial_fully_insured",
+  "state": "CA",
+  "plan_type": "PPO",
+  "market": "",
+  "dos": "2025-06-15",
+  "service_id": "svc_mri_brain",
+  "age": 45,
+  "sex": "F",
+  "pos": "11",
+  "diagnoses": ["C78.9"]
+}

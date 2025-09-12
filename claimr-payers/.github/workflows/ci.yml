@@ -1,0 +1,185 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  schema-validate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install jsonschema pyyaml
+    
+    - name: Validate carrier schemas
+      run: |
+        python tools/validate.py --schema schema/carrier.schema.json --data data/carriers/carriers.jsonl
+    
+    - name: Validate rule schemas
+      run: |
+        find data/rules -name "*.jsonl" -exec python tools/validate.py --schema schema/rule.schema.json --data {} \;
+    
+    - name: Validate service schemas
+      run: |
+        python tools/validate.py --schema schema/service.schema.json --data data/services/catalog.jsonl
+
+  rules-smoke-check:
+    runs-on: ubuntu-latest
+    needs: schema-validate
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+    
+    - name: Smoke check UHC rules
+      run: |
+        python tools/claimr.py rules-smoke-check \
+          --rules data/rules/by_carrier/crr_7f9b2e1a2b3c/prior_auth.jsonl \
+          --services data/services/catalog.jsonl \
+          --valuesets data/valuesets/custom/v2025-09.jsonl \
+          --fail-on-missing
+
+  simulate-fixtures:
+    runs-on: ubuntu-latest
+    needs: rules-smoke-check
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+    
+    - name: Create test fixtures
+      run: |
+        mkdir -p tests/fixtures
+        
+        # Positive test case - should match PA rule
+        cat > tests/fixtures/uhc_ca_arthroscopy_match.json << 'EOF'
+        {
+          "carrier_id": "crr_7f9b2e1a2b3c",
+          "lob": "commercial_fully_insured",
+          "state": "CA",
+          "plan_type": "PPO",
+          "date_of_service": "2025-06-15",
+          "diagnosis_codes": ["M17.10"],
+          "age": 45,
+          "sex": "M",
+          "place_of_service": "11"
+        }
+        EOF
+        
+        # Negative test case - should not match (pregnancy exclusion)
+        cat > tests/fixtures/uhc_ca_arthroscopy_excluded.json << 'EOF'
+        {
+          "carrier_id": "crr_7f9b2e1a2b3c",
+          "lob": "commercial_fully_insured",
+          "state": "CA",
+          "plan_type": "PPO",
+          "date_of_service": "2025-06-15",
+          "diagnosis_codes": ["M17.10", "Z33.1"],
+          "age": 28,
+          "sex": "F",
+          "place_of_service": "11"
+        }
+        EOF
+    
+    - name: Test positive case (should match PA rule)
+      run: |
+        python tools/claimr.py simulate \
+          --rules data/rules/by_carrier/crr_7f9b2e1a2b3c/prior_auth.jsonl \
+          --services data/services/catalog.jsonl \
+          --valuesets data/valuesets/custom/v2025-09.jsonl \
+          --patient tests/fixtures/uhc_ca_arthroscopy_match.json \
+          --verbose
+    
+    - name: Test negative case (should not match due to pregnancy exclusion)
+      run: |
+        python tools/claimr.py simulate \
+          --rules data/rules/by_carrier/crr_7f9b2e1a2b3c/prior_auth.jsonl \
+          --services data/services/catalog.jsonl \
+          --valuesets data/valuesets/custom/v2025-09.jsonl \
+          --patient tests/fixtures/uhc_ca_arthroscopy_excluded.json \
+          --verbose
+
+  integration-test:
+    runs-on: ubuntu-latest
+    needs: simulate-fixtures
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+    
+    - name: Test scope resolver
+      run: |
+        python tools/claimr.py scope-resolve \
+          --rules data/rules/by_carrier/crr_7f9b2e1a2b3c/prior_auth.jsonl \
+          --services data/services/catalog.jsonl \
+          --carrier-id crr_7f9b2e1a2b3c \
+          --lob commercial_fully_insured \
+          --state CA \
+          --plan-type PPO \
+          --dos 2025-06-15
+    
+    - name: Verify data integrity
+      run: |
+        # Check that all referenced services exist
+        echo "Checking service references..."
+        python -c "
+        import json
+        from pathlib import Path
+        
+        # Load services
+        services = set()
+        with open('data/services/catalog.jsonl') as f:
+            for line in f:
+                if line.strip() and not 'example' in line:
+                    obj = json.loads(line)
+                    if obj.get('id'):
+                        services.add(obj['id'])
+        
+        # Check rules reference valid services
+        rules_path = Path('data/rules/by_carrier/crr_7f9b2e1a2b3c/prior_auth.jsonl')
+        if rules_path.exists():
+            with open(rules_path) as f:
+                for line in f:
+                    if line.strip():
+                        rule = json.loads(line)
+                        service_id = rule.get('service_ref', {}).get('service_id')
+                        if service_id and service_id not in services:
+                            raise ValueError(f'Rule {rule.get(\"id\")} references missing service: {service_id}')
+        
+        print('✅ All service references valid')
+        "

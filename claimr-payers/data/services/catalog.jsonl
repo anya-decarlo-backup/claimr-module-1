@@ -1,3 +1,22 @@
 {"id":"svc_arth_knee","kind":"professional","codes":{"cpt":["29881"]},"aliases":["knee arthroscopy"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-08"}}
+{"id":"svc_colonoscopy","kind":"professional","codes":{"cpt":["45378","45380","45385"]},"aliases":["colonoscopy","colon screening"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_mri_brain","kind":"professional","codes":{"cpt":["70551","70552","70553"]},"aliases":["brain MRI","head MRI"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_ct_abdomen","kind":"professional","codes":{"cpt":["74150","74160","74170"]},"aliases":["abdominal CT","CT abdomen pelvis"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_cardiac_cath","kind":"professional","codes":{"cpt":["93458","93459","93460"]},"aliases":["cardiac catheterization","heart cath"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_mammography","kind":"professional","codes":{"cpt":["77065","77066","77067"]},"aliases":["mammogram","breast screening"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_physical_therapy","kind":"professional","codes":{"cpt":["97110","97112","97116"]},"aliases":["PT","physical therapy"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_office_visit_new","kind":"professional","codes":{"cpt":["99201","99202","99203","99204","99205"]},"aliases":["new patient visit","initial consultation"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_office_visit_est","kind":"professional","codes":{"cpt":["99211","99212","99213","99214","99215"]},"aliases":["established patient visit","follow-up visit"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_emergency_visit","kind":"professional","codes":{"cpt":["99281","99282","99283","99284","99285"]},"aliases":["ER visit","emergency department"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_surgery_gallbladder","kind":"professional","codes":{"cpt":["47562","47563","47564"]},"aliases":["laparoscopic cholecystectomy","gallbladder removal"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_echocardiogram","kind":"professional","codes":{"cpt":["93306","93307","93308"]},"aliases":["echo","cardiac ultrasound"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_sleep_study","kind":"professional","codes":{"cpt":["95810","95811","95782"]},"aliases":["polysomnography","sleep apnea test"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_injection_joint","kind":"professional","codes":{"cpt":["20610","20611","20612"]},"aliases":["joint injection","steroid injection"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_upper_endoscopy","kind":"professional","codes":{"cpt":["43235","43239","43249"]},"aliases":["EGD","upper GI endoscopy"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_stress_test","kind":"professional","codes":{"cpt":["93015","93016","93017"]},"aliases":["cardiac stress test","exercise stress test"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_bone_density","kind":"professional","codes":{"cpt":["77080","77081","77085"]},"aliases":["DEXA scan","bone densitometry"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_ultrasound_abdomen","kind":"professional","codes":{"cpt":["76700","76705","76770"]},"aliases":["abdominal ultrasound","US abdomen"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_xray_chest","kind":"professional","codes":{"cpt":["71045","71046","71047"]},"aliases":["chest X-ray","CXR"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
+{"id":"svc_lab_comprehensive","kind":"professional","codes":{"cpt":["80053","80048","85025"]},"aliases":["CMP","CBC","basic metabolic panel"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-11"}}
 
 {"id":"svc_arth_knee","kind":"professional","codes":{"cpt":["29881"]},"aliases":["knee arthroscopy"],"_meta":{"source":"AMA CPT","last_verified_at":"2025-09-09"}}
