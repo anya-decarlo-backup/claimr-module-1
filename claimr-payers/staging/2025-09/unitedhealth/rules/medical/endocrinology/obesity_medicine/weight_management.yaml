@@ -1,0 +1,145 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43644'
+    - '43645'
+    - '43770'
+    - '43775'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_morbid_obesity_2025_09
+    - dx_in_value_set: vs_obesity_with_comorbidities_2025_09
+    all_of:
+    - has_flag: bmi_35_plus_with_comorbidities_or_bmi_40_plus
+    - has_flag: documented_weight_loss_attempts
+    - has_flag: psychological_evaluation_completed
+    - has_flag: nutritional_counseling_completed
+    - min_age: 18
+    - max_age: 65
+    none_of:
+    - has_flag: active_substance_abuse
+    - has_flag: untreated_psychiatric_disorder
+    - has_flag: high_surgical_risk
+  logic:
+    outcome: PA_REQUIRED
+    note: Bariatric surgery for morbid obesity with comorbidities and surgical candidacy
+      documented weight loss attempts and completed evaluations with multidisciplinary
+      team assessment
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_surgery_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_88d9246610b6
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 00078064615
+    - 00078064675
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_obesity_2025_09
+    - dx_in_value_set: vs_overweight_with_comorbidities_2025_09
+    all_of:
+    - has_flag: bmi_30_plus_or_bmi_27_plus_with_comorbidities
+    - has_flag: lifestyle_modification_trial_documented
+    none_of:
+    - has_flag: pregnancy
+    - has_flag: eating_disorder_active
+    - has_flag: gallbladder_disease
+  logic:
+    outcome: PA_REQUIRED
+    note: "Anti-obesity medications for weight management with lifestyle intervention\
+      \ failure BMI \u226530 or BMI \u226527 with comorbidities after documented lifestyle\
+      \ modification trial using FDA-approved weight loss medications"
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_obesity_medications_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_0296cfe168c9
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97802'
+    - '97803'
+    - '97804'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_obesity_2025_09
+    - dx_in_value_set: vs_diabetes_2025_09
+    - dx_in_value_set: vs_metabolic_syndrome_2025_09
+    all_of:
+    - has_flag: physician_referral_for_nutrition_therapy
+    none_of:
+    - has_flag: nutrition_therapy_within_6_months
+  utilization_lte:
+    count: 6
+    period: 12_months
+  logic:
+    outcome: PA_REQUIRED
+    note: Medical nutrition therapy for obesity management with registered dietitian
+      counseling or metabolic syndrome with physician referral limited to 6 sessions
+      per year using evidence-based nutrition interventions
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_nutrition_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_037b53eea91a
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '99401'
+    - '99402'
+    - '99403'
+    - '99404'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_obesity_2025_09
+    - dx_in_value_set: vs_overweight_2025_09
+    all_of:
+    - has_flag: intensive_behavioral_counseling_indicated
+    none_of:
+    - has_flag: counseling_services_within_3_months
+  utilization_lte:
+    count: 12
+    period: 12_months
+  logic:
+    outcome: PA_REQUIRED
+    note: Behavioral counseling for obesity and weight management with lifestyle modification
+      support limited to 12 sessions per year using cognitive behavioral therapy techniques
+  precedence: 75
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_behavioral_counseling_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_8c84e5accd1e

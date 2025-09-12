@@ -1,0 +1,185 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J1595
+    - J1745
+    - J2350
+    ndc:
+    - 0078-0429
+    - 0078-0518
+    - 50419-488
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_relapsing_remitting_ms_2025_09
+    - dx_in_value_set: vs_secondary_progressive_ms_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: confirmed_ms_diagnosis
+    - has_flag: specialist_evaluation
+    - has_flag: mri_evidence_activity
+    none_of:
+    - has_flag: primary_progressive_ms
+    - has_flag: severe_immunosuppression
+  logic:
+    outcome: PA_REQUIRED
+    note: Disease-modifying therapies for relapsing forms of multiple sclerosis
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_ms_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_99f454e99b20
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J1300
+    - J2323
+    ndc:
+    - 0078-0659
+    - 50419-531
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_highly_active_ms_2025_09
+    - dx_in_value_set: vs_rapidly_evolving_severe_ms_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_first_line_dmt
+    - has_flag: high_disease_activity
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: active_infection
+    - has_flag: malignancy_history
+  logic:
+    outcome: PA_REQUIRED
+    note: High-efficacy DMTs for highly active or rapidly evolving severe MS
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_ms_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_8923c4ba4433
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '70551'
+    - '70552'
+    - '70553'
+    hcpcs:
+    - A9579
+    - A9576
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_multiple_sclerosis_2025_09
+    - dx_in_value_set: vs_ms_monitoring_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: established_ms_diagnosis
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: mri_within_6_months
+  logic:
+    outcome: PA_REQUIRED
+    note: Brain MRI with gadolinium for MS monitoring and disease activity assessment
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_ms_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ea7d3d77ffa7
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J1100
+    - J2001
+    cpt:
+    - '96365'
+    - '96366'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ms_relapse_2025_09
+    - dx_in_value_set: vs_acute_ms_exacerbation_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: confirmed_ms_relapse
+    - has_flag: functional_impairment
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: steroid_contraindication
+    - has_flag: active_infection
+  logic:
+    outcome: PA_REQUIRED
+    note: High-dose corticosteroids for acute MS relapses with functional impairment
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_ms_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_01ab657ed45f
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36514'
+    - '36516'
+    j_codes:
+    - J7799
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_severe_ms_relapse_2025_09
+    - dx_in_value_set: vs_steroid_refractory_ms_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_high_dose_steroids
+    - has_flag: severe_functional_decline
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: cardiovascular_instability
+    - has_flag: active_infection
+  logic:
+    outcome: PA_REQUIRED
+    note: Plasma exchange for severe steroid-refractory MS relapses
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_ms_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_84fe5a32d2aa

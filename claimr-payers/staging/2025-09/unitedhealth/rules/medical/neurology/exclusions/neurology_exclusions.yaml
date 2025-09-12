@@ -1,0 +1,129 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J0585
+    cpt:
+    - '64612'
+    - '64615'
+    - '64616'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cosmetic_indications_2025_09
+    - dx_code: Z41.1
+    none_of:
+    - dx_in_value_set: vs_chronic_migraine_2025_09
+    - dx_in_value_set: vs_cervical_dystonia_2025_09
+    - dx_in_value_set: vs_blepharospasm_2025_09
+    - dx_in_value_set: vs_spasticity_2025_09
+    - dx_in_value_set: vs_neurogenic_bladder_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Botox excluded for cosmetic purposes - only covered for approved neurological
+      conditions
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_2542a005936d
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95812'
+    - '95813'
+    - '95816'
+  conditions:
+    all_of:
+    - age_lt: 2
+    none_of:
+    - dx_in_value_set: vs_neonatal_seizures_2025_09
+    - dx_in_value_set: vs_infantile_spasms_2025_09
+    - has_flag: high_risk_neonatal
+  logic:
+    outcome: EXCLUDED
+    note: EEG excluded for infants under 2 without specific seizure indications
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_932693d417f7
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61624'
+    - '61630'
+    - '61635'
+  conditions:
+    all_of:
+    - age_lt: 12
+    none_of:
+    - dx_in_value_set: vs_refractory_epilepsy_pediatric_2025_09
+    - has_flag: failed_multiple_aeds
+    - dx_in_value_set: vs_catastrophic_epilepsy_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Epilepsy surgery excluded for children under 12 without refractory epilepsy
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_c78a8c0c4a96
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95860'
+    - '95861'
+    - '95863'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_fibromyalgia_2025_09
+    - dx_in_value_set: vs_chronic_pain_nonspecific_2025_09
+    none_of:
+    - dx_in_value_set: vs_motor_neuron_disease_2025_09
+    - dx_in_value_set: vs_peripheral_neuropathy_2025_09
+    - dx_in_value_set: vs_myopathy_2025_09
+    - dx_in_value_set: vs_radiculopathy_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: EMG/NCS excluded for fibromyalgia or nonspecific pain without neurological
+      findings
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_8e48d3b9f64b

@@ -1,0 +1,121 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J0517
+    - J2182
+    - J2786
+    - J3590
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_asthma_severe_2025_09
+    - has_flag: step_5_therapy_failed
+    - has_flag: ige_elevated_or_eosinophilia
+    - min_age: 12
+    none_of:
+    - dx_in_value_set: vs_active_malignancy_2025_09
+    - has_flag: immunodeficiency
+  logic:
+    outcome: PA_REQUIRED
+    notes: Asthma biologics require severe asthma with failed step 5 therapy and elevated
+      IgE or eosinophils
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_asthma_biologics_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_1f750dcb89b0
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J0517
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_asthma_allergic_2025_09
+    - has_flag: ige_level_30_700
+    - has_flag: positive_allergen_testing
+    - has_flag: inhaled_corticosteroid_failed
+    none_of:
+    - has_flag: omalizumab_within_16_weeks
+  logic:
+    outcome: PA_REQUIRED
+    notes: Omalizumab requires allergic asthma with IgE 30-700 IU/mL and positive
+      allergen testing
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_asthma_biologics_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_2b843eda6d6e
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J2182
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_asthma_eosinophilic_2025_09
+    - has_flag: eosinophil_count_300_plus
+    - has_flag: exacerbations_2_plus_per_year
+    - has_flag: high_dose_ics_laba_failed
+    none_of:
+    - dx_in_value_set: vs_parasitic_infection_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: "Mepolizumab requires eosinophilic asthma with \u2265300 eosinophils and\
+      \ \u22652 exacerbations/year"
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_asthma_biologics_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_2c63c2c7f230
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J0517
+    - J2182
+    - J2786
+    - J3590
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_asthma_mild_2025_09
+    none_of:
+    - has_flag: controller_therapy_failed
+    - has_flag: frequent_exacerbations
+  logic:
+    outcome: DENY
+    notes: Asthma biologics not indicated for mild asthma without failed controller
+      therapy
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_asthma_biologics_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_a713b8fb8375

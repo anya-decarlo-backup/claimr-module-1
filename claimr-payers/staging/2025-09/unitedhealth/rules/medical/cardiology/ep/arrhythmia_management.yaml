@@ -1,0 +1,127 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93653'
+    - '93654'
+    - '93656'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_atrial_fibrillation_2025_09
+    - dx_in_value_set: vs_atrial_flutter_2025_09
+    - dx_in_value_set: vs_supraventricular_tachycardia_2025_09
+    - dx_in_value_set: vs_ventricular_tachycardia_2025_09
+    all_of:
+    - has_flag: antiarrhythmic_drug_failure
+    - has_flag: symptomatic_arrhythmia
+    none_of:
+    - dx_in_value_set: vs_contraindication_anticoagulation_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: EP study/ablation requires symptomatic arrhythmia with failed antiarrhythmic
+      therapy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_electrophysiology_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_11a3f1f7eeb8
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33249'
+    - '33208'
+    - '33207'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_complete_heart_block_2025_09
+    - dx_in_value_set: vs_sick_sinus_syndrome_2025_09
+    - dx_in_value_set: vs_bradycardia_symptomatic_2025_09
+    all_of:
+    - has_flag: symptomatic_bradycardia
+    - has_flag: reversible_causes_excluded
+    none_of:
+    - has_flag: temporary_indication
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pacemaker requires symptomatic bradycardia or heart block with excluded
+      reversible causes
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_electrophysiology_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_8824f9ebe71b
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J0517
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ventricular_tachycardia_2025_09
+    - dx_in_value_set: vs_ventricular_fibrillation_2025_09
+    - dx_in_value_set: vs_atrial_fibrillation_rvr_2025_09
+    all_of:
+    - has_flag: hemodynamically_unstable
+    none_of:
+    - dx_in_value_set: vs_thyroid_disease_2025_09
+    - dx_in_value_set: vs_pulmonary_fibrosis_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: IV amiodarone for hemodynamically unstable arrhythmias; contraindicated
+      with thyroid/lung disease
+  precedence: 98
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_electrophysiology_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_ab465262b728
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93040'
+    - '93041'
+    - '93042'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_palpitations_2025_09
+    - dx_in_value_set: vs_syncope_2025_09
+    - dx_in_value_set: vs_arrhythmia_monitoring_2025_09
+    none_of:
+    - has_flag: holter_within_6_months
+  logic:
+    outcome: APPROVE
+    notes: Holter monitoring approved for palpitations, syncope, or arrhythmia evaluation
+  precedence: 70
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_electrophysiology_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_ec76ba3a7488

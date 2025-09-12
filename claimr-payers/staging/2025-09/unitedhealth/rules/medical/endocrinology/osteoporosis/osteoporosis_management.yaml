@@ -1,0 +1,135 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77080'
+    - '77081'
+    - '77085'
+    - '77086'
+  conditions:
+    any_of:
+    - min_age: 65
+    - dx_in_value_set: vs_osteoporosis_risk_factors_2025_09
+    - dx_in_value_set: vs_fracture_history_2025_09
+    - has_flag: postmenopausal_women_age_50_64
+    all_of:
+    - has_flag: osteoporosis_screening_indicated
+    none_of:
+    - has_flag: dexa_scan_within_2_years
+  logic:
+    outcome: PA_REQUIRED
+    note: DEXA bone density scan for osteoporosis screening and fracture risk assessment
+      in women 65+ postmenopausal women 50-64 with risk factors or fracture history
+      with dual-energy X-ray absorptiometry
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_osteoporosis_screening_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_212579d6f120
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 00078047915
+    - 00078047975
+    - '55513019401'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_osteoporosis_2025_09
+    - dx_in_value_set: vs_osteopenia_high_risk_2025_09
+    - dx_in_value_set: vs_glucocorticoid_induced_osteoporosis_2025_09
+    all_of:
+    - has_flag: dexa_t_score_minus_2_5_or_lower
+    none_of:
+    - has_flag: esophageal_disorders
+    - has_flag: hypocalcemia
+    - has_flag: inability_to_stand_sit_upright
+  logic:
+    outcome: PA_REQUIRED
+    note: "Bisphosphonate therapy for osteoporosis treatment and fracture prevention\
+      \ with T-score \u2264-2.5 or high fracture risk excluding esophageal disorders\
+      \ with oral antiresorptive agents"
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_osteoporosis_treatment_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_10332e7f816e
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J0897
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_osteoporosis_severe_2025_09
+    - dx_in_value_set: vs_bisphosphonate_intolerant_2025_09
+    all_of:
+    - has_flag: high_fracture_risk
+    - has_flag: bisphosphonate_contraindicated_or_failed
+    none_of:
+    - has_flag: hypocalcemia
+    - has_flag: immunocompromised
+  logic:
+    outcome: PA_REQUIRED
+    note: Denosumab therapy for severe osteoporosis with bisphosphonate intolerance
+      or bisphosphonate intolerance with high fracture risk using RANKL inhibitor
+      subcutaneous injection
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_osteoporosis_treatment_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_36a71c7655dc
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J3110
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_osteoporosis_severe_2025_09
+    - dx_in_value_set: vs_glucocorticoid_osteoporosis_severe_2025_09
+    all_of:
+    - has_flag: multiple_fractures_or_very_high_risk
+    - has_flag: antiresorptive_therapy_inadequate
+    none_of:
+    - has_flag: paget_disease
+    - has_flag: bone_metastases
+    - has_flag: prior_radiation_therapy
+  logic:
+    outcome: PA_REQUIRED
+    note: Teriparatide therapy for severe osteoporosis with fractures and anabolic
+      bone formation multiple fractures when antiresorptive therapy inadequate using
+      recombinant human parathyroid hormone
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_osteoporosis_treatment_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_b11ed043e047

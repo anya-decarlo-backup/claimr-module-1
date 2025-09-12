@@ -1,0 +1,117 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55700'
+    - '55705'
+    - '55706'
+  conditions:
+    all_of:
+    - age_lt: 40
+    - sex: M
+    none_of:
+    - dx_in_value_set: vs_prostate_cancer_family_history_2025_09
+    - has_flag: brca_mutation
+    - dx_in_value_set: vs_prostate_symptoms_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Prostate biopsy excluded for men under 40 without risk factors or symptoms
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_f89b7f180b37
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '52005'
+    - '52007'
+    - '52010'
+  conditions:
+    all_of:
+    - age_lt: 18
+  logic:
+    outcome: EXCLUDED
+    note: Cystoscopy excluded for patients under 18 - not medically appropriate
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_d766ed392a67
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50590'
+    - '50593'
+    - '52353'
+  conditions:
+    all_of:
+    - stone_size_mm_lt: 5
+    none_of:
+    - dx_in_value_set: vs_kidney_stone_complications_2025_09
+    - has_flag: recurrent_stones
+    - dx_in_value_set: vs_urinary_obstruction_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Lithotripsy excluded for stones <5mm without complications - conservative
+      management preferred
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_89f2c3d29580
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '53440'
+    - '53444'
+    - '53445'
+  conditions:
+    all_of:
+    - age_lt: 21
+    none_of:
+    - dx_in_value_set: vs_neurogenic_bladder_2025_09
+    - dx_in_value_set: vs_congenital_urinary_anomalies_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Sling procedures excluded for patients under 21 without neurogenic causes
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_61a310c43c5e

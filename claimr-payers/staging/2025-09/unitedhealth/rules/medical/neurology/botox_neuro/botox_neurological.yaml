@@ -1,0 +1,183 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J0585
+    cpt:
+    - '64612'
+    - '64615'
+    - '64616'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_chronic_migraine_2025_09
+    - dx_in_value_set: vs_medication_overuse_headache_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: headache_days_gte_15_per_month
+    - has_flag: failed_preventive_medications
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: myasthenia_gravis
+    - has_flag: pregnancy
+  logic:
+    outcome: PA_REQUIRED
+    note: "Botulinum toxin for chronic migraine with \u226515 headache days per month"
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_botox_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_1dd40df07032
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J0585
+    cpt:
+    - '64642'
+    - '64643'
+    - '64644'
+    - '64645'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cervical_dystonia_2025_09
+    - dx_in_value_set: vs_spasmodic_torticollis_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: confirmed_dystonia_diagnosis
+    - has_flag: functional_impairment
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: infection_at_injection_site
+    - has_flag: myasthenia_gravis
+  logic:
+    outcome: PA_REQUIRED
+    note: Botulinum toxin for cervical dystonia with functional impairment
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_botox_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_eab19e74c766
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J0585
+    cpt:
+    - '64612'
+    - '64615'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_blepharospasm_2025_09
+    - dx_in_value_set: vs_hemifacial_spasm_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: confirmed_spasm_diagnosis
+    - has_flag: functional_visual_impairment
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: ptosis_risk_factors
+    - has_flag: dry_eye_severe
+  logic:
+    outcome: PA_REQUIRED
+    note: Botulinum toxin for blepharospasm or hemifacial spasm with visual impairment
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_botox_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_561d5901462e
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J0585
+    cpt:
+    - '64646'
+    - '64647'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_post_stroke_spasticity_2025_09
+    - dx_in_value_set: vs_cerebral_palsy_spasticity_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: focal_spasticity_pattern
+    - has_flag: functional_impairment
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: generalized_weakness
+    - has_flag: infection_at_injection_site
+  logic:
+    outcome: PA_REQUIRED
+    note: Botulinum toxin for focal spasticity with functional impairment
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_botox_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ae693f8d8f0e
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J0585
+    cpt:
+    - '64650'
+    - '64653'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_overactive_bladder_neurogenic_2025_09
+    - dx_in_value_set: vs_detrusor_overactivity_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_anticholinergic_therapy
+    - has_flag: neurogenic_bladder_confirmed
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: urinary_tract_infection
+    - has_flag: bladder_outlet_obstruction
+  logic:
+    outcome: PA_REQUIRED
+    note: Botulinum toxin for neurogenic detrusor overactivity refractory to anticholinergics
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_botox_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_fc88aede0277

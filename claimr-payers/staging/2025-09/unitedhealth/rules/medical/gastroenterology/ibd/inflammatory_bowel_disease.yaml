@@ -1,0 +1,124 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J3590
+    - J1745
+    - J0135
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_crohns_disease_2025_09
+    - has_flag: moderate_severe_disease
+    - has_flag: conventional_therapy_failed
+    - has_flag: tb_screening_negative
+    none_of:
+    - dx_in_value_set: vs_active_infection_2025_09
+    - dx_in_value_set: vs_malignancy_active_2025_09
+    - has_flag: live_vaccine_recent
+  logic:
+    outcome: PA_REQUIRED
+    notes: IBD biologic therapy requires moderate-severe disease with failed conventional
+      therapy and negative TB screening
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ibd_biologics_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_dd03f6d0c0d9
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J3590
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_crohns_disease_2025_09
+    - has_flag: anti_tnf_failure
+    - has_flag: moderate_severe_disease
+    none_of:
+    - dx_in_value_set: vs_active_infection_2025_09
+    - has_flag: malignancy_history_5_years
+  logic:
+    outcome: PA_REQUIRED
+    notes: Ustekinumab biologic for Crohn's disease requires anti-TNF failure with
+      moderate-severe disease
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ibd_biologics_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_9d773b61e350
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45378'
+    - '43239'
+  conditions:
+    any_of:
+    - all_of:
+      - dx_in_value_set: vs_ulcerative_colitis_2025_09
+      - has_flag: disease_duration_8_years_plus
+    - all_of:
+      - dx_in_value_set: vs_crohns_colitis_2025_09
+      - has_flag: disease_duration_8_years_plus
+    - dx_in_value_set: vs_primary_sclerosing_cholangitis_2025_09
+    none_of:
+    - has_flag: surveillance_colonoscopy_within_2_years
+  logic:
+    outcome: PA_REQUIRED
+    notes: IBD surveillance colonoscopy screening every 1-2 years after 8 years of
+      disease duration
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ibd_surveillance_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_2c026bff7dd3
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J3590
+    - J1745
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_ibd_mild_2025_09
+    none_of:
+    - has_flag: steroid_dependent
+    - has_flag: perianal_disease
+    - has_flag: extraintestinal_manifestations
+  logic:
+    outcome: DENY
+    notes: Biologic therapy for mild IBD requires steroid dependence, perianal disease,
+      or extraintestinal manifestations
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ibd_biologics_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_6f3a1ac03da3

@@ -1,0 +1,154 @@
+# Systemic Lupus Erythematosus Management - UHC CA
+
+- id: rule_rheum_sle_antimalarials
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    ndc: ["0024-0074", "0024-0075", "0024-0076"]
+    hcpcs: ["J8499"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_systemic_lupus_erythematosus_2025_09"
+      - has_flag: "ophthalmology_baseline_exam"
+      - age_gte: 18
+    none_of:
+      - dx_in_value_set: "vs_retinal_disease_2025_09"
+      - dx_in_value_set: "vs_g6pd_deficiency_2025_09"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Antimalarials require baseline eye exam and G6PD screening"
+    auth_duration_days: 365
+    max_units_per_period: 365
+    period_type: "yearly"
+  precedence: 70
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_rheumatology_sle_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_sle_biologics
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J0490", "J2357"]
+    ndc: ["0173-0781", "0173-0782"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_systemic_lupus_erythematosus_2025_09"
+      - has_flag: "failed_conventional_therapy"
+      - lab_value_gte: "ana_positive"
+    any_of:
+      - dx_in_value_set: "vs_lupus_nephritis_2025_09"
+      - dx_in_value_set: "vs_neuropsychiatric_lupus_2025_09"
+      - has_flag: "severe_organ_involvement"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "SLE biologics require conventional therapy failure and severe manifestations"
+    auth_duration_days: 180
+    max_units_per_period: 12
+    period_type: "monthly"
+  precedence: 65
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_rheumatology_sle_biologics_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_sle_immunosuppressants
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    ndc: ["0004-0056", "0004-0057", "0004-0058"]
+    j_codes: ["J7502", "J7515"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_systemic_lupus_erythematosus_2025_09"
+      - has_flag: "moderate_to_severe_disease"
+      - lab_monitoring_current: true
+    none_of:
+      - dx_in_value_set: "vs_active_infection_2025_09"
+      - dx_in_value_set: "vs_pregnancy_2025_09"
+      - has_flag: "live_vaccine_recent"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Immunosuppressants require disease severity justification and safety monitoring"
+    auth_duration_days: 180
+    max_units_per_period: 90
+    period_type: "monthly"
+  precedence: 70
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_immunosuppressants_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_sle_nephritis_monitoring
+  type: EDIT
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["81001", "82570", "82565", "84155"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_lupus_nephritis_2025_09"
+      - has_flag: "active_nephritis"
+  logic:
+    outcome: "COVERED"
+    note: "Enhanced coverage for lupus nephritis monitoring (UA, creatinine, protein)"
+    frequency_limit: "monthly"
+  precedence: 80
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_lupus_monitoring_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_sle_complement_monitoring
+  type: EDIT
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["86160", "86162", "83018"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_systemic_lupus_erythematosus_2025_09"
+      - has_flag: "active_disease_monitoring"
+  logic:
+    outcome: "COVERED"
+    note: "Enhanced coverage for SLE complement monitoring (C3, C4, CH50)"
+    frequency_limit: "quarterly"
+  precedence: 75
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_lupus_monitoring_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"

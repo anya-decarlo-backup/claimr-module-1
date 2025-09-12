@@ -1,0 +1,149 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '90935'
+    - '90937'
+    - '90940'
+    hcpcs:
+    - G0257
+    - G0308
+    - G0309
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_esrd_2025_09
+    - dx_in_value_set: vs_ckd_stage_5_dialysis_2025_09
+    all_of:
+    - has_flag: dialysis_access_functional
+    - has_flag: nephrology_supervised
+    none_of:
+    - has_flag: active_infection_at_access_site
+    - has_flag: hemodynamic_instability
+  logic:
+    outcome: PA_REQUIRED
+    note: Hemodialysis procedures for ESRD or stage 5 CKD with functional dialysis
+      access and nephrology supervision excluding active access site infections
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hemodialysis_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_5480de061e21
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '90945'
+    - '90947'
+    - '90951'
+    hcpcs:
+    - E1390
+    - E1392
+    - E1399
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_esrd_2025_09
+    - dx_in_value_set: vs_ckd_stage_5_dialysis_2025_09
+    all_of:
+    - has_flag: peritoneal_dialysis_candidate
+    - has_flag: home_dialysis_training_completed
+    - has_flag: adequate_social_support
+    none_of:
+    - has_flag: peritonitis_active
+    - has_flag: abdominal_adhesions_severe
+    - has_flag: cognitive_impairment_severe
+  logic:
+    outcome: PA_REQUIRED
+    note: Peritoneal dialysis procedures for ESRD or stage 5 CKD with completed home
+      dialysis training adequate social support and peritoneal dialysis candidacy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_peritoneal_dialysis_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_089f5c51efb1
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '90999'
+    hcpcs:
+    - G0322
+    - G0323
+    - G0324
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_esrd_home_dialysis_2025_09
+    - dx_in_value_set: vs_ckd_stage_5_home_capable_2025_09
+    all_of:
+    - has_flag: home_dialysis_appropriate
+    - has_flag: patient_caregiver_trained
+    - has_flag: home_environment_suitable
+    none_of:
+    - has_flag: frequent_hospitalizations
+    - has_flag: unstable_medical_condition
+  logic:
+    outcome: PA_REQUIRED
+    note: Home dialysis services for ESRD with appropriate home environment patient
+      and caregiver training completed and stable medical condition
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_home_dialysis_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_9bbf19acd47b
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 0074-5831-13
+    - 0074-6212-02
+    j_code:
+    - J0636
+    - J0637
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_esrd_mineral_bone_disorder_2025_09
+    - dx_in_value_set: vs_ckd_hyperphosphatemia_2025_09
+    - dx_in_value_set: vs_secondary_hyperparathyroidism_2025_09
+    all_of:
+    - has_flag: mineral_bone_disorder_documented
+    - has_flag: laboratory_values_support_treatment
+    none_of:
+    - has_flag: hypercalcemia
+    - has_flag: vitamin_d_toxicity
+  logic:
+    outcome: PA_REQUIRED
+    note: Dialysis-related medications for mineral bone disorder hyperphosphatemia
+      or secondary hyperparathyroidism with documented laboratory values supporting
+      treatment
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_dialysis_medications_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_a51ad8ad9d70

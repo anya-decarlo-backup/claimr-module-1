@@ -1,0 +1,66 @@
+# Rheumatology Step Therapy Rules - UHC CA
+
+- id: rule_rheum_step_dmard_biologics
+  type: STEP_THERAPY
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J0717", "J1438", "J1745", "J0135"]
+    ndc: ["0074-0554", "50242-0134", "0074-3799"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_rheumatoid_arthritis_2025_09"
+      - age_gte: 18
+    none_of:
+      - has_flag: "tried_methotrexate_adequate"
+      - has_flag: "methotrexate_contraindicated"
+      - dx_in_value_set: "vs_severe_ra_manifestations_2025_09"
+  logic:
+    outcome: "STEP_THERAPY_REQUIRED"
+    note: "Must try methotrexate before biologic DMARDs unless contraindicated or severe disease"
+    required_steps: ["methotrexate_trial_3_months"]
+    step_duration_days: 90
+  precedence: 80
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_rheumatology_step_therapy_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_step_tnf_jak
+  type: STEP_THERAPY
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    ndc: ["0069-0223", "0069-0224", "0069-0225"]
+    hcpcs: ["J3590"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_rheumatoid_arthritis_2025_09"
+      - age_gte: 18
+      - age_lt: 65
+    none_of:
+      - has_flag: "tried_tnf_inhibitor_adequate"
+      - has_flag: "tnf_inhibitor_contraindicated"
+      - dx_in_value_set: "vs_cardiovascular_disease_2025_09"
+  logic:
+    outcome: "STEP_THERAPY_REQUIRED"
+    note: "Must try TNF inhibitor before JAK inhibitor unless contraindicated"
+    required_steps: ["tnf_inhibitor_trial_6_months"]
+    step_duration_days: 180
+  precedence: 75
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_jak_step_therapy_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"

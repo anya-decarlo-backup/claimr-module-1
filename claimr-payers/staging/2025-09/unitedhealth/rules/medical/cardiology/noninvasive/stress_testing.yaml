@@ -1,0 +1,126 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93015'
+    - '93016'
+    - '93017'
+    - '93018'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_chest_pain_2025_09
+    - dx_in_value_set: vs_coronary_artery_disease_2025_09
+    - dx_in_value_set: vs_heart_failure_2025_09
+    - dx_in_value_set: vs_arrhythmia_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Exercise stress testing requires cardiac symptoms or known CAD; age 18-85
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_b1ae95ffb4a9
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78451'
+    - '78452'
+    - '78453'
+    - '78454'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_coronary_artery_disease_2025_09
+    - dx_in_value_set: vs_chest_pain_atypical_2025_09
+    all_of:
+    - has_flag: abnormal_exercise_stress
+    none_of:
+    - has_flag: nuclear_stress_within_2_years
+  logic:
+    outcome: PA_REQUIRED
+    notes: Nuclear stress requires abnormal exercise stress or high pretest probability;
+      limited to every 2 years
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_5b6b39343b5c
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93350'
+    - '93351'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_coronary_artery_disease_2025_09
+    - dx_in_value_set: vs_valvular_disease_2025_09
+    all_of:
+    - has_flag: unable_exercise_stress
+    none_of:
+    - has_flag: stress_echo_within_2_years
+  logic:
+    outcome: PA_REQUIRED
+    notes: Stress echo for patients unable to exercise or with valvular disease; limited
+      to every 2 years
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_2e00297e433c
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93015'
+    - '93016'
+    - '93017'
+    - '93018'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_routine_screening_2025_09
+    none_of:
+    - dx_in_value_set: vs_chest_pain_2025_09
+    - dx_in_value_set: vs_coronary_artery_disease_2025_09
+    - min_age: 40
+    - has_flag: cardiac_risk_factors
+  logic:
+    outcome: DENY
+    notes: Routine screening stress testing not covered unless age 40+ with cardiac
+      risk factors
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_b359632934ee

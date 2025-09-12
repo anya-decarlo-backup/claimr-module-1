@@ -1,0 +1,95 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - G0424
+    - G0425
+    - G0426
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_copd_moderate_severe_2025_09
+    - dx_in_value_set: vs_interstitial_lung_disease_2025_09
+    - dx_in_value_set: vs_pulmonary_hypertension_2025_09
+    all_of:
+    - has_flag: physician_referral
+    - has_flag: stable_condition
+    - has_flag: motivated_patient
+    none_of:
+    - dx_in_value_set: vs_unstable_cardiac_disease_2025_09
+    - dx_in_value_set: vs_cognitive_impairment_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pulmonary rehab requires moderate-severe COPD or ILD with physician referral
+      and stable condition
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pulmonary_rehab_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_2330ce838884
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - G0424
+    - G0425
+    - G0426
+  conditions:
+    all_of:
+    - has_flag: pulmonary_rehab_approved
+    - utilization_gte:
+        pulmonary_rehab_sessions: 36
+  logic:
+    outcome: DENY
+    notes: Pulmonary rehabilitation limited to 36 sessions per 12-month period
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pulmonary_rehab_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_e53078e119a8
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - E0424
+    - E0425
+    - E0430
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_copd_severe_2025_09
+    - dx_in_value_set: vs_interstitial_lung_disease_2025_09
+    - dx_in_value_set: vs_pulmonary_hypertension_2025_09
+    all_of:
+    - has_flag: oxygen_saturation_88_or_less
+    - has_flag: arterial_blood_gas_documented
+    none_of:
+    - has_flag: reversible_hypoxemia
+  logic:
+    outcome: PA_REQUIRED
+    notes: "Home oxygen requires documented hypoxemia with O2 sat \u226488% or PaO2\
+      \ \u226455 mmHg"
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_oxygen_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_3f5713e30d66

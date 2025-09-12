@@ -37,7 +37,7 @@ ALLOWED_KINDS = {"prior_auth":"prior_auth.jsonl",
                  "payment_edits":"payment_edits.jsonl",
                  "exclusions":"exclusions.jsonl"}
 
-ALLOWED_RULE_TYPES = {"EDIT","PRIOR_AUTH","EXCLUSION","EXPERIMENTAL_INVESTIGATIONAL","POSTPAY_AUDIT"}
+ALLOWED_RULE_TYPES = {"EDIT","PRIOR_AUTH","EXCLUSION","EXPERIMENTAL_INVESTIGATIONAL","POSTPAY_AUDIT","STEP_THERAPY"}
 
 # Whitelists aligned to rule.schema.json (keeps inputs clean)
 TOP_LEVEL_FIELDS = {
@@ -46,7 +46,7 @@ TOP_LEVEL_FIELDS = {
     "cob_applicability","requires_primary_eob","secondary_parameters"
 }
 SCOPE_FIELDS = {"carrier_id","contract_id","plan_id","lob","state","plan_type","market"}
-SERVICE_REF_FIELDS = {"service_id","cpt","hcpcs","drg","rev"}
+SERVICE_REF_FIELDS = {"service_id","cpt","hcpcs","drg","rev","ndc"}
 CONDITIONS_BLOCKS = {"any_of","all_of","none_of"}
 COND_FIELDS = {
     "has_flag","dx_in_value_set","dx_in_history_value_set","history_lookback_days",
@@ -104,7 +104,7 @@ def sanitize_rule(obj: dict) -> dict:
     # normalize into {service_id, codes{cpt,hcpcs,drg,rev}}
     service_id = sr.get("service_id")
     codes = {}
-    for k in ("cpt","hcpcs","drg","rev"):
+    for k in ("cpt","hcpcs","drg","rev","ndc"):
         val = sr.get(k)
         if val is not None:
             if not isinstance(val, list):
@@ -113,9 +113,10 @@ def sanitize_rule(obj: dict) -> dict:
     cleaned["service_ref"] = {"service_id": service_id, **({"cpt":codes.get("cpt")} if "cpt" in codes else {}),
                                                **({"hcpcs":codes.get("hcpcs")} if "hcpcs" in codes else {}),
                                                **({"drg":codes.get("drg")} if "drg" in codes else {}),
-                                               **({"rev":codes.get("rev")} if "rev" in codes else {})}
+                                               **({"rev":codes.get("rev")} if "rev" in codes else {}),
+                                               **({"ndc":codes.get("ndc")} if "ndc" in codes else {})}
     if not service_id and not codes:
-        raise ValueError("service_ref requires either 'service_id' or at least one code list (cpt/hcpcs/drg/rev)")
+        raise ValueError("service_ref requires either 'service_id' or at least one code list (cpt/hcpcs/drg/rev/ndc)")
 
     # conditions
     conds_in = cleaned.get("conditions") or {}
@@ -215,51 +216,206 @@ def check_duplicates(out_path: Path, rid: str):
             if obj.get("id") == rid:
                 raise ValueError(f"Duplicate rule id '{rid}' in {out_path}")
 
-def main():
-    ap = argparse.ArgumentParser(description="Convert rules YAML (list) to NDJSON")
-    ap.add_argument("--rules", required=True, help="Path to rules YAML (list of rule objects)")
-    ap.add_argument("--kind", required=True, choices=ALLOWED_KINDS.keys(), help="Rule kind (controls default output filename)")
-    ap.add_argument("--carrier-id", help="Carrier id to build default output path under data/rules/by_carrier/<carrier-id>/")
-    ap.add_argument("--output", help="Explicit output file (.jsonl). Overrides --carrier-id.")
-    ap.add_argument("--dry-run", action="store_true", help="Print results to stdout instead of appending")
-    args = ap.parse_args()
-
-    rules_path = Path(args.rules)
-
-    if args.output:
-        out_path = Path(args.output)
-    else:
-        if not hasattr(args, "carrier_id") or not args.carrier_id:
-            print("ERROR: Provide --output OR --carrier-id to determine where to write", file=sys.stderr)
-            sys.exit(2)
-        out_path = Path("data") / "rules" / "by_carrier" / args.carrier_id / ALLOWED_KINDS[args.kind]
-
-    try:
-        items = load_yaml_list(rules_path)
-        if not items:
-            print("No rules to write (empty YAML list).", file=sys.stderr)
-            sys.exit(0)
-
-        # sanitize all
-        cleaned = [sanitize_rule(it) for it in items]
-
-        if args.dry_run:
-            for obj in cleaned:
-                print(json.dumps(obj, separators=(',', ':'), ensure_ascii=False))
-            sys.exit(0)
-
-        ensure_output(out_path)
-
-        with out_path.open("a", encoding="utf-8") as f:
-            for obj in cleaned:
-                check_duplicates(out_path, obj["id"])
-                f.write(json.dumps(obj, separators=(',', ':'), ensure_ascii=False) + "\n")
-
-        print(f"✓ Appended {len(cleaned)} rule(s) → {out_path}")
-
-    except Exception as e:
-        print(f"ERROR: {e}", file=sys.stderr)
+def process_rules_directory(rules_dir: Path, carrier_id: str, dry_run: bool = False):
+    """Process all YAML files in a rules directory structure"""
+    rules_dir = Path(rules_dir)
+    if not rules_dir.exists():
+        print(f"ERROR: Rules directory {rules_dir} does not exist")
         sys.exit(1)
+    
+    # Find all YAML files recursively
+    yaml_files = list(rules_dir.glob('**/*.yaml'))
+    if not yaml_files:
+        print(f"ERROR: No YAML files found in {rules_dir}")
+        sys.exit(1)
+    
+    # Group rules by type for output
+    rules_by_type = {
+        'prior_auth': [],
+        'exclusions': [],
+        'payment_edits': [],
+        'step_therapy': [],
+        'coverage': []
+    }
+    
+    total_rules = 0
+    
+    for yaml_file in yaml_files:
+        print(f"Processing {yaml_file}...")
+        
+        with open(yaml_file, 'r') as f:
+            data = yaml.safe_load(f)
+        
+        if not isinstance(data, list):
+            print(f"ERROR: Expected list of rules in {yaml_file}, got {type(data)}")
+            continue
+        
+        # Process each rule in the file
+        for rule_data in data:
+            try:
+                sanitized = sanitize_rule(rule_data)
+                rule_type = sanitized.get('type', '').lower()
+                
+                # Map rule types to output categories
+                if rule_type == 'prior_auth':
+                    rules_by_type['prior_auth'].append(sanitized)
+                elif rule_type == 'exclusion':
+                    rules_by_type['exclusions'].append(sanitized)
+                elif rule_type == 'edit':
+                    rules_by_type['payment_edits'].append(sanitized)
+                elif rule_type == 'step_therapy':
+                    rules_by_type['step_therapy'].append(sanitized)
+                elif rule_type == 'coverage':
+                    rules_by_type['coverage'].append(sanitized)
+                else:
+                    print(f"WARNING: Unknown rule type '{rule_type}' in {yaml_file}")
+                    continue
+                
+                total_rules += 1
+                
+            except ValueError as e:
+                print(f"ERROR in {yaml_file}: {e}")
+                continue
+    
+    if dry_run:
+        print(f"Dry run - would process {total_rules} rules:")
+        for rule_type, rules in rules_by_type.items():
+            if rules:
+                print(f"  {rule_type}: {len(rules)} rules")
+        return
+    
+    # Write rules to appropriate output files
+    written_files = []
+    for rule_type, rules in rules_by_type.items():
+        if not rules:
+            continue
+            
+        output_path = Path(f"data/rules/by_carrier/{carrier_id}/{rule_type}.jsonl")
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        # Check for duplicates
+        existing_ids = set()
+        if output_path.exists():
+            with output_path.open('r') as f:
+                for line in f:
+                    line = line.strip()
+                    if line:
+                        try:
+                            existing_rule = json.loads(line)
+                            existing_ids.add(existing_rule.get('id'))
+                        except json.JSONDecodeError:
+                            continue
+        
+        # Check for conflicts
+        new_ids = [rule['id'] for rule in rules]
+        conflicts = set(new_ids) & existing_ids
+        if conflicts:
+            print(f"ERROR: Duplicate rule IDs in {output_path}: {conflicts}")
+            sys.exit(1)
+        
+        # Append to file
+        with output_path.open('a') as f:
+            for rule in rules:
+                f.write(json.dumps(rule, separators=(',', ':')) + '\n')
+        
+        written_files.append((output_path, len(rules)))
+    
+    # Report results
+    for output_path, count in written_files:
+        print(f"✓ Appended {count} rule(s) → {output_path}")
+    
+    print(f"✓ Total: {total_rules} rules processed from {len(yaml_files)} files")
 
-if __name__ == "__main__":
+def main():
+    parser = argparse.ArgumentParser(description='Convert rules YAML to NDJSON')
+    parser.add_argument('--rules', required=True, help='Path to rules YAML file or directory')
+    parser.add_argument('--kind', 
+                       choices=['prior_auth', 'coverage', 'payment_edits', 'exclusions'],
+                       help='Rule kind for output filename (only for single file mode)')
+    parser.add_argument('--carrier-id', help='Carrier ID for auto output path')
+    parser.add_argument('--output', help='Output NDJSON file path (only for single file mode)')
+    parser.add_argument('--dry-run', action='store_true', help='Show output without writing')
+    
+    args = parser.parse_args()
+    
+    rules_path = Path(args.rules)
+    
+    # Check if it's a directory (new mode) or file (legacy mode)
+    if rules_path.is_dir():
+        if not args.carrier_id:
+            print("ERROR: --carrier-id required for directory processing")
+            sys.exit(2)
+        
+        process_rules_directory(rules_path, args.carrier_id, args.dry_run)
+        return
+    
+    # Legacy single-file mode
+    if not args.output and not args.carrier_id:
+        print("ERROR: Provide --output OR --carrier-id to determine where to write")
+        sys.exit(2)
+    
+    if not args.kind:
+        print("ERROR: --kind required for single file processing")
+        sys.exit(2)
+    
+    # Load and process YAML
+    with open(args.rules, 'r') as f:
+        data = yaml.safe_load(f)
+    
+    if not isinstance(data, list):
+        print(f"ERROR: Expected list of rules, got {type(data)}")
+        sys.exit(1)
+    
+    # Sanitize and convert each rule
+    rules = []
+    for rule_data in data:
+        try:
+            sanitized = sanitize_rule(rule_data)
+            rules.append(sanitized)
+        except ValueError as e:
+            print(f"ERROR: {e}")
+            sys.exit(1)
+    
+    # Determine output path
+    if args.output:
+        output_path = Path(args.output)
+    else:
+        output_path = Path(f"data/rules/by_carrier/{args.carrier_id}/{args.kind}.jsonl")
+    
+    # Create output directory
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    if args.dry_run:
+        print("Dry run - would write to:", output_path)
+        for rule in rules:
+            print(json.dumps(rule, separators=(',', ':')))
+        return
+    
+    # Check for duplicates
+    existing_ids = set()
+    if output_path.exists():
+        with output_path.open('r') as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    try:
+                        existing_rule = json.loads(line)
+                        existing_ids.add(existing_rule.get('id'))
+                    except json.JSONDecodeError:
+                        continue
+    
+    # Check for conflicts
+    for rule in rules:
+        if rule['id'] in existing_ids:
+            print(f"ERROR: Duplicate rule id '{rule['id']}' in {output_path}")
+            sys.exit(1)
+    
+    # Append to file
+    with output_path.open('a') as f:
+        for rule in rules:
+            f.write(json.dumps(rule, separators=(',', ':')) + '\n')
+    
+    print(f"✓ Appended {len(rules)} rule(s) → {output_path}")
+
+if __name__ == '__main__':
     main()

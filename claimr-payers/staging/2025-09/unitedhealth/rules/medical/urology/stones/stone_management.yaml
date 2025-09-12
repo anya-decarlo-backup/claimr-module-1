@@ -1,0 +1,181 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50590'
+    loinc:
+    - 33747-0
+    - 5804-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kidney_stone_eswl_eligible_2025_09
+    - dx_in_value_set: vs_renal_colic_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: stone_size_5_20mm
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: pregnancy
+    - has_flag: bleeding_disorder
+    - has_flag: aortic_aneurysm
+  logic:
+    outcome: PA_REQUIRED
+    note: ESWL for kidney stones 5-20mm with appropriate clinical criteria
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_stones_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_d05c477e98af
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '52356'
+    - '52353'
+    - '52320'
+    loinc:
+    - 5804-0
+    - 33747-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ureteral_stone_2025_09
+    - dx_in_value_set: vs_kidney_stone_complex_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: stone_size_appropriate_urs
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: active_uti
+    - has_flag: severe_bleeding_disorder
+  logic:
+    outcome: PA_REQUIRED
+    note: Ureteroscopy with laser lithotripsy for ureteral and complex kidney stones
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_stones_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_13d980ab587f
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50080'
+    - '50081'
+    loinc:
+    - 5804-0
+    - 6690-2
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kidney_stone_large_2025_09
+    - dx_in_value_set: vs_staghorn_calculus_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: stone_size_gt_20mm
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: bleeding_disorder
+    - has_flag: severe_obesity
+  logic:
+    outcome: PA_REQUIRED
+    note: PCNL for large kidney stones >20mm and staghorn calculi
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_stones_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_9585e6111e14
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '99213'
+    - '99214'
+    loinc:
+    - 2692-2
+    - 2695-5
+    - 14879-1
+    - 6768-6
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_recurrent_stone_former_2025_09
+    - dx_in_value_set: vs_high_risk_stone_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: two_or_more_stone_episodes
+    none_of: []
+  logic:
+    outcome: PA_REQUIRED
+    note: Comprehensive metabolic evaluation for recurrent stone formers
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_stones_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_8bb79713b7c4
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '99213'
+    - '99214'
+    ndc:
+    - 0093-0058
+    - 0378-1805
+    loinc:
+    - 2692-2
+    - 3094-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_recurrent_calcium_stones_2025_09
+    - dx_in_value_set: vs_uric_acid_stones_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: metabolic_evaluation_completed
+    none_of:
+    - has_flag: severe_renal_impairment
+  logic:
+    outcome: PA_REQUIRED
+    note: Medical therapy for stone prevention (thiazides, allopurinol, citrate)
+  precedence: 75
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_stones_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_315964a2c5a0

@@ -1,0 +1,146 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '80047'
+    - '80048'
+    - '80053'
+    loinc:
+    - 33914-3
+    - 2160-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ckd_stage_3_2025_09
+    - dx_in_value_set: vs_ckd_stage_4_2025_09
+    - dx_in_value_set: vs_ckd_stage_5_2025_09
+    all_of:
+    - has_flag: nephrology_consultation_indicated
+    none_of:
+    - has_flag: nephrology_follow_up_within_6_months
+  utilization_gte:
+    count: 4
+    period: 12_months
+  logic:
+    outcome: EDIT
+    note: CKD monitoring frequency limits for stages 3-5 with nephrology consultation
+      indicated and quarterly testing restrictions for metabolic panels
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ckd_monitoring_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_4a0f8aee4952
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '82565'
+    - '82570'
+    hcpcs:
+    - G0499
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ckd_stage_4_2025_09
+    - dx_in_value_set: vs_ckd_stage_5_2025_09
+    - dx_in_value_set: vs_ckd_progressive_2025_09
+    all_of:
+    - has_flag: gfr_decline_documented
+    - has_flag: nephrology_managed
+    none_of:
+    - has_flag: dialysis_initiated
+    - has_flag: transplant_listed
+  logic:
+    outcome: PA_REQUIRED
+    note: Advanced CKD management for stages 4-5 with progressive disease requiring
+      nephrology management and GFR decline documentation with specialized monitoring
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ckd_advanced_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_3f8655dced39
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36901'
+    - '36902'
+    - '36903'
+    hcpcs:
+    - G0392
+    - G0393
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ckd_stage_5_2025_09
+    - dx_in_value_set: vs_esrd_2025_09
+    all_of:
+    - has_flag: dialysis_preparation_indicated
+    - has_flag: multidisciplinary_ckd_education_completed
+    none_of:
+    - has_flag: contraindication_to_dialysis
+    - has_flag: comfort_care_only
+  logic:
+    outcome: PA_REQUIRED
+    note: Dialysis preparation procedures for stage 5 CKD or ESRD with multidisciplinary
+      education completed and dialysis preparation indicated
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_dialysis_prep_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_3220e8a6aef6
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 0074-3017-02
+    - 0074-4113-02
+    j_code:
+    - J0881
+    - J0882
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ckd_with_proteinuria_2025_09
+    - dx_in_value_set: vs_ckd_with_hypertension_2025_09
+    - dx_in_value_set: vs_diabetic_nephropathy_2025_09
+    all_of:
+    - has_flag: ace_inhibitor_or_arb_indicated
+    - has_flag: blood_pressure_above_target
+    none_of:
+    - has_flag: hyperkalemia
+    - has_flag: bilateral_renal_artery_stenosis
+    - has_flag: pregnancy
+  logic:
+    outcome: PA_REQUIRED
+    note: ACE inhibitor or ARB therapy for CKD with proteinuria hypertension or diabetic
+      nephropathy with blood pressure above target and renoprotective therapy indicated
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ckd_medications_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_33e2311c1056

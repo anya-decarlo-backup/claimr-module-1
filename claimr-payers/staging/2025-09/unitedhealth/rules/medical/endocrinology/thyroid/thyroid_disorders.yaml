@@ -1,0 +1,129 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78013'
+    - '78014'
+    - '78015'
+    - '78016'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hyperthyroidism_2025_09
+    - dx_in_value_set: vs_thyroid_nodules_2025_09
+    - dx_in_value_set: vs_goiter_2025_09
+    all_of:
+    - has_flag: abnormal_tsh_or_thyroid_hormones
+    none_of:
+    - has_flag: pregnancy
+    - has_flag: breastfeeding
+  logic:
+    outcome: PA_REQUIRED
+    note: Thyroid uptake and scan for hyperthyroidism evaluation and nodule assessment
+      with radioiodine imaging
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thyroid_imaging_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_d3d8055d46d3
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '79005'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_graves_disease_2025_09
+    - dx_in_value_set: vs_toxic_multinodular_goiter_2025_09
+    - dx_in_value_set: vs_thyroid_cancer_differentiated_2025_09
+    all_of:
+    - has_flag: antithyroid_medication_contraindicated_or_failed
+    none_of:
+    - has_flag: pregnancy
+    - has_flag: breastfeeding
+    - has_flag: severe_ophthalmopathy
+  logic:
+    outcome: PA_REQUIRED
+    note: Radioactive iodine therapy for hyperthyroidism treatment and thyroid ablation
+      with I-131 administration
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thyroid_treatment_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_c44006ba2f0e
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '60240'
+    - '60252'
+    - '60254'
+    - '60260'
+    - '60271'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_thyroid_cancer_2025_09
+    - dx_in_value_set: vs_thyroid_nodules_suspicious_2025_09
+    - dx_in_value_set: vs_goiter_compressive_2025_09
+    all_of:
+    - has_flag: surgical_candidate
+    none_of:
+    - has_flag: high_surgical_risk
+  logic:
+    outcome: PA_REQUIRED
+    note: Thyroidectomy for thyroid cancer or compressive goiter with surgical indications
+      and endocrine surgery consultation
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thyroid_surgery_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_bf4e95ecf6df
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '84443'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hypothyroidism_2025_09
+    - dx_in_value_set: vs_hyperthyroidism_2025_09
+    - dx_in_value_set: vs_thyroid_nodules_2025_09
+  utilization_gte:
+    count: 6
+    period: 12_months
+  logic:
+    outcome: EDIT
+    note: TSH monitoring frequency limits for thyroid disorders and hormone replacement
+      therapy with biannual testing restrictions
+  precedence: 70
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thyroid_monitoring_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_2a62769327bb

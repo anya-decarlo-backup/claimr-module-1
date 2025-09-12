@@ -1,0 +1,133 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43260'
+    - '43261'
+    - '43262'
+    - '43263'
+    - '43264'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pancreatic_mass_2025_09
+    - dx_in_value_set: vs_mediastinal_lymphadenopathy_2025_09
+    - dx_in_value_set: vs_submucosal_lesion_2025_09
+    - dx_in_value_set: vs_bile_duct_stricture_2025_09
+    all_of:
+    - has_flag: cross_sectional_imaging_completed
+    - has_flag: tissue_diagnosis_needed
+    none_of:
+    - has_flag: lesion_accessible_percutaneous
+    - dx_in_value_set: vs_bleeding_disorder_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: EUS-FNA procedure requires cross-sectional imaging and inaccessible lesion
+      needing tissue diagnosis
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_advanced_endoscopy_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_aee3916e4d5f
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43274'
+    - '43275'
+    - '43276'
+    - '43277'
+    - '43278'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_choledocholithiasis_2025_09
+    - dx_in_value_set: vs_biliary_obstruction_malignant_2025_09
+    - dx_in_value_set: vs_primary_sclerosing_cholangitis_2025_09
+    - dx_in_value_set: vs_pancreatic_duct_obstruction_2025_09
+    all_of:
+    - has_flag: mrcp_or_ct_abnormal
+    - has_flag: therapeutic_intervention_planned
+    none_of:
+    - has_flag: surgical_candidate_preferred
+    - dx_in_value_set: vs_acute_pancreatitis_severe_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: Therapeutic ERCP intervention requires abnormal MRCP/CT with planned intervention
+      when surgery not preferred
+  precedence: 98
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_advanced_endoscopy_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_4d7efa002424
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43273'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_chronic_pancreatitis_2025_09
+    - dx_in_value_set: vs_pancreatic_duct_stricture_2025_09
+    - dx_in_value_set: vs_pancreas_divisum_2025_09
+    all_of:
+    - has_flag: recurrent_pancreatitis
+    - has_flag: pancreatic_duct_abnormality
+    none_of:
+    - has_flag: pancreaticoduodenectomy_candidate
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pancreatic duct ERCP therapy for recurrent pancreatitis with duct abnormality
+      when surgery not indicated
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_advanced_endoscopy_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_6972afd9c75f
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43260'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_abdominal_pain_chronic_2025_09
+    none_of:
+    - has_flag: cross_sectional_imaging_abnormal
+    - dx_in_value_set: vs_pancreatic_enzyme_elevation_2025_09
+    - has_flag: weight_loss_unexplained
+  logic:
+    outcome: DENY
+    notes: EUS diagnostic for chronic abdominal pain requires abnormal imaging or
+      pancreatic enzyme elevation
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_advanced_endoscopy_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_e4b07db7fb5f

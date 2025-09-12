@@ -1,0 +1,159 @@
+# Gout Management - UHC CA
+
+- id: rule_rheum_gout_acute_treatment
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J1100", "J2357"]
+    ndc: ["0054-0222", "0054-0223"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_gout_acute_2025_09"
+      - has_flag: "contraindication_nsaids_colchicine"
+      - age_gte: 18
+    any_of:
+      - dx_in_value_set: "vs_renal_disease_2025_09"
+      - dx_in_value_set: "vs_heart_failure_2025_09"
+      - has_flag: "multiple_comorbidities"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Injectable corticosteroids for acute gout when oral agents contraindicated"
+    auth_duration_days: 30
+    max_units_per_period: 3
+    period_type: "monthly"
+  precedence: 70
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_rheumatology_gout_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_gout_urate_lowering
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    ndc: ["0074-6681", "0074-6682", "0074-6683"]
+    hcpcs: ["J8499"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_gout_chronic_2025_09"
+      - lab_value_gte: "uric_acid_9.0"
+      - has_flag: "recurrent_attacks"
+    any_of:
+      - attack_frequency_gte: 2
+      - dx_in_value_set: "vs_tophi_2025_09"
+      - dx_in_value_set: "vs_uric_acid_nephropathy_2025_09"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Urate-lowering therapy requires elevated uric acid and recurrent attacks"
+    auth_duration_days: 365
+    max_units_per_period: 365
+    period_type: "yearly"
+  precedence: 65
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_rheumatology_gout_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_gout_pegloticase
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J2507"]
+    ndc: ["0054-0001", "0054-0002"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_gout_refractory_2025_09"
+      - has_flag: "failed_conventional_ult"
+      - lab_value_gte: "uric_acid_8.0"
+      - has_flag: "severe_tophi_or_arthropathy"
+    none_of:
+      - dx_in_value_set: "vs_g6pd_deficiency_2025_09"
+      - dx_in_value_set: "vs_heart_failure_class_iv_2025_09"
+      - has_flag: "immunocompromised"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Pegloticase reserved for refractory gout with severe manifestations"
+    auth_duration_days: 180
+    max_units_per_period: 12
+    period_type: "monthly"
+  precedence: 60
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_rheumatology_pegloticase_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_gout_monitoring_labs
+  type: EDIT
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["84550", "82565", "84450"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_gout_chronic_2025_09"
+      - has_flag: "on_ult_therapy"
+  logic:
+    outcome: "COVERED"
+    note: "Enhanced coverage for gout monitoring (uric acid, creatinine, ALT)"
+    frequency_limit: "quarterly"
+  precedence: 80
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_gout_monitoring_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_gout_joint_aspiration
+  type: EDIT
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["20610", "20611", "89060"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_gout_acute_2025_09"
+      - has_flag: "diagnostic_uncertainty"
+    any_of:
+      - has_flag: "first_attack"
+      - dx_in_value_set: "vs_septic_arthritis_concern_2025_09"
+  logic:
+    outcome: "COVERED"
+    note: "Enhanced coverage for joint aspiration when gout diagnosis uncertain"
+    frequency_limit: "per_episode"
+  precedence: 75
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_arthrocentesis_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"

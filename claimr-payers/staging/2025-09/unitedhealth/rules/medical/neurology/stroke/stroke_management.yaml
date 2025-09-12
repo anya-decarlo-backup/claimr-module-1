@@ -1,0 +1,147 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37195'
+    - '37211'
+    - '37212'
+    - '37213'
+    hcpcs:
+    - C1874
+    - C1875
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_acute_ischemic_stroke_2025_09
+    - dx_in_value_set: vs_large_vessel_occlusion_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: symptom_onset_within_24_hours
+    - has_flag: nihss_score_gte_6
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: intracranial_hemorrhage
+    - has_flag: contraindication_to_intervention
+  logic:
+    outcome: PA_REQUIRED
+    note: Mechanical thrombectomy for acute large vessel occlusion stroke
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_stroke_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_3bd3f3b415ea
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37184'
+    - '37186'
+    - '37188'
+    j_codes:
+    - J2997
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_acute_ischemic_stroke_2025_09
+    - dx_in_value_set: vs_stroke_thrombolysis_eligible_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: symptom_onset_within_4_5_hours
+    - has_flag: no_hemorrhage_on_imaging
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: recent_surgery
+    - has_flag: active_bleeding
+    - has_flag: severe_hypertension
+  logic:
+    outcome: PA_REQUIRED
+    note: IV thrombolysis (tPA) for acute ischemic stroke within 4.5 hours
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_stroke_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_f7bd19271c53
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93886'
+    - '93888'
+    - '93890'
+    loinc:
+    - 33747-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_carotid_stenosis_2025_09
+    - dx_in_value_set: vs_stroke_workup_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: stroke_or_tia_history
+    - has_flag: specialist_evaluation
+    none_of: []
+  logic:
+    outcome: PA_REQUIRED
+    note: Carotid duplex ultrasound for stroke workup and carotid stenosis evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_stroke_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_0144966eb3fd
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '35301'
+    - '35390'
+    hcpcs:
+    - C1874
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_severe_carotid_stenosis_2025_09
+    - dx_in_value_set: vs_symptomatic_carotid_stenosis_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: stenosis_gte_70_percent
+    - has_flag: specialist_evaluation
+    - has_flag: surgical_candidate
+    none_of:
+    - has_flag: high_surgical_risk
+    - has_flag: life_expectancy_lt_2_years
+  logic:
+    outcome: PA_REQUIRED
+    note: Carotid endarterectomy for severe symptomatic carotid stenosis
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_stroke_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_6bfbcba75db7

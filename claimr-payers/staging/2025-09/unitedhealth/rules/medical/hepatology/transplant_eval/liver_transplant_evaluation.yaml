@@ -1,0 +1,165 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '99241'
+    - '99242'
+    - '99243'
+  conditions:
+    any_of:
+    - all_of:
+      - dx_in_value_set: vs_cirrhosis_decompensated_2025_09
+      - has_flag: meld_score_15_or_higher
+    - dx_in_value_set: vs_hepatocellular_carcinoma_milan_criteria_2025_09
+    - dx_in_value_set: vs_acute_liver_failure_2025_09
+    - dx_in_value_set: vs_metabolic_liver_disease_2025_09
+    none_of:
+    - has_flag: active_substance_abuse
+    - has_flag: malignancy_extrahepatic_active
+    - has_flag: severe_cardiopulmonary_disease
+  logic:
+    outcome: PA_REQUIRED
+    notes: "Liver transplant evaluation for decompensated cirrhosis MELD \u226515,\
+      \ HCC within Milan criteria, or acute liver failure"
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_transplant_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_875cd4eaeeab
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78201'
+    - '78202'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_liver_transplant_candidate_2025_09
+    - has_flag: cardiac_evaluation_required
+    any_of:
+    - min_age: 50
+    - has_flag: diabetes_mellitus
+    - has_flag: coronary_artery_disease_risk_factors
+    - dx_in_value_set: vs_cardiomyopathy_2025_09
+    none_of:
+    - has_flag: muga_within_12_months
+  logic:
+    outcome: PA_REQUIRED
+    notes: MUGA scan for cardiac evaluation in liver transplant candidates age 50+
+      or with cardiac risk factors
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_transplant_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_bc288739d4ac
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94010'
+    - '94060'
+    - '94070'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_liver_transplant_candidate_2025_09
+    - has_flag: pulmonary_evaluation_required
+    any_of:
+    - dx_in_value_set: vs_hepatopulmonary_syndrome_2025_09
+    - dx_in_value_set: vs_portopulmonary_hypertension_2025_09
+    - has_flag: smoking_history_significant
+    - dx_in_value_set: vs_alpha1_antitrypsin_deficiency_2025_09
+    none_of:
+    - has_flag: pft_within_6_months
+  logic:
+    outcome: PA_REQUIRED
+    notes: PFTs for liver transplant candidates with hepatopulmonary syndrome, portopulmonary
+      HTN, or smoking history
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_transplant_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_d40d7705d75d
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45378'
+    - '43235'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_liver_transplant_candidate_2025_09
+    - has_flag: cancer_screening_due
+    any_of:
+    - min_age: 50
+    - has_flag: family_history_colorectal_cancer
+    - dx_in_value_set: vs_primary_sclerosing_cholangitis_2025_09
+    - dx_in_value_set: vs_inflammatory_bowel_disease_2025_09
+    none_of:
+    - has_flag: screening_endoscopy_current
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cancer screening endoscopy for liver transplant candidates age 50+ or with
+      PSC/IBD risk factors
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_transplant_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_3f2edbd67b30
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '99241'
+    - '99242'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_cirrhosis_compensated_2025_09
+    - has_flag: meld_score_less_than_15
+    none_of:
+    - dx_in_value_set: vs_hepatocellular_carcinoma_2025_09
+    - has_flag: recurrent_complications
+    - dx_in_value_set: vs_metabolic_liver_disease_progressive_2025_09
+  logic:
+    outcome: DENY
+    notes: Transplant evaluation premature for compensated cirrhosis MELD <15 without
+      HCC or complications
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_transplant_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_4d9410de40f6

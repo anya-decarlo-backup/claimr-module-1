@@ -1,0 +1,159 @@
+# Rheumatoid Arthritis Management - UHC CA
+
+- id: rule_rheum_ra_dmard_initial
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J1745", "J0135", "J3262"]
+    ndc: ["0074-3799", "0074-4339", "50242-0040"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_rheumatoid_arthritis_2025_09"
+      - has_flag: "failed_conventional_dmards"
+      - lab_value_gte: "esr_30"
+    any_of:
+      - lab_value_gte: "crp_3.0"
+      - joint_count_gte: 6
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Biologic DMARDs require failure of conventional DMARDs and active disease"
+    auth_duration_days: 180
+    max_units_per_period: 12
+    period_type: "monthly"
+  precedence: 70
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_rheumatology_biologics_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_ra_tnf_inhibitors
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J0717", "J1438", "J1745"]
+    ndc: ["0074-0554", "50242-0134", "0074-3799"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_rheumatoid_arthritis_2025_09"
+      - has_flag: "inadequate_response_methotrexate"
+      - age_gte: 18
+    none_of:
+      - dx_in_value_set: "vs_active_infection_2025_09"
+      - dx_in_value_set: "vs_malignancy_active_2025_09"
+      - has_flag: "live_vaccine_recent"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "TNF inhibitors require MTX failure and screening for infections/malignancy"
+    auth_duration_days: 365
+    max_units_per_period: 26
+    period_type: "yearly"
+  precedence: 65
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_rheumatology_biologics_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_ra_jak_inhibitors
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    ndc: ["0069-0223", "0069-0224", "0069-0225"]
+    hcpcs: ["J3590"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_rheumatoid_arthritis_2025_09"
+      - has_flag: "failed_biologic_dmard"
+      - age_gte: 18
+      - age_lt: 65
+    none_of:
+      - dx_in_value_set: "vs_cardiovascular_disease_2025_09"
+      - dx_in_value_set: "vs_malignancy_history_2025_09"
+      - has_flag: "smoking_current"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "JAK inhibitors require biologic failure, age <65, no CV/malignancy risk"
+    auth_duration_days: 180
+    max_units_per_period: 60
+    period_type: "monthly"
+  precedence: 60
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_rheumatology_jak_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_ra_infusion_monitoring
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["96365", "96366", "96367"]
+    j_codes: ["J1745", "J0135"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_rheumatoid_arthritis_2025_09"
+      - has_flag: "biologic_infusion_therapy"
+      - setting_type: "outpatient_infusion_center"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Biologic infusions require specialized monitoring and facility"
+    auth_duration_days: 365
+    max_units_per_period: 26
+    period_type: "yearly"
+  precedence: 75
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_infusion_therapy_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_ra_lab_monitoring
+  type: EDIT
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["80053", "85025", "84450"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_rheumatoid_arthritis_2025_09"
+      - has_flag: "on_dmard_therapy"
+  logic:
+    outcome: "COVERED"
+    note: "Enhanced coverage for RA monitoring labs (CBC, CMP, ALT)"
+    frequency_limit: "monthly"
+  precedence: 80
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_lab_monitoring_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"

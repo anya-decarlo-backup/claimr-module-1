@@ -1,0 +1,150 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '99213'
+    - '99214'
+    - '99215'
+    ndc:
+    - 0093-1058
+    - 0378-6205
+    - 68180-0518
+    loinc:
+    - 33747-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bph_moderate_severe_2025_09
+    - dx_in_value_set: vs_bph_with_luts_2025_09
+    all_of:
+    - age_gte: 40
+    - has_flag: failed_conservative_management
+    none_of:
+    - has_flag: hypotension
+    - has_flag: syncope_history
+  logic:
+    outcome: PA_REQUIRED
+    note: Alpha-blocker therapy for moderate to severe BPH with lower urinary tract
+      symptoms
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_bph_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_435927beaa1e
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '99213'
+    - '99214'
+    - '99215'
+    ndc:
+    - 0006-0071
+    - 0173-0715
+    loinc:
+    - 33747-0
+    - 19195-7
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bph_enlarged_prostate_2025_09
+    - dx_in_value_set: vs_bph_progression_risk_2025_09
+    all_of:
+    - age_gte: 50
+    - has_flag: prostate_volume_gt_40ml
+    none_of:
+    - has_flag: pregnancy_exposure_risk
+  logic:
+    outcome: PA_REQUIRED
+    note: 5-alpha reductase inhibitor therapy for enlarged prostate with progression
+      risk
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_bph_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ddc5aab09f98
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '52601'
+    - '52630'
+    loinc:
+    - 33747-0
+    - 19195-7
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bph_refractory_medical_2025_09
+    - dx_in_value_set: vs_bph_complications_2025_09
+    all_of:
+    - age_gte: 45
+    - has_flag: failed_medical_therapy_6_months
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: active_uti
+    - has_flag: bleeding_disorder
+  logic:
+    outcome: PA_REQUIRED
+    note: TURP for medically refractory BPH with complications
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_bph_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_626ba5b4672e
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '52647'
+    - '52648'
+    - '52649'
+    loinc:
+    - 33747-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bph_refractory_medical_2025_09
+    - dx_in_value_set: vs_bph_anticoagulation_2025_09
+    all_of:
+    - age_gte: 50
+    - has_flag: anticoagulation_therapy
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: active_uti
+  logic:
+    outcome: PA_REQUIRED
+    note: Laser enucleation/vaporization for BPH in patients on anticoagulation
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_bph_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_47320b9ce414

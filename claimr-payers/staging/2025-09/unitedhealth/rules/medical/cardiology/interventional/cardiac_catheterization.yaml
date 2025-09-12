@@ -1,0 +1,138 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93454'
+    - '93455'
+    - '93456'
+    - '93457'
+    - '93458'
+    - '93459'
+    - '93460'
+    - '93461'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_unstable_angina_2025_09
+    - dx_in_value_set: vs_myocardial_infarction_2025_09
+    - dx_in_value_set: vs_coronary_artery_disease_2025_09
+    - has_flag: abnormal_stress_test_high_risk
+    all_of:
+    - min_age: 18
+    none_of:
+    - has_flag: cardiac_cath_within_6_months
+    - dx_in_value_set: vs_contraindication_contrast_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac catheterization requires unstable angina, MI, known CAD, or high-risk
+      stress test
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiology_interventional_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_23d2070cfe1d
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '92920'
+    - '92921'
+    - '92924'
+    - '92925'
+    - '92928'
+    - '92929'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_stemi_2025_09
+    - dx_in_value_set: vs_nstemi_2025_09
+    - dx_in_value_set: vs_unstable_angina_2025_09
+    - has_flag: significant_coronary_stenosis
+    all_of:
+    - has_flag: cardiac_cath_completed
+    none_of:
+    - dx_in_value_set: vs_contraindication_antiplatelet_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: PCI requires acute coronary syndrome or significant stenosis on catheterization
+  precedence: 98
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiology_interventional_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_ba62a4505e7f
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33533'
+    - '33534'
+    - '33535'
+    - '33536'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_left_main_disease_2025_09
+    - dx_in_value_set: vs_three_vessel_disease_2025_09
+    - dx_in_value_set: vs_two_vessel_disease_lad_2025_09
+    all_of:
+    - has_flag: heart_team_evaluation
+    - has_flag: euroscore_calculated
+    none_of:
+    - dx_in_value_set: vs_contraindication_surgery_2025_09
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: CABG requires multivessel disease, heart team evaluation, and surgical
+      candidacy
+  precedence: 99
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiology_interventional_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_fc7f7b2e48b4
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93454'
+    - '93455'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_stable_angina_2025_09
+    none_of:
+    - has_flag: optimal_medical_therapy_failed
+    - has_flag: high_risk_stress_test
+    - dx_in_value_set: vs_heart_failure_reduced_ef_2025_09
+  logic:
+    outcome: DENY
+    notes: Stable angina requires failed optimal medical therapy or high-risk features
+      before catheterization
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiology_interventional_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_72eda02b3cd6

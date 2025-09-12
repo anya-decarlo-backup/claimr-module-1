@@ -1,0 +1,46 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    service_id: svc_upper_endoscopy
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_gi_bleeding_2025_09
+    - min_age: 50
+  logic:
+    outcome: PA_REQUIRED
+    notes: Upper endoscopy requires GI bleeding diagnosis or age 50+
+  precedence: 65
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_gi_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_7908f7a49891
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    service_id: svc_colonoscopy
+  conditions:
+    any_of:
+    - min_age: 45
+    - dx_in_value_set: vs_gi_bleeding_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: Colonoscopy requires age 45+ or GI bleeding diagnosis
+  precedence: 60
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_gi_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_718c27dca297

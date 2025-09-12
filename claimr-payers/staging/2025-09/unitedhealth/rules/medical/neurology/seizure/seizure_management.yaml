@@ -1,0 +1,183 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95816'
+    - '95819'
+    - '95822'
+    loinc:
+    - 33747-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_new_onset_seizure_2025_09
+    - dx_in_value_set: vs_refractory_epilepsy_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: specialist_evaluation
+    - has_flag: seizure_witnessed_or_documented
+    none_of:
+    - has_flag: eeg_within_30_days
+  logic:
+    outcome: PA_REQUIRED
+    note: EEG for new onset seizure or refractory epilepsy evaluation
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_seizure_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_837e0b62e62c
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95700'
+    - '95705'
+    - '95706'
+    - '95707'
+    loinc:
+    - 33747-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_refractory_epilepsy_2025_09
+    - dx_in_value_set: vs_epilepsy_surgery_candidate_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_two_aeds
+    - has_flag: specialist_evaluation
+    - has_flag: seizure_localization_needed
+    none_of:
+    - has_flag: generalized_epilepsy
+  logic:
+    outcome: PA_REQUIRED
+    note: Video EEG monitoring for refractory epilepsy and surgical candidacy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_seizure_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_97639e13a7f2
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 0074-3943
+    - 0074-8871
+    - 0173-0830
+    j_codes:
+    - J1953
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_refractory_epilepsy_2025_09
+    - dx_in_value_set: vs_status_epilepticus_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_standard_aeds
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: contraindication_to_aed
+  logic:
+    outcome: PA_REQUIRED
+    note: Third-line antiepileptic drugs for refractory epilepsy
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_seizure_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_f058aa951dd0
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61885'
+    - '61886'
+    - '61888'
+    hcpcs:
+    - C1767
+    - C1778
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_refractory_epilepsy_2025_09
+    - dx_in_value_set: vs_epilepsy_surgery_candidate_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_multiple_aeds
+    - has_flag: seizure_focus_localized
+    - has_flag: specialist_evaluation
+    - has_flag: surgical_candidate
+    none_of:
+    - has_flag: eloquent_cortex_involvement
+    - has_flag: high_surgical_risk
+  logic:
+    outcome: PA_REQUIRED
+    note: Epilepsy surgery for medically refractory focal epilepsy
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_seizure_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_415e2b0f04c3
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '64568'
+    - '64569'
+    - '64570'
+    hcpcs:
+    - C1767
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_refractory_epilepsy_2025_09
+    - dx_in_value_set: vs_epilepsy_vns_candidate_2025_09
+    all_of:
+    - age_gte: 12
+    - has_flag: failed_multiple_aeds
+    - has_flag: not_surgical_candidate
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: cardiac_arrhythmia
+    - has_flag: sleep_apnea_severe
+  logic:
+    outcome: PA_REQUIRED
+    note: Vagus nerve stimulator for refractory epilepsy not amenable to surgery
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_seizure_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_45fcd6c1df1b

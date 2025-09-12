@@ -1,0 +1,69 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    service_id: svc_colonoscopy
+  conditions:
+    all_of:
+    - max_age: 17
+  logic:
+    outcome: EXCLUDED
+    notes: Colonoscopy excluded for patients under 18 (not medically appropriate)
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_2d9210daebd9
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    service_id: svc_mammography
+  conditions:
+    all_of:
+    - max_age: 39
+    none_of:
+    - dx_in_value_set: vs_cancer_active_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Mammography excluded under age 40 unless active cancer diagnosis
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_36234117fd3c
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    service_id: svc_bone_density
+  conditions:
+    all_of:
+    - max_age: 64
+    - sex: M
+  logic:
+    outcome: EXCLUDED
+    notes: Bone density excluded for males under 65 (not cost-effective screening)
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_46b78e198915

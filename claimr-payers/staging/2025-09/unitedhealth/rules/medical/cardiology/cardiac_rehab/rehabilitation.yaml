@@ -1,0 +1,95 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93797'
+    - '93798'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_myocardial_infarction_2025_09
+    - dx_in_value_set: vs_cabg_post_op_2025_09
+    - dx_in_value_set: vs_pci_post_procedure_2025_09
+    - dx_in_value_set: vs_heart_failure_stable_2025_09
+    - dx_in_value_set: vs_heart_transplant_2025_09
+    all_of:
+    - has_flag: physician_referral
+    - has_flag: medically_stable
+    - min_age: 18
+    none_of:
+    - dx_in_value_set: vs_unstable_angina_2025_09
+    - dx_in_value_set: vs_uncontrolled_arrhythmia_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac rehab requires qualifying cardiac event, physician referral, and
+      medical stability
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiac_rehab_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_fb306e61f694
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93797'
+    - '93798'
+  conditions:
+    all_of:
+    - has_flag: cardiac_rehab_approved
+    - utilization_gte:
+        cardiac_rehab_sessions: 36
+  logic:
+    outcome: DENY
+    notes: Cardiac rehabilitation limited to 36 sessions per qualifying event
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiac_rehab_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_3ee5f6373bdd
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - G0422
+    - G0423
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_myocardial_infarction_2025_09
+    - dx_in_value_set: vs_cabg_post_op_2025_09
+    - dx_in_value_set: vs_pci_post_procedure_2025_09
+    - dx_in_value_set: vs_stable_angina_2025_09
+    all_of:
+    - has_flag: high_risk_patient
+    - has_flag: physician_referral
+    - has_flag: intensive_program_available
+    none_of:
+    - has_flag: standard_rehab_adequate
+  logic:
+    outcome: PA_REQUIRED
+    notes: Intensive cardiac rehab for high-risk patients when standard rehab insufficient
+  precedence: 88
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiac_rehab_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_bb2e82e629f6

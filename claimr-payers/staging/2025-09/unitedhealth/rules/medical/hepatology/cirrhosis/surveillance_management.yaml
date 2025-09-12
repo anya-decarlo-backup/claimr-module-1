@@ -1,0 +1,154 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76700'
+    - '76705'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_cirrhosis_2025_09
+    - has_flag: hcc_surveillance_due
+    none_of:
+    - has_flag: ultrasound_within_6_months
+    - dx_in_value_set: vs_hepatocellular_carcinoma_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: HCC surveillance ultrasound every 6 months for cirrhosis patients without
+      active HCC
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_f191689db3b3
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43235'
+    - '43239'
+  conditions:
+    any_of:
+    - all_of:
+      - dx_in_value_set: vs_cirrhosis_compensated_2025_09
+      - has_flag: new_cirrhosis_diagnosis
+    - all_of:
+      - dx_in_value_set: vs_esophageal_varices_2025_09
+      - has_flag: surveillance_egd_due
+    none_of:
+    - has_flag: egd_within_appropriate_interval
+    - dx_in_value_set: vs_contraindication_endoscopy_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: EGD surveillance for varices screening in new cirrhosis or established
+      varices monitoring
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_b02704fe687c
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43243'
+    - '43244'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_esophageal_varices_large_2025_09
+    - dx_in_value_set: vs_variceal_bleeding_active_2025_09
+    - dx_in_value_set: vs_variceal_bleeding_history_2025_09
+    all_of:
+    - dx_in_value_set: vs_cirrhosis_2025_09
+    none_of:
+    - has_flag: hemodynamically_unstable
+    - dx_in_value_set: vs_contraindication_endoscopy_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: Variceal band ligation for large varices or bleeding prevention/treatment
+      in cirrhosis
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_0c1af8255f69
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '47000'
+    - '47001'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ascites_new_onset_2025_09
+    - dx_in_value_set: vs_ascites_refractory_2025_09
+    - dx_in_value_set: vs_spontaneous_bacterial_peritonitis_2025_09
+    all_of:
+    - dx_in_value_set: vs_cirrhosis_decompensated_2025_09
+    none_of:
+    - has_flag: bleeding_disorder_severe
+    - has_flag: bowel_obstruction
+  logic:
+    outcome: PA_REQUIRED
+    notes: Paracentesis for new-onset, refractory ascites or SBP evaluation in decompensated
+      cirrhosis
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_b031af247729
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76700'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_cirrhosis_2025_09
+    - has_flag: hcc_surveillance_appropriate
+    none_of:
+    - has_flag: child_pugh_class_c
+    - has_flag: life_expectancy_less_than_1_year
+  logic:
+    outcome: APPROVE
+    notes: HCC surveillance ultrasound approved for compensated cirrhosis with adequate
+      life expectancy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_f0cbb42c8b51

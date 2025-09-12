@@ -1,0 +1,159 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36818'
+    - '36819'
+    - '36820'
+    - '36821'
+    modifier:
+    - '50'
+    - LT
+    - RT
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ckd_stage_4_2025_09
+    - dx_in_value_set: vs_ckd_stage_5_predialysis_2025_09
+    - dx_in_value_set: vs_esrd_access_needed_2025_09
+    all_of:
+    - has_flag: vascular_access_planning_indicated
+    - has_flag: vascular_mapping_completed
+    - has_flag: surgical_candidate
+    none_of:
+    - has_flag: inadequate_vessel_anatomy
+    - has_flag: severe_peripheral_vascular_disease
+    - has_flag: life_expectancy_less_than_1_year
+  logic:
+    outcome: PA_REQUIRED
+    note: AV fistula creation for stages 4-5 CKD or ESRD with vascular mapping completed
+      surgical candidacy and adequate vessel anatomy for dialysis access planning
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_av_fistula_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_905c3d38d606
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36825'
+    - '36830'
+    - '36831'
+    - '36832'
+    hcpcs:
+    - C1750
+    - C1751
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_esrd_access_needed_2025_09
+    - dx_in_value_set: vs_ckd_stage_5_dialysis_2025_09
+    - dx_in_value_set: vs_fistula_failure_2025_09
+    all_of:
+    - has_flag: fistula_not_feasible_or_failed
+    - has_flag: graft_placement_indicated
+    - has_flag: vascular_surgery_consultation
+    none_of:
+    - has_flag: active_bacteremia
+    - has_flag: severe_heart_failure
+    - has_flag: steal_syndrome_risk_high
+  logic:
+    outcome: PA_REQUIRED
+    note: AV graft placement for ESRD or stage 5 CKD when fistula not feasible or
+      failed with vascular surgery consultation and graft placement indicated
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_av_graft_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_4849fdd32506
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36556'
+    - '36558'
+    - '36569'
+    - '36571'
+    hcpcs:
+    - C1751
+    - C1894
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_esrd_urgent_dialysis_2025_09
+    - dx_in_value_set: vs_ckd_stage_5_acute_2025_09
+    - dx_in_value_set: vs_access_bridge_needed_2025_09
+    all_of:
+    - has_flag: immediate_dialysis_access_needed
+    - has_flag: temporary_access_appropriate
+    none_of:
+    - has_flag: coagulopathy_uncorrected
+    - has_flag: infection_at_insertion_site
+    - has_flag: superior_vena_cava_syndrome
+  logic:
+    outcome: PA_REQUIRED
+    note: Central venous catheter insertion for urgent dialysis access in ESRD or
+      acute stage 5 CKD when immediate dialysis access needed and temporary access
+      appropriate
+  precedence: 100
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_dialysis_catheter_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_f2104b71c44b
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36901'
+    - '36902'
+    - '36903'
+    - '36904'
+    hcpcs:
+    - G0365
+    - G0392
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_access_dysfunction_2025_09
+    - dx_in_value_set: vs_access_stenosis_2025_09
+    - dx_in_value_set: vs_access_thrombosis_2025_09
+    all_of:
+    - has_flag: access_surveillance_abnormal
+    - has_flag: intervention_indicated
+    none_of:
+    - has_flag: access_infection_active
+    - has_flag: access_abandonment_planned
+  logic:
+    outcome: PA_REQUIRED
+    note: Dialysis access maintenance and revision procedures for access dysfunction
+      stenosis or thrombosis with abnormal surveillance and intervention indicated
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_access_maintenance_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_e5b55857440b

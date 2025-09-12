@@ -1,0 +1,91 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93306'
+    - '93307'
+    - '93308'
+    - '93312'
+    - '93320'
+    - '93321'
+    - '93325'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_heart_failure_2025_09
+    - dx_in_value_set: vs_valvular_disease_2025_09
+    - dx_in_value_set: vs_cardiomyopathy_2025_09
+    - dx_in_value_set: vs_congenital_heart_2025_09
+    none_of:
+    - has_flag: echo_within_6_months
+  logic:
+    outcome: PA_REQUIRED
+    notes: Echocardiography requires cardiac diagnosis; limited to every 6 months
+      unless clinical change
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_766005a52683
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93306'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_routine_screening_2025_09
+    none_of:
+    - dx_in_value_set: vs_heart_failure_2025_09
+    - dx_in_value_set: vs_valvular_disease_2025_09
+    - min_age: 65
+  logic:
+    outcome: DENY
+    notes: Routine screening echocardiography not covered unless age 65+ or cardiac
+      symptoms
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_35b7edf09a0c
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93312'
+    - '93318'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_endocarditis_2025_09
+    - dx_in_value_set: vs_atrial_fibrillation_2025_09
+    - dx_in_value_set: vs_stroke_tia_2025_09
+    - dx_in_value_set: vs_valvular_disease_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: 'TEE requires specific indications: endocarditis, AF evaluation, stroke
+      workup, or valve assessment'
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_7061466cc66e

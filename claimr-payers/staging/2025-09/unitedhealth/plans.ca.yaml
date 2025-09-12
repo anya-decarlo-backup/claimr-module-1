@@ -1,9 +1,70 @@
-# UnitedHealth CA Plan Stubs
+# UnitedHealth California Plans - 2025
 
-# Optional: plan stubs by state
 plans:
-  - plan_id: UH-CA-001
-    state: CA
-    line_of_business: commercial
-    plan_type: ppo
+  - plan_id: "plan_uhc_ca_ppo_lg_2025"
+    carrier_id: "crr_7f9b2e1a2b3c"
+    name: "UHC CA PPO Large Group"
+    lob: "commercial_fully_insured"
+    state: "CA"
+    market: "large_group"
+    plan_type: "PPO"
+    service_area:
+      states: ["CA"]
+      counties: ["Los Angeles", "Orange", "San Diego", "San Francisco", "Alameda"]
+    effective_start: "2025-01-01"
+    effective_end: "2025-12-31"
     active: true
+    _meta:
+      source: "sources/2025-09/unitedhealth/ca_plans_2025.xlsx"
+      last_verified_at: "2025-09-11"
+
+  - plan_id: "plan_uhc_ca_hmo_sg_2025"
+    carrier_id: "crr_7f9b2e1a2b3c"
+    name: "UHC CA HMO Small Group"
+    lob: "commercial_fully_insured"
+    state: "CA"
+    market: "small_group"
+    plan_type: "HMO"
+    service_area:
+      states: ["CA"]
+      counties: ["Los Angeles", "Orange", "San Diego"]
+    effective_start: "2025-01-01"
+    effective_end: "2025-12-31"
+    active: true
+    _meta:
+      source: "sources/2025-09/unitedhealth/ca_plans_2025.xlsx"
+      last_verified_at: "2025-09-11"
+
+  - plan_id: "plan_uhc_ca_epo_ind_2025"
+    carrier_id: "crr_7f9b2e1a2b3c"
+    name: "UHC CA EPO Individual"
+    lob: "individual_on_exchange"
+    state: "CA"
+    market: "individual"
+    plan_type: "EPO"
+    service_area:
+      states: ["CA"]
+      counties: ["Los Angeles", "Orange", "Riverside", "San Bernardino"]
+    effective_start: "2025-01-01"
+    effective_end: "2025-12-31"
+    active: true
+    _meta:
+      source: "sources/2025-09/unitedhealth/ca_plans_2025.xlsx"
+      last_verified_at: "2025-09-11"
+
+  - plan_id: "plan_uhc_ca_ma_2025"
+    carrier_id: "crr_7f9b2e1a2b3c"
+    name: "UHC CA Medicare Advantage"
+    lob: "medicare_advantage"
+    state: "CA"
+    market: "medicare"
+    plan_type: "HMO"
+    service_area:
+      states: ["CA"]
+      counties: ["Los Angeles", "Orange", "San Diego", "San Francisco", "Alameda", "Sacramento"]
+    effective_start: "2025-01-01"
+    effective_end: "2025-12-31"
+    active: true
+    _meta:
+      source: "sources/2025-09/unitedhealth/ca_plans_2025.xlsx"
+      last_verified_at: "2025-09-11"

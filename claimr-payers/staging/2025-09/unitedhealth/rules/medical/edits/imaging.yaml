@@ -1,0 +1,48 @@
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    service_id: svc_mri_brain
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cancer_active_2025_09
+    - min_age: 65
+    none_of:
+    - dx_in_value_set: vs_pregnancy_2025_09
+  logic:
+    outcome: APPROVE
+    notes: Brain MRI approved for cancer patients or age 65+, excluded in pregnancy
+  precedence: 60
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_imaging_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_5ab34bef074e
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    service_id: svc_ct_abdomen
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cancer_active_2025_09
+    - dx_in_value_set: vs_gi_bleeding_2025_09
+  logic:
+    outcome: APPROVE
+    notes: Abdominal CT approved for cancer or GI bleeding
+  precedence: 55
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_imaging_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_9400c7709a22

@@ -1,0 +1,46 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: HMO
+    market: small_group
+  service_ref:
+    service_id: svc_mri_brain
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_cancer_active_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: 'HMO small group: Brain MRI requires PA even with cancer diagnosis'
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hmo_sg_overrides_2025.pdf
+    last_verified_at: '2025-09-11'
+    note: Overrides general imaging rule for HMO small group plans
+  id: rule_627ae7154f84
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: individual_on_exchange
+    state: CA
+    plan_type: EPO
+    market: individual
+  service_ref:
+    service_id: svc_sleep_study
+  conditions:
+    all_of:
+    - max_age: 25
+  logic:
+    outcome: EXCLUDED
+    notes: 'Individual EPO: Sleep studies excluded for patients under 26'
+  precedence: 98
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_epo_ind_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    note: Individual market cost containment measure
+  id: rule_2743e0b61b90

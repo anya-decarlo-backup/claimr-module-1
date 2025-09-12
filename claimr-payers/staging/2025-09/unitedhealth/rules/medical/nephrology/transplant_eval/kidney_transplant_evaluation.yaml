@@ -1,0 +1,188 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '99205'
+    - '99215'
+    - '99245'
+    hcpcs:
+    - G0463
+    - G0464
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ckd_stage_4_2025_09
+    - dx_in_value_set: vs_ckd_stage_5_2025_09
+    - dx_in_value_set: vs_esrd_transplant_candidate_2025_09
+    all_of:
+    - has_flag: transplant_evaluation_indicated
+    - has_flag: transplant_center_referral
+    - min_age: 18
+    - max_age: 75
+    none_of:
+    - has_flag: active_malignancy
+    - has_flag: severe_cardiac_disease
+    - has_flag: active_substance_abuse
+    - has_flag: severe_psychiatric_disorder_untreated
+  logic:
+    outcome: PA_REQUIRED
+    note: Kidney transplant evaluation for stages 4-5 CKD or ESRD with transplant
+      center referral and evaluation indicated excluding active malignancy or severe
+      comorbidities
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_kidney_transplant_eval_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_efcb314b9388
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '86805'
+    - '86806'
+    - '86807'
+    - '86808'
+    hcpcs:
+    - G0452
+    - G0453
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_transplant_candidate_active_2025_09
+    - dx_in_value_set: vs_living_donor_evaluation_2025_09
+    all_of:
+    - has_flag: transplant_listing_approved
+    - has_flag: immunologic_compatibility_testing_needed
+    none_of:
+    - has_flag: transplant_contraindication_absolute
+    - has_flag: donor_incompatible_blood_type
+  logic:
+    outcome: PA_REQUIRED
+    note: HLA typing and crossmatching for active transplant candidates or living
+      donor evaluation with approved transplant listing and immunologic compatibility
+      testing needed
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_transplant_immunology_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_8195463af03b
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50360'
+    - '50365'
+    - '50370'
+    hcpcs:
+    - S2065
+    - S2066
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_esrd_transplant_listed_2025_09
+    - dx_in_value_set: vs_ckd_stage_5_transplant_ready_2025_09
+    all_of:
+    - has_flag: transplant_center_approved
+    - has_flag: donor_organ_available
+    - has_flag: recipient_medically_stable
+    none_of:
+    - has_flag: active_infection
+    - has_flag: recent_malignancy
+    - has_flag: severe_cardiovascular_disease
+  logic:
+    outcome: PA_REQUIRED
+    note: Kidney transplant procedures for ESRD or stage 5 CKD with transplant center
+      approval donor organ available and medically stable recipient
+  precedence: 100
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_kidney_transplant_surgery_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_af3fa169dd91
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 0078-0357-15
+    - 0078-0357-34
+    j_code:
+    - J7507
+    - J7508
+    - J7509
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kidney_transplant_recipient_2025_09
+    - dx_in_value_set: vs_transplant_rejection_risk_2025_09
+    all_of:
+    - has_flag: post_transplant_immunosuppression_indicated
+    - has_flag: transplant_center_managed
+    none_of:
+    - has_flag: severe_infection_active
+    - has_flag: malignancy_post_transplant
+    - has_flag: drug_toxicity_severe
+  logic:
+    outcome: PA_REQUIRED
+    note: Post-transplant immunosuppressive medications for kidney transplant recipients
+      with transplant center management and immunosuppression indicated excluding
+      severe infections or malignancy
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_transplant_immunosuppression_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_b64eb444f87e
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '80299'
+    - '80307'
+    loinc:
+    - 3663-2
+    - 11574-6
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kidney_transplant_recipient_2025_09
+    - dx_in_value_set: vs_immunosuppression_monitoring_2025_09
+  utilization_gte:
+    count: 12
+    period: 12_months
+  logic:
+    outcome: EDIT
+    note: Immunosuppressive drug level monitoring frequency limits for kidney transplant
+      recipients with monthly testing restrictions for therapeutic drug monitoring
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_transplant_monitoring_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_d2bf3a3a803e

@@ -1,0 +1,128 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45378'
+    - '45380'
+    - '45381'
+    - '45384'
+    - '45385'
+  conditions:
+    any_of:
+    - all_of:
+      - min_age: 45
+      - has_flag: average_risk_screening
+      - has_flag: no_colonoscopy_10_years
+    - dx_in_value_set: vs_family_history_colorectal_cancer_2025_09
+    - dx_in_value_set: vs_ibd_surveillance_2025_09
+    - dx_in_value_set: vs_lower_gi_bleeding_2025_09
+    none_of:
+    - dx_in_value_set: vs_contraindication_colonoscopy_2025_09
+    - has_flag: inadequate_prep_recent
+  logic:
+    outcome: PA_REQUIRED
+    notes: Colonoscopy screening at age 45+ for average risk, earlier for family history
+      or IBD surveillance indication
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_screening_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_4ed1e20abb31
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45378'
+  conditions:
+    any_of:
+    - all_of:
+      - dx_in_value_set: vs_adenomatous_polyps_2025_09
+      - has_flag: high_risk_adenoma_features
+    - all_of:
+      - dx_in_value_set: vs_colorectal_cancer_history_2025_09
+      - has_flag: surveillance_interval_due
+    - dx_in_value_set: vs_lynch_syndrome_2025_09
+    none_of:
+    - has_flag: surveillance_colonoscopy_within_interval
+  logic:
+    outcome: PA_REQUIRED
+    notes: Surveillance colonoscopy interval based on polyp histology, cancer history,
+      or genetic syndrome
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_screening_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_12268c0b2229
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45378'
+  conditions:
+    all_of:
+    - min_age: 45
+    - max_age: 75
+    - has_flag: average_risk_screening
+    none_of:
+    - has_flag: family_history_colorectal_cancer
+    - has_flag: personal_history_polyps
+    - dx_in_value_set: vs_ibd_2025_09
+  logic:
+    outcome: APPROVE
+    notes: Screening colonoscopy coverage every 10 years for average risk patients
+      age 45-75
+  precedence: 75
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_screening_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_acf2199e2e04
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45378'
+    - '45380'
+    - '45381'
+  conditions:
+    all_of:
+    - min_age: 76
+    none_of:
+    - has_flag: life_expectancy_10_years_plus
+    - dx_in_value_set: vs_symptoms_requiring_evaluation_2025_09
+  logic:
+    outcome: DENY
+    notes: Screening colonoscopy age limit not recommended after age 75 unless life
+      expectancy >10 years
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_screening_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_ebd6c469b388

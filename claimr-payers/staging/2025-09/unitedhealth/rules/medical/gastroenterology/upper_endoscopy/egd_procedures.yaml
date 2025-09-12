@@ -1,0 +1,129 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43235'
+    - '43239'
+    - '43240'
+    - '43241'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dysphagia_2025_09
+    - dx_in_value_set: vs_upper_gi_bleeding_2025_09
+    - dx_in_value_set: vs_peptic_ulcer_disease_2025_09
+    - dx_in_value_set: vs_gerd_refractory_2025_09
+    - dx_in_value_set: vs_barrett_esophagus_2025_09
+    none_of:
+    - has_flag: egd_within_12_months
+    - dx_in_value_set: vs_contraindication_endoscopy_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: EGD diagnostic requires appropriate GI symptoms or surveillance indication;
+      limited annually unless acute bleeding
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_gastroenterology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_fcf0055352e1
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43249'
+    - '43250'
+    - '43251'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_esophageal_stricture_2025_09
+    - dx_in_value_set: vs_achalasia_2025_09
+    - dx_in_value_set: vs_esophageal_obstruction_2025_09
+    all_of:
+    - has_flag: dysphagia_documented
+    - has_flag: imaging_confirms_stricture
+    none_of:
+    - has_flag: malignant_obstruction_inoperable
+  logic:
+    outcome: PA_REQUIRED
+    notes: Therapeutic EGD dilation requires documented dysphagia with imaging-confirmed
+      stricture or obstruction
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_gastroenterology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_018583548024
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43235'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_gerd_uncomplicated_2025_09
+    none_of:
+    - has_flag: alarm_symptoms
+    - min_age: 50
+    - has_flag: ppi_trial_failed
+  logic:
+    outcome: DENY
+    notes: EGD diagnostic for uncomplicated GERD requires failed PPI trial, age 50+,
+      or alarm symptoms
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_gastroenterology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_ee3c1f545b3a
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43270'
+    - '43274'
+    - '43276'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_choledocholithiasis_2025_09
+    - dx_in_value_set: vs_biliary_obstruction_2025_09
+    - dx_in_value_set: vs_pancreatitis_acute_2025_09
+    - dx_in_value_set: vs_pancreatic_duct_stricture_2025_09
+    all_of:
+    - has_flag: imaging_abnormal_biliary_pancreatic
+    none_of:
+    - has_flag: bleeding_disorder_severe
+    - dx_in_value_set: vs_contraindication_ercp_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: ERCP diagnostic/therapeutic requires abnormal biliary/pancreatic imaging
+      and appropriate indication
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_gastroenterology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_732452c72a6a

@@ -1,0 +1,217 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95860'
+    - '95861'
+    - '95863'
+    - '95864'
+    loinc:
+    - 33747-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_peripheral_neuropathy_2025_09
+    - dx_in_value_set: vs_myopathy_suspected_2025_09
+    - dx_in_value_set: vs_motor_neuron_disease_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: progressive_weakness
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: emg_within_6_months
+  logic:
+    outcome: PA_REQUIRED
+    note: EMG/NCS for evaluation of suspected neuromuscular disorders
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_neuromuscular_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_3fbbe8063001
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '20206'
+    - '20225'
+    loinc:
+    - 33747-0
+    - 26825-8
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_inflammatory_myopathy_2025_09
+    - dx_in_value_set: vs_muscular_dystrophy_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: elevated_ck_levels
+    - has_flag: abnormal_emg
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: bleeding_disorder
+    - has_flag: anticoagulation_therapy
+  logic:
+    outcome: PA_REQUIRED
+    note: Muscle biopsy for suspected inflammatory myopathy or muscular dystrophy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_neuromuscular_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_7f1ddcfc5130
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J1568
+    - J7799
+    cpt:
+    - '96365'
+    - '96366'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_myasthenia_gravis_2025_09
+    - dx_in_value_set: vs_lambert_eaton_syndrome_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: confirmed_nmj_disorder
+    - has_flag: myasthenic_crisis_or_severe_symptoms
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: cardiovascular_instability
+    - has_flag: active_infection
+  logic:
+    outcome: PA_REQUIRED
+    note: IVIG or plasma exchange for myasthenic crisis or severe neuromuscular junction
+      disorders
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_neuromuscular_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_634fc916195f
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 0078-0429
+    - 0173-0830
+    j_codes:
+    - J7799
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_als_2025_09
+    - dx_in_value_set: vs_motor_neuron_disease_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: confirmed_als_diagnosis
+    - has_flag: progressive_motor_decline
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: end_stage_disease
+    - has_flag: contraindication_to_therapy
+  logic:
+    outcome: PA_REQUIRED
+    note: Disease-modifying therapy for ALS (riluzole, edaravone)
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_neuromuscular_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_7e5dca9ae5cc
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '81479'
+    - '81408'
+    - '81406'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hereditary_neuropathy_2025_09
+    - dx_in_value_set: vs_muscular_dystrophy_2025_09
+    - dx_in_value_set: vs_spinal_muscular_atrophy_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: family_history_neuromuscular
+    - has_flag: clinical_suspicion_genetic
+    - has_flag: specialist_evaluation
+    none_of: []
+  logic:
+    outcome: PA_REQUIRED
+    note: Genetic testing for suspected hereditary neuromuscular disorders
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_neuromuscular_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_7d435aeed136
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J9999
+    ndc:
+    - 0078-0659
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_spinal_muscular_atrophy_2025_09
+    - dx_in_value_set: vs_duchenne_muscular_dystrophy_2025_09
+    all_of:
+    - age_gte: 6
+    - has_flag: confirmed_genetic_diagnosis
+    - has_flag: ambulatory_or_sitting
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: advanced_respiratory_failure
+    - has_flag: contraindication_to_therapy
+  logic:
+    outcome: PA_REQUIRED
+    note: Gene therapy or antisense oligonucleotides for genetic neuromuscular disorders
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurology_neuromuscular_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_3550498b3997

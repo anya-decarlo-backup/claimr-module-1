@@ -1,0 +1,120 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J0897
+    - J1756
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_heart_failure_reduced_ef_2025_09
+    - has_flag: ejection_fraction_35_or_less
+    - has_flag: optimal_medical_therapy_3_months
+    - has_flag: life_expectancy_1_year_plus
+    none_of:
+    - dx_in_value_set: vs_reversible_cardiomyopathy_2025_09
+    - has_flag: incessant_vt_vf
+  logic:
+    outcome: PA_REQUIRED
+    notes: "ICD/CRT-D requires HFrEF with EF \u226435%, optimal medical therapy \u2265\
+      3 months, life expectancy >1 year"
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_heart_failure_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_06f4b81c75bc
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33249'
+    - '33264'
+    - '33265'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_heart_failure_reduced_ef_2025_09
+    - has_flag: qrs_duration_150_ms_plus
+    - has_flag: lbbb_morphology
+    - has_flag: nyha_class_ii_iv
+    - has_flag: optimal_medical_therapy_3_months
+    none_of:
+    - has_flag: atrial_fibrillation_permanent
+  logic:
+    outcome: PA_REQUIRED
+    notes: "CRT requires HFrEF, QRS \u2265150ms with LBBB, NYHA II-IV, optimal medical\
+      \ therapy"
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_heart_failure_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_54b516a1d909
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J1303
+    - J1304
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_heart_failure_reduced_ef_2025_09
+    - has_flag: ace_inhibitor_intolerant
+    - has_flag: nyha_class_ii_iv
+    none_of:
+    - dx_in_value_set: vs_angioedema_history_2025_09
+    - has_flag: pregnancy
+  logic:
+    outcome: PA_REQUIRED
+    notes: Entresto requires HFrEF with ACE inhibitor intolerance, NYHA II-IV, no
+      angioedema history
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_heart_failure_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_85437977c536
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93306'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_heart_failure_2025_09
+    - has_flag: stable_symptoms
+    none_of:
+    - has_flag: medication_change_recent
+    - has_flag: clinical_deterioration
+  logic:
+    outcome: APPROVE
+    notes: Routine echo monitoring approved for stable HF patients every 6-12 months
+  precedence: 75
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_heart_failure_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_42334077c4f0

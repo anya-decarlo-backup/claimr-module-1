@@ -1,0 +1,207 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '84153'
+    - '84154'
+    loinc:
+    - 33747-0
+    - 10886-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostate_screening_eligible_2025_09
+    - dx_in_value_set: vs_prostate_cancer_risk_2025_09
+    all_of:
+    - age_gte: 50
+    - age_lte: 75
+    - has_flag: life_expectancy_gt_10_years
+    none_of:
+    - has_flag: life_expectancy_less_10_years
+  logic:
+    outcome: PA_REQUIRED
+    note: PSA screening for prostate cancer in average-risk men aged 50-75
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_prostate_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_6376281c3547
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55700'
+    - '55706'
+    loinc:
+    - 33747-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_elevated_psa_2025_09
+    - dx_in_value_set: vs_abnormal_dre_2025_09
+    all_of:
+    - age_gte: 40
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: active_prostatitis
+    - has_flag: bleeding_disorder
+  logic:
+    outcome: PA_REQUIRED
+    note: Prostate biopsy for elevated PSA or abnormal digital rectal exam
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_prostate_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_48f5c3577b54
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55706'
+    - '76376'
+    - '76377'
+    loinc:
+    - 33747-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prior_negative_biopsy_2025_09
+    - dx_in_value_set: vs_active_surveillance_2025_09
+    all_of:
+    - age_gte: 40
+    - has_flag: specialist_evaluation
+    - has_flag: mri_compatible
+    none_of:
+    - has_flag: claustrophobia
+    - has_flag: metallic_implants
+  logic:
+    outcome: PA_REQUIRED
+    note: MRI-guided prostate biopsy for prior negative biopsy or active surveillance
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_prostate_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_7b17620deb8c
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '81479'
+    - '81599'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostate_cancer_low_risk_2025_09
+    - dx_in_value_set: vs_prostate_cancer_intermediate_risk_2025_09
+    all_of:
+    - age_gte: 40
+    - has_flag: confirmed_prostate_cancer
+    - has_flag: specialist_evaluation
+    none_of: []
+  logic:
+    outcome: PA_REQUIRED
+    note: Genomic testing for prostate cancer risk stratification
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_prostate_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_3ebc027b1ccb
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '84153'
+    - '55700'
+    - '76872'
+    loinc:
+    - 33747-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostate_cancer_very_low_risk_2025_09
+    - dx_in_value_set: vs_prostate_cancer_low_risk_2025_09
+    all_of:
+    - age_gte: 40
+    - has_flag: active_surveillance_candidate
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: patient_anxiety
+    - has_flag: non_compliance
+  logic:
+    outcome: PA_REQUIRED
+    note: Active surveillance protocol for very low and low-risk prostate cancer
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_prostate_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_82701827eec6
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78815'
+    - '78816'
+    hcpcs:
+    - A9588
+    loinc:
+    - 33747-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostate_cancer_high_risk_2025_09
+    - dx_in_value_set: vs_prostate_cancer_recurrent_2025_09
+    all_of:
+    - age_gte: 40
+    - has_flag: specialist_evaluation
+    - has_flag: staging_workup_indicated
+    none_of: []
+  logic:
+    outcome: PA_REQUIRED
+    note: PSMA PET imaging for high-risk or recurrent prostate cancer
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_prostate_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_f22ce470b60f

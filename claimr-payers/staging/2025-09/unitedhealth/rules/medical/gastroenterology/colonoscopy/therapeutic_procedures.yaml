@@ -1,0 +1,95 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45388'
+    - '45389'
+    - '45390'
+    - '45391'
+    - '45392'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_large_polyps_2025_09
+    - dx_in_value_set: vs_sessile_serrated_lesions_2025_09
+    - dx_in_value_set: vs_early_colorectal_cancer_2025_09
+    all_of:
+    - has_flag: lesion_size_20mm_plus
+    - has_flag: endoscopic_resection_feasible
+    none_of:
+    - has_flag: deep_submucosal_invasion
+    - has_flag: poor_differentiation
+  logic:
+    outcome: PA_REQUIRED
+    notes: "Advanced colonoscopic resection technique for large lesions \u226520mm\
+      \ when endoscopically feasible"
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_advanced_colonoscopy_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_dee3f0a19b02
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45382'
+    - '45385'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lower_gi_bleeding_active_2025_09
+    - dx_in_value_set: vs_post_polypectomy_bleeding_2025_09
+    - dx_in_value_set: vs_diverticular_bleeding_2025_09
+    all_of:
+    - has_flag: hemodynamically_stable
+    none_of:
+    - has_flag: massive_bleeding_requiring_surgery
+  logic:
+    outcome: PA_REQUIRED
+    notes: Therapeutic colonoscopy intervention for GI bleeding in hemodynamically
+      stable patients
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_advanced_colonoscopy_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_d284b72cf1c7
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45384'
+    - '45385'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_small_polyps_2025_09
+    - has_flag: polyp_size_less_than_10mm
+    none_of:
+    - has_flag: multiple_polyps
+    - has_flag: high_risk_location
+  logic:
+    outcome: APPROVE
+    notes: Standard polypectomy procedure approved for small polyps <10mm
+  precedence: 75
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_advanced_colonoscopy_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_71589b6ddd30

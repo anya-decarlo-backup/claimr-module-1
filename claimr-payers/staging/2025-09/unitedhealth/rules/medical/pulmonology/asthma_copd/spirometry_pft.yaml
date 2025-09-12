@@ -1,0 +1,93 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94010'
+    - '94060'
+    - '94070'
+    - '94375'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_asthma_2025_09
+    - dx_in_value_set: vs_copd_2025_09
+    - dx_in_value_set: vs_dyspnea_2025_09
+    - dx_in_value_set: vs_chronic_cough_2025_09
+    none_of:
+    - has_flag: spirometry_within_6_months
+  logic:
+    outcome: PA_REQUIRED
+    notes: Spirometry requires respiratory symptoms or known lung disease; limited
+      to every 6 months
+  precedence: 75
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pulmonology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_7015fbc067a4
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94010'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_routine_screening_2025_09
+    none_of:
+    - dx_in_value_set: vs_asthma_2025_09
+    - dx_in_value_set: vs_copd_2025_09
+    - has_flag: occupational_exposure
+    - has_flag: smoking_history
+  logic:
+    outcome: DENY
+    notes: Routine screening spirometry not covered unless occupational exposure or
+      smoking history
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pulmonology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_417c32414046
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94726'
+    - '94727'
+    - '94728'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_restrictive_lung_disease_2025_09
+    - dx_in_value_set: vs_interstitial_lung_disease_2025_09
+    - dx_in_value_set: vs_copd_severe_2025_09
+    all_of:
+    - has_flag: abnormal_spirometry
+    none_of:
+    - has_flag: plethysmography_within_12_months
+  logic:
+    outcome: PA_REQUIRED
+    notes: Plethysmography requires abnormal spirometry and suspected restrictive
+      disease
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pulmonology_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_0e189c1b8d80

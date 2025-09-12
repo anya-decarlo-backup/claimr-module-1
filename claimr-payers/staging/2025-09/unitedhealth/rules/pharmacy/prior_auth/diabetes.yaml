@@ -1,0 +1,73 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 00169022713
+    - 00169022714
+    - 00088250005
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_diabetes_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: GLP-1 agonists require diabetes diagnosis
+  precedence: 75
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_formulary_diabetes_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_523fe1a8030a
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 00002-7510-01
+    - 00002-8415-01
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_diabetes_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: Insulin requires diabetes diagnosis
+  precedence: 75
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_formulary_diabetes_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_4af6bdac3f09
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 00088-2220-05
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_diabetes_2025_09
+    - min_age: 18
+  logic:
+    outcome: PA_REQUIRED
+    notes: GLP-1 agonists require diabetes diagnosis and adult patient
+  precedence: 70
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_formulary_diabetes_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_f77cbf5c9ea8

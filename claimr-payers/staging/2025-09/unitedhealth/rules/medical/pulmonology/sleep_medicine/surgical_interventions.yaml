@@ -1,0 +1,91 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '42145'
+    - '42160'
+    - '42821'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_sleep_apnea_moderate_severe_2025_09
+    - has_flag: cpap_intolerant_or_failed
+    - has_flag: anatomic_obstruction_identified
+    - has_flag: surgical_candidate
+    none_of:
+    - has_flag: morbid_obesity_bmi_40_plus
+    - dx_in_value_set: vs_central_sleep_apnea_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: OSA surgery requires CPAP failure/intolerance with anatomic obstruction
+      and surgical candidacy
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_sleep_surgery_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_437d1697e736
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '64568'
+    - '64569'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_sleep_apnea_moderate_severe_2025_09
+    - has_flag: cpap_intolerant
+    - has_flag: ahi_15_65_range
+    - has_flag: bmi_less_than_32
+    - min_age: 22
+    none_of:
+    - dx_in_value_set: vs_central_sleep_apnea_2025_09
+    - has_flag: complete_concentric_collapse
+  logic:
+    outcome: PA_REQUIRED
+    notes: "Hypoglossal nerve stimulation requires CPAP intolerance, AHI 15-65, BMI\
+      \ <32, age \u226522"
+  precedence: 98
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_sleep_surgery_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_5b7712cdb192
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '42145'
+    - '42160'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_sleep_apnea_mild_2025_09
+    none_of:
+    - has_flag: cpap_trial_attempted
+    - has_flag: significant_symptoms
+  logic:
+    outcome: DENY
+    notes: OSA surgery for mild disease requires CPAP trial and significant symptoms
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_sleep_surgery_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_169b9b8ace18

@@ -1,0 +1,92 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95249'
+    - '95250'
+    - '95251'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prediabetes_2025_09
+    - dx_in_value_set: vs_gestational_diabetes_resolved_2025_09
+    none_of:
+    - dx_in_value_set: vs_diabetes_type_1_2025_09
+    - dx_in_value_set: vs_diabetes_type_2_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: CGM excluded for prediabetes or resolved gestational diabetes - not medically
+      necessary
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_endocrinology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_51fba16ae8e4
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77080'
+    - '77081'
+    - '77085'
+  conditions:
+    all_of:
+    - age_lt: 50
+    - sex: F
+    none_of:
+    - dx_in_value_set: vs_osteoporosis_risk_factors_2025_09
+    - has_flag: family_history_osteoporosis
+    - has_flag: chronic_steroid_use
+  logic:
+    outcome: EXCLUDED
+    note: DEXA scan excluded for women under 50 without risk factors - not cost-effective
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_endocrinology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_8da308cecab9
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    j_codes:
+    - J3490
+    ndc:
+    - 0169-7501
+    - 0078-0659
+  conditions:
+    all_of:
+    - bmi_lt: 35
+    none_of:
+    - dx_in_value_set: vs_diabetes_type_2_2025_09
+    - dx_in_value_set: vs_cardiovascular_disease_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: GLP-1 agonists excluded for BMI <35 without diabetes or cardiovascular disease
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_endocrinology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_569774f885f3

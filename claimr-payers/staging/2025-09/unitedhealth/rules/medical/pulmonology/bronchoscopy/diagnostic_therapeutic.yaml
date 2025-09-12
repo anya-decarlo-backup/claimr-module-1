@@ -1,0 +1,132 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '31622'
+    - '31623'
+    - '31624'
+    - '31625'
+    - '31626'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_nodule_2025_09
+    - dx_in_value_set: vs_hemoptysis_2025_09
+    - dx_in_value_set: vs_pneumonia_recurrent_2025_09
+    - dx_in_value_set: vs_interstitial_lung_disease_2025_09
+    all_of:
+    - has_flag: chest_imaging_abnormal
+    none_of:
+    - has_flag: bronchoscopy_within_6_months
+    - dx_in_value_set: vs_contraindication_bronchoscopy_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: Diagnostic bronchoscopy requires abnormal chest imaging and appropriate
+      indication
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bronchoscopy_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_daa1ad6e0445
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '31628'
+    - '31629'
+    - '31632'
+    - '31633'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_cancer_suspected_2025_09
+    - dx_in_value_set: vs_mediastinal_lymphadenopathy_2025_09
+    - dx_in_value_set: vs_sarcoidosis_2025_09
+    all_of:
+    - has_flag: tissue_diagnosis_needed
+    - has_flag: lesion_accessible_bronchoscopy
+    none_of:
+    - has_flag: bleeding_disorder
+    - has_flag: severe_pulmonary_hypertension
+  logic:
+    outcome: PA_REQUIRED
+    notes: Transbronchial biopsy requires tissue diagnosis need with accessible lesion
+      and no bleeding risk
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bronchoscopy_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_990505e80292
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '31634'
+    - '31635'
+    - '31636'
+    - '31637'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_airway_obstruction_2025_09
+    - dx_in_value_set: vs_foreign_body_airway_2025_09
+    - dx_in_value_set: vs_tracheal_stenosis_2025_09
+    - dx_in_value_set: vs_endobronchial_tumor_2025_09
+    all_of:
+    - has_flag: therapeutic_intervention_needed
+    none_of:
+    - has_flag: surgical_candidate_preferred
+  logic:
+    outcome: PA_REQUIRED
+    notes: Therapeutic bronchoscopy for airway obstruction when surgical intervention
+      not preferred
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bronchoscopy_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_069b46608f75
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '31622'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_chronic_cough_2025_09
+    none_of:
+    - has_flag: chest_imaging_abnormal
+    - has_flag: hemoptysis
+    - has_flag: smoking_history_significant
+  logic:
+    outcome: DENY
+    notes: Bronchoscopy for chronic cough requires abnormal imaging or hemoptysis
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bronchoscopy_guidelines_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_c4f128b9810c

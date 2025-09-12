@@ -1,0 +1,159 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J3590
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_hepatitis_c_chronic_2025_09
+    - has_flag: hcv_rna_detectable
+    - has_flag: genotype_testing_completed
+    none_of:
+    - has_flag: active_substance_abuse_untreated
+    - dx_in_value_set: vs_decompensated_liver_disease_2025_09
+    - has_flag: drug_drug_interactions_significant
+  logic:
+    outcome: PA_REQUIRED
+    notes: Hepatitis C DAA therapy requires detectable HCV RNA, genotype testing,
+      and absence of contraindications
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatitis_treatment_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_d6e5748af137
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J3590
+  conditions:
+    any_of:
+    - all_of:
+      - dx_in_value_set: vs_hepatitis_b_chronic_2025_09
+      - has_flag: hbv_dna_elevated
+      - has_flag: alt_elevated
+    - all_of:
+      - dx_in_value_set: vs_hepatitis_b_chronic_2025_09
+      - dx_in_value_set: vs_cirrhosis_2025_09
+    - dx_in_value_set: vs_hepatitis_b_reactivation_risk_2025_09
+    none_of:
+    - has_flag: renal_impairment_severe
+    - has_flag: bone_disease_significant
+  logic:
+    outcome: PA_REQUIRED
+    notes: Hepatitis B antiviral therapy for elevated HBV DNA/ALT, cirrhosis, or reactivation
+      risk
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatitis_treatment_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_5d8dc0d00ed2
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '87520'
+    - '87521'
+    - '87522'
+  conditions:
+    any_of:
+    - all_of:
+      - dx_in_value_set: vs_hepatitis_c_chronic_2025_09
+      - has_flag: treatment_monitoring_phase
+    - all_of:
+      - dx_in_value_set: vs_hepatitis_c_acute_2025_09
+      - has_flag: spontaneous_clearance_assessment
+    - has_flag: hcv_treatment_response_evaluation
+    none_of:
+    - has_flag: hcv_rna_testing_within_4_weeks
+  logic:
+    outcome: PA_REQUIRED
+    notes: HCV RNA monitoring during treatment, acute infection assessment, or response
+      evaluation
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatitis_treatment_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_f6922f4762f8
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '87340'
+    - '87341'
+  conditions:
+    any_of:
+    - all_of:
+      - dx_in_value_set: vs_hepatitis_b_chronic_2025_09
+      - has_flag: antiviral_therapy_monitoring
+    - all_of:
+      - dx_in_value_set: vs_hepatitis_b_inactive_carrier_2025_09
+      - has_flag: surveillance_monitoring
+    - dx_in_value_set: vs_hepatitis_b_reactivation_risk_2025_09
+    none_of:
+    - has_flag: hbv_dna_testing_within_3_months
+  logic:
+    outcome: PA_REQUIRED
+    notes: HBV DNA monitoring for treatment response, inactive carrier surveillance,
+      or reactivation risk
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatitis_treatment_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_d1a7b7a78c90
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J3590
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_hepatitis_c_chronic_2025_09
+    - has_flag: treatment_experienced_failure
+    none_of:
+    - has_flag: resistance_testing_completed
+    - has_flag: specialist_consultation
+  logic:
+    outcome: DENY
+    notes: HCV treatment failure requires resistance testing and specialist consultation
+      before retreatment
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatitis_treatment_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_c4fe48a4ece1

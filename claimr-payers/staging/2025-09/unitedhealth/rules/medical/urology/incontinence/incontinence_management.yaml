@@ -1,0 +1,205 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '51726'
+    - '51727'
+    - '51728'
+    - '51729'
+    loinc:
+    - 5804-0
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_complex_incontinence_2025_09
+    - dx_in_value_set: vs_neurogenic_bladder_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_conservative_management
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: active_uti
+    - has_flag: severe_cardiac_disease
+  logic:
+    outcome: PA_REQUIRED
+    note: Complex urodynamic studies for neurogenic bladder and complex incontinence
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_incontinence_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_fe8a772da319
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '52287'
+    j_codes:
+    - J0585
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_refractory_oab_2025_09
+    - dx_in_value_set: vs_neurogenic_detrusor_overactivity_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_anticholinergic_therapy
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: myasthenia_gravis
+    - has_flag: active_uti
+  logic:
+    outcome: PA_REQUIRED
+    note: Intravesical botulinum toxin injection for refractory overactive bladder
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_incontinence_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_98abca0cc792
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '57288'
+    - '51992'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_stress_urinary_incontinence_2025_09
+    - dx_in_value_set: vs_mixed_incontinence_stress_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_conservative_management
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: pregnancy
+    - has_flag: active_malignancy
+  logic:
+    outcome: PA_REQUIRED
+    note: Sling procedures for stress urinary incontinence
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_incontinence_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_00a8ce2ffac6
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '53444'
+    - '53445'
+    - '53446'
+    - '53447'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_severe_stress_incontinence_2025_09
+    - dx_in_value_set: vs_post_prostatectomy_incontinence_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_sling_procedures
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: active_infection
+    - has_flag: cognitive_impairment
+  logic:
+    outcome: PA_REQUIRED
+    note: Artificial urinary sphincter placement for severe incontinence
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_incontinence_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_de49dbd8b64d
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '64561'
+    - '64590'
+    - '64595'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_refractory_oab_2025_09
+    - dx_in_value_set: vs_urinary_retention_idiopathic_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_medical_therapy
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: pregnancy
+    - has_flag: mri_incompatible_device
+  logic:
+    outcome: PA_REQUIRED
+    note: Sacral neuromodulation for refractory overactive bladder and urinary retention
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_incontinence_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_e33070e7d8f2
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '51715'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_intrinsic_sphincter_deficiency_2025_09
+    - dx_in_value_set: vs_mild_stress_incontinence_2025_09
+    all_of:
+    - age_gte: 18
+    - has_flag: failed_conservative_management
+    - has_flag: specialist_evaluation
+    none_of:
+    - has_flag: active_uti
+    - has_flag: urethral_stricture
+  logic:
+    outcome: PA_REQUIRED
+    note: Periurethral bulking agent injection for mild stress incontinence
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urology_incontinence_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_9c5999753bc3

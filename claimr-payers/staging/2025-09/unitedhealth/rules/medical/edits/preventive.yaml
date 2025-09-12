@@ -1,0 +1,49 @@
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    service_id: svc_mammography
+  conditions:
+    all_of:
+    - min_age: 40
+    - max_age: 74
+    - sex: F
+  logic:
+    outcome: APPROVE
+    notes: Mammography approved for women 40-74 (preventive screening)
+  precedence: 20
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_preventive_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_656260eaf3cb
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    service_id: svc_colonoscopy
+  conditions:
+    all_of:
+    - min_age: 45
+    - max_age: 75
+    none_of:
+    - dx_in_value_set: vs_gi_bleeding_2025_09
+  logic:
+    outcome: APPROVE
+    notes: Colonoscopy approved for screening ages 45-75
+  precedence: 25
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_preventive_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_186bc4753509

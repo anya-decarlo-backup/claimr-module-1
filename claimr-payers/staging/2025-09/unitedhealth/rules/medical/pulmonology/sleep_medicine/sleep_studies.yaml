@@ -1,0 +1,121 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95810'
+    - '95811'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_sleep_apnea_suspected_2025_09
+    - dx_in_value_set: vs_excessive_daytime_sleepiness_2025_09
+    - dx_in_value_set: vs_narcolepsy_suspected_2025_09
+    all_of:
+    - has_flag: epworth_sleepiness_scale_10_plus
+    - min_age: 18
+    none_of:
+    - has_flag: psg_within_12_months
+    - dx_in_value_set: vs_unstable_medical_condition_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: "Sleep study requires sleep disorder symptoms with ESS \u226510; limited\
+      \ to annually"
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_sleep_medicine_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_5031cf607fed
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95800'
+    - '95801'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_sleep_apnea_suspected_2025_09
+    - has_flag: high_pretest_probability
+    - min_age: 18
+    none_of:
+    - dx_in_value_set: vs_heart_failure_2025_09
+    - dx_in_value_set: vs_copd_severe_2025_09
+    - dx_in_value_set: vs_neuromuscular_disease_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: Home sleep testing for high probability OSA without comorbid cardiopulmonary
+      disease
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_sleep_medicine_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_838ad3113131
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - E0601
+    - E0470
+    - E0471
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_sleep_apnea_diagnosed_2025_09
+    - has_flag: ahi_15_or_greater
+    - has_flag: sleep_study_documented
+    none_of:
+    - has_flag: cpap_trial_failed
+  logic:
+    outcome: PA_REQUIRED
+    notes: "CPAP/BiPAP requires documented OSA with AHI \u226515 on sleep study"
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_sleep_medicine_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_4ca3190c0bfb
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - E0601
+  conditions:
+    all_of:
+    - has_flag: cpap_compliance_poor
+    - utilization_gte:
+        cpap_usage_hours: 4
+    none_of:
+    - has_flag: compliance_improvement_plan
+  logic:
+    outcome: DENY
+    notes: "CPAP coverage requires \u22654 hours/night usage; compliance plan needed\
+      \ if poor adherence"
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_sleep_medicine_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_f409c908a4b9

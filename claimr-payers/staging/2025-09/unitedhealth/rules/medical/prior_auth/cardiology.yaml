@@ -1,0 +1,47 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    service_id: svc_cardiac_cath
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_chest_pain_2025_09
+    - dx_in_value_set: vs_heart_failure_2025_09
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac catheterization requires chest pain or heart failure diagnosis
+  precedence: 70
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_cardiac_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_753114e9adf1
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    service_id: svc_echocardiogram
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_heart_failure_2025_09
+    - dx_in_value_set: vs_chest_pain_2025_09
+    - min_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Echo requires cardiac diagnosis or age 65+
+  precedence: 55
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_cardiac_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_c3820f097b4b

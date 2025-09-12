@@ -1,0 +1,139 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95249'
+    - '95250'
+    - '95251'
+    modifier:
+    - TC
+    - '26'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_diabetes_type_1_2025_09
+    - dx_in_value_set: vs_diabetes_type_2_insulin_dependent_2025_09
+    all_of:
+    - has_flag: frequent_hypoglycemia_episodes
+    - has_flag: hba1c_above_target
+    none_of:
+    - has_flag: cgm_within_6_months
+  logic:
+    outcome: PA_REQUIRED
+    note: CGM coverage for Type 1 diabetes with frequent hypoglycemia episodes requiring
+      enhanced glucose monitoring and glycemic variability assessment
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_diabetes_technology_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_48e59e3f6238
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - A4230
+    - A4231
+    - A4232
+    hcpcs:
+    - E0784
+    - E0785
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_diabetes_type_1_2025_09
+    - dx_in_value_set: vs_diabetes_brittle_2025_09
+    all_of:
+    - has_flag: multiple_daily_injections_inadequate
+    - has_flag: diabetes_education_completed
+    - min_age: 8
+    none_of:
+    - has_flag: severe_psychiatric_disorder
+    - has_flag: inability_to_operate_device
+  logic:
+    outcome: PA_REQUIRED
+    note: Insulin pump therapy for brittle diabetes management with glycemic variability
+      and continuous subcutaneous insulin infusion
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_diabetes_technology_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_c9ab6a2ffae5
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 0088-2220-33
+    - 0088-2225-05
+    j_code:
+    - J3490
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_diabetes_type_2_2025_09
+    - dx_in_value_set: vs_obesity_diabetes_2025_09
+    all_of:
+    - has_flag: metformin_trial_adequate
+    - has_flag: hba1c_above_7_percent
+    none_of:
+    - dx_in_value_set: vs_diabetic_ketoacidosis_2025_09
+    - has_flag: pancreatitis_history
+    - has_flag: medullary_thyroid_cancer_history
+  logic:
+    outcome: PA_REQUIRED
+    note: GLP-1 agonist therapy for Type 2 diabetes with obesity and cardiovascular
+      benefits including weight reduction
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_diabetes_formulary_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_e436c045448d
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '83036'
+    - '83037'
+    loinc:
+    - 4548-4
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_diabetes_type_1_2025_09
+    - dx_in_value_set: vs_diabetes_type_2_2025_09
+    - dx_in_value_set: vs_prediabetes_2025_09
+  utilization_gte:
+    count: 4
+    period: 12_months
+  logic:
+    outcome: EDIT
+    note: HbA1c testing frequency limits for diabetes monitoring and glycemic control
+      assessment with quarterly testing restrictions
+  precedence: 75
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_diabetes_monitoring_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_8c39b65742cd

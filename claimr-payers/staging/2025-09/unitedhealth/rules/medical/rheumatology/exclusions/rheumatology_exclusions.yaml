@@ -1,0 +1,146 @@
+# Rheumatology Exclusions - UHC CA
+
+- id: rule_rheum_exclusion_biologics_age
+  type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J0717", "J1438", "J1745", "J0135"]
+    ndc: ["0074-0554", "50242-0134", "0074-3799"]
+  conditions:
+    all_of:
+      - age_lt: 18
+    none_of:
+      - dx_in_value_set: "vs_juvenile_arthritis_2025_09"
+      - has_flag: "pediatric_rheumatology_specialist"
+  logic:
+    outcome: "EXCLUDED"
+    note: "Biologic DMARDs excluded for patients under 18 without juvenile arthritis diagnosis"
+  precedence: 95
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_rheumatology_exclusions_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_exclusion_jak_elderly
+  type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    ndc: ["0069-0223", "0069-0224", "0069-0225"]
+    hcpcs: ["J3590"]
+  conditions:
+    all_of:
+      - age_gte: 65
+    any_of:
+      - dx_in_value_set: "vs_cardiovascular_disease_2025_09"
+      - dx_in_value_set: "vs_malignancy_history_2025_09"
+      - has_flag: "smoking_current"
+  logic:
+    outcome: "EXCLUDED"
+    note: "JAK inhibitors excluded for patients ≥65 with CV disease, malignancy history, or smoking"
+  precedence: 95
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_jak_safety_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_exclusion_antimalarials_retinal
+  type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    ndc: ["0024-0074", "0024-0075", "0024-0076"]
+    hcpcs: ["J8499"]
+  conditions:
+    any_of:
+      - dx_in_value_set: "vs_retinal_disease_2025_09"
+      - dx_in_value_set: "vs_macular_degeneration_2025_09"
+      - has_flag: "retinal_toxicity_history"
+    none_of:
+      - has_flag: "ophthalmology_clearance_current"
+  logic:
+    outcome: "EXCLUDED"
+    note: "Antimalarials excluded for patients with retinal disease without ophthalmology clearance"
+  precedence: 95
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_antimalarial_safety_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_exclusion_pegloticase_g6pd
+  type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J2507"]
+    ndc: ["0054-0001", "0054-0002"]
+  conditions:
+    any_of:
+      - dx_in_value_set: "vs_g6pd_deficiency_2025_09"
+      - dx_in_value_set: "vs_heart_failure_class_iv_2025_09"
+      - has_flag: "immunocompromised"
+    none_of:
+      - has_flag: "specialist_override_documented"
+  logic:
+    outcome: "EXCLUDED"
+    note: "Pegloticase excluded for G6PD deficiency, severe heart failure, or immunocompromised state"
+  precedence: 95
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_pegloticase_contraindications_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_rheum_exclusion_immunosuppressants_pregnancy
+  type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    ndc: ["0004-0056", "0004-0057", "0004-0058"]
+    j_codes: ["J7502", "J7515"]
+  conditions:
+    any_of:
+      - dx_in_value_set: "vs_pregnancy_2025_09"
+      - has_flag: "pregnancy_planning"
+      - has_flag: "breastfeeding"
+    none_of:
+      - has_flag: "pregnancy_safe_alternative_failed"
+      - has_flag: "maternal_fetal_medicine_consult"
+  logic:
+    outcome: "EXCLUDED"
+    note: "Teratogenic immunosuppressants excluded in pregnancy/planning without specialist consultation"
+  precedence: 95
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_pregnancy_drug_safety_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"

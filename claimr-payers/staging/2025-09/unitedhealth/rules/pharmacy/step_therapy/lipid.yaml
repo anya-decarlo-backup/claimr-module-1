@@ -1,0 +1,55 @@
+- type: STEP_THERAPY
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 00071-0156-23
+    - 00071-0222-23
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_heart_failure_2025_09
+    none_of:
+    - prior_therapy_failed:
+      - simvastatin
+      - atorvastatin
+  logic:
+    outcome: STEP_THERAPY_REQUIRED
+    notes: Must try generic statins before brand/high-cost options
+  precedence: 65
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_formulary_lipid_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_97226d8919a8
+- type: STEP_THERAPY
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    ndc:
+    - 00456-1020-63
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_heart_failure_2025_09
+    - prior_therapy_failed:
+      - simvastatin
+      - atorvastatin
+      - rosuvastatin
+  logic:
+    outcome: APPROVE
+    notes: PCSK9 inhibitor approved after statin failure
+  precedence: 60
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_formulary_lipid_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_342394c6fde5

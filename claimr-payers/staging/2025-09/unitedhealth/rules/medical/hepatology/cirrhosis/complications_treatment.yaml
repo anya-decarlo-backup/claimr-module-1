@@ -1,0 +1,151 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37182'
+    - '37183'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_variceal_bleeding_recurrent_2025_09
+    - dx_in_value_set: vs_ascites_refractory_2025_09
+    - dx_in_value_set: vs_hepatic_hydrothorax_2025_09
+    all_of:
+    - dx_in_value_set: vs_cirrhosis_2025_09
+    - has_flag: child_pugh_class_a_or_b
+    none_of:
+    - dx_in_value_set: vs_hepatic_encephalopathy_grade_3_4_2025_09
+    - has_flag: right_heart_failure
+    - has_flag: portal_vein_thrombosis_complete
+  logic:
+    outcome: PA_REQUIRED
+    notes: TIPS procedure for recurrent variceal bleeding or refractory ascites in
+      Child-Pugh A/B cirrhosis - interventional radiology
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatology_interventions_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_1f1e025f4514
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J3590
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hepatic_encephalopathy_overt_2025_09
+    - dx_in_value_set: vs_hepatic_encephalopathy_minimal_2025_09
+    all_of:
+    - dx_in_value_set: vs_cirrhosis_2025_09
+    none_of:
+    - has_flag: bowel_obstruction
+    - has_flag: galactosemia
+  logic:
+    outcome: PA_REQUIRED
+    notes: Lactulose therapy for overt or minimal hepatic encephalopathy in cirrhosis
+      patients - first-line treatment
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatology_interventions_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_514362c60223
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - J3590
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_hepatic_encephalopathy_recurrent_2025_09
+    - dx_in_value_set: vs_cirrhosis_2025_09
+    - has_flag: lactulose_therapy_inadequate
+    none_of:
+    - has_flag: hypersensitivity_rifamycin
+  logic:
+    outcome: PA_REQUIRED
+    notes: Rifaximin therapy for recurrent hepatic encephalopathy with inadequate
+      lactulose response - second-line treatment
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatology_interventions_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_0a9234abfd55
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '75774'
+    - '75776'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hepatocellular_carcinoma_suspected_2025_09
+    - dx_in_value_set: vs_liver_lesion_indeterminate_2025_09
+    all_of:
+    - dx_in_value_set: vs_cirrhosis_2025_09
+    - has_flag: abnormal_surveillance_imaging
+    none_of:
+    - has_flag: contrast_allergy_severe
+    - has_flag: renal_impairment_severe
+  logic:
+    outcome: PA_REQUIRED
+    notes: CT angiography for HCC evaluation in cirrhosis patients with abnormal surveillance
+      imaging - diagnostic workup
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatology_interventions_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_81bfc3848ce0
+- type: EDIT
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37182'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_cirrhosis_2025_09
+    - has_flag: child_pugh_class_c
+    none_of:
+    - has_flag: transplant_candidate_active
+  logic:
+    outcome: DENY
+    notes: TIPS procedure contraindicated in Child-Pugh Class C cirrhosis unless active
+      transplant candidate - safety restriction
+  precedence: 98
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hepatology_interventions_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_f73640b8155f

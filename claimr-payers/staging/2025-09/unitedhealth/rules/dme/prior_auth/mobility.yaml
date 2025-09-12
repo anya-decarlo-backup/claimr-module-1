@@ -1,0 +1,55 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    hcpcs:
+    - E1161
+    - E1162
+    - E1163
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_osteoarthritis_knee_2025_09
+    - dx_in_value_set: vs_heart_failure_2025_09
+    - min_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Manual wheelchair requires mobility-limiting diagnosis or age 65+
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_dme_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_8ab5e6c0bc1f
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    hcpcs:
+    - K0001
+    - K0002
+    - K0003
+  conditions:
+    all_of:
+    - any_of:
+      - dx_in_value_set: vs_heart_failure_2025_09
+      - dx_in_value_set: vs_osteoarthritis_knee_2025_09
+    - min_age: 18
+  logic:
+    outcome: PA_REQUIRED
+    notes: Power wheelchair requires severe mobility limitation and adult patient
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_policy_dme_2025.pdf
+    last_verified_at: '2025-09-11'
+  id: rule_4ac64e6eab8d
