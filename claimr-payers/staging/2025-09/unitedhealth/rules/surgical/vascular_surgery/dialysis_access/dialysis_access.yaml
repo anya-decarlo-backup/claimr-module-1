@@ -1,0 +1,150 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36818'
+    - '36819'
+    - '36820'
+    - '36821'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_end_stage_renal_disease_2025_09
+    - dx_in_value_set: vs_chronic_kidney_disease_stage_4_5_2025_09
+    - dx_in_value_set: vs_dialysis_access_required_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: AV fistula creation requires ESRD or CKD stage 4-5 with anticipated dialysis need within 6 months
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_dialysis_access_av_fistula_creation
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36825'
+    - '36830'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_av_graft_placement_indicated_2025_09
+    - dx_in_value_set: vs_inadequate_vessels_av_fistula_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: AV graft placement requires inadequate vessels for native fistula or failed fistula maturation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_dialysis_access_av_graft_placement
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36831'
+    - '36832'
+    - '36833'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dialysis_access_thrombosis_2025_09
+    - dx_in_value_set: vs_dialysis_access_stenosis_2025_09
+    - dx_in_value_set: vs_dialysis_access_dysfunction_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Dialysis access revision requires thrombosis, stenosis, or dysfunction with inadequate flow rates
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_dialysis_access_revision_thrombectomy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36901'
+    - '36902'
+    - '36903'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dialysis_catheter_placement_2025_09
+    - dx_in_value_set: vs_temporary_dialysis_access_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Dialysis catheter placement requires urgent dialysis need or bridge to permanent access
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_dialysis_access_catheter_placement
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36147'
+    - '36148'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dialysis_access_angioplasty_2025_09
+    - dx_in_value_set: vs_access_stenosis_balloon_dilation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Dialysis access angioplasty requires hemodynamically significant stenosis affecting access function
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_dialysis_access_angioplasty

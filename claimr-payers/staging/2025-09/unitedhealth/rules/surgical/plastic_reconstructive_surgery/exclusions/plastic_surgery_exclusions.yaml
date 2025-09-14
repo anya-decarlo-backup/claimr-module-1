@@ -1,0 +1,231 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '15824'
+    - '15825'
+    - '15826'
+    - '15828'
+    - '15829'
+    - '21208'
+    - '21209'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cosmetic_rhinoplasty_2025_09
+    - dx_in_value_set: vs_aesthetic_facial_enhancement_2025_09
+    - dx_in_value_set: vs_cosmetic_chin_augmentation_2025_09
+    - dx_in_value_set: vs_facial_aging_cosmetic_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Cosmetic facial procedures without functional impairment or medical necessity
+  exclusion_reason: "Cosmetic facial procedures without functional impairment or medical necessity"
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '19324'
+    - '19325'
+    - '19328'
+    - '19330'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cosmetic_breast_augmentation_2025_09
+    - dx_in_value_set: vs_aesthetic_breast_enhancement_2025_09
+    - dx_in_value_set: vs_breast_ptosis_cosmetic_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Cosmetic breast procedures without medical necessity or oncologic indication
+  exclusion_reason: "Cosmetic breast procedures without medical necessity or oncologic indication"
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '15830'
+    - '15832'
+    - '15834'
+    - '15876'
+    - '15877'
+    - '15878'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cosmetic_abdominoplasty_2025_09
+    - dx_in_value_set: vs_aesthetic_body_contouring_2025_09
+    - dx_in_value_set: vs_liposuction_cosmetic_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Cosmetic body contouring procedures without functional impairment
+  exclusion_reason: "Cosmetic body contouring procedures without functional impairment"
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21299'
+    - '21499'
+    - '15999'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_experimental_plastic_procedures_2025_09
+    - dx_in_value_set: vs_investigational_reconstruction_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Experimental or investigational plastic surgery procedures not proven safe and effective
+  exclusion_reason: "Experimental or investigational plastic surgery procedures not proven safe and effective"
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '19357'
+    - '19361'
+    - '19364'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_breast_reconstruction_no_cancer_2025_09
+    - dx_in_value_set: vs_prophylactic_mastectomy_low_risk_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Breast reconstruction without oncologic indication or high-risk genetic mutation
+  exclusion_reason: "Breast reconstruction without oncologic indication or high-risk genetic mutation"
+  patient_demographics:
+    age_range:
+      min: 18
+      max: 80
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '15002'
+    - '15200'
+    - '15734'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_minor_burns_first_degree_2025_09
+    - dx_in_value_set: vs_superficial_burns_healed_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Burn reconstruction for minor or superficial burns without functional impairment
+  exclusion_reason: "Burn reconstruction for minor or superficial burns without functional impairment"
+  patient_demographics:
+    age_range:
+      min: 0
+      max: 90
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '19357'
+    - '15734'
+    - '15756'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_high_operative_risk_plastic_2025_09
+    - dx_in_value_set: vs_severe_comorbidities_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Plastic surgery procedures for patients with prohibitive operative risk
+  exclusion_reason: "Plastic surgery procedures for patients with prohibitive operative risk"
+  patient_demographics:
+    age_range:
+      min: 85
+      max: 120
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '13100'
+    - '14000'
+    - '15200'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_scar_revision_cosmetic_only_2025_09
+    - dx_in_value_set: vs_minor_scars_aesthetic_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Scar revision for purely cosmetic reasons without functional impairment
+  exclusion_reason: "Scar revision for purely cosmetic reasons without functional impairment"
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"

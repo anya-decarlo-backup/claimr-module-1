@@ -1,0 +1,191 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '46221'
+    - '46945'
+    - '46946'
+    - '46947'
+    - '46320'
+    - '46500'
+    - '46930'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cosmetic_hemorrhoid_surgery_2025_09
+    - dx_in_value_set: vs_asymptomatic_hemorrhoids_2025_09
+  logic:
+    outcome: DENIED
+    notes: Hemorrhoid surgery excluded for cosmetic purposes or asymptomatic hemorrhoids
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hemorrhoid_cosmetic_exclusion
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44140'
+    - '44141'
+    - '44143'
+    - '44144'
+    - '44145'
+    - '44146'
+    - '44160'
+    - '44205'
+    - '44207'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_experimental_ibd_procedures_2025_09
+    - dx_in_value_set: vs_ibd_active_infection_2025_09
+  logic:
+    outcome: DENIED
+    notes: IBD surgery excluded for experimental techniques or active abdominal infection
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_ibd_experimental_infection_exclusion
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45111'
+    - '45112'
+    - '45113'
+    - '45114'
+    - '45119'
+    - '45120'
+    - '45110'
+    - '45395'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_rectal_cancer_no_staging_2025_09
+    - dx_in_value_set: vs_metastatic_rectal_cancer_palliative_2025_09
+  logic:
+    outcome: DENIED
+    notes: Rectal cancer surgery excluded without proper staging or for extensive palliative procedures
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_rectal_cancer_staging_exclusion
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44140'
+    - '44141'
+    - '44143'
+    - '44144'
+    - '44145'
+    - '44146'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prophylactic_colectomy_low_risk_2025_09
+    - dx_in_value_set: vs_genetic_testing_negative_2025_09
+  logic:
+    outcome: DENIED
+    notes: Prophylactic colectomy excluded for low-risk genetic variants or negative testing
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_prophylactic_colectomy_exclusion
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '46221'
+    - '46945'
+    - '46946'
+    - '46947'
+    - '46320'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_pregnancy_first_trimester_2025_09
+  logic:
+    outcome: DENIED
+    notes: Hemorrhoid surgery excluded during first trimester pregnancy except for emergencies
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hemorrhoid_pregnancy_exclusion
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44140'
+    - '44141'
+    - '44143'
+    - '44144'
+    - '44145'
+    - '44146'
+    - '44160'
+    - '44205'
+    - '44207'
+    - '46221'
+    - '46945'
+    - '46946'
+    - '45111'
+    - '45112'
+    - '45113'
+  conditions:
+    all_of:
+    - min_age: 86
+  logic:
+    outcome: DENIED
+    notes: Major colorectal surgery excluded for patients over age 85 due to surgical risk
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_colorectal_surgery_age_exclusion

@@ -1,0 +1,145 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '62223'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hydrocephalus_communicating_2025_09
+    - dx_in_value_set: vs_hydrocephalus_obstructive_2025_09
+    - dx_in_value_set: vs_normal_pressure_hydrocephalus_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Ventriculoperitoneal shunt placement requires confirmed hydrocephalus with ventricular enlargement and symptoms
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_shunt_surgery_vp_shunt_placement
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '62225'
+    - '62230'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_shunt_malfunction_obstruction_2025_09
+    - dx_in_value_set: vs_shunt_infection_2025_09
+    - dx_in_value_set: vs_shunt_mechanical_failure_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Shunt revision requires documented shunt malfunction, infection, or mechanical failure with imaging
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_shunt_surgery_shunt_revision
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '62256'
+    - '62258'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_shunt_removal_infection_2025_09
+    - dx_in_value_set: vs_shunt_externalization_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Shunt removal or externalization requires infected shunt or need for temporary external drainage
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_shunt_surgery_shunt_removal_externalization
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '62200'
+    - '62201'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ventriculostomy_acute_hydrocephalus_2025_09
+    - dx_in_value_set: vs_icp_monitoring_required_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Ventriculostomy requires acute hydrocephalus or need for intracranial pressure monitoring
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_shunt_surgery_ventriculostomy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '62180'
+    - '62190'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_endoscopic_third_ventriculostomy_2025_09
+    - dx_in_value_set: vs_obstructive_hydrocephalus_etv_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Endoscopic third ventriculostomy requires obstructive hydrocephalus suitable for ETV procedure
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_shunt_surgery_endoscopic_third_ventriculostomy

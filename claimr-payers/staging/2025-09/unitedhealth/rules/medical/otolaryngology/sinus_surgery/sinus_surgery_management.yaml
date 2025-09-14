@@ -1,0 +1,445 @@
+- id: rule_ent_endoscopic_sinus_surgery
+  name: Endoscopic Sinus Surgery for Chronic Rhinosinusitis
+  description: Prior authorization for functional endoscopic sinus surgery (FESS) in chronic rhinosinusitis
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '31237' # Nasal/sinus endoscopy, surgical; with biopsy, polypectomy or debridement
+          - '31254' # Nasal/sinus endoscopy, surgical; ethmoidectomy, partial (anterior)
+          - '31255' # Nasal/sinus endoscopy, surgical; ethmoidectomy, total (anterior and posterior)
+          - '31256' # Nasal/sinus endoscopy, surgical; maxillary antrostomy
+          - '31267' # Nasal/sinus endoscopy, surgical; with removal of tissue from maxillary sinus
+          - '31276' # Nasal/sinus endoscopy, surgical; frontal sinus exploration
+          - '31287' # Nasal/sinus endoscopy, surgical; sphenoidotomy
+          - '31288' # Nasal/sinus endoscopy, surgical; with removal of tissue from the sphenoid sinus
+      - diagnosis_code:
+          any_of:
+          - J32.9   # Chronic sinusitis, unspecified
+          - J32.0   # Chronic maxillary sinusitis
+          - J32.1   # Chronic frontal sinusitis
+          - J32.2   # Chronic ethmoidal sinusitis
+          - J32.3   # Chronic sphenoidal sinusitis
+          - J32.4   # Chronic pansinusitis
+          - J33.9   # Nasal polyp, unspecified
+          - J33.0   # Polyp of nasal cavity
+          - J33.1   # Polypoid sinus degeneration
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '70486' # CT scan of sinuses showing chronic changes
+          - '70487'
+          - '70488'
+          days: 180
+          description: Sinus CT confirming chronic sinusitis within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '31231' # Nasal endoscopy showing mucosal disease
+          - '31233'
+          - '31235'
+          days: 90
+          description: Nasal endoscopy within past 90 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Failed medical therapy (≥12 weeks)
+              days: 180
+              description: Adequate medical treatment trial within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - J7506  # Intranasal corticosteroids
+              days: 90
+              description: Topical steroid therapy within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - J33.9  # Nasal polyps
+              - J33.0
+              - J33.1
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Anosmia or severe nasal obstruction
+              - '99214'
+              - '99215'
+              days: 60
+              description: Functional impairment within past 60 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '87205' # Culture showing resistant organisms
+              days: 90
+              description: Recurrent infections within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # ENT evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Otolaryngology consultation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C78.39 # Malignant neoplasm of other parts of respiratory system
+        - prior_service_within_days:
+            service_codes:
+            - '31237' # Recent sinus surgery
+            - '31254'
+            - '31255'
+            days: 365
+            description: Sinus surgery within past year
+  logic:
+    outcome: approved
+    reason: Endoscopic sinus surgery approved for chronic rhinosinusitis with failed medical therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: FESS indicated for chronic rhinosinusitis refractory to medical management with CT evidence
+
+- id: rule_ent_revision_sinus_surgery
+  name: Revision Endoscopic Sinus Surgery
+  description: Prior authorization for revision sinus surgery in recurrent chronic rhinosinusitis
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '31237' # Revision endoscopic sinus surgery
+          - '31254' # Revision ethmoidectomy
+          - '31255' # Revision total ethmoidectomy
+          - '31256' # Revision maxillary antrostomy
+          - '31267' # Revision maxillary sinus surgery
+          - '31276' # Revision frontal sinus surgery
+          - '31287' # Revision sphenoidotomy
+      - diagnosis_code:
+          any_of:
+          - J32.9   # Recurrent chronic sinusitis
+          - J32.0   # Recurrent chronic maxillary sinusitis
+          - J32.1   # Recurrent chronic frontal sinusitis
+          - J32.2   # Recurrent chronic ethmoidal sinusitis
+          - J32.4   # Recurrent chronic pansinusitis
+          - J34.89  # Other specified disorders of nose and nasal sinuses
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '31237' # Previous sinus surgery
+          - '31254'
+          - '31255'
+          - '31256'
+          days: 365
+          description: Previous FESS within past year
+      - prior_service_within_days:
+          service_codes:
+          - '70486' # CT showing recurrent disease or complications
+          - '70487'
+          - '70488'
+          days: 90
+          description: Post-operative CT within past 90 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '31231' # Endoscopy showing recurrent polyposis
+              - '31233'
+              - '31235'
+              days: 60
+              description: Recurrent disease on endoscopy within past 60 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '87205' # Recurrent infections
+              days: 90
+              description: Post-operative infections within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Stenosis or scarring on CT
+              - '70487'
+              - '70488'
+              days: 90
+              description: Surgical complications on imaging within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - J3490  # Failed post-operative medical therapy
+          days: 180
+          description: Adequate medical management trial within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # ENT evaluation
+          - '99214'
+          - '99215'
+          days: 60
+          description: Otolaryngology consultation within past 60 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '31237' # Recent revision surgery
+            days: 180
+            description: Recent revision surgery within past 6 months
+  logic:
+    outcome: approved
+    reason: Revision sinus surgery approved for recurrent disease or complications after previous FESS
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Revision surgery may be necessary for recurrent disease or post-operative complications
+
+- id: rule_ent_balloon_sinuplasty
+  name: Balloon Sinuplasty for Chronic Rhinosinusitis
+  description: Prior authorization for balloon catheter dilation of sinus ostia
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '31295' # Nasal/sinus endoscopy, surgical; with dilation of maxillary sinus ostium
+          - '31296' # Nasal/sinus endoscopy, surgical; with dilation of frontal sinus ostium
+          - '31297' # Nasal/sinus endoscopy, surgical; with dilation of sphenoid sinus ostium
+          - '31298' # Nasal/sinus endoscopy, surgical; with dilation of sinus ostium, each additional sinus
+      - diagnosis_code:
+          any_of:
+          - J32.0   # Chronic maxillary sinusitis
+          - J32.1   # Chronic frontal sinusitis
+          - J32.3   # Chronic sphenoidal sinusitis
+          - J32.9   # Chronic sinusitis, unspecified
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '70486' # CT showing ostial obstruction without extensive polyposis
+          - '70487'
+          - '70488'
+          days: 180
+          description: Sinus CT showing limited disease within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '31231' # Nasal endoscopy
+          - '31233'
+          - '31235'
+          days: 90
+          description: Nasal endoscopy within past 90 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Failed medical therapy (≥8 weeks)
+              days: 120
+              description: Medical treatment trial within past 4 months
+          - none_of:
+            - diagnosis_code:
+                any_of:
+                - J33.9  # Extensive nasal polyps
+                - J33.0
+                - J33.1
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Patient preference for less invasive procedure
+              - '99214'
+              - '99215'
+              days: 90
+              description: Patient counseling within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # ENT evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Otolaryngology consultation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - J33.9  # Extensive polyposis (better treated with FESS)
+            - J33.1
+        - prior_service_within_days:
+            service_codes:
+            - '31295' # Recent balloon sinuplasty
+            - '31296'
+            - '31297'
+            days: 365
+            description: Balloon sinuplasty within past year
+  logic:
+    outcome: approved
+    reason: Balloon sinuplasty approved for limited chronic sinusitis without extensive polyposis
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Balloon sinuplasty is less invasive option for limited sinus disease without polyps
+
+- id: rule_ent_septoplasty
+  name: Septoplasty for Nasal Obstruction
+  description: Prior authorization for septoplasty to correct deviated nasal septum
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '30520' # Septoplasty or submucous resection, with or without cartilage scoring, contouring or replacement with graft
+      - diagnosis_code:
+          any_of:
+          - J34.2   # Deviated nasal septum
+          - J34.89  # Other specified disorders of nose and nasal sinuses
+      - patient_age:
+          min: 16
+      - prior_service_within_days:
+          service_codes:
+          - '31231' # Nasal endoscopy showing septal deviation
+          - '31233'
+          - '31235'
+          days: 180
+          description: Nasal endoscopy confirming deviation within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Significant nasal obstruction symptoms
+              - '99214'
+              - '99215'
+              days: 180
+              description: Persistent nasal obstruction within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Failed medical therapy (nasal steroids, decongestants)
+              days: 90
+              description: Medical treatment trial within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '95165' # Sleep study showing sleep-disordered breathing
+              - '95810'
+              - '95811'
+              days: 365
+              description: Sleep apnea related to nasal obstruction within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Recurrent sinusitis due to obstruction
+              - '99214'
+              - '99215'
+              days: 365
+              description: Chronic sinusitis evaluation within past year
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # ENT evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Otolaryngology consultation within past 6 months
+      - none_of:
+        - patient_age:
+            max: 15  # Avoid surgery in growing children
+        - prior_service_within_days:
+            service_codes:
+            - '30520' # Recent septoplasty
+            days: 730
+            description: Septoplasty within past 2 years
+  logic:
+    outcome: approved
+    reason: Septoplasty approved for symptomatic deviated septum with failed medical therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Septoplasty indicated for functional nasal obstruction due to septal deviation
+
+- id: rule_ent_turbinate_reduction
+  name: Turbinate Reduction Surgery
+  description: Prior authorization for inferior turbinate reduction for nasal obstruction
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '30801' # Ablation, soft tissue of inferior turbinates, unilateral or bilateral, any method
+          - '30802' # Ablation, soft tissue of inferior turbinates, unilateral or bilateral, any method; intramural
+          - '30930' # Fracture nasal inferior turbinate(s), therapeutic
+          - '30140' # Submucous resection inferior turbinate, partial or complete, any method
+      - diagnosis_code:
+          any_of:
+          - J34.3   # Hypertrophy of nasal turbinates
+          - J30.9   # Allergic rhinitis, unspecified
+          - J31.0   # Chronic rhinitis
+          - J34.89  # Other specified disorders of nose and nasal sinuses
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '31231' # Nasal endoscopy showing turbinate hypertrophy
+          - '31233'
+          - '31235'
+          days: 180
+          description: Nasal endoscopy confirming hypertrophy within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Persistent nasal obstruction
+              - '99214'
+              - '99215'
+              days: 180
+              description: Chronic nasal obstruction within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Failed medical therapy (≥8 weeks)
+              days: 120
+              description: Medical treatment trial within past 4 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - J30.9  # Allergic rhinitis
+          - prior_service_within_days:
+              service_codes:
+              - '95004' # Allergy testing
+              - '95024'
+              - '95027'
+              days: 365
+              description: Allergy evaluation within past year
+        - all_of:
+          - service_code:
+              any_of:
+              - '30520' # Concurrent septoplasty
+          - prior_service_within_days:
+              service_codes:
+              - J34.2  # Deviated septum
+              days: 180
+              description: Combined septal and turbinate pathology within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # ENT evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Otolaryngology consultation within past 6 months
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '30801' # Recent turbinate surgery
+            - '30802'
+            - '30930'
+            - '30140'
+            days: 365
+            description: Turbinate surgery within past year
+  logic:
+    outcome: approved
+    reason: Turbinate reduction approved for symptomatic turbinate hypertrophy with failed medical therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Turbinate reduction indicated for chronic nasal obstruction due to turbinate hypertrophy

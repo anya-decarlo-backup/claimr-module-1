@@ -1,0 +1,101 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '47135'
+    - '47136'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_end_stage_liver_disease_2025_09
+    - dx_in_value_set: vs_hepatocellular_carcinoma_transplant_2025_09
+    - dx_in_value_set: vs_acute_liver_failure_2025_09
+    - dx_in_value_set: vs_primary_biliary_cirrhosis_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 75
+    - prior_service_required:
+        cpt: ['99214', '99215']
+        lookback_days: 180
+        description: "Hepatology evaluation and MELD score assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Liver transplant requires end-stage liver disease, MELD score ≥15, and transplant center evaluation
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '47140'
+    - '47141'
+    - '47142'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_living_donor_liver_transplant_2025_09
+    - dx_in_value_set: vs_partial_liver_transplant_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 70
+    - prior_service_required:
+        cpt: ['99401', '99402']
+        lookback_days: 90
+        description: "Living donor evaluation and risk assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Living donor liver transplant requires comprehensive donor evaluation and recipient-donor compatibility
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '47143'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pediatric_liver_transplant_2025_09
+    - dx_in_value_set: vs_biliary_atresia_2025_09
+    - dx_in_value_set: vs_metabolic_liver_disease_pediatric_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 18
+    - prior_service_required:
+        cpt: ['99214', '99215']
+        lookback_days: 90
+        description: "Pediatric hepatology and transplant evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pediatric liver transplant requires specialized pediatric transplant center evaluation
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"

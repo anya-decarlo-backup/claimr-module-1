@@ -1,0 +1,447 @@
+- id: rule_genetics_warfarin_pharmacogenomics
+  name: Warfarin Pharmacogenomic Testing
+  description: Prior authorization for CYP2C9 and VKORC1 testing to guide warfarin dosing
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81355' # VKORC1 (vitamin K epoxide reductase complex, subunit 1) (eg, warfarin metabolism), gene analysis, common variant(s)
+          - '81227' # CYP2C9 (cytochrome P450, family 2, subfamily C, polypeptide 9) (eg, drug metabolism), gene analysis, common variants
+          - '81230' # CYP3A4 (cytochrome P450 family 3 subfamily A member 4) (eg, drug metabolism), gene analysis, common variant
+      - diagnosis_code:
+          any_of:
+          - I48.91  # Unspecified atrial fibrillation
+          - I26.99  # Other pulmonary embolism without acute cor pulmonale
+          - I82.401 # Acute embolism and thrombosis of unspecified deep veins of right lower extremity
+          - I82.402 # Acute embolism and thrombosis of unspecified deep veins of left lower extremity
+          - Z51.81  # Encounter for therapeutic drug level monitoring
+          - Z79.01  # Long term (current) use of anticoagulants
+      - patient_age:
+          min: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I48.91 # Atrial fibrillation requiring anticoagulation
+          - prior_service_within_days:
+              service_codes:
+              - '93000' # ECG confirming atrial fibrillation
+              - '93005'
+              days: 180
+              description: ECG documentation within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Initiation of warfarin therapy
+              - '99214'
+              - '99215'
+              days: 30
+              description: Warfarin initiation within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I26.99 # Pulmonary embolism
+              - I82.401 # Deep vein thrombosis
+              - I82.402
+          - prior_service_within_days:
+              service_codes:
+              - '71275' # CTA or V/Q scan confirming VTE
+              - '78580'
+              days: 90
+              description: VTE imaging within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z51.81 # Difficult warfarin dosing
+          - prior_service_within_days:
+              service_codes:
+              - '85610' # Multiple INR values outside therapeutic range
+              days: 90
+              description: Unstable INR within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Cardiology or hematology evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Specialist consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81355' # Previous warfarin pharmacogenomic testing
+            - '81227'
+            days: 1825
+            description: Warfarin PGx testing within past 5 years
+        - diagnosis_code:
+            any_of:
+            - Z87.891 # History of nicotine dependence (may affect metabolism)
+  logic:
+    outcome: approved
+    reason: Warfarin pharmacogenomic testing approved for anticoagulation initiation or dosing difficulties
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: CYP2C9 and VKORC1 variants significantly affect warfarin dosing requirements
+
+- id: rule_genetics_clopidogrel_pharmacogenomics
+  name: Clopidogrel Pharmacogenomic Testing
+  description: Prior authorization for CYP2C19 testing to guide clopidogrel therapy
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81225' # CYP2C19 (cytochrome P450, family 2, subfamily C, polypeptide 19) (eg, drug metabolism), gene analysis, common variants
+      - diagnosis_code:
+          any_of:
+          - I21.9   # Acute myocardial infarction, unspecified
+          - I25.10  # Atherosclerotic heart disease of native coronary artery without angina pectoris
+          - Z95.1   # Presence of aortocoronary bypass graft
+          - Z95.5   # Presence of coronary angioplasty implant and graft
+          - I63.9   # Cerebral infarction, unspecified
+      - patient_age:
+          min: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I21.9  # Acute coronary syndrome
+          - prior_service_within_days:
+              service_codes:
+              - '93000' # ECG showing acute changes
+              - '93005'
+              days: 30
+              description: Acute ECG changes within past 30 days
+          - prior_service_within_days:
+              service_codes:
+              - '82550' # Elevated cardiac enzymes
+              days: 30
+              description: Cardiac biomarkers within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z95.5  # Post-PCI with stent placement
+          - prior_service_within_days:
+              service_codes:
+              - '92928' # Percutaneous coronary intervention
+              - '92933'
+              - '92937'
+              days: 30
+              description: PCI within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I63.9  # Ischemic stroke
+          - prior_service_within_days:
+              service_codes:
+              - '70450' # CT or MRI showing acute stroke
+              - '70551'
+              - '70552'
+              days: 90
+              description: Stroke imaging within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # High bleeding risk or recurrent events on clopidogrel
+              - '99214'
+              - '99215'
+              days: 90
+              description: Clopidogrel failure evaluation within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Cardiology evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Cardiology consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81225' # Previous CYP2C19 testing
+            days: 1825
+            description: CYP2C19 testing within past 5 years
+  logic:
+    outcome: approved
+    reason: CYP2C19 testing approved for clopidogrel therapy optimization in cardiovascular disease
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: CYP2C19 poor metabolizers have reduced clopidogrel efficacy and increased cardiovascular events
+
+- id: rule_genetics_psychiatric_pharmacogenomics
+  name: Psychiatric Pharmacogenomic Testing
+  description: Prior authorization for pharmacogenomic testing to guide psychiatric medication selection
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '0175U' # Psychiatry (eg, depression, anxiety), genomic analysis panel, variant analysis of 14 genes
+          - '0073U' # CYP2D6 (cytochrome P450, family 2, subfamily D, polypeptide 6) (eg, drug metabolism) gene analysis, common and select rare variants
+          - '81226' # CYP2D6 (cytochrome P450, family 2, subfamily D, polypeptide 6) (eg, drug metabolism), gene analysis, common variants
+      - diagnosis_code:
+          any_of:
+          - F32.9   # Major depressive disorder, single episode, unspecified
+          - F33.9   # Major depressive disorder, recurrent, unspecified
+          - F41.1   # Generalized anxiety disorder
+          - F31.9   # Bipolar disorder, unspecified
+          - F25.9   # Schizoaffective disorder, unspecified
+          - F20.9   # Schizophrenia, unspecified
+      - patient_age:
+          min: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F32.9  # Treatment-resistant depression
+              - F33.9
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Failed ≥2 antidepressant trials
+              - '99214'
+              - '99215'
+              days: 365
+              description: Multiple antidepressant failures within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F31.9  # Bipolar disorder
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Medication intolerance or poor response
+              - '99214'
+              - '99215'
+              days: 180
+              description: Mood stabilizer issues within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F20.9  # Schizophrenia
+              - F25.9  # Schizoaffective disorder
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Antipsychotic side effects or poor response
+              - '99214'
+              - '99215'
+              days: 180
+              description: Antipsychotic optimization within past 6 months
+        - all_of:
+          - patient_age:
+              min: 65  # Elderly patients at higher risk for drug interactions
+          - diagnosis_code:
+              any_of:
+              - F32.9  # Depression in elderly
+              - F33.9
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Psychiatry evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Psychiatric consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '0175U' # Previous psychiatric pharmacogenomic testing
+            - '0073U'
+            - '81226'
+            days: 1825
+            description: Psychiatric PGx testing within past 5 years
+  logic:
+    outcome: approved
+    reason: Psychiatric pharmacogenomic testing approved for treatment-resistant conditions or medication optimization
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Pharmacogenomic testing guides psychiatric medication selection and reduces adverse effects
+
+- id: rule_genetics_oncology_pharmacogenomics
+  name: Oncology Pharmacogenomic Testing
+  description: Prior authorization for pharmacogenomic testing to guide chemotherapy dosing
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81232' # DPYD (dihydropyrimidine dehydrogenase) (eg, 5-fluorouracil/5-FU and capecitabine drug metabolism), gene analysis, common variant(s)
+          - '81234' # DYPD (dihydropyrimidine dehydrogenase) (eg, 5-fluorouracil/5-FU and capecitabine drug metabolism), gene analysis, full sequence analysis
+          - '81350' # UGT1A1 (UDP glucuronosyltransferase 1 family, polypeptide A1) (eg, irinotecan metabolism), gene analysis, common variant(s)
+      - diagnosis_code:
+          any_of:
+          - C18.9   # Malignant neoplasm of colon, unspecified
+          - C20     # Malignant neoplasm of rectum
+          - C25.9   # Malignant neoplasm of pancreas, unspecified
+          - C50.911 # Malignant neoplasm of unspecified site of right female breast
+          - C78.5   # Secondary malignant neoplasm of large intestine and rectum
+      - patient_age:
+          min: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C18.9  # Colorectal cancer planned for 5-FU/capecitabine
+              - C20
+              - C78.5
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming colorectal adenocarcinoma
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Planned 5-FU or capecitabine therapy
+              - '99214'
+              - '99215'
+              days: 30
+              description: Chemotherapy planning within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C18.9  # Colorectal cancer planned for irinotecan
+              - C20
+              - C78.5
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Planned irinotecan-based therapy
+              - '99214'
+              - '99215'
+              days: 30
+              description: Irinotecan planning within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C25.9  # Pancreatic cancer planned for 5-FU
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming pancreatic adenocarcinoma
+              days: 180
+              description: Tissue diagnosis within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C50.911 # Breast cancer planned for 5-FU
+              - C50.912
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Planned 5-FU-based adjuvant therapy
+              - '99214'
+              - '99215'
+              days: 30
+              description: Adjuvant chemotherapy planning within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Oncology consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81232' # Previous DPYD or UGT1A1 testing
+            - '81234'
+            - '81350'
+            days: 1825
+            description: Oncology PGx testing within past 5 years
+  logic:
+    outcome: approved
+    reason: Oncology pharmacogenomic testing approved to prevent severe chemotherapy toxicity
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: DPYD and UGT1A1 deficiency can cause life-threatening chemotherapy toxicity
+
+- id: rule_genetics_pain_management_pharmacogenomics
+  name: Pain Management Pharmacogenomic Testing
+  description: Prior authorization for pharmacogenomic testing to guide opioid and pain medication selection
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '0029U' # Drug metabolism (adverse drug reactions and drug response), targeted sequence analysis (ie, CYP1A2, CYP2C19, CYP2C9, CYP2D6, CYP3A4, CYP3A5, CYP4F2, SLCO1B1, VKORC1 and rs12777823)
+          - '81226' # CYP2D6 (cytochrome P450, family 2, subfamily D, polypeptide 6) (eg, drug metabolism), gene analysis, common variants
+          - '0073U' # CYP2D6 (cytochrome P450, family 2, subfamily D, polypeptide 6) (eg, drug metabolism) gene analysis, common and select rare variants
+      - diagnosis_code:
+          any_of:
+          - M79.3   # Panniculitis, unspecified
+          - G89.29  # Other chronic pain
+          - M25.50  # Pain in unspecified joint
+          - F11.10  # Opioid abuse, uncomplicated
+          - Z87.891 # Personal history of nicotine dependence
+      - patient_age:
+          min: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - G89.29 # Chronic pain requiring opioid therapy
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Failed multiple pain medications
+              - '99214'
+              - '99215'
+              days: 180
+              description: Multiple analgesic failures within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F11.10 # Opioid use disorder
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Medication-assisted treatment planning
+              - '99214'
+              - '99215'
+              days: 90
+              description: MAT evaluation within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Severe adverse effects to pain medications
+              - '99214'
+              - '99215'
+              days: 90
+              description: Medication intolerance within past 90 days
+        - all_of:
+          - patient_age:
+              min: 65  # Elderly patients at higher risk
+          - diagnosis_code:
+              any_of:
+              - G89.29 # Chronic pain in elderly
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Pain management or addiction medicine evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Specialist consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '0029U' # Previous pain management pharmacogenomic testing
+            - '81226'
+            - '0073U'
+            days: 1825
+            description: Pain PGx testing within past 5 years
+  logic:
+    outcome: approved
+    reason: Pain management pharmacogenomic testing approved for medication optimization or opioid use disorder treatment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Pharmacogenomic testing optimizes pain medication selection and reduces adverse effects

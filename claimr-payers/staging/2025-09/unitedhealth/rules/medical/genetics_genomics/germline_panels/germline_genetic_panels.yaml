@@ -1,0 +1,443 @@
+- id: rule_genetics_hereditary_cancer_panels
+  name: Hereditary Cancer Genetic Panel Testing
+  description: Prior authorization for multi-gene hereditary cancer syndrome panels
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81432' # Hereditary breast cancer-related disorders (eg, hereditary breast and ovarian cancer, hereditary diffuse gastric cancer, Li-Fraumeni syndrome), genomic sequence analysis panel
+          - '81433' # Hereditary breast cancer-related disorders (eg, hereditary breast and ovarian cancer, hereditary diffuse gastric cancer, Li-Fraumeni syndrome), duplication/deletion analysis panel
+          - '81435' # Hereditary colon cancer disorders (eg, Lynch syndrome, PTEN hamartoma syndrome, Cowden syndrome, familial adenomatosis polyposis), genomic sequence analysis panel
+          - '81436' # Hereditary colon cancer disorders (eg, Lynch syndrome, PTEN hamartoma syndrome, Cowden syndrome, familial adenomatosis polyposis), duplication/deletion analysis panel
+      - diagnosis_code:
+          any_of:
+          - C50.911 # Malignant neoplasm of unspecified site of right female breast
+          - C50.912 # Malignant neoplasm of unspecified site of left female breast
+          - C78.00  # Secondary malignant neoplasm of unspecified lung
+          - C56.1   # Malignant neoplasm of right ovary
+          - C56.2   # Malignant neoplasm of left ovary
+          - C18.9   # Malignant neoplasm of colon, unspecified
+          - Z80.3   # Family history of malignant neoplasm of breast
+          - Z80.0   # Family history of malignant neoplasm of digestive organs
+          - Z15.01  # Genetic susceptibility to malignant neoplasm of breast
+          - Z15.09  # Genetic susceptibility to other malignant neoplasm
+      - patient_age:
+          min: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C50.911 # Personal history of breast cancer
+              - C50.912
+          - patient_age:
+              max: 50  # Early onset breast cancer
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z80.3  # Family history of breast/ovarian cancer
+          - prior_service_within_days:
+              service_codes:
+              - '99401' # Genetic counseling session
+              - '96040'
+              days: 180
+              description: Genetic counseling within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C18.9  # Colorectal cancer
+          - patient_age:
+              max: 50  # Early onset colorectal cancer
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z80.0  # Family history of colorectal cancer
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Documentation of Amsterdam criteria or Bethesda guidelines
+              - '99214'
+              - '99215'
+              days: 180
+              description: Lynch syndrome evaluation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99401' # Pre-test genetic counseling
+          - '96040'
+          days: 90
+          description: Genetic counseling within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81432' # Previous hereditary cancer panel
+            - '81433'
+            - '81435'
+            - '81436'
+            days: 1825
+            description: Hereditary cancer panel within past 5 years
+        - diagnosis_code:
+            any_of:
+            - Z87.891 # Personal history of nicotine dependence (lifestyle factor)
+  logic:
+    outcome: approved
+    reason: Hereditary cancer panel approved for high-risk personal or family history with genetic counseling
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Genetic testing guides cancer screening and prevention strategies in high-risk individuals
+
+- id: rule_genetics_cardiac_genetic_panels
+  name: Cardiac Genetic Panel Testing
+  description: Prior authorization for hereditary cardiac condition genetic panels
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81439' # Inherited cardiomyopathy (eg, hypertrophic cardiomyopathy, dilated cardiomyopathy, arrhythmogenic right ventricular cardiomyopathy), genomic sequence analysis panel
+          - '81440' # Inherited cardiomyopathy (eg, hypertrophic cardiomyopathy, dilated cardiomyopathy, arrhythmogenic right ventricular cardiomyopathy), duplication/deletion analysis panel
+          - '81441' # Inherited arrhythmia (eg, long QT syndrome, Brugada syndrome, catecholaminergic polymorphic ventricular tachycardia), genomic sequence analysis panel
+          - '81442' # Inherited arrhythmia (eg, long QT syndrome, Brugada syndrome, catecholaminergic polymorphic ventricular tachycardia), duplication/deletion analysis panel
+      - diagnosis_code:
+          any_of:
+          - I42.1   # Obstructive hypertrophic cardiomyopathy
+          - I42.2   # Other hypertrophic cardiomyopathy
+          - I42.0   # Dilated cardiomyopathy
+          - I45.81  # Long QT syndrome
+          - I49.8   # Other specified cardiac arrhythmias
+          - Z82.49  # Family history of ischemic heart disease and other diseases of the circulatory system
+          - R94.31  # Abnormal electrocardiogram [ECG] [EKG]
+      - patient_age:
+          min: 12
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I42.1  # Hypertrophic cardiomyopathy
+              - I42.2
+          - prior_service_within_days:
+              service_codes:
+              - '93312' # Echocardiogram showing HCM
+              - '93313'
+              - '93314'
+              days: 365
+              description: Echocardiogram confirming HCM within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I45.81 # Long QT syndrome
+          - prior_service_within_days:
+              service_codes:
+              - '93000' # ECG showing prolonged QTc >460ms (female) or >440ms (male)
+              - '93005'
+              days: 180
+              description: ECG showing prolonged QT within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z82.49 # Family history of sudden cardiac death
+          - patient_age:
+              max: 40  # Young age with family history
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I42.0  # Dilated cardiomyopathy
+          - prior_service_within_days:
+              service_codes:
+              - '93312' # Echocardiogram showing DCM
+              - '93313'
+              days: 365
+              description: Echocardiogram confirming DCM within past year
+      - prior_service_within_days:
+          service_codes:
+          - '99401' # Pre-test genetic counseling
+          - '96040'
+          days: 90
+          description: Genetic counseling within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Cardiology evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Cardiology consultation within past 6 months
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81439' # Previous cardiac genetic panel
+            - '81440'
+            - '81441'
+            - '81442'
+            days: 1825
+            description: Cardiac genetic panel within past 5 years
+  logic:
+    outcome: approved
+    reason: Cardiac genetic panel approved for hereditary cardiomyopathy or arrhythmia with appropriate evaluation
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Genetic testing identifies at-risk family members and guides treatment decisions
+
+- id: rule_genetics_neurological_panels
+  name: Neurological Genetic Panel Testing
+  description: Prior authorization for hereditary neurological condition genetic panels
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81443' # Genetic testing for severe inherited conditions (eg, cystic fibrosis, Ashkenazi Jewish-associated disorders [eg, Bloom syndrome, Canavan disease, Fanconi anemia group C, mucolipidosis type VI, Gaucher disease, Tay-Sachs disease]), genomic sequence analysis panel
+          - '81448' # Hereditary peripheral neuropathies (eg, Charcot-Marie-Tooth, spastic paraplegia), genomic sequence analysis panel
+          - '81449' # Hereditary peripheral neuropathies (eg, Charcot-Marie-Tooth, spastic paraplegia), duplication/deletion analysis panel
+      - diagnosis_code:
+          any_of:
+          - G60.0   # Hereditary motor and sensory neuropathy
+          - G11.4   # Hereditary spastic paraplegia
+          - E75.00  # GM2 gangliosidosis, unspecified
+          - E75.10  # Other gangliosidosis
+          - G71.11  # Myotonic muscular dystrophy
+          - Z82.0   # Family history of epilepsy and other diseases of the nervous system
+          - R25.2   # Cramp and spasm
+      - patient_age:
+          min: 1
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - G60.0  # Charcot-Marie-Tooth disease
+          - prior_service_within_days:
+              service_codes:
+              - '95900' # Nerve conduction studies showing demyelinating neuropathy
+              - '95903'
+              - '95904'
+              days: 365
+              description: NCS confirming neuropathy within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - G11.4  # Hereditary spastic paraplegia
+          - prior_service_within_days:
+              service_codes:
+              - '70551' # MRI brain showing white matter changes
+              - '70552'
+              - '70553'
+              days: 365
+              description: Brain MRI within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - E75.00 # Lysosomal storage disorders
+              - E75.10
+          - prior_service_within_days:
+              service_codes:
+              - '82657' # Enzyme assays
+              days: 180
+              description: Biochemical testing within past 6 months
+        - all_of:
+          - patient_age:
+              max: 18  # Pediatric onset
+          - diagnosis_code:
+              any_of:
+              - Z82.0  # Family history of neurological disease
+      - prior_service_within_days:
+          service_codes:
+          - '99401' # Pre-test genetic counseling
+          - '96040'
+          days: 90
+          description: Genetic counseling within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Neurology evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Neurology consultation within past 6 months
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81443' # Previous neurological genetic panel
+            - '81448'
+            - '81449'
+            days: 1825
+            description: Neurological genetic panel within past 5 years
+  logic:
+    outcome: approved
+    reason: Neurological genetic panel approved for hereditary neurological conditions with appropriate evaluation
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Genetic diagnosis guides treatment and family planning decisions
+
+- id: rule_genetics_whole_exome_sequencing
+  name: Whole Exome Sequencing
+  description: Prior authorization for whole exome sequencing in undiagnosed genetic conditions
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81415' # Exome (eg, unexplained constitutional or heritable disorder or syndrome); sequence analysis
+          - '81416' # Exome (eg, unexplained constitutional or heritable disorder or syndrome); sequence analysis, each comparator exome (eg, parents, siblings)
+          - '81417' # Exome (eg, unexplained constitutional or heritable disorder or syndrome); re-evaluation of previously obtained exome sequence (eg, updated knowledge or unrelated condition/syndrome)
+      - diagnosis_code:
+          any_of:
+          - Q87.89  # Other specified congenital malformation syndromes, not elsewhere classified
+          - Q99.9   # Chromosomal abnormality, unspecified
+          - R62.50  # Unspecified lack of expected normal physiological development in childhood
+          - F79     # Unspecified intellectual disabilities
+          - G93.1   # Anoxic brain damage, not elsewhere classified
+          - Z82.79  # Family history of other congenital malformations, deformations and chromosomal abnormalities
+      - patient_age:
+          min: 1
+          max: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q87.89 # Undiagnosed syndrome with multiple congenital anomalies
+          - prior_service_within_days:
+              service_codes:
+              - '88261' # Chromosome analysis showing normal karyotype
+              days: 365
+              description: Normal karyotype within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F79    # Intellectual disability of unknown etiology
+          - prior_service_within_days:
+              service_codes:
+              - '81228' # Cytogenomic constitutional (genome-wide) microarray analysis
+              days: 365
+              description: Normal chromosomal microarray within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - R62.50 # Developmental delay
+          - prior_service_within_days:
+              service_codes:
+              - '70551' # Brain MRI showing structural abnormalities
+              - '70552'
+              - '70553'
+              days: 365
+              description: Brain imaging within past year
+      - prior_service_within_days:
+          service_codes:
+          - '99401' # Pre-test genetic counseling
+          - '96040'
+          days: 90
+          description: Genetic counseling within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Medical genetics consultation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Medical genetics evaluation within past 6 months
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81415' # Previous whole exome sequencing
+            - '81416'
+            - '81417'
+            days: 1825
+            description: WES within past 5 years
+        - patient_age:
+            min: 19  # Primarily pediatric indication
+  logic:
+    outcome: approved
+    reason: Whole exome sequencing approved for undiagnosed genetic conditions after standard testing
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: WES provides comprehensive genetic analysis when targeted testing is uninformative
+
+- id: rule_genetics_carrier_screening
+  name: Carrier Screening Panels
+  description: Prior authorization for expanded carrier screening panels
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81443' # Genetic testing for severe inherited conditions, genomic sequence analysis panel
+          - '81412' # Ashkenazi Jewish associated disorders (eg, Bloom syndrome, Canavan disease, cystic fibrosis, familial dysautonomia, Fanconi anemia group C, Gaucher disease, mucolipidosis type IV, Niemann-Pick disease type A, Tay-Sachs disease), genomic sequence analysis panel
+      - diagnosis_code:
+          any_of:
+          - Z31.430 # Encounter for genetic counseling
+          - Z31.5   # Encounter for genetic counseling
+          - Z34.00  # Encounter for supervision of normal first pregnancy, unspecified trimester
+          - Z34.90  # Encounter for supervision of normal pregnancy, unspecified, unspecified trimester
+          - Z30.09  # Encounter for general counseling and advice on contraception
+      - patient_age:
+          min: 18
+          max: 45
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z34.00 # Pregnancy
+              - Z34.90
+          - prior_service_within_days:
+              service_codes:
+              - '99401' # Preconception or prenatal genetic counseling
+              - '96040'
+              days: 90
+              description: Genetic counseling within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z31.430 # Planning pregnancy
+              - Z31.5
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Reproductive planning visit
+              - '99214'
+              - '99215'
+              days: 180
+              description: Reproductive counseling within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z31.430 # High-risk ethnicity (Ashkenazi Jewish, Mediterranean, etc.)
+          - prior_service_within_days:
+              service_codes:
+              - '99401' # Ethnicity-based risk counseling
+              - '96040'
+              days: 180
+              description: Genetic counseling within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99401' # Pre-test genetic counseling
+          - '96040'
+          days: 90
+          description: Genetic counseling within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81443' # Previous carrier screening
+            - '81412'
+            days: 1825
+            description: Carrier screening within past 5 years
+        - patient_age:
+            min: 46  # Beyond typical reproductive age
+  logic:
+    outcome: approved
+    reason: Carrier screening approved for reproductive planning with genetic counseling
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Carrier screening informs reproductive decisions and family planning

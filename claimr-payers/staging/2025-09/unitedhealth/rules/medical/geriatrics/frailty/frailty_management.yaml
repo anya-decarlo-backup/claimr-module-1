@@ -1,0 +1,518 @@
+- id: rule_geriatrics_comprehensive_geriatric_assessment
+  name: Comprehensive Geriatric Assessment for Frailty
+  description: Prior authorization for comprehensive geriatric assessment in frail elderly patients
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '99401' # Preventive medicine counseling and/or risk factor reduction intervention(s) provided to an individual (separate procedure); approximately 15 minutes
+          - '99402' # Preventive medicine counseling and/or risk factor reduction intervention(s) provided to an individual (separate procedure); approximately 30 minutes
+          - '99403' # Preventive medicine counseling and/or risk factor reduction intervention(s) provided to an individual (separate procedure); approximately 45 minutes
+          - '99213' # Office or other outpatient visit for the evaluation and management of an established patient
+          - '99214' # Office or other outpatient visit for the evaluation and management of an established patient
+          - '99215' # Office or other outpatient visit for the evaluation and management of an established patient
+      - diagnosis_code:
+          any_of:
+          - R54     # Age-related physical debility
+          - Z51.89  # Encounter for other specified aftercare
+          - M62.84  # Sarcopenia
+          - F03.90  # Unspecified dementia without behavioral disturbance
+          - Z87.891 # Personal history of nicotine dependence
+          - I50.9   # Heart failure, unspecified
+      - patient_age:
+          min: 65
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - R54    # Age-related debility/frailty
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multiple falls or functional decline documented
+              - '99214'
+              - '99215'
+              days: 180
+              description: Functional decline within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Polypharmacy (≥5 medications) documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Medication complexity within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - M62.84 # Sarcopenia
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Unintentional weight loss >10 lbs documented
+              - '99214'
+              - '99215'
+              days: 180
+              description: Weight loss within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F03.90 # Dementia with functional impact
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Cognitive assessment showing decline
+              days: 365
+              description: Cognitive evaluation within past year
+        - all_of:
+          - patient_age:
+              min: 80   # Advanced age with multiple comorbidities
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multiple hospitalizations or ED visits
+              - '99214'
+              - '99215'
+              days: 365
+              description: Healthcare utilization within past year
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Geriatrics or primary care evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Clinical evaluation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Z51.11 # Encounter for antineoplastic chemotherapy (active cancer treatment)
+        - patient_age:
+            max: 64   # Not geriatric population
+        - prior_service_within_days:
+            service_codes:
+            - '99401' # Recent comprehensive assessment
+            - '99402'
+            - '99403'
+            days: 365
+            description: CGA within past year
+  logic:
+    outcome: approved
+    reason: Comprehensive geriatric assessment approved for frail elderly patient with documented functional decline
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: CGA improves outcomes in frail elderly patients through multidisciplinary assessment
+
+- id: rule_geriatrics_fall_risk_assessment_intervention
+  name: Fall Risk Assessment and Intervention Program
+  description: Prior authorization for multifactorial fall prevention interventions in high-risk elderly
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '97110' # Therapeutic procedure, 1 or more areas, each 15 minutes; therapeutic exercises to develop strength and endurance, range of motion and flexibility
+          - '97112' # Therapeutic procedure, 1 or more areas, each 15 minutes; neuromuscular reeducation of movement, balance, coordination, kinesthetic sense, posture, and/or proprioception for sitting and/or standing activities
+          - '97116' # Therapeutic procedure, 1 or more areas, each 15 minutes; gait training (includes stair climbing)
+          - '97535' # Self-care/home management training (eg, activities of daily living (ADL) and compensatory training, meal preparation, safety procedures, and instructions in use of assistive technology devices/adaptive equipment) direct one-on-one contact, each 15 minutes
+      - diagnosis_code:
+          any_of:
+          - Z91.81  # History of falling
+          - R29.6   # Repeated falls
+          - M25.561 # Pain in right knee
+          - M25.562 # Pain in left knee
+          - H53.123 # Sudden visual loss, bilateral
+          - G93.1   # Anoxic brain damage, not elsewhere classified
+          - I69.398 # Other sequelae of cerebral infarction
+      - patient_age:
+          min: 65
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z91.81 # History of falls
+              - R29.6
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # ≥2 falls in past 12 months documented
+              - '99214'
+              - '99215'
+              days: 365
+              description: Multiple falls within past year
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Gait or balance impairment documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Mobility assessment within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - M25.561 # Knee pain affecting mobility
+              - M25.562
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Functional mobility limitation documented
+              - '99214'
+              - '99215'
+              days: 180
+              description: Functional limitation within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H53.123 # Visual impairment
+          - prior_service_within_days:
+              service_codes:
+              - '92012' # Ophthalmological examination showing impairment
+              - '92014'
+              days: 180
+              description: Vision assessment within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I69.398 # Stroke sequelae
+              - G93.1
+          - prior_service_within_days:
+              service_codes:
+              - '97110' # Previous therapy showing benefit
+              - '97112'
+              - '97116'
+              days: 180
+              description: Therapy response within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Physical therapy evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: PT evaluation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - M79.89 # Other specified soft tissue disorders (may indicate contraindication)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Unstable medical condition
+            - '99214'
+            - '99215'
+            days: 30
+            description: Medical instability within past 30 days
+  logic:
+    outcome: approved
+    reason: Fall prevention program approved for high-risk elderly patient with documented fall history
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Multifactorial interventions reduce fall risk and improve quality of life in elderly
+
+- id: rule_geriatrics_medication_management_optimization
+  name: Geriatric Medication Management and Optimization
+  description: Prior authorization for comprehensive medication review and optimization in elderly with polypharmacy
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '99605' # Medication therapy management service(s) provided by a pharmacist, individual, face-to-face with patient, with assessment and intervention if provided; initial 15 minutes, new patient
+          - '99606' # Medication therapy management service(s) provided by a pharmacist, individual, face-to-face with patient, with assessment and intervention if provided; initial 15 minutes, established patient
+          - '99607' # Medication therapy management service(s) provided by a pharmacist, individual, face-to-face with patient, with assessment and intervention if provided; each additional 15 minutes
+          - '99213' # Physician medication management visit
+          - '99214'
+          - '99215'
+      - diagnosis_code:
+          any_of:
+          - Z51.81  # Encounter for therapeutic drug level monitoring
+          - Z79.899 # Other long term (current) drug therapy
+          - R06.02  # Shortness of breath
+          - N39.0   # Urinary tract infection, site not specified
+          - K59.00  # Constipation, unspecified
+          - E87.6   # Hypokalemia
+      - patient_age:
+          min: 65
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z79.899 # Polypharmacy
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # ≥5 chronic medications documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Polypharmacy within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Drug-drug interactions or adverse effects
+              - '99214'
+              - '99215'
+              days: 180
+              description: Medication complications within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z51.81 # Therapeutic drug monitoring
+          - prior_service_within_days:
+              service_codes:
+              - '80299' # Drug level monitoring showing issues
+              days: 90
+              description: Drug level monitoring within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - R06.02 # Medication-related symptoms
+              - N39.0
+              - K59.00
+              - E87.6
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Potentially inappropriate medications documented
+              - '99214'
+              - '99215'
+              days: 180
+              description: Medication-related problems within past 6 months
+        - all_of:
+          - patient_age:
+              min: 80   # Advanced age with high medication burden
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multiple prescribers documented
+              - '99214'
+              - '99215'
+              days: 180
+              description: Complex medication regimen within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Clinical pharmacist or geriatrician evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Medication evaluation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Z51.11 # Active chemotherapy (different medication management needs)
+        - prior_service_within_days:
+            service_codes:
+            - '99605' # Recent comprehensive medication review
+            - '99606'
+            - '99607'
+            days: 180
+            description: MTM within past 6 months
+  logic:
+    outcome: approved
+    reason: Medication management approved for elderly patient with polypharmacy and documented complications
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Medication optimization reduces adverse events and improves outcomes in elderly
+
+- id: rule_geriatrics_cognitive_assessment_dementia_care
+  name: Cognitive Assessment and Dementia Care Planning
+  description: Prior authorization for comprehensive cognitive assessment and dementia care coordination
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96116' # Neurobehavioral status exam (clinical assessment of thinking, reasoning and judgment, eg, acquired knowledge, attention, language, memory, planning and problem solving, and visual spatial abilities), per hour of the psychologist's or physician's time, both face-to-face time with the patient and time interpreting test results and preparing the report
+          - '96118' # Neuropsychological testing (eg, Halstead-Reitan Neuropsychological Battery, Wechsler Memory Scales and Wisconsin Card Sorting Test), per hour of the psychologist's or physician's time, both face-to-face time administering tests to the patient and time interpreting these test results and preparing the report
+          - '99490' # Chronic care management services, at least 20 minutes of clinical staff time directed by a physician or other qualified health care professional, per calendar month
+      - diagnosis_code:
+          any_of:
+          - F03.90  # Unspecified dementia without behavioral disturbance
+          - F03.91  # Unspecified dementia with behavioral disturbance
+          - G30.9   # Alzheimer's disease, unspecified
+          - F01.50  # Vascular dementia without behavioral disturbance
+          - G31.84  # Mild cognitive impairment, so stated
+      - patient_age:
+          min: 65
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - G31.84 # Mild cognitive impairment
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Progressive cognitive decline documented
+              - '99214'
+              - '99215'
+              days: 180
+              description: Cognitive decline within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Functional impairment in ADLs documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Functional assessment within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F03.90 # Dementia requiring care planning
+              - F03.91
+              - G30.9
+              - F01.50
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Caregiver burden or safety concerns documented
+              - '99214'
+              - '99215'
+              days: 180
+              description: Caregiver assessment within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F03.91 # Behavioral disturbances
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Behavioral symptoms affecting care documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Behavioral assessment within past 90 days
+        - all_of:
+          - patient_age:
+              min: 75   # Advanced age with cognitive concerns
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multiple cognitive domains affected
+              - '99214'
+              - '99215'
+              days: 180
+              description: Comprehensive evaluation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Geriatrics, neurology, or psychiatry evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Specialist evaluation within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F10.27 # Alcohol use disorder with dementia (different etiology)
+        - prior_service_within_days:
+            service_codes:
+            - '96116' # Recent comprehensive cognitive testing
+            - '96118'
+            days: 365
+            description: Cognitive testing within past year
+  logic:
+    outcome: approved
+    reason: Cognitive assessment approved for elderly patient with documented cognitive decline and functional impact
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Comprehensive cognitive assessment guides appropriate dementia care and support services
+
+- id: rule_geriatrics_nutritional_assessment_intervention
+  name: Geriatric Nutritional Assessment and Intervention
+  description: Prior authorization for comprehensive nutritional assessment and intervention in malnourished elderly
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '97802' # Medical nutrition therapy; initial assessment and intervention, individual, face-to-face with the patient, each 15 minutes
+          - '97803' # Medical nutrition therapy; re-assessment and intervention, individual, face-to-face with the patient, each 15 minutes
+          - 'B4150' # Enteral formula, nutritionally complete with intact nutrients, includes proteins, fats, carbohydrates, vitamins and minerals, may include fiber, administered through an enteral feeding tube, 100 calories = 1 unit
+      - diagnosis_code:
+          any_of:
+          - E43     # Unspecified severe protein-calorie malnutrition
+          - E44.0   # Moderate protein-calorie malnutrition
+          - E44.1   # Mild protein-calorie malnutrition
+          - R63.4   # Abnormal weight loss
+          - R50.9   # Fever, unspecified
+          - K59.00  # Constipation, unspecified
+      - patient_age:
+          min: 65
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - E43    # Severe malnutrition
+              - E44.0
+              - E44.1
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Unintentional weight loss >10% documented
+              - '99214'
+              - '99215'
+              days: 180
+              description: Significant weight loss within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '82040' # Albumin or prealbumin showing malnutrition
+              - '84134'
+              days: 90
+              description: Nutritional labs within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - R63.4  # Abnormal weight loss
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Poor oral intake or dysphagia documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Intake assessment within past 90 days
+        - all_of:
+          - patient_age:
+              min: 80   # Advanced age with nutritional risk
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multiple comorbidities affecting nutrition
+              - '99214'
+              - '99215'
+              days: 180
+              description: Medical complexity within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - K59.00 # GI symptoms affecting nutrition
+              - R50.9
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Functional decline related to nutrition
+              - '99214'
+              - '99215'
+              days: 90
+              description: Functional assessment within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Registered dietitian or physician evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Nutritional evaluation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Z51.11 # Active cancer treatment (different nutritional needs)
+        - prior_service_within_days:
+            service_codes:
+            - '97802' # Recent comprehensive nutrition therapy
+            - '97803'
+            days: 180
+            description: MNT within past 6 months
+  logic:
+    outcome: approved
+    reason: Nutritional intervention approved for elderly patient with documented malnutrition and functional impact
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Nutritional intervention improves outcomes and reduces complications in malnourished elderly

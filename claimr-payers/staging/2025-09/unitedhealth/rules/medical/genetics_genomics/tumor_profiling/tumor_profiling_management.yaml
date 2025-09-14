@@ -1,0 +1,480 @@
+- id: rule_genetics_comprehensive_genomic_profiling
+  name: Comprehensive Genomic Profiling for Solid Tumors
+  description: Prior authorization for comprehensive genomic profiling in advanced solid tumors
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81445' # Targeted genomic sequence analysis panel, solid organ neoplasm, DNA analysis, and RNA analysis when performed, 5-50 genes
+          - '81455' # Targeted genomic sequence analysis panel, solid organ neoplasm, DNA analysis, and RNA analysis when performed, 51 or greater genes
+          - '0037U' # Targeted genomic sequence analysis, solid organ neoplasm, DNA analysis of 324 genes, interrogation for sequence variants, gene copy number amplifications, gene rearrangements, microsatellite instability and tumor mutational burden
+      - diagnosis_code:
+          any_of:
+          - C78.00  # Secondary malignant neoplasm of unspecified lung
+          - C77.2   # Secondary and unspecified malignant neoplasm of intra-abdominal lymph nodes
+          - C80.1   # Malignant neoplasm, unspecified
+          - C25.9   # Malignant neoplasm of pancreas, unspecified
+          - C34.10  # Malignant neoplasm of upper lobe, unspecified bronchus or lung
+          - C50.911 # Malignant neoplasm of unspecified site of right female breast
+          - C78.01  # Secondary malignant neoplasm of right lung
+          - C78.02  # Secondary malignant neoplasm of left lung
+      - patient_age:
+          min: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C34.10 # Non-small cell lung cancer
+              - C78.00
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming NSCLC
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Imaging showing advanced/metastatic disease
+              - '70487'
+              - '70488'
+              days: 90
+              description: Staging imaging within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C50.911 # Breast cancer
+              - C50.912
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming invasive breast cancer
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '88360' # Triple-negative or HER2-negative status
+              days: 180
+              description: Biomarker testing within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C25.9  # Pancreatic adenocarcinoma
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming pancreatic adenocarcinoma
+              days: 180
+              description: Tissue diagnosis within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C80.1  # Cancer of unknown primary
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis with unknown primary
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Extensive imaging workup
+              - '70487'
+              - '70488'
+              days: 90
+              description: Comprehensive imaging within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Oncology consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81445' # Previous comprehensive genomic profiling
+            - '81455'
+            - '0037U'
+            days: 365
+            description: CGP within past year
+        - diagnosis_code:
+            any_of:
+            - C43.9  # Melanoma (different testing paradigm)
+  logic:
+    outcome: approved
+    reason: Comprehensive genomic profiling approved for advanced solid tumors to guide targeted therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: CGP identifies actionable mutations for precision oncology treatment selection
+
+- id: rule_genetics_liquid_biopsy_monitoring
+  name: Liquid Biopsy for Treatment Monitoring
+  description: Prior authorization for circulating tumor DNA monitoring during cancer treatment
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '0179U' # Oncology (non-small cell lung cancer), cell-free DNA, targeted sequence analysis of 23 genes
+          - '0239U' # Targeted genomic sequence analysis panel, solid organ neoplasm, cell-free circulating DNA analysis of 55-74 genes
+          - '0242U' # Targeted genomic sequence analysis panel, solid organ neoplasm, cell-free circulating DNA analysis of 75 or greater genes
+      - diagnosis_code:
+          any_of:
+          - C34.10  # Non-small cell lung cancer
+          - C50.911 # Breast cancer
+          - C18.9   # Colorectal cancer
+          - C25.9   # Pancreatic cancer
+          - C78.00  # Secondary malignant neoplasm of lung
+      - patient_age:
+          min: 18
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '81445' # Previous tissue-based genomic profiling showing actionable mutation
+              - '81455'
+              - '0037U'
+              days: 365
+              description: Tissue CGP within past year
+          - prior_service_within_days:
+              service_codes:
+              - '96413' # Currently receiving targeted therapy
+              - '96415'
+              - '96417'
+              days: 90
+              description: Active targeted therapy within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Clinical progression on targeted therapy
+              - '99214'
+              - '99215'
+              days: 30
+              description: Disease progression evaluation within past 30 days
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Imaging showing progression
+              - '70487'
+              - '70488'
+              days: 60
+              description: Progressive disease imaging within past 60 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C34.10 # NSCLC with EGFR/ALK mutations
+          - prior_service_within_days:
+              service_codes:
+              - '96413' # TKI therapy
+              - '96415'
+              days: 180
+              description: Tyrosine kinase inhibitor therapy within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Oncology consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '0179U' # Recent liquid biopsy
+            - '0239U'
+            - '0242U'
+            days: 90
+            description: Liquid biopsy within past 90 days
+  logic:
+    outcome: approved
+    reason: Liquid biopsy approved for monitoring treatment response and resistance in targeted therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: ctDNA monitoring detects treatment resistance and guides therapy adjustments
+
+- id: rule_genetics_microsatellite_instability
+  name: Microsatellite Instability Testing
+  description: Prior authorization for MSI testing in colorectal and endometrial cancers
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81301' # Microsatellite instability analysis of markers for mismatch repair deficiency
+          - '88271' # Molecular cytogenetics; DNA probe, each (eg, FISH)
+          - '81292' # MLH1 (mutL homolog 1, colon cancer, nonpolyposis type 2) (eg, hereditary non-polyposis colorectal cancer, Lynch syndrome) gene analysis; full sequence analysis
+      - diagnosis_code:
+          any_of:
+          - C18.9   # Malignant neoplasm of colon, unspecified
+          - C20     # Malignant neoplasm of rectum
+          - C54.1   # Malignant neoplasm of endometrium
+          - C78.5   # Secondary malignant neoplasm of large intestine and rectum
+      - patient_age:
+          min: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C18.9  # Colorectal cancer
+              - C20
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming colorectal adenocarcinoma
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - any_of:
+            - patient_age:
+                max: 50  # Young onset CRC
+            - prior_service_within_days:
+                service_codes:
+                - '99213' # Family history meeting Amsterdam criteria
+                - '99214'
+                - '99215'
+                days: 180
+                description: Lynch syndrome evaluation within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C54.1  # Endometrial cancer
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming endometrial adenocarcinoma
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - patient_age:
+              max: 60  # Young onset endometrial cancer
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C18.9  # Advanced colorectal cancer for immunotherapy eligibility
+              - C20
+              - C78.5
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Imaging showing metastatic disease
+              - '70487'
+              - '70488'
+              days: 90
+              description: Metastatic disease imaging within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Oncology consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81301' # Previous MSI testing
+            - '81292'
+            days: 1825
+            description: MSI testing within past 5 years
+  logic:
+    outcome: approved
+    reason: MSI testing approved for Lynch syndrome screening and immunotherapy eligibility
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: MSI testing identifies Lynch syndrome and predicts immunotherapy response
+
+- id: rule_genetics_tumor_mutational_burden
+  name: Tumor Mutational Burden Testing
+  description: Prior authorization for TMB testing to predict immunotherapy response
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '0048U' # Oncology (solid organ neoplasm), DNA, targeted sequencing of protein-coding exons of 468 cancer-associated genes
+          - '0239U' # Targeted genomic sequence analysis panel, solid organ neoplasm, cell-free circulating DNA analysis of 55-74 genes
+          - '0242U' # Targeted genomic sequence analysis panel, solid organ neoplasm, cell-free circulating DNA analysis of 75 or greater genes
+      - diagnosis_code:
+          any_of:
+          - C34.10  # Non-small cell lung cancer
+          - C43.9   # Malignant melanoma, unspecified site
+          - C67.9   # Malignant neoplasm of bladder, unspecified
+          - C25.9   # Malignant neoplasm of pancreas, unspecified
+          - C78.00  # Secondary malignant neoplasm of unspecified lung
+      - patient_age:
+          min: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C34.10 # Advanced NSCLC
+              - C78.00
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming NSCLC
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Imaging showing advanced disease
+              - '70487'
+              - '70488'
+              days: 90
+              description: Advanced disease imaging within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C43.9  # Metastatic melanoma
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming melanoma
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Imaging showing metastatic disease
+              - '70487'
+              - '70488'
+              days: 90
+              description: Metastatic disease imaging within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C67.9  # Urothelial carcinoma
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming urothelial carcinoma
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Cisplatin-ineligible or platinum-refractory disease
+              - '99214'
+              - '99215'
+              days: 90
+              description: Treatment eligibility evaluation within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology evaluation for immunotherapy consideration
+          - '99214'
+          - '99215'
+          days: 90
+          description: Oncology consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '0048U' # Previous TMB testing
+            - '0239U'
+            - '0242U'
+            days: 365
+            description: TMB testing within past year
+  logic:
+    outcome: approved
+    reason: TMB testing approved for immunotherapy eligibility assessment in advanced cancers
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: High TMB predicts response to immune checkpoint inhibitors
+
+- id: rule_genetics_hereditary_cancer_somatic
+  name: Somatic Mutation Testing for Targeted Therapy
+  description: Prior authorization for somatic mutation testing to guide targeted therapy selection
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81210' # BRAF (B-Raf proto-oncogene, serine/threonine kinase) (eg, colon cancer), gene analysis, V600E variant
+          - '81235' # EGFR (epidermal growth factor receptor) (eg, non-small cell lung cancer) gene analysis; common variants
+          - '81275' # KRAS (Kirsten rat sarcoma viral oncogene homolog) (eg, carcinoma) gene analysis; variants in exon 2
+          - '81276' # KRAS (Kirsten rat sarcoma viral oncogene homolog) (eg, carcinoma) gene analysis; additional variant(s)
+      - diagnosis_code:
+          any_of:
+          - C34.10  # Non-small cell lung cancer
+          - C18.9   # Malignant neoplasm of colon, unspecified
+          - C43.9   # Malignant melanoma, unspecified site
+          - C78.00  # Secondary malignant neoplasm of unspecified lung
+          - C78.5   # Secondary malignant neoplasm of large intestine and rectum
+      - patient_age:
+          min: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C34.10 # NSCLC for EGFR testing
+              - C78.00
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming NSCLC
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Imaging showing advanced disease
+              - '70487'
+              - '70488'
+              days: 90
+              description: Advanced disease imaging within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C18.9  # Colorectal cancer for KRAS/BRAF testing
+              - C78.5
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming colorectal adenocarcinoma
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Consideration for anti-EGFR therapy
+              - '99214'
+              - '99215'
+              days: 90
+              description: Treatment planning within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C43.9  # Melanoma for BRAF testing
+          - prior_service_within_days:
+              service_codes:
+              - '88305' # Tissue diagnosis confirming melanoma
+              days: 180
+              description: Tissue diagnosis within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Imaging showing metastatic disease
+              - '70487'
+              - '70488'
+              days: 90
+              description: Metastatic disease imaging within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Oncology consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81210' # Previous somatic mutation testing
+            - '81235'
+            - '81275'
+            - '81276'
+            days: 365
+            description: Somatic mutation testing within past year
+  logic:
+    outcome: approved
+    reason: Somatic mutation testing approved to guide targeted therapy selection in advanced cancers
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Somatic mutations predict response to targeted therapies and guide treatment selection

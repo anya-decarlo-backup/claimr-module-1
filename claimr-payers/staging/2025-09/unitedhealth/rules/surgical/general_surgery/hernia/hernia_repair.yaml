@@ -1,0 +1,129 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '49505'
+    - '49507'
+    - '49520'
+    - '49521'
+    - '49650'
+    - '49651'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_inguinal_hernia_2025_09
+    - dx_in_value_set: vs_incisional_hernia_2025_09
+    - dx_in_value_set: vs_umbilical_hernia_2025_09
+    all_of:
+    - min_age: 5
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Hernia repair requires documented hernia with symptoms or complications; age 5-85
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hernia_repair_inguinal_primary
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '49560'
+    - '49561'
+    - '49566'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_incisional_hernia_2025_09
+    - dx_in_value_set: vs_ventral_hernia_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Incisional/ventral hernia repair requires documented hernia with functional impairment
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hernia_repair_incisional_ventral
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '49570'
+    - '49572'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_umbilical_hernia_2025_09
+    - dx_in_value_set: vs_epigastric_hernia_2025_09
+    all_of:
+    - min_age: 1
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Umbilical/epigastric hernia repair requires symptomatic hernia or complications
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hernia_repair_umbilical_epigastric
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '49505'
+    - '49507'
+    - '49520'
+    - '49521'
+    - '49650'
+    - '49651'
+    - '49560'
+    - '49561'
+    - '49566'
+    - '49570'
+    - '49572'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cosmetic_procedures_2025_09
+    - dx_in_value_set: vs_asymptomatic_hernia_2025_09
+    all_of:
+    - min_age: 86
+  logic:
+    outcome: DENIED
+    notes: Hernia repair excluded for cosmetic purposes, asymptomatic hernias, or age >85
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hernia_repair_exclusions

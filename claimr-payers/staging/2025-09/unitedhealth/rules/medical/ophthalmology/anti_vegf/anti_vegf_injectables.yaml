@@ -1,0 +1,389 @@
+- id: rule_ophthalmology_anti_vegf_wet_amd
+  name: Anti-VEGF Therapy for Wet Age-Related Macular Degeneration
+  description: Prior authorization for anti-VEGF injections in wet AMD
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0178  # Aflibercept injection
+          - J2778  # Ranibizumab injection
+          - J3590  # Bevacizumab injection
+          - C9257  # Injection, bevacizumab
+          - '67028' # Intravitreal injection of a pharmacologic agent
+      - diagnosis_code:
+          any_of:
+          - H35.32  # Exudative age-related macular degeneration
+          - H35.3210 # Exudative age-related macular degeneration, right eye
+          - H35.3211 # Exudative age-related macular degeneration, left eye
+          - H35.3212 # Exudative age-related macular degeneration, bilateral
+          - H35.3213 # Exudative age-related macular degeneration, bilateral, with active choroidal neovascularization
+      - patient_age:
+          min: 50
+      - prior_service_within_days:
+          service_codes:
+          - '92134' # Optical coherence tomography (OCT)
+          days: 30
+          description: OCT confirming wet AMD within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '92235' # Fluorescein angiography
+          days: 90
+          description: Angiography confirming CNV within past 90 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92134' # OCT showing intraretinal or subretinal fluid
+              days: 14
+              description: Active fluid on OCT within past 2 weeks
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Visual acuity 20/40 or worse
+              - '99214'
+              - '99215'
+              days: 30
+              description: Visual impairment within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 60
+          description: Ophthalmologic evaluation within past 60 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H35.31  # Nonexudative age-related macular degeneration
+        - prior_service_within_days:
+            service_codes:
+            - '67040' # Recent vitrectomy
+            days: 90
+            description: Vitrectomy within past 90 days
+  logic:
+    outcome: approved
+    reason: Anti-VEGF therapy approved for wet AMD with documented choroidal neovascularization and visual impairment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Anti-VEGF therapy is first-line treatment for wet AMD to prevent vision loss
+
+- id: rule_ophthalmology_anti_vegf_diabetic_macular_edema
+  name: Anti-VEGF Therapy for Diabetic Macular Edema
+  description: Prior authorization for anti-VEGF injections in diabetic macular edema
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0178  # Aflibercept injection
+          - J2778  # Ranibizumab injection
+          - J3590  # Bevacizumab injection
+          - '67028' # Intravitreal injection
+      - diagnosis_code:
+          any_of:
+          - E11.311 # Type 2 diabetes mellitus with unspecified diabetic retinopathy with macular edema
+          - E11.321 # Type 2 diabetes mellitus with mild nonproliferative diabetic retinopathy with macular edema
+          - E11.331 # Type 2 diabetes mellitus with moderate nonproliferative diabetic retinopathy with macular edema
+          - E11.341 # Type 2 diabetes mellitus with severe nonproliferative diabetic retinopathy with macular edema
+          - E11.351 # Type 2 diabetes mellitus with proliferative diabetic retinopathy with macular edema
+          - E10.311 # Type 1 diabetes mellitus with unspecified diabetic retinopathy with macular edema
+          - E10.321 # Type 1 diabetes mellitus with mild nonproliferative diabetic retinopathy with macular edema
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '92134' # OCT showing macular edema
+          days: 30
+          description: OCT confirming macular edema within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '92235' # Fluorescein angiography
+          days: 180
+          description: Angiography within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92134' # Central macular thickness >300 microns
+              days: 14
+              description: Significant macular thickening within past 2 weeks
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Visual acuity 20/32 or worse
+              - '99214'
+              - '99215'
+              days: 30
+              description: Visual impairment within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '83036' # HbA1c within past 3 months
+          days: 90
+          description: Diabetes monitoring within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 60
+          description: Ophthalmologic evaluation within past 60 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H44.001 # Unspecified purulent endophthalmitis
+        - prior_service_within_days:
+            service_codes:
+            - '67228' # Recent laser photocoagulation
+            days: 90
+            description: Focal laser within past 90 days
+  logic:
+    outcome: approved
+    reason: Anti-VEGF therapy approved for diabetic macular edema with documented visual impairment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Anti-VEGF therapy is preferred first-line treatment for center-involving diabetic macular edema
+
+- id: rule_ophthalmology_anti_vegf_retinal_vein_occlusion
+  name: Anti-VEGF Therapy for Retinal Vein Occlusion
+  description: Prior authorization for anti-VEGF injections in retinal vein occlusion with macular edema
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0178  # Aflibercept injection
+          - J2778  # Ranibizumab injection
+          - J3590  # Bevacizumab injection
+          - '67028' # Intravitreal injection
+      - diagnosis_code:
+          any_of:
+          - H34.831 # Tributary (branch) retinal vein occlusion, right eye
+          - H34.832 # Tributary (branch) retinal vein occlusion, left eye
+          - H34.833 # Tributary (branch) retinal vein occlusion, bilateral
+          - H34.811 # Central retinal vein occlusion, right eye
+          - H34.812 # Central retinal vein occlusion, left eye
+          - H34.813 # Central retinal vein occlusion, bilateral
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '92134' # OCT showing macular edema
+          days: 30
+          description: OCT confirming macular edema within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '92235' # Fluorescein angiography confirming RVO
+          days: 90
+          description: Angiography confirming vein occlusion within past 90 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H34.811 # Central retinal vein occlusion
+              - H34.812
+              - H34.813
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Visual acuity 20/40 or worse
+              - '99214'
+              - '99215'
+              days: 30
+              description: Visual impairment within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H34.831 # Branch retinal vein occlusion
+              - H34.832
+              - H34.833
+          - prior_service_within_days:
+              service_codes:
+              - '92134' # Central macular thickness >300 microns
+              days: 14
+              description: Significant macular edema within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 60
+          description: Ophthalmologic evaluation within past 60 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H34.10  # Central retinal artery occlusion
+        - prior_service_within_days:
+            service_codes:
+            - '67228' # Recent laser treatment
+            days: 90
+            description: Laser photocoagulation within past 90 days
+  logic:
+    outcome: approved
+    reason: Anti-VEGF therapy approved for retinal vein occlusion with macular edema and visual impairment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Anti-VEGF therapy improves visual outcomes in RVO-associated macular edema
+
+- id: rule_ophthalmology_anti_vegf_myopic_cnv
+  name: Anti-VEGF Therapy for Myopic Choroidal Neovascularization
+  description: Prior authorization for anti-VEGF injections in pathologic myopia with CNV
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0178  # Aflibercept injection
+          - J2778  # Ranibizumab injection
+          - J3590  # Bevacizumab injection
+          - '67028' # Intravitreal injection
+      - diagnosis_code:
+          any_of:
+          - H44.21  # Degenerative myopia, right eye
+          - H44.22  # Degenerative myopia, left eye
+          - H44.23  # Degenerative myopia, bilateral
+          - H35.051 # Retinal neovascularization, unspecified, right eye
+          - H35.052 # Retinal neovascularization, unspecified, left eye
+          - H35.053 # Retinal neovascularization, unspecified, bilateral
+      - patient_age:
+          min: 18
+          max: 65
+      - prior_service_within_days:
+          service_codes:
+          - '92134' # OCT showing CNV
+          days: 30
+          description: OCT confirming choroidal neovascularization within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '92235' # Fluorescein angiography
+          days: 90
+          description: Angiography confirming myopic CNV within past 90 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92025' # Refraction showing high myopia (>-6.0 D)
+              days: 365
+              description: High myopia documented within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '76516' # A-scan showing axial length >26.5 mm
+              days: 365
+              description: Pathologic myopia measurements within past year
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Visual acuity decline
+          - '99214'
+          - '99215'
+          days: 30
+          description: Visual impairment within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 60
+          description: Ophthalmologic evaluation within past 60 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H35.32  # Age-related macular degeneration
+        - patient_age:
+            min: 70
+  logic:
+    outcome: approved
+    reason: Anti-VEGF therapy approved for myopic choroidal neovascularization with documented high myopia
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Anti-VEGF therapy is effective for myopic CNV in younger patients with pathologic myopia
+
+- id: rule_ophthalmology_anti_vegf_maintenance
+  name: Anti-VEGF Maintenance Therapy
+  description: Prior authorization for ongoing anti-VEGF injections following initial treatment response
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0178  # Aflibercept injection
+          - J2778  # Ranibizumab injection
+          - J3590  # Bevacizumab injection
+          - '67028' # Intravitreal injection
+      - diagnosis_code:
+          any_of:
+          - H35.32  # Exudative age-related macular degeneration
+          - E11.311 # Diabetic macular edema
+          - E11.321 # Diabetic macular edema
+          - E11.331 # Diabetic macular edema
+          - H34.831 # Branch retinal vein occlusion
+          - H34.811 # Central retinal vein occlusion
+          - H44.21  # Degenerative myopia
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - J0178  # Previous anti-VEGF injections (≥3 loading doses)
+          - J2778
+          - J3590
+          days: 180
+          description: Initial anti-VEGF treatment course within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92134' # OCT showing treatment response
+          days: 60
+          description: OCT monitoring within past 60 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Stable or improved visual acuity
+              - '99214'
+              - '99215'
+              days: 60
+              description: Visual acuity assessment within past 60 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92134' # Reduced macular thickness or fluid
+              days: 30
+              description: Anatomic improvement on OCT within past 30 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92134' # Recurrent fluid requiring treatment
+              days: 30
+              description: Disease recurrence on OCT within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Regular ophthalmologic monitoring
+          - '92014'
+          days: 90
+          description: Ophthalmologic evaluation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - H44.001 # Endophthalmitis
+            days: 180
+            description: Injection-related complications within past 6 months
+  logic:
+    outcome: approved
+    reason: Maintenance anti-VEGF therapy approved for documented treatment response with ongoing monitoring
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Maintenance therapy prevents vision loss in responders to initial anti-VEGF treatment

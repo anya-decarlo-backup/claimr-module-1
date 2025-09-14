@@ -1,0 +1,151 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61510'
+    - '61512'
+    - '61518'
+    - '61519'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_brain_tumor_malignant_2025_09
+    - dx_in_value_set: vs_brain_tumor_benign_mass_effect_2025_09
+    - dx_in_value_set: vs_intracranial_lesion_symptomatic_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Craniotomy for tumor resection requires confirmed brain tumor with mass effect or neurological symptoms
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cranial_surgery_tumor_resection
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61304'
+    - '61305'
+    - '61312'
+    - '61313'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_subdural_hematoma_chronic_2025_09
+    - dx_in_value_set: vs_epidural_hematoma_2025_09
+    - dx_in_value_set: vs_intracranial_hemorrhage_surgical_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Craniotomy for hematoma evacuation requires symptomatic intracranial hematoma with mass effect
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cranial_surgery_hematoma_evacuation
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61548'
+    - '61566'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_intractable_epilepsy_2025_09
+    - dx_in_value_set: vs_seizure_disorder_refractory_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 70
+  logic:
+    outcome: PA_REQUIRED
+    notes: Epilepsy surgery requires intractable seizures with failed medical management and epilepsy center evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cranial_surgery_epilepsy_resection
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61700'
+    - '61702'
+    - '61703'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_intracranial_aneurysm_ruptured_2025_09
+    - dx_in_value_set: vs_aneurysm_unruptured_high_risk_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Aneurysm clipping requires ruptured aneurysm or high-risk unruptured aneurysm with neurosurgical evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cranial_surgery_aneurysm_clipping
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61575'
+    - '61576'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_trigeminal_neuralgia_refractory_2025_09
+    - dx_in_value_set: vs_facial_pain_intractable_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Trigeminal neuralgia surgery requires refractory facial pain with failed medical management
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cranial_surgery_trigeminal_neuralgia

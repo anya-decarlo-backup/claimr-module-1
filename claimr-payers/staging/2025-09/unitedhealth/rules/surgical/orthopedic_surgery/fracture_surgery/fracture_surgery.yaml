@@ -1,0 +1,144 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '27235'
+    - '27236'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hip_fracture_displaced_femoral_neck_2025_09
+    - dx_in_value_set: vs_intertrochanteric_fracture_displaced_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 95
+  logic:
+    outcome: PA_REQUIRED
+    notes: Hip fracture ORIF requires displaced femoral neck or intertrochanteric fractures with urgent surgical repair
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_fracture_surgery_hip_orif
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '27766'
+    - '27767'
+    - '27792'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ankle_fracture_displaced_malleolar_2025_09
+    - dx_in_value_set: vs_trimalleolar_fracture_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Ankle fracture ORIF requires displaced malleolar fractures needing anatomic reduction for joint stability
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_fracture_surgery_ankle_orif
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '25607'
+    - '25608'
+    - '25609'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_distal_radius_fracture_displaced_2025_09
+    - dx_in_value_set: vs_intraarticular_wrist_fracture_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Wrist fracture ORIF requires displaced distal radius fractures with articular involvement or instability
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_fracture_surgery_wrist_orif
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '23515'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_clavicle_fracture_displaced_2025_09
+    - dx_in_value_set: vs_clavicle_fracture_comminuted_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Clavicle fracture ORIF requires displaced fractures >2cm displacement or significant comminution
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_fracture_surgery_clavicle_orif
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '27506'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_femoral_shaft_fracture_2025_09
+    - dx_in_value_set: vs_femur_fracture_pathologic_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Femur fracture intramedullary nailing for femoral shaft fractures enabling early mobilization and weight bearing
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_fracture_surgery_femur_intramedullary_nailing

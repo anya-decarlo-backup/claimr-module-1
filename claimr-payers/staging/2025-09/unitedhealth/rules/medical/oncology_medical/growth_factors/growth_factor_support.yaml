@@ -1,0 +1,344 @@
+- id: rule_oncology_gcsf_prophylaxis
+  name: G-CSF Prophylaxis for Neutropenia
+  description: Prior authorization for granulocyte colony-stimulating factor prophylaxis during chemotherapy
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J1442  # Injection, filgrastim (G-CSF)
+          - J1447  # Injection, tbo-filgrastim
+          - J2505  # Injection, pegfilgrastim
+          - '96372' # Subcutaneous injection
+      - diagnosis_code:
+          any_of:
+          - C78.00  # Secondary malignant neoplasm
+          - C80.1   # Malignant neoplasm, unspecified
+          - C50.911 # Breast cancer
+          - C34.10  # Lung cancer
+          - C18.9   # Colorectal cancer
+          - Z51.11  # Encounter for antineoplastic chemotherapy
+      - prior_service_within_days:
+          service_codes:
+          - '96413' # Recent chemotherapy administration
+          - '96415'
+          - '96416'
+          days: 7
+          description: Chemotherapy administration within past week
+      - any_of:
+        - all_of:
+          - patient_age:
+              min: 65
+          - prior_service_within_days:
+              service_codes:
+              - '96413' # Intensive chemotherapy regimen
+              days: 14
+              description: Intensive chemotherapy in elderly patient within past 2 weeks
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '85025' # ANC <1000 cells/μL
+              days: 7
+              description: Neutropenia documented within past week
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Previous febrile neutropenia hospitalization
+              - '99222'
+              - '99223'
+              days: 90
+              description: History of febrile neutropenia within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology evaluation
+          - '99214'
+          - '99215'
+          days: 14
+          description: Oncology evaluation within past 2 weeks
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C95.90 # Acute leukemia (different G-CSF protocols)
+            - C81.90 # Lymphoma (hematology-oncology management)
+  logic:
+    outcome: approved
+    reason: G-CSF prophylaxis approved for appropriate neutropenia risk with oncology oversight
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: G-CSF reduces infection risk in patients at high risk for febrile neutropenia
+
+- id: rule_oncology_erythropoietin_cancer
+  name: Erythropoietin for Cancer-Related Anemia
+  description: Prior authorization for erythropoiesis-stimulating agents in cancer patients
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0881  # Injection, darbepoetin alfa
+          - J0885  # Injection, epoetin alfa
+          - '96365' # IV infusion
+      - diagnosis_code:
+          any_of:
+          - C78.00  # Secondary malignant neoplasm
+          - C80.1   # Malignant neoplasm, unspecified
+          - Z51.11  # Encounter for antineoplastic chemotherapy
+          - D63.0   # Anemia in neoplastic disease
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # Hemoglobin <10 g/dL
+          - '85027'
+          days: 14
+          description: Hemoglobin <10 g/dL within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '96413' # Palliative chemotherapy only
+          - '96415'
+          days: 30
+          description: Palliative chemotherapy within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '82728' # Iron studies normal
+          - '82607' # B12 level normal
+          - '82746' # Folate level normal
+          days: 60
+          description: Nutritional deficiencies excluded within past 60 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '96413' # Curative-intent chemotherapy
+            - '77301' # Radiation therapy planning (curative)
+            days: 90
+            description: No curative-intent treatment within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology evaluation
+          - '99214'
+          - '99215'
+          days: 30
+          description: Oncology evaluation within past 30 days
+      - patient_age:
+          min: 18
+  logic:
+    outcome: approved
+    reason: ESA therapy approved for palliative cancer treatment with documented anemia
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: ESAs improve quality of life in palliative cancer patients with chemotherapy-induced anemia
+
+- id: rule_oncology_platelet_growth_factor
+  name: Platelet Growth Factor Therapy
+  description: Prior authorization for thrombopoietin receptor agonists in cancer patients
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (eltrombopag, romiplostim)
+          - '96372' # Subcutaneous injection
+      - diagnosis_code:
+          any_of:
+          - C78.00  # Secondary malignant neoplasm
+          - C80.1   # Malignant neoplasm, unspecified
+          - Z51.11  # Encounter for antineoplastic chemotherapy
+          - D69.59  # Other secondary thrombocytopenia
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # Platelet count <50,000/μL
+          - '85027'
+          days: 7
+          description: Severe thrombocytopenia within past week
+      - prior_service_within_days:
+          service_codes:
+          - '96413' # Chemotherapy-induced thrombocytopenia
+          - '96415'
+          days: 21
+          description: Chemotherapy administration within past 3 weeks
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Hospitalization for bleeding
+            - '99222'
+            - '99223'
+            days: 14
+            description: Bleeding complications within past 2 weeks
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '96413' # Chemotherapy delay due to thrombocytopenia
+              days: 14
+              description: Treatment delay due to low platelets within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology evaluation
+          - '99214'
+          - '99215'
+          days: 14
+          description: Oncology evaluation within past 2 weeks
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - D69.3  # Immune thrombocytopenic purpura (different indication)
+            - C95.90 # Acute leukemia (different management)
+  logic:
+    outcome: approved
+    reason: Platelet growth factor approved for chemotherapy-induced thrombocytopenia with bleeding risk
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: TPO receptor agonists reduce bleeding risk and treatment delays in cancer patients
+
+- id: rule_oncology_stem_cell_mobilization
+  name: Stem Cell Mobilization Growth Factors
+  description: Prior authorization for growth factors used in stem cell mobilization
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J1442  # Injection, filgrastim
+          - J2502  # Injection, plerixafor
+          - '96372' # Subcutaneous injection
+      - diagnosis_code:
+          any_of:
+          - C90.00  # Multiple myeloma
+          - C81.90  # Hodgkin lymphoma
+          - C85.90  # Non-Hodgkin lymphoma
+          - C95.90  # Leukemia
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Hematology-oncology consultation
+          - '99214'
+          - '99215'
+          days: 30
+          description: Hematology-oncology evaluation within past 30 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C90.00 # Multiple myeloma
+          - prior_service_within_days:
+              service_codes:
+              - '96413' # Induction chemotherapy completed
+              days: 90
+              description: Induction chemotherapy within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C81.90 # Lymphoma
+              - C85.90
+          - prior_service_within_days:
+              service_codes:
+              - '96413' # Salvage chemotherapy
+              days: 60
+              description: Salvage chemotherapy within past 60 days
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # Adequate blood counts for mobilization
+          days: 7
+          description: Blood count assessment within past week
+      - prior_service_within_days:
+          service_codes:
+          - '38240' # Bone marrow transplant evaluation
+          - '38241'
+          days: 180
+          description: Transplant evaluation within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C78.00 # Solid tumor metastases (not transplant eligible)
+        - patient_age:
+            min: 70
+  logic:
+    outcome: approved
+    reason: Stem cell mobilization approved for transplant-eligible hematologic malignancy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Growth factors facilitate adequate stem cell collection for autologous transplantation
+
+- id: rule_oncology_bone_marrow_stimulation
+  name: Bone Marrow Stimulation Post-Chemotherapy
+  description: Prior authorization for growth factors supporting bone marrow recovery
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J1442  # Injection, filgrastim
+          - J1447  # Injection, tbo-filgrastim
+          - J0881  # Injection, darbepoetin alfa
+          - J0885  # Injection, epoetin alfa
+          - '96372' # Subcutaneous injection
+      - diagnosis_code:
+          any_of:
+          - C78.00  # Secondary malignant neoplasm
+          - C80.1   # Malignant neoplasm, unspecified
+          - Z51.11  # Encounter for antineoplastic chemotherapy
+          - D61.1   # Drug-induced aplastic anemia
+      - prior_service_within_days:
+          service_codes:
+          - '96413' # High-dose chemotherapy
+          - '96415'
+          days: 14
+          description: High-dose chemotherapy within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # Severe cytopenias
+          - '85027'
+          days: 7
+          description: Severe bone marrow suppression within past week
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '85025' # ANC <500 cells/μL
+              days: 3
+              description: Severe neutropenia within past 3 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '85025' # Hemoglobin <8 g/dL
+              days: 7
+              description: Severe anemia within past week
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '85025' # Platelet count <20,000/μL
+              days: 3
+              description: Severe thrombocytopenia within past 3 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology evaluation
+          - '99214'
+          - '99215'
+          days: 7
+          description: Oncology evaluation within past week
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C95.90 # Acute leukemia (specialized protocols)
+  logic:
+    outcome: approved
+    reason: Growth factor support approved for severe chemotherapy-induced bone marrow suppression
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Growth factors accelerate bone marrow recovery after intensive chemotherapy

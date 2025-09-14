@@ -1,0 +1,239 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55840'
+    - '55842'
+    - '55845'
+    - '55866'
+    - '55876'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_experimental_urologic_procedures_2025_09
+    - dx_in_value_set: vs_investigational_prostate_surgery_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Experimental or investigational urologic procedures not covered by UnitedHealth policy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_exclusion_experimental_procedures
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55840'
+    - '55842'
+    - '55845'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostate_cancer_low_risk_active_surveillance_2025_09
+    - dx_in_value_set: vs_prostate_cancer_metastatic_2025_09
+    - dx_in_value_set: vs_life_expectancy_limited_prostate_2025_09
+    all_of:
+    - min_age: 80
+    - max_age: 100
+  logic:
+    outcome: EXCLUDED
+    notes: Radical prostatectomy excluded for low-risk disease suitable for active surveillance, metastatic disease, or limited life expectancy <10 years
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_exclusion_inappropriate_prostatectomy
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '52630'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bph_mild_symptoms_medical_management_2025_09
+    - dx_in_value_set: vs_prostate_cancer_active_turp_contraindication_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: TURP excluded for mild BPH symptoms manageable with medical therapy or suspected prostate cancer
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_exclusion_inappropriate_turp
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50590'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kidney_stones_small_asymptomatic_2025_09
+    - dx_in_value_set: vs_stones_eswl_contraindications_2025_09
+    - dx_in_value_set: vs_pregnancy_eswl_contraindication_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: ESWL excluded for small asymptomatic stones <5mm, pregnancy, or contraindications to shock wave therapy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_exclusion_inappropriate_eswl
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50080'
+    - '50081'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kidney_stones_small_pcnl_inappropriate_2025_09
+    - dx_in_value_set: vs_pcnl_high_bleeding_risk_2025_09
+    - dx_in_value_set: vs_renal_anatomy_unfavorable_pcnl_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: PCNL excluded for small stones <2cm amenable to other methods, high bleeding risk, or unfavorable anatomy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_exclusion_inappropriate_pcnl
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55801'
+    - '55810'
+    - '55812'
+    - '55815'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostate_biopsy_unnecessary_low_psa_2025_09
+    - dx_in_value_set: vs_recent_negative_biopsy_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Prostate biopsy excluded for low PSA without other risk factors or recent negative biopsy within 2 years
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_exclusion_unnecessary_biopsy
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50060'
+    - '50065'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_open_stone_surgery_minimally_invasive_available_2025_09
+    - dx_in_value_set: vs_high_surgical_risk_open_surgery_2025_09
+    all_of:
+    - min_age: 75
+    - max_age: 100
+  logic:
+    outcome: EXCLUDED
+    notes: Open stone surgery excluded when minimally invasive options are available or high surgical risk
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_exclusion_inappropriate_open_surgery
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55821'
+    - '55831'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_salvage_prostatectomy_metastatic_disease_2025_09
+    - dx_in_value_set: vs_radiation_therapy_recent_inadequate_time_2025_09
+    - dx_in_value_set: vs_prohibitive_surgical_risk_salvage_2025_09
+    all_of:
+    - min_age: 75
+    - max_age: 100
+  logic:
+    outcome: EXCLUDED
+    notes: Salvage prostatectomy excluded for metastatic disease, inadequate time since radiation, or prohibitive surgical risk
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_exclusion_inappropriate_salvage_prostatectomy

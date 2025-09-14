@@ -1,0 +1,142 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '29888'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_acl_tear_complete_mri_2025_09
+    - dx_in_value_set: vs_knee_instability_functional_2025_09
+    all_of:
+    - min_age: 14
+    - max_age: 55
+  logic:
+    outcome: PA_REQUIRED
+    notes: Primary ACL reconstruction requires complete ACL tear with functional instability in active individuals
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_sports_medicine_acl_reconstruction_primary
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '29827'
+    - '29828'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_rotator_cuff_tear_athletes_2025_09
+    - dx_in_value_set: vs_overhead_athlete_shoulder_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Rotator cuff repair for athletes requires repairable tears with overhead activity requirements
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_sports_medicine_rotator_cuff_repair_athletes
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '29806'
+    - '29807'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_shoulder_labral_tear_recurrent_instability_2025_09
+    - dx_in_value_set: vs_bankart_lesion_athletes_2025_09
+    all_of:
+    - min_age: 14
+    - max_age: 40
+  logic:
+    outcome: PA_REQUIRED
+    notes: Shoulder labral repair for recurrent instability in young athletes with overhead sports participation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_sports_medicine_shoulder_labral_repair
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '27650'
+    - '27652'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_achilles_tendon_rupture_acute_2025_09
+    - dx_in_value_set: vs_achilles_rupture_athletes_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Achilles tendon repair for acute ruptures in active individuals within 2 weeks of injury
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_sports_medicine_achilles_tendon_repair
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '24346'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ucl_tear_complete_throwing_athletes_2025_09
+    - dx_in_value_set: vs_medial_elbow_instability_2025_09
+    all_of:
+    - min_age: 14
+    - max_age: 45
+  logic:
+    outcome: PA_REQUIRED
+    notes: UCL reconstruction (Tommy John surgery) for overhead throwing athletes with complete UCL tears
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_sports_medicine_ucl_reconstruction_tommy_john

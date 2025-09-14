@@ -1,0 +1,100 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32851'
+    - '32852'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_end_stage_lung_disease_2025_09
+    - dx_in_value_set: vs_idiopathic_pulmonary_fibrosis_2025_09
+    - dx_in_value_set: vs_copd_end_stage_2025_09
+    - dx_in_value_set: vs_cystic_fibrosis_lung_transplant_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 70
+    - prior_service_required:
+        cpt: ['94010', '94060', '94729']
+        lookback_days: 90
+        description: "Pulmonary function testing and 6-minute walk test"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Lung transplant requires end-stage lung disease, FEV1 <30%, and failed optimal medical therapy
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32853'
+    - '32854'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bilateral_lung_transplant_2025_09
+    - dx_in_value_set: vs_pulmonary_hypertension_severe_2025_09
+    - dx_in_value_set: vs_alpha1_antitrypsin_deficiency_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 65
+    - prior_service_required:
+        cpt: ['93451', '93452']
+        lookback_days: 90
+        description: "Right heart catheterization and hemodynamic assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Bilateral lung transplant requires severe bilateral lung disease and appropriate candidacy
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32855'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_living_donor_lung_transplant_2025_09
+    - dx_in_value_set: vs_lobar_lung_transplant_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 60
+    - prior_service_required:
+        cpt: ['99401', '99402']
+        lookback_days: 90
+        description: "Living donor evaluation and pulmonary assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Living donor lung transplant requires comprehensive donor evaluation and recipient-donor compatibility
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"

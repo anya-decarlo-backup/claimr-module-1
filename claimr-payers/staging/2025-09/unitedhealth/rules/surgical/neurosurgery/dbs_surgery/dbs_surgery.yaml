@@ -1,0 +1,143 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61867'
+    - '61868'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_parkinsons_disease_advanced_2025_09
+    - dx_in_value_set: vs_motor_fluctuations_parkinsons_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: DBS for Parkinson's disease requires advanced disease with motor fluctuations and failed optimal medical therapy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_dbs_surgery_parkinsons_disease
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61867'
+    - '61868'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_essential_tremor_disabling_2025_09
+    - dx_in_value_set: vs_tremor_medication_refractory_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: DBS for essential tremor requires disabling tremor refractory to medical management with functional impairment
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_dbs_surgery_essential_tremor
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61867'
+    - '61868'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dystonia_generalized_2025_09
+    - dx_in_value_set: vs_dystonia_medication_refractory_2025_09
+    all_of:
+    - min_age: 7
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: DBS for dystonia requires generalized or medication-refractory dystonia with significant functional disability
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_dbs_surgery_dystonia
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61885'
+    - '61886'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dbs_battery_replacement_2025_09
+    - dx_in_value_set: vs_dbs_generator_malfunction_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: DBS generator replacement requires battery depletion or generator malfunction with documented need
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_dbs_surgery_generator_replacement
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61880'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dbs_lead_revision_malfunction_2025_09
+    - dx_in_value_set: vs_dbs_lead_migration_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: DBS lead revision requires documented lead malfunction, migration, or inadequate therapeutic response
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_dbs_surgery_lead_revision

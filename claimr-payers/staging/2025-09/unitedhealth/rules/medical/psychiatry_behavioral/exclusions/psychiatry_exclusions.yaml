@@ -1,0 +1,291 @@
+- id: rule_psychiatry_psychotherapy_cosmetic_exclusion
+  name: Psychotherapy Exclusion for Cosmetic Concerns
+  description: Exclusion of psychotherapy for purely cosmetic or appearance-related concerns
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "53", "02"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90834' # Individual psychotherapy
+          - '90837' # Individual psychotherapy, 60 minutes
+          - '90847' # Family therapy
+          - '90853' # Group therapy
+      - diagnosis_code:
+          any_of:
+          - Z41.1   # Encounter for cosmetic surgery
+          - Z41.9   # Encounter for other procedures for purposes other than remedying health state
+          - F45.22  # Body dysmorphic disorder (when solely cosmetic)
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F32.9  # Major depressive disorder
+            - F41.1  # Generalized anxiety disorder
+            - F43.10 # Post-traumatic stress disorder
+            - F50.9  # Eating disorder
+  logic:
+    outcome: denied
+    reason: Psychotherapy not covered for purely cosmetic concerns without underlying mental health condition
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Cosmetic concerns without mental health diagnosis do not meet medical necessity criteria
+
+- id: rule_psychiatry_tms_contraindication_exclusion
+  name: TMS Exclusion for Medical Contraindications
+  description: Exclusion of TMS therapy for patients with metallic implants or seizure disorders
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90867' # Transcranial magnetic stimulation
+          - '90868' # TMS motor threshold determination
+          - '90869' # TMS delivery and management
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - Z96.20  # Presence of otological and audiological implants
+            - Z96.21  # Presence of cochlear implant
+            - Z96.29  # Presence of other otological and audiological implants
+            - Z45.02  # Encounter for adjustment and management of cardiac pacemaker
+            - G40.9   # Epilepsy, unspecified
+            - G40.001 # Localization-related idiopathic epilepsy and epileptic syndromes with seizures of localized onset, not intractable, with status epilepticus
+        - prior_service_within_days:
+            service_codes:
+            - '70551' # Brain MRI showing metallic objects
+            days: 180
+            description: Imaging showing contraindications within past 6 months
+  logic:
+    outcome: denied
+    reason: TMS contraindicated due to metallic implants or seizure disorder
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: TMS contraindicated with ferromagnetic implants and seizure disorders due to safety risks
+
+- id: rule_psychiatry_ect_cardiac_exclusion
+  name: ECT Exclusion for Recent Cardiac Events
+  description: Exclusion of ECT for patients with recent myocardial infarction or unstable cardiac conditions
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "21"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90870' # Electroconvulsive therapy
+          - '00104' # Anesthesia for ECT
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - I21.9   # Acute myocardial infarction, unspecified
+            - I25.10  # Atherosclerotic heart disease of native coronary artery without angina pectoris
+            - I50.9   # Heart failure, unspecified
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent cardiac hospitalization
+            - '99222'
+            - '99223'
+            days: 90
+            description: Cardiac hospitalization within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '93000' # ECG showing acute changes
+            days: 14
+            description: Acute cardiac changes within past 2 weeks
+  logic:
+    outcome: denied
+    reason: ECT contraindicated due to recent cardiac events or unstable cardiac condition
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: ECT poses cardiac risks in patients with recent MI or unstable cardiac conditions
+
+- id: rule_psychiatry_iop_php_insufficient_severity_exclusion
+  name: IOP/PHP Exclusion for Insufficient Clinical Severity
+  description: Exclusion of intensive programs for patients who can be managed in standard outpatient care
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["53", "52", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90834' # Individual therapy in IOP/PHP setting
+          - '90837' # Individual therapy, 60 minutes
+          - '90853' # Group therapy
+      - diagnosis_code:
+          any_of:
+          - F41.9   # Anxiety disorder, unspecified
+          - F43.20  # Adjustment disorders, unspecified
+          - F43.21  # Adjustment disorder with depressed mood
+          - F32.0   # Major depressive disorder, single episode, mild
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent psychiatric hospitalization
+            - '99222'
+            - '99223'
+            days: 60
+            description: Psychiatric hospitalization within past 60 days
+        - prior_service_within_days:
+            service_codes:
+            - '99281' # Multiple crisis interventions
+            - '99282'
+            - '99283'
+            days: 30
+            description: Crisis interventions within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - H0005  # Failed outpatient treatment
+            days: 90
+            description: Outpatient treatment failure within past 90 days
+  logic:
+    outcome: denied
+    reason: IOP/PHP not medically necessary for mild conditions manageable in outpatient setting
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Intensive programs reserved for severe conditions requiring higher level of care
+
+- id: rule_psychiatry_sud_active_psychosis_exclusion
+  name: SUD Treatment Exclusion for Active Psychosis
+  description: Exclusion of standard SUD treatment for patients with active psychotic symptoms requiring specialized care
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["53", "55", "56"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - H0015  # Intensive outpatient SUD
+          - H0018  # Residential SUD treatment
+          - H0005  # Alcohol and/or drug services
+      - diagnosis_code:
+          any_of:
+          - F20.9   # Schizophrenia, unspecified
+          - F22     # Delusional disorders
+          - F23     # Brief psychotic disorder
+          - F25.9   # Schizoaffective disorder, unspecified
+          - F29     # Unspecified psychosis not due to a substance or known physiological condition
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Active psychotic symptoms
+          days: 30
+          description: Active psychosis within past 30 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - J3490  # Antipsychotic medication stabilization
+            days: 30
+            description: Psychiatric stabilization within past 30 days
+  logic:
+    outcome: denied
+    reason: Standard SUD treatment inappropriate for active psychosis; requires dual diagnosis specialized program
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Active psychosis requires specialized dual diagnosis treatment programs
+
+- id: rule_psychiatry_mat_pregnancy_exclusion
+  name: MAT Exclusion for Specific Medications in Pregnancy
+  description: Exclusion of certain MAT medications contraindicated in pregnancy
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "53"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J2315  # Naltrexone injection (contraindicated in pregnancy)
+      - diagnosis_code:
+          any_of:
+          - Z33.1   # Pregnant state, incidental
+          - O09.90  # Supervision of high risk pregnancy, unspecified, unspecified trimester
+          - O99.320 # Drug use complicating pregnancy, unspecified trimester
+      - patient_age:
+          min: 15
+          max: 50
+  logic:
+    outcome: denied
+    reason: Naltrexone contraindicated in pregnancy; buprenorphine or methadone preferred
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Naltrexone may precipitate withdrawal in opioid-dependent pregnant patients
+
+- id: rule_psychiatry_adolescent_adult_program_exclusion
+  name: Adolescent Exclusion from Adult Treatment Programs
+  description: Exclusion of adolescents from adult-oriented treatment programs
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["53", "55", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - H0015  # Adult intensive outpatient
+          - H0018  # Adult residential treatment
+          - '90853' # Adult group therapy
+      - patient_age:
+          max: 17
+      - none_of:
+        - service_code:
+            any_of:
+            - '90847' # Family therapy component
+        - prior_service_within_days:
+            service_codes:
+            - '90791' # Adolescent-specific assessment
+            days: 30
+            description: Adolescent evaluation within past 30 days
+  logic:
+    outcome: denied
+    reason: Adolescents require age-appropriate treatment programs with family involvement
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Adolescents have different developmental needs requiring specialized programs
+
+- id: rule_psychiatry_maintenance_without_response_exclusion
+  name: Maintenance Treatment Exclusion Without Initial Response
+  description: Exclusion of maintenance TMS or ECT without documented response to acute treatment
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "21"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90867' # Maintenance TMS
+          - '90870' # Maintenance ECT
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '96116' # Documented clinical response (≥50% improvement)
+            days: 180
+            description: Clinical response to acute treatment within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '90867' # Completed acute TMS course
+            - '90870' # Completed acute ECT course
+            days: 180
+            description: Acute treatment course within past 6 months
+  logic:
+    outcome: denied
+    reason: Maintenance treatment requires documented response to acute treatment course
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Maintenance therapy only appropriate for patients who responded to acute treatment

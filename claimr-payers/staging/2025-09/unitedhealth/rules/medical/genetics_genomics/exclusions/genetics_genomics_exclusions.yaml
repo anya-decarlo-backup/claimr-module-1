@@ -1,0 +1,335 @@
+- id: rule_genetics_recreational_testing_exclusion
+  name: Recreational Genetic Testing Exclusion
+  description: Exclusion for direct-to-consumer or recreational genetic testing without medical indication
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81443' # Genetic testing for severe inherited conditions
+          - '81432' # Hereditary breast cancer-related disorders
+          - '81435' # Hereditary colon cancer disorders
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C50.911 # Personal history of cancer
+            - C50.912
+            - C18.9
+            - C20
+            - Z80.3   # Family history of malignant neoplasm
+            - Z80.0
+        - prior_service_within_days:
+            service_codes:
+            - '99401' # Genetic counseling
+            - '96040'
+            days: 180
+            description: Genetic counseling within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Medical evaluation for genetic risk
+            - '99214'
+            - '99215'
+            days: 180
+            description: Medical genetics evaluation within past 6 months
+  logic:
+    outcome: denied
+    reason: Genetic testing for curiosity or recreational purposes without medical indication is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Genetic testing covered only for medical decision-making with appropriate counseling
+
+- id: rule_genetics_paternity_testing_exclusion
+  name: Paternity Testing Exclusion
+  description: Exclusion for paternity or relationship testing for non-medical purposes
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81265' # Comparative analysis using Short Tandem Repeat (STR) markers; patient and comparative specimen(s), each additional specimen
+          - '81266' # Comparative analysis using Short Tandem Repeat (STR) markers; each additional family member
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Q87.89 # Congenital malformation syndromes requiring family studies
+            - Z82.79 # Family history requiring genetic confirmation
+        - prior_service_within_days:
+            service_codes:
+            - '99401' # Medical genetics counseling
+            - '96040'
+            days: 90
+            description: Medical genetics evaluation within past 90 days
+  logic:
+    outcome: denied
+    reason: Paternity testing for legal or personal purposes without medical indication is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Relationship testing covered only when medically necessary for diagnosis or treatment
+
+- id: rule_genetics_pharmacogenomics_screening_exclusion
+  name: Pharmacogenomic Screening Without Indication Exclusion
+  description: Exclusion for pharmacogenomic testing without specific medication indication
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '0175U' # Psychiatry pharmacogenomic panel
+          - '0029U' # Drug metabolism panel
+          - '81225' # CYP2C19 gene analysis
+          - '81226' # CYP2D6 gene analysis
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F32.9  # Major depressive disorder
+            - F33.9  # Recurrent depressive disorder
+            - I21.9  # Acute myocardial infarction
+            - I48.91 # Atrial fibrillation
+            - G89.29 # Chronic pain
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Medication failure or adverse effects
+            - '99214'
+            - '99215'
+            days: 180
+            description: Medication issues within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - 'J7506' # Current prescription for relevant medications
+            - 'J7631'
+            days: 30
+            description: Relevant medication use within past 30 days
+  logic:
+    outcome: denied
+    reason: Pharmacogenomic testing without specific medication indication or clinical need is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Pharmacogenomic testing should be targeted to specific clinical scenarios and medications
+
+- id: rule_genetics_whole_genome_sequencing_exclusion
+  name: Whole Genome Sequencing Exclusion
+  description: Exclusion for whole genome sequencing without specific medical indication
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81425' # Genome (eg, unexplained constitutional or heritable disorder or syndrome); sequence analysis
+          - '81426' # Genome (eg, unexplained constitutional or heritable disorder or syndrome); sequence analysis, each comparator genome
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Q87.89 # Undiagnosed syndrome with multiple congenital anomalies
+            - F79    # Intellectual disabilities of unknown etiology
+            - R62.50 # Developmental delay
+        - prior_service_within_days:
+            service_codes:
+            - '81415' # Failed whole exome sequencing
+            - '81416'
+            - '81417'
+            days: 365
+            description: Uninformative WES within past year
+        - patient_age:
+            max: 18  # Pediatric cases with undiagnosed conditions
+  logic:
+    outcome: denied
+    reason: Whole genome sequencing without specific medical indication or failed targeted testing is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: WGS reserved for cases where targeted testing and WES have been uninformative
+
+- id: rule_genetics_carrier_screening_low_risk_exclusion
+  name: Carrier Screening in Low-Risk Populations Exclusion
+  description: Exclusion for expanded carrier screening in low-risk individuals without reproductive planning
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81443' # Genetic testing for severe inherited conditions
+          - '81412' # Ashkenazi Jewish associated disorders
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Z31.430 # Encounter for genetic counseling
+            - Z31.5   # Encounter for genetic counseling
+            - Z34.00  # Pregnancy supervision
+            - Z34.90  # Pregnancy supervision
+        - prior_service_within_days:
+            service_codes:
+            - '99401' # Preconception counseling
+            - '96040'
+            days: 180
+            description: Reproductive counseling within past 6 months
+        - patient_age:
+            min: 18
+            max: 45  # Reproductive age
+  logic:
+    outcome: denied
+    reason: Carrier screening without reproductive planning or genetic counseling is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Carrier screening should be performed in context of reproductive planning with counseling
+
+- id: rule_genetics_tumor_profiling_early_stage_exclusion
+  name: Tumor Profiling in Early Stage Cancer Exclusion
+  description: Exclusion for comprehensive genomic profiling in early-stage cancers without treatment indication
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81445' # Targeted genomic sequence analysis panel, solid organ neoplasm
+          - '81455' # Targeted genomic sequence analysis panel, 51 or greater genes
+          - '0037U' # Comprehensive genomic profiling
+      - diagnosis_code:
+          any_of:
+          - C50.911 # Early-stage breast cancer
+          - C50.912
+          - C34.10  # Early-stage lung cancer
+          - C18.9   # Early-stage colorectal cancer
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '70486' # Imaging showing advanced/metastatic disease
+            - '70487'
+            - '70488'
+            days: 90
+            description: Advanced disease imaging within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Treatment planning for advanced disease
+            - '99214'
+            - '99215'
+            days: 90
+            description: Advanced treatment planning within past 90 days
+        - diagnosis_code:
+            any_of:
+            - C78.00 # Secondary malignant neoplasm
+            - C78.01
+            - C78.02
+            - C77.2  # Lymph node metastases
+  logic:
+    outcome: denied
+    reason: Comprehensive genomic profiling in early-stage cancer without treatment indication is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: CGP primarily indicated for advanced cancers where targeted therapy decisions are needed
+
+- id: rule_genetics_liquid_biopsy_screening_exclusion
+  name: Liquid Biopsy for Cancer Screening Exclusion
+  description: Exclusion for liquid biopsy testing for cancer screening in asymptomatic individuals
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '0179U' # Oncology liquid biopsy panel
+          - '0239U' # Cell-free circulating DNA analysis
+          - '0242U' # Cell-free circulating DNA analysis, 75+ genes
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C34.10 # Active cancer diagnosis
+            - C50.911
+            - C50.912
+            - C18.9
+            - C25.9
+        - prior_service_within_days:
+            service_codes:
+            - '88305' # Tissue diagnosis of cancer
+            days: 365
+            description: Cancer diagnosis within past year
+        - prior_service_within_days:
+            service_codes:
+            - '96413' # Active cancer treatment
+            - '96415'
+            - '96417'
+            days: 180
+            description: Cancer therapy within past 6 months
+  logic:
+    outcome: denied
+    reason: Liquid biopsy for cancer screening in asymptomatic individuals is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Liquid biopsy indicated for treatment monitoring and resistance detection, not screening
+
+- id: rule_genetics_repeat_testing_exclusion
+  name: Repeat Genetic Testing Exclusion
+  description: Exclusion for repeat genetic testing without new clinical indication
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81432' # Hereditary cancer panels
+          - '81433'
+          - '81435'
+          - '81436'
+          - '81439' # Cardiac panels
+          - '81440'
+          - '81441'
+          - '81442'
+      - prior_service_within_days:
+          service_codes:
+          - '81432' # Previous genetic testing of same type
+          - '81433'
+          - '81435'
+          - '81436'
+          - '81439'
+          - '81440'
+          - '81441'
+          - '81442'
+          days: 1825
+          description: Same genetic test within past 5 years
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99401' # New genetic counseling for changed circumstances
+            - '96040'
+            days: 90
+            description: Updated genetic counseling within past 90 days
+        - diagnosis_code:
+            any_of:
+            - C50.911 # New cancer diagnosis
+            - C50.912
+            - C18.9
+            - I42.1   # New cardiac diagnosis
+  logic:
+    outcome: denied
+    reason: Repeat genetic testing without new clinical indication or changed circumstances is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Genetic test results generally remain valid unless new clinical information emerges

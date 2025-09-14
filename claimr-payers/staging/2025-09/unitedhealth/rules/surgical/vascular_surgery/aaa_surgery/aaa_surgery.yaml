@@ -1,0 +1,150 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '35081'
+    - '35082'
+    - '35091'
+    - '35092'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_aaa_ruptured_emergency_2025_09
+    - dx_in_value_set: vs_aaa_symptomatic_large_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Open AAA repair requires ruptured aneurysm or symptomatic aneurysm >5.5cm with vascular surgery evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_aaa_surgery_open_repair
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '34800'
+    - '34802'
+    - '34803'
+    - '34804'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_aaa_endovascular_suitable_2025_09
+    - dx_in_value_set: vs_aaa_high_surgical_risk_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Endovascular AAA repair requires suitable anatomy and aneurysm >5.5cm or high surgical risk for open repair
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_aaa_surgery_endovascular_repair
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '34825'
+    - '34826'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_aaa_endoleak_type1_2025_09
+    - dx_in_value_set: vs_aaa_endoleak_type3_2025_09
+    - dx_in_value_set: vs_aaa_expansion_post_evar_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: AAA endoleak repair requires type I or III endoleak or aneurysm expansion post-EVAR
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_aaa_surgery_endoleak_repair
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '35131'
+    - '35132'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_thoracic_aortic_aneurysm_2025_09
+    - dx_in_value_set: vs_aortic_dissection_type_a_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Thoracic aortic aneurysm repair requires aneurysm >5.5cm or acute type A dissection
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_aaa_surgery_thoracic_aortic_repair
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33860'
+    - '33863'
+    - '33864'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_thoracic_endovascular_repair_2025_09
+    - dx_in_value_set: vs_aortic_dissection_type_b_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Thoracic endovascular aortic repair requires suitable anatomy and aneurysm >5.5cm or complicated type B dissection
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_aaa_surgery_thoracic_endovascular_repair

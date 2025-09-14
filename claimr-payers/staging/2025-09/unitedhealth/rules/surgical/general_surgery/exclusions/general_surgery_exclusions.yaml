@@ -1,0 +1,175 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '49505'
+    - '49507'
+    - '49520'
+    - '49521'
+    - '49650'
+    - '49651'
+    - '49560'
+    - '49561'
+    - '49566'
+    - '49570'
+    - '49572'
+    - '47562'
+    - '47563'
+    - '47564'
+    - '47600'
+    - '47605'
+    - '47610'
+    - '44970'
+    - '44979'
+    - '44960'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cosmetic_surgery_2025_09
+    - dx_in_value_set: vs_experimental_procedures_2025_09
+  logic:
+    outcome: DENIED
+    notes: General surgery excluded for cosmetic purposes or experimental procedures
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_general_surgery_cosmetic_experimental_exclusion
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '49505'
+    - '49507'
+    - '49520'
+    - '49521'
+    - '49650'
+    - '49651'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_asymptomatic_hernia_2025_09
+    - dx_in_value_set: vs_reducible_hernia_no_symptoms_2025_09
+  logic:
+    outcome: DENIED
+    notes: Hernia repair excluded for asymptomatic or minimally symptomatic hernias
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hernia_asymptomatic_exclusion
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '47562'
+    - '47563'
+    - '47564'
+    - '47600'
+    - '47605'
+    - '47610'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_asymptomatic_gallstones_2025_09
+    - dx_in_value_set: vs_prophylactic_cholecystectomy_2025_09
+  logic:
+    outcome: DENIED
+    notes: Cholecystectomy excluded for asymptomatic gallstones or prophylactic removal
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cholecystectomy_asymptomatic_exclusion
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44970'
+    - '44979'
+    - '44960'
+    - '44955'
+    - '44950'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prophylactic_appendectomy_2025_09
+    - dx_in_value_set: vs_incidental_appendectomy_2025_09
+  logic:
+    outcome: DENIED
+    notes: Appendectomy excluded for prophylactic or incidental removal without acute indication
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_appendectomy_prophylactic_exclusion
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '49505'
+    - '49507'
+    - '49520'
+    - '49521'
+    - '49650'
+    - '49651'
+    - '49560'
+    - '49561'
+    - '49566'
+    - '49570'
+    - '49572'
+    - '47562'
+    - '47563'
+    - '47564'
+    - '47600'
+    - '47605'
+    - '47610'
+    - '44970'
+    - '44979'
+    - '44960'
+  conditions:
+    all_of:
+    - min_age: 86
+  logic:
+    outcome: DENIED
+    notes: General surgery procedures excluded for patients over age 85 due to surgical risk
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_general_surgery_age_exclusion

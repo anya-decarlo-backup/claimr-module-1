@@ -1,0 +1,405 @@
+- id: rule_psychiatry_iop_mental_health
+  name: Intensive Outpatient Program (IOP) for Mental Health
+  description: Prior authorization for intensive outpatient mental health treatment programs
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["53", "02"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90834' # Individual therapy in IOP setting
+          - '90837' # Individual therapy, 60 minutes
+          - '90853' # Group therapy
+          - '90901' # Biofeedback training
+      - diagnosis_code:
+          any_of:
+          - F32.9   # Major depressive disorder, single episode
+          - F33.9   # Major depressive disorder, recurrent
+          - F41.1   # Generalized anxiety disorder
+          - F43.10  # Post-traumatic stress disorder
+          - F60.3   # Borderline personality disorder
+          - F50.9   # Eating disorder, unspecified
+      - patient_age:
+          min: 12
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Comprehensive psychiatric evaluation
+          - '90792'
+          days: 30
+          description: Psychiatric evaluation within past 30 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Recent psychiatric hospitalization
+              - '99222'
+              - '99223'
+              days: 30
+              description: Psychiatric hospitalization within past 30 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '90834' # Failed outpatient therapy
+              - '90837'
+              days: 90
+              description: Inadequate response to outpatient therapy within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Functional impairment assessment
+              days: 30
+              description: Significant functional impairment within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '99281' # Multiple crisis interventions
+            - '99282'
+            - '99283'
+            - '99284'
+            - '99285'
+            days: 60
+            description: Crisis interventions within past 60 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Clinical assessment showing IOP-level need
+          days: 14
+          description: Clinical assessment supporting IOP level of care within past 2 weeks
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F20.9  # Schizophrenia (may require PHP)
+            - F70    # Intellectual disability
+        - prior_service_within_days:
+            service_codes:
+            - F10.20 # Active substance use (requires SUD treatment first)
+            - F11.20
+            days: 30
+            description: Active substance use within past 30 days
+  logic:
+    outcome: approved
+    reason: IOP approved for mental health condition requiring intensive intervention with step-down from inpatient or step-up from outpatient
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: IOP provides structured intensive treatment while maintaining community integration
+
+- id: rule_psychiatry_php_mental_health
+  name: Partial Hospitalization Program (PHP) for Mental Health
+  description: Prior authorization for partial hospitalization mental health treatment programs
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["52", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90834' # Individual therapy in PHP setting
+          - '90837' # Individual therapy, 60 minutes
+          - '90853' # Group therapy
+          - '90901' # Biofeedback training
+          - '99213' # Psychiatric evaluation and management
+          - '99214'
+      - diagnosis_code:
+          any_of:
+          - F32.2   # Major depressive disorder, single episode, severe
+          - F33.2   # Major depressive disorder, recurrent, severe
+          - F20.9   # Schizophrenia, unspecified
+          - F31.9   # Bipolar disorder, unspecified
+          - F43.10  # Post-traumatic stress disorder
+          - F60.3   # Borderline personality disorder
+      - patient_age:
+          min: 12
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Comprehensive psychiatric evaluation
+          - '90792'
+          days: 14
+          description: Recent psychiatric evaluation within past 2 weeks
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Recent psychiatric hospitalization
+              - '99222'
+              - '99223'
+              days: 14
+              description: Psychiatric hospitalization within past 2 weeks
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99281' # Multiple emergency visits
+              - '99282'
+              - '99283'
+              - '99284'
+              - '99285'
+              days: 30
+              description: Multiple psychiatric emergency visits within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F20.9  # Schizophrenia with acute symptoms
+              - F31.9  # Bipolar with mood episodes
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Severe functional impairment
+              days: 14
+              description: Severe functional impairment within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Clinical assessment showing PHP-level need
+          days: 7
+          description: Clinical assessment supporting PHP level of care within past week
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Active suicidal ideation requiring inpatient
+            days: 3
+            description: Acute suicidal risk within past 3 days
+        - diagnosis_code:
+            any_of:
+            - F70    # Severe intellectual disability
+  logic:
+    outcome: approved
+    reason: PHP approved for severe mental health condition requiring intensive daily treatment with medical supervision
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: PHP provides intensive treatment for severe mental illness while avoiding full hospitalization
+
+- id: rule_psychiatry_adolescent_php
+  name: Adolescent Partial Hospitalization Program
+  description: Prior authorization for adolescent-specific partial hospitalization programs
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["52", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90834' # Individual therapy
+          - '90837' # Individual therapy, 60 minutes
+          - '90847' # Family therapy with patient present
+          - '90853' # Group therapy
+          - '99213' # Psychiatric management
+      - diagnosis_code:
+          any_of:
+          - F32.9   # Major depressive disorder
+          - F50.9   # Eating disorder, unspecified
+          - F91.9   # Conduct disorder, unspecified
+          - F43.10  # Post-traumatic stress disorder
+          - F84.0   # Autistic disorder
+          - F90.9   # ADHD with severe impairment
+      - patient_age:
+          min: 12
+          max: 18
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Adolescent psychiatric evaluation
+          - '90792'
+          days: 14
+          description: Adolescent psychiatric evaluation within past 2 weeks
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F50.9  # Eating disorder
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Medical instability
+              - '99222'
+              - '99223'
+              days: 30
+              description: Medical complications within past 30 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99281' # School refusal or dysfunction
+              - '99282'
+              days: 14
+              description: School-related crisis within past 2 weeks
+        - prior_service_within_days:
+            service_codes:
+            - '90847' # Family system dysfunction
+            days: 30
+            description: Family therapy indicating system crisis within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Functional assessment
+          days: 14
+          description: Functional impairment assessment within past 2 weeks
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F70    # Intellectual disability
+        - prior_service_within_days:
+            service_codes:
+            - F10.20 # Substance use (requires specialized program)
+            - F11.20
+            days: 30
+            description: Active substance use within past 30 days
+  logic:
+    outcome: approved
+    reason: Adolescent PHP approved for severe mental health condition requiring intensive age-appropriate treatment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Adolescent PHP addresses developmental needs while providing intensive mental health treatment
+
+- id: rule_psychiatry_eating_disorder_php
+  name: Eating Disorder Partial Hospitalization Program
+  description: Prior authorization for specialized eating disorder partial hospitalization programs
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["52", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90834' # Individual therapy
+          - '90837' # Individual therapy, 60 minutes
+          - '90847' # Family therapy
+          - '90853' # Group therapy
+          - '97802' # Medical nutrition therapy
+          - '99213' # Medical monitoring
+      - diagnosis_code:
+          any_of:
+          - F50.00  # Anorexia nervosa, unspecified
+          - F50.01  # Anorexia nervosa, restricting type
+          - F50.02  # Anorexia nervosa, binge-eating/purging type
+          - F50.2   # Bulimia nervosa
+          - F50.81  # Binge-eating disorder
+      - patient_age:
+          min: 12
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Eating disorder assessment
+          - '90792'
+          days: 14
+          description: Eating disorder evaluation within past 2 weeks
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F50.00 # Anorexia nervosa
+              - F50.01
+              - F50.02
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Medical instability (bradycardia, hypotension)
+              days: 7
+              description: Medical complications within past week
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Recent hospitalization for refeeding
+              - '99222'
+              - '99223'
+              days: 30
+              description: Medical hospitalization within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '90834' # Failed outpatient eating disorder treatment
+            - '90837'
+            days: 90
+            description: Inadequate response to outpatient treatment within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '97802' # Nutritional assessment
+          days: 14
+          description: Nutritional evaluation within past 2 weeks
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F20.9  # Psychotic disorders
+        - prior_service_within_days:
+            service_codes:
+            - F10.20 # Active substance use
+            - F11.20
+            days: 30
+            description: Active substance use within past 30 days
+  logic:
+    outcome: approved
+    reason: Eating disorder PHP approved for specialized intensive treatment with medical and nutritional monitoring
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Eating disorder PHP provides specialized multidisciplinary treatment for medically complex cases
+
+- id: rule_psychiatry_geriatric_php
+  name: Geriatric Partial Hospitalization Program
+  description: Prior authorization for geriatric-specific partial hospitalization programs
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["52", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90834' # Individual therapy
+          - '90837' # Individual therapy, 60 minutes
+          - '90853' # Group therapy
+          - '99213' # Geriatric psychiatric management
+          - '99214'
+      - diagnosis_code:
+          any_of:
+          - F32.9   # Major depressive disorder
+          - F33.9   # Major depressive disorder, recurrent
+          - F06.0   # Psychotic disorder due to known physiological condition
+          - F03.90  # Unspecified dementia without behavioral disturbance
+          - F41.1   # Generalized anxiety disorder
+      - patient_age:
+          min: 65
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Geriatric psychiatric evaluation
+          - '90792'
+          days: 14
+          description: Geriatric psychiatric evaluation within past 2 weeks
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F32.9  # Late-life depression
+              - F33.9
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Cognitive assessment
+              days: 30
+              description: Cognitive evaluation within past 30 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Medical complications
+              - '99222'
+              - '99223'
+              days: 30
+              description: Medical hospitalization within past 30 days
+        - diagnosis_code:
+            any_of:
+            - F06.0  # Secondary psychotic disorder
+            - F03.90 # Dementia with behavioral symptoms
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Medical clearance
+          days: 14
+          description: Medical evaluation within past 2 weeks
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F03.91 # Dementia with behavioral disturbance (may require specialized care)
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Acute medical instability
+            days: 7
+            description: Acute medical issues within past week
+  logic:
+    outcome: approved
+    reason: Geriatric PHP approved for age-appropriate intensive mental health treatment with medical considerations
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Geriatric PHP addresses unique needs of older adults with mental health conditions and medical comorbidities

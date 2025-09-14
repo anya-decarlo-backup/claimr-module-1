@@ -1,0 +1,215 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32480'
+    - '32482'
+    - '32484'
+    - '32440'
+    - '32442'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_experimental_thoracic_procedures_2025_09
+    - dx_in_value_set: vs_investigational_lung_surgery_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Experimental or investigational thoracic procedures not covered by UnitedHealth policy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_exclusion_experimental_procedures
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32480'
+    - '32482'
+    - '32484'
+    - '32488'
+    - '32491'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_cancer_unresectable_2025_09
+    - dx_in_value_set: vs_metastatic_disease_extensive_2025_09
+    - dx_in_value_set: vs_poor_performance_status_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Lung resection excluded for unresectable disease, extensive metastases, or poor performance status
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_exclusion_unresectable_disease
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32440'
+    - '32505'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_inadequate_pulmonary_function_2025_09
+    - dx_in_value_set: vs_predicted_postop_fev1_low_2025_09
+    - dx_in_value_set: vs_severe_cardiac_disease_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Pneumonectomy excluded for inadequate pulmonary function, predicted postop FEV1 <40%, or severe cardiac disease
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_exclusion_pneumonectomy_contraindications
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32096'
+    - '32097'
+    - '32098'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_biopsy_unnecessary_2025_09
+    - dx_in_value_set: vs_adequate_tissue_obtained_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Open lung biopsy excluded when adequate tissue already obtained or diagnosis established by other means
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_exclusion_unnecessary_biopsy
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32480'
+    - '32482'
+    - '32484'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_age_over_85_thoracic_2025_09
+    - dx_in_value_set: vs_high_operative_mortality_risk_2025_09
+    all_of:
+    - min_age: 85
+    - max_age: 100
+  logic:
+    outcome: EXCLUDED
+    notes: Major lung resection excluded for patients >85 years or high operative mortality risk >10%
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_exclusion_age_high_risk
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32440'
+    - '32442'
+    - '32663'
+    - '32664'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pulmonary_nodule_benign_2025_09
+    - dx_in_value_set: vs_inflammatory_nodule_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Lung resection excluded for definitively benign nodules or inflammatory lesions without malignant potential
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_exclusion_benign_nodules
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32663'
+    - '32664'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_vats_contraindications_2025_09
+    - dx_in_value_set: vs_extensive_pleural_adhesions_2025_09
+    - dx_in_value_set: vs_inability_single_lung_ventilation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: VATS procedures excluded with contraindications including extensive adhesions or inability for single lung ventilation
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_exclusion_vats_contraindications

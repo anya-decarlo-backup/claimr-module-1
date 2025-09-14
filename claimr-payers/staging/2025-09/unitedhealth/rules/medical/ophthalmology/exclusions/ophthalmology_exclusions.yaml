@@ -1,0 +1,329 @@
+- id: rule_ophthalmology_anti_vegf_dry_amd_exclusion
+  name: Anti-VEGF Exclusion for Dry Age-Related Macular Degeneration
+  description: Exclusion of anti-VEGF therapy for non-exudative (dry) AMD without choroidal neovascularization
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0178  # Aflibercept injection
+          - J2778  # Ranibizumab injection
+          - J3590  # Bevacizumab injection
+          - '67028' # Intravitreal injection
+      - diagnosis_code:
+          any_of:
+          - H35.31  # Nonexudative age-related macular degeneration
+          - H35.3110 # Nonexudative age-related macular degeneration, right eye
+          - H35.3111 # Nonexudative age-related macular degeneration, left eye
+          - H35.3112 # Nonexudative age-related macular degeneration, bilateral
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H35.32  # Exudative age-related macular degeneration
+        - prior_service_within_days:
+            service_codes:
+            - '92235' # Angiography showing CNV
+            days: 180
+            description: Choroidal neovascularization within past 6 months
+  logic:
+    outcome: denied
+    reason: Anti-VEGF therapy not indicated for dry AMD without choroidal neovascularization
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Anti-VEGF agents are ineffective for dry AMD and may pose unnecessary injection risks
+
+- id: rule_ophthalmology_glaucoma_angle_closure_laser_exclusion
+  name: Glaucoma Laser Exclusion for Angle-Closure Disease
+  description: Exclusion of laser trabeculoplasty for angle-closure glaucoma
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '65855' # Trabeculoplasty by laser surgery
+      - diagnosis_code:
+          any_of:
+          - H40.20  # Unspecified primary angle-closure glaucoma
+          - H40.21  # Acute angle-closure glaucoma, right eye
+          - H40.22  # Acute angle-closure glaucoma, left eye
+          - H40.23  # Acute angle-closure glaucoma, bilateral
+          - H40.241 # Residual stage of angle-closure glaucoma, right eye
+          - H40.242 # Residual stage of angle-closure glaucoma, left eye
+          - H40.243 # Residual stage of angle-closure glaucoma, bilateral
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '66761' # Iridotomy opening the angle
+            days: 180
+            description: Peripheral iridotomy within past 6 months
+  logic:
+    outcome: denied
+    reason: Laser trabeculoplasty contraindicated in angle-closure glaucoma without patent peripheral iridotomy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: SLT ineffective and potentially harmful in angle-closure glaucoma due to closed drainage angle
+
+- id: rule_ophthalmology_cataract_mild_exclusion
+  name: Cataract Surgery Exclusion for Mild Cataracts
+  description: Exclusion of cataract surgery for mild cataracts without functional impairment
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '66984' # Extracapsular cataract removal
+          - '66982' # Extracapsular cataract removal with insertion of intraocular lens prosthesis
+      - diagnosis_code:
+          any_of:
+          - H25.10  # Age-related nuclear cataract
+          - H25.20  # Age-related cortical cataract
+          - H25.811 # Combined forms of age-related cataract
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Visual acuity worse than 20/50
+            - '99214'
+            - '99215'
+            days: 90
+            description: Significant visual impairment within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '92081' # Visual field defects
+            - '92082'
+            - '92083'
+            days: 180
+            description: Functional visual field loss within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '92012' # Documented glare disability
+            - '92014'
+            days: 90
+            description: Symptomatic glare within past 90 days
+  logic:
+    outcome: denied
+    reason: Cataract surgery not medically necessary for mild cataracts without functional visual impairment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Surgery reserved for cataracts causing significant visual disability affecting daily activities
+
+- id: rule_ophthalmology_premium_iol_exclusion
+  name: Premium IOL Exclusion for Ocular Comorbidities
+  description: Exclusion of premium IOLs for patients with significant ocular pathology
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '66982' # IOL insertion (premium lenses)
+          - '66984' # Extracapsular cataract removal with IOL
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - H35.32  # Wet age-related macular degeneration
+            - H40.10  # Glaucoma with advanced visual field defects
+            - H43.10  # Vitreous degeneration, unspecified eye
+            - H35.20  # Other non-diabetic proliferative retinopathy
+        - prior_service_within_days:
+            service_codes:
+            - '92081' # Significant visual field defects
+            - '92082'
+            - '92083'
+            days: 365
+            description: Advanced visual field loss within past year
+        - prior_service_within_days:
+            service_codes:
+            - '92132' # Macular pathology on OCT
+            days: 180
+            description: Macular disease within past 6 months
+  logic:
+    outcome: denied
+    reason: Premium IOLs not appropriate for patients with ocular comorbidities affecting visual outcomes
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Ocular pathology limits benefits of premium IOLs and may cause patient dissatisfaction
+
+- id: rule_ophthalmology_anti_vegf_prophylactic_exclusion
+  name: Anti-VEGF Exclusion for Prophylactic Use
+  description: Exclusion of anti-VEGF injections for prophylactic treatment without active disease
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0178  # Aflibercept injection
+          - J2778  # Ranibizumab injection
+          - J3590  # Bevacizumab injection
+          - '67028' # Intravitreal injection
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H35.32  # Active wet AMD
+            - E11.311 # Diabetic macular edema
+            - E11.321 # Diabetic macular edema
+            - E11.331 # Diabetic macular edema
+            - H34.831 # Retinal vein occlusion
+            - H34.811 # Central retinal vein occlusion
+        - prior_service_within_days:
+            service_codes:
+            - '92134' # OCT showing active fluid
+            days: 30
+            description: Active macular edema within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '92235' # Angiography showing active CNV
+            days: 90
+            description: Active choroidal neovascularization within past 90 days
+  logic:
+    outcome: denied
+    reason: Anti-VEGF therapy not indicated for prophylactic use without active neovascular disease
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Prophylactic anti-VEGF use lacks evidence and exposes patients to unnecessary injection risks
+
+- id: rule_ophthalmology_glaucoma_surgery_mild_exclusion
+  name: Glaucoma Surgery Exclusion for Mild Disease
+  description: Exclusion of glaucoma surgery for mild disease controllable with medical therapy
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '66170' # Trabeculectomy
+          - '66180' # Aqueous shunt
+          - '0191T' # MIGS procedures
+      - diagnosis_code:
+          any_of:
+          - H40.10  # Unspecified open-angle glaucoma
+          - H40.11  # Primary open-angle glaucoma, right eye
+          - H40.12  # Primary open-angle glaucoma, left eye
+          - H40.13  # Primary open-angle glaucoma, bilateral
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '92100' # IOP >21 mmHg on maximum medical therapy
+            days: 90
+            description: Uncontrolled IOP within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '92081' # Progressive visual field defects
+            - '92082'
+            - '92083'
+            days: 365
+            description: Documented progression within past year
+        - prior_service_within_days:
+            service_codes:
+            - '65855' # Failed laser trabeculoplasty
+            days: 180
+            description: SLT failure within past 6 months
+  logic:
+    outcome: denied
+    reason: Glaucoma surgery not indicated for mild disease controlled with medical therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Medical therapy preferred for mild glaucoma due to lower risk profile than surgery
+
+- id: rule_ophthalmology_bilateral_simultaneous_exclusion
+  name: Bilateral Simultaneous Surgery Exclusion
+  description: Exclusion of bilateral simultaneous cataract or glaucoma surgery except in special circumstances
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '66984' # Bilateral cataract surgery
+          - '66170' # Bilateral trabeculectomy
+          - '66180' # Bilateral aqueous shunt
+      - diagnosis_code:
+          any_of:
+          - H25.13  # Bilateral cataract
+          - H40.13  # Bilateral glaucoma
+      - none_of:
+        - patient_age:
+            min: 80  # Elderly patients with limited life expectancy
+        - diagnosis_code:
+            any_of:
+            - H26.00  # Pediatric cataract (amblyopia risk)
+            - H26.001
+            - H26.002
+            - H26.003
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Medical contraindication to staged surgery
+            - '99214'
+            - '99215'
+            days: 60
+            description: Medical necessity for simultaneous surgery within past 60 days
+  logic:
+    outcome: denied
+    reason: Bilateral simultaneous surgery not recommended due to increased risk of bilateral complications
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Staged bilateral surgery preferred to minimize risk of bilateral vision-threatening complications
+
+- id: rule_ophthalmology_cosmetic_procedure_exclusion
+  name: Ophthalmology Cosmetic Procedure Exclusion
+  description: Exclusion of ophthalmic procedures performed for purely cosmetic purposes
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '15820' # Blepharoplasty, lower eyelid
+          - '15821' # Blepharoplasty, lower eyelid; with extensive herniated fat pad
+          - '15822' # Blepharoplasty, upper eyelid
+          - '15823' # Blepharoplasty, upper eyelid; with excessive skin weighing down lid
+      - diagnosis_code:
+          any_of:
+          - Z41.1   # Encounter for cosmetic surgery
+          - Z41.9   # Encounter for other procedures for purposes other than remedying health state
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H02.401 # Unspecified ptosis of right eyelid
+            - H02.402 # Unspecified ptosis of left eyelid
+            - H02.403 # Unspecified ptosis of bilateral eyelids
+        - prior_service_within_days:
+            service_codes:
+            - '92081' # Visual field defects due to ptosis
+            - '92082'
+            - '92083'
+            days: 180
+            description: Functional visual impairment within past 6 months
+  logic:
+    outcome: denied
+    reason: Cosmetic ophthalmic procedures not covered without functional visual impairment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Coverage limited to procedures addressing functional visual impairment rather than cosmetic concerns

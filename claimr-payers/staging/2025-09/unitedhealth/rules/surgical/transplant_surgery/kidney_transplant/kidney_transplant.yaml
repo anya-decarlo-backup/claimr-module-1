@@ -1,0 +1,98 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50360'
+    - '50365'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_end_stage_renal_disease_2025_09
+    - dx_in_value_set: vs_chronic_kidney_disease_stage_5_2025_09
+    - dx_in_value_set: vs_kidney_failure_transplant_candidate_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['90960', '90961', '90962']
+        lookback_days: 180
+        description: "Nephrology evaluation and transplant candidacy assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Kidney transplant requires ESRD diagnosis, transplant center evaluation, and multi-disciplinary team approval
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50370'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_living_donor_kidney_transplant_2025_09
+    - dx_in_value_set: vs_related_donor_kidney_2025_09
+    - dx_in_value_set: vs_altruistic_donor_kidney_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 70
+    - prior_service_required:
+        cpt: ['99401', '99402']
+        lookback_days: 90
+        description: "Living donor evaluation and counseling"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Living donor kidney transplant requires comprehensive donor evaluation and informed consent
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50380'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kidney_pancreas_transplant_2025_09
+    - dx_in_value_set: vs_simultaneous_kidney_pancreas_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 65
+    - prior_service_required:
+        cpt: ['99214', '99215']
+        lookback_days: 90
+        description: "Endocrinology and nephrology evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Simultaneous kidney-pancreas transplant requires dual organ failure and appropriate candidacy
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"

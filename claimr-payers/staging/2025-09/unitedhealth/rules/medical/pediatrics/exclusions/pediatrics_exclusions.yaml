@@ -1,0 +1,380 @@
+- id: rule_pediatrics_exclusion_routine_screening_infants
+  name: Routine Developmental Screening in Healthy Infants
+  description: Exclusion for routine developmental screening without specific risk factors or concerns
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96110' # Developmental screening (eg, developmental milestone survey, speech and language delay screen), with scoring and documentation, per standardized instrument
+          - '96116' # Neurobehavioral status exam (clinical assessment of thinking, reasoning and judgment, eg, acquired knowledge, attention, language, memory, planning and problem solving, and visual spatial abilities), per hour of the psychologist's or physician's time, both face-to-face time with the patient and time interpreting test results and preparing the report
+      - diagnosis_code:
+          any_of:
+          - Z00.129 # Encounter for routine child health examination without abnormal findings
+          - Z00.121 # Encounter for routine child health examination with abnormal findings
+      - patient_age:
+          min: 0
+          max: 2
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - P07.20  # Extreme immaturity (prematurity risk factor)
+            - P07.30  # Preterm newborn
+            - F84.0   # Autistic disorder (specific concern)
+            - F80.9   # Developmental disorder of speech and language, unspecified
+            - Q90.9   # Down syndrome, unspecified (genetic risk factor)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Previous developmental concerns documented
+            - '99214'
+            - '99215'
+            days: 180
+            description: Developmental concerns within past 6 months
+  logic:
+    outcome: denied
+    reason: Routine developmental screening excluded in healthy infants without risk factors per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Routine screening covered under preventive care; specialized testing requires specific indication
+
+- id: rule_pediatrics_exclusion_growth_hormone_normal_height
+  name: Growth Hormone Therapy for Normal Stature
+  description: Exclusion for growth hormone therapy in children with normal height percentiles
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'J2941' # Injection, somatropin, 1 mg
+          - '96365' # Intravenous infusion, for therapy, prophylaxis, or diagnosis (specify substance or drug); initial, up to 1 hour
+      - diagnosis_code:
+          any_of:
+          - E34.3   # Short stature due to endocrine disorder
+          - Z87.1   # Personal history of diseases of the digestive system
+      - patient_age:
+          min: 2
+          max: 18
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - E23.0   # Hypopituitarism (legitimate indication)
+            - Q96.9   # Turner syndrome, unspecified (legitimate indication)
+            - M85.00  # Fibrous dysplasia (monostotic), unspecified site
+        - prior_service_within_days:
+            service_codes:
+            - '83003' # Growth hormone stimulation test showing deficiency
+            days: 180
+            description: GH deficiency testing within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Height <3rd percentile for age documented
+            - '99214'
+            - '99215'
+            days: 90
+            description: Documented short stature within past 90 days
+  logic:
+    outcome: denied
+    reason: Growth hormone therapy excluded for normal stature without documented deficiency per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Growth hormone indicated only for documented deficiency or specific medical conditions
+
+- id: rule_pediatrics_exclusion_adhd_medication_preschool
+  name: ADHD Medication in Preschool Children
+  description: Exclusion for ADHD medications in children under 6 without behavioral interventions
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '99213' # Office visit for ADHD medication management
+          - '99214'
+          - '99215'
+      - diagnosis_code:
+          any_of:
+          - F90.0   # Attention-deficit hyperactivity disorder, predominantly inattentive type
+          - F90.1   # Attention-deficit hyperactivity disorder, predominantly hyperactive type
+          - F90.2   # Attention-deficit hyperactivity disorder, combined type
+      - patient_age:
+          min: 3
+          max: 6
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F84.0   # Autistic disorder (may require different approach)
+            - F70.9   # Mild intellectual disabilities (may require medication)
+        - prior_service_within_days:
+            service_codes:
+            - '90834' # Behavioral therapy sessions
+            - '90837'
+            - '90847'
+            days: 180
+            description: Behavioral interventions within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Severe impairment documented
+            - '99214'
+            - '99215'
+            days: 90
+            description: Severe functional impairment within past 90 days
+  logic:
+    outcome: denied
+    reason: ADHD medication excluded in preschoolers without prior behavioral interventions per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Behavioral interventions are first-line treatment for ADHD in preschool children
+
+- id: rule_pediatrics_exclusion_cosmetic_procedures
+  name: Cosmetic Procedures in Pediatric Patients
+  description: Exclusion for cosmetic procedures without functional impairment
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '15780' # Dermabrasion; total face (eg, for acne scarring, melasma, rhytids, sun damage or tattoos)
+          - '15823' # Blepharoplasty, upper eyelid
+          - '30400' # Rhinoplasty, primary; lateral and alar cartilages and/or elevation of nasal tip
+          - '21208' # Osteoplasty, facial bones; augmentation (autograft, allograft, or prosthetic implant)
+      - diagnosis_code:
+          any_of:
+          - L70.9   # Acne, unspecified
+          - Q18.9   # Other specified congenital malformations of face and neck
+          - Z41.1   # Encounter for cosmetic surgery
+      - patient_age:
+          min: 10
+          max: 18
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Q36.9   # Cleft lip (functional reconstruction)
+            - Q35.9   # Cleft palate (functional reconstruction)
+            - S02.2   # Fracture of nasal bones (traumatic reconstruction)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Documented functional impairment
+            - '99214'
+            - '99215'
+            days: 180
+            description: Functional impairment within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '90834' # Psychological counseling for body dysmorphia
+            - '90837'
+            days: 180
+            description: Mental health evaluation within past 6 months
+  logic:
+    outcome: denied
+    reason: Cosmetic procedures excluded without functional impairment per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Cosmetic procedures not medically necessary without functional impairment
+
+- id: rule_pediatrics_exclusion_experimental_gene_therapy
+  name: Experimental Gene Therapy in Pediatric Patients
+  description: Exclusion for investigational gene therapy outside approved indications
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'C9399' # Unclassified drugs or biologicals
+          - 'J3590' # Unclassified biologics
+      - diagnosis_code:
+          any_of:
+          - E75.00  # GM2 gangliosidosis, unspecified
+          - G71.0   # Muscular dystrophy
+          - H35.50  # Hereditary retinal dystrophy, unspecified
+      - patient_age:
+          min: 0
+          max: 18
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - D81.9   # Combined immunodeficiency, unspecified (approved SCID gene therapy)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # FDA-approved gene therapy protocol
+            - '99214'
+            - '99215'
+            days: 30
+            description: Approved protocol within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Clinical trial enrollment
+            - '99214'
+            - '99215'
+            days: 30
+            description: IRB-approved trial within past 30 days
+  logic:
+    outcome: denied
+    reason: Experimental gene therapy excluded outside FDA-approved indications per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Gene therapy coverage limited to FDA-approved indications with established safety
+
+- id: rule_pediatrics_exclusion_fertility_preservation_minors
+  name: Fertility Preservation in Minor Patients
+  description: Exclusion for fertility preservation procedures in patients under 18
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '89335' # Cryopreservation, reproductive tissue, testicular
+          - '89337' # Cryopreservation, mature oocyte(s)
+          - '58970' # Follicle puncture for oocyte retrieval, any method
+      - diagnosis_code:
+          any_of:
+          - C81.90  # Hodgkin lymphoma, unspecified, unspecified site
+          - C78.00  # Secondary malignant neoplasm of unspecified lung
+          - F64.2   # Gender identity disorder of childhood
+      - patient_age:
+          min: 10
+          max: 18
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C25.9   # Malignant neoplasm of pancreas, unspecified (cancer requiring gonadotoxic therapy)
+        - prior_service_within_days:
+            service_codes:
+            - '96413' # Chemotherapy administration (gonadotoxic treatment)
+            - '96365'
+            days: 30
+            description: Gonadotoxic therapy within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Parental consent and counseling
+            - '99214'
+            - '99215'
+            days: 90
+            description: Comprehensive counseling within past 90 days
+  logic:
+    outcome: denied
+    reason: Fertility preservation excluded in minors without imminent gonadotoxic therapy per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Fertility preservation in minors requires careful consideration of medical necessity and ethics
+
+- id: rule_pediatrics_exclusion_bariatric_surgery_adolescents
+  name: Bariatric Surgery in Adolescents
+  description: Exclusion for weight loss surgery without comprehensive evaluation and failed conservative management
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '43644' # Laparoscopy, surgical, gastric restrictive procedure; with gastric bypass and Roux-en-Y gastroenterostomy
+          - '43770' # Laparoscopy, surgical, gastric restrictive procedure; placement of adjustable gastric restrictive device
+      - diagnosis_code:
+          any_of:
+          - E66.01  # Morbid (severe) obesity due to excess calories
+          - E66.09  # Other obesity due to excess calories
+      - patient_age:
+          min: 13
+          max: 18
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - E10.9   # Type 1 diabetes mellitus without complications (may justify surgery)
+            - I10     # Essential hypertension (comorbidity)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # BMI ≥40 or ≥35 with comorbidities documented
+            - '99214'
+            - '99215'
+            days: 90
+            description: Severe obesity criteria within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '97802' # Medical nutrition therapy (failed conservative management)
+            - '97803'
+            days: 365
+            description: Nutrition counseling within past year
+        - prior_service_within_days:
+            service_codes:
+            - '90834' # Psychological evaluation
+            - '90837'
+            days: 180
+            description: Mental health assessment within past 6 months
+  logic:
+    outcome: denied
+    reason: Adolescent bariatric surgery excluded without comprehensive evaluation and failed conservative management per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Bariatric surgery in adolescents requires extensive evaluation and conservative treatment failure
+
+- id: rule_pediatrics_exclusion_sleep_study_insufficient_symptoms
+  name: Sleep Studies Without Adequate Clinical Indication
+  description: Exclusion for polysomnography without sufficient sleep disorder symptoms
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '95810' # Polysomnography; sleep staging with 4 or more additional parameters of sleep, attended by a technologist
+          - '95811' # Polysomnography; sleep staging with 4 or more additional parameters of sleep, with initiation of continuous positive airway pressure therapy or bilevel ventilation, attended by a technologist
+      - diagnosis_code:
+          any_of:
+          - G47.9   # Sleep disorder, unspecified
+          - F51.9   # Sleep disorder not due to a substance or known physiological condition, unspecified
+      - patient_age:
+          min: 2
+          max: 18
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - G47.33  # Obstructive sleep apnea (adult) (specific indication)
+            - P28.3   # Primary sleep apnea of newborn (specific indication)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Witnessed apnea or significant snoring documented
+            - '99214'
+            - '99215'
+            days: 90
+            description: Sleep apnea symptoms within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Adenotonsillar hypertrophy documented
+            - '99214'
+            - '99215'
+            days: 180
+            description: Upper airway obstruction within past 6 months
+  logic:
+    outcome: denied
+    reason: Sleep study excluded without adequate clinical symptoms per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Sleep studies require specific clinical indications to justify testing

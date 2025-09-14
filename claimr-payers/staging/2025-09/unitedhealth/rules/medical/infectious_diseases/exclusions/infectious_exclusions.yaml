@@ -1,0 +1,249 @@
+- id: rule_infectious_opat_age_exclusion
+  name: OPAT Age Restrictions - Pediatric and Elderly
+  description: Exclude OPAT for children under 18 and adults over 80 due to safety and monitoring concerns
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0690  # Cefazolin
+          - J0692  # Cefepime
+          - J0696  # Ceftriaxone
+          - J1956  # Levofloxacin
+          - J2770  # Quinupristin/dalfopristin
+          - '96365' # IV infusion initial
+          - '96366' # IV infusion additional
+      - any_of:
+        - patient_age:
+            max: 17
+        - patient_age:
+            min: 81
+      - diagnosis_code:
+          any_of:
+          - L03.90  # Cellulitis
+          - M86.9   # Osteomyelitis
+          - I33.0   # Endocarditis
+          - N10     # Pyelonephritis
+  logic:
+    outcome: denied
+    reason: OPAT excluded for pediatric patients under 18 and elderly patients over 80 due to increased monitoring requirements and safety concerns
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Age-related pharmacokinetic changes and monitoring challenges increase risk in these populations
+
+- id: rule_infectious_prep_contraindications
+  name: PrEP Contraindications - Renal and Hepatic Impairment
+  description: Exclude PrEP for patients with severe renal or hepatic impairment
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (PrEP medications)
+          - '99401' # Preventive counseling
+          - '99402'
+      - diagnosis_code:
+          any_of:
+          - Z72.52  # High risk sexual behavior
+          - Z72.53  # High risk bisexual behavior
+          - Z11.4   # Encounter for screening for HIV
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - N18.5  # Chronic kidney disease, stage 5
+            - N18.6  # End stage renal disease
+            - K72.90 # Hepatic failure, unspecified
+            - K76.7  # Hepatorenal syndrome
+        - prior_service_within_days:
+            service_codes:
+            - '82565' # Creatinine >1.5 mg/dL
+            days: 90
+            description: Elevated creatinine within past 90 days
+  logic:
+    outcome: denied
+    reason: PrEP excluded for severe renal impairment (CrCl <30 mL/min) or hepatic failure due to drug clearance concerns
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Tenofovir-based PrEP contraindicated in severe renal impairment due to nephrotoxicity risk
+
+- id: rule_infectious_hiv_treatment_resistance
+  name: HIV Treatment - Multi-Drug Resistance Exclusion
+  description: Exclude standard ART regimens for patients with extensive drug resistance
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (standard ART)
+          - '96365' # IV infusion
+      - diagnosis_code:
+          any_of:
+          - B20     # HIV disease
+          - Z21     # Asymptomatic HIV infection
+      - prior_service_within_days:
+          service_codes:
+          - '87901' # HIV-1 drug resistance analysis
+          - '87906' # HIV-1 reverse transcriptase and protease regions
+          days: 180
+          description: Resistance testing showing multi-class resistance within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '87536' # HIV-1 quantification (detectable despite treatment)
+          days: 90
+          description: Detectable viral load despite treatment within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - J3490   # Multiple ART regimen failures
+          days: 365
+          description: History of multiple treatment failures within past year
+  logic:
+    outcome: denied
+    reason: Standard ART regimens excluded for multi-drug resistant HIV requiring specialized salvage therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Multi-drug resistance requires expert consultation and specialized regimens not covered under standard protocols
+
+- id: rule_infectious_hepatitis_decompensated_exclusion
+  name: Hepatitis Treatment - Decompensated Cirrhosis Exclusion
+  description: Exclude certain hepatitis treatments for patients with decompensated cirrhosis
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (hepatitis antivirals)
+      - diagnosis_code:
+          any_of:
+          - B18.2   # Chronic viral hepatitis C
+          - B18.1   # Chronic viral hepatitis B
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - K72.90 # Hepatic failure, unspecified
+            - K76.7  # Hepatorenal syndrome
+            - R18.8  # Other ascites
+            - K92.2  # Gastrointestinal hemorrhage, unspecified
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - K70.30 # Alcoholic cirrhosis without ascites
+              - K74.60 # Other cirrhosis of liver
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Hospital admission for complications
+              - '99222'
+              - '99223'
+              days: 90
+              description: Recent hospitalization for hepatic complications
+  logic:
+    outcome: denied
+    reason: Hepatitis antiviral therapy excluded for decompensated cirrhosis due to increased risk of hepatic decompensation
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Decompensated cirrhosis increases risk of treatment-related hepatic decompensation and requires specialized management
+
+- id: rule_infectious_opat_substance_abuse_exclusion
+  name: OPAT Substance Abuse Exclusion
+  description: Exclude OPAT for patients with active substance abuse due to compliance and safety concerns
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0690  # Cefazolin
+          - J0692  # Cefepime
+          - J0696  # Ceftriaxone
+          - J1956  # Levofloxacin
+          - '96365' # IV infusion initial
+          - '96366' # IV infusion additional
+      - diagnosis_code:
+          any_of:
+          - L03.90  # Cellulitis
+          - M86.9   # Osteomyelitis
+          - I33.0   # Endocarditis
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - F10.20  # Alcohol dependence, uncomplicated
+            - F11.20  # Opioid dependence, uncomplicated
+            - F14.20  # Cocaine dependence, uncomplicated
+            - F15.20  # Other stimulant dependence, uncomplicated
+        - prior_service_within_days:
+            service_codes:
+            - '99408' # Alcohol and/or substance abuse structured screening
+            - '99409' # Alcohol and/or substance abuse brief intervention
+            days: 180
+            description: Substance abuse intervention within past 6 months
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '90791' # Psychiatric diagnostic evaluation
+            - '90834' # Psychotherapy 45 minutes
+            days: 30
+            description: Active substance abuse treatment within past 30 days
+  logic:
+    outcome: denied
+    reason: OPAT excluded for active substance abuse without concurrent treatment due to compliance and safety concerns
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Active substance abuse significantly increases risk of treatment non-compliance and vascular access complications
+
+- id: rule_infectious_pep_delayed_presentation_exclusion
+  name: PEP Delayed Presentation Exclusion
+  description: Exclude PEP for exposures presented >72 hours after incident
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "23"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (PEP medications)
+          - '99281' # Emergency department visit
+          - '99282'
+          - '99283'
+          - '99284'
+          - '99285'
+      - diagnosis_code:
+          any_of:
+          - Z20.6   # Contact with and exposure to HIV
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99281' # Emergency visit or urgent care within 72 hours
+            - '99282'
+            - '99283'
+            - '99284'
+            - '99285'
+            - '99213' # Office visit
+            - '99214'
+            days: 3
+            description: Exposure evaluation within 72 hours
+  logic:
+    outcome: denied
+    reason: PEP excluded for HIV exposures presented >72 hours after incident due to reduced efficacy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: PEP efficacy significantly diminishes when initiated >72 hours post-exposure

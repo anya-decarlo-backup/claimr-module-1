@@ -1,0 +1,182 @@
+- id: rule_allergy_asthma_step_therapy
+  name: Severe Asthma Biologics Step Therapy
+  description: Require high-dose ICS/LABA combination before biologic therapy for severe asthma
+  type: STEP_THERAPY
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J2357
+          - J2182
+          - J0517
+          - J1439
+      - diagnosis_code:
+          any_of:
+          - J45.909
+          - J45.901
+          - J45.902
+          - J82.81
+      - patient_age:
+          min: 6
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - J7613
+            - J7614
+            - J7622
+            - J7626
+            - J7505
+            - J7506
+            - J7515
+            - J7516
+            days: 90
+            description: High-dose ICS or ICS/LABA within past 90 days
+  logic:
+    outcome: step_therapy_required
+    required_steps:
+      - step: 1
+        description: Trial high-dose inhaled corticosteroid (ICS) therapy
+        duration_days: 90
+        service_codes:
+        - J7613
+        - J7614
+        - J7622
+        - J7626
+      - step: 2
+        description: Trial ICS/LABA combination therapy
+        duration_days: 90
+        service_codes:
+        - J7505
+        - J7506
+        - J7515
+        - J7516
+    reason: Biologic therapy requires documented failure of conventional inhaled therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Step therapy ensures appropriate use of expensive biologic agents
+- id: rule_allergy_urticaria_step_therapy
+  name: Chronic Urticaria Biologics Step Therapy
+  description: Require antihistamine optimization before omalizumab for chronic urticaria
+  type: STEP_THERAPY
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J2357
+      - diagnosis_code:
+          any_of:
+          - L50.1
+          - L50.8
+          - L50.9
+      - patient_age:
+          min: 12
+      - none_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J0129
+              - J1200
+              - J2545
+              days: 90
+              description: H1 antihistamine within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - J1200
+              - J2545
+              - J0129
+              days: 90
+              description: H2 antihistamine or leukotriene antagonist within past
+                90 days
+  logic:
+    outcome: step_therapy_required
+    required_steps:
+      - step: 1
+        description: Trial standard-dose H1 antihistamine therapy
+        duration_days: 30
+        service_codes:
+        - J0129
+        - J1200
+        - J2545
+      - step: 2
+        description: Trial high-dose H1 antihistamine or add H2 blocker/leukotriene antagonist
+        duration_days: 60
+        service_codes:
+        - J1200
+        - J2545
+        - J0129
+    reason: Omalizumab requires documented failure of optimized antihistamine therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Guidelines recommend antihistamine optimization before biologic therapy
+- id: rule_allergy_food_step_therapy
+  name: Food Immunotherapy Step Therapy
+  description: Require strict avoidance and emergency preparedness before oral immunotherapy
+  type: STEP_THERAPY
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '95180'
+          - '95181'
+          - '95182'
+          - '95183'
+          - '95184'
+      - diagnosis_code:
+          any_of:
+          - Z91.010
+          - Z91.011
+          - Z91.012
+          - Z91.013
+          - T78.1XXA
+      - patient_age:
+          min: 4
+          max: 17
+      - none_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99401'
+              - '99402'
+              - '99403'
+              - '99404'
+              days: 180
+              description: Allergy education/counseling within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - J0171
+              - J0172
+              days: 365
+              description: Epinephrine prescription within past year
+  logic:
+    outcome: step_therapy_required
+    required_steps:
+      - step: 1
+        description: Comprehensive allergy education and emergency action plan
+        duration_days: 30
+        service_codes:
+        - '99401'
+        - '99402'
+        - '99403'
+        - '99404'
+      - step: 2
+        description: Epinephrine auto-injector prescription and training
+        duration_days: 30
+        service_codes:
+        - J0171
+        - J0172
+    reason: Food OIT requires established emergency preparedness and patient education
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Safety protocols essential before initiating high-risk food immunotherapy

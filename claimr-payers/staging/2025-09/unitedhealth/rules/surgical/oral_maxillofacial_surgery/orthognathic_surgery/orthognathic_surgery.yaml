@@ -1,0 +1,151 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21141'
+    - '21142'
+    - '21143'
+    - '21145'
+    - '21146'
+    - '21147'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dentofacial_anomalies_severe_2025_09
+    - dx_in_value_set: vs_malocclusion_class_ii_severe_2025_09
+    - dx_in_value_set: vs_malocclusion_class_iii_severe_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Maxillary osteotomy requires severe dentofacial deformity with functional impairment and imaging confirmation
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21196'
+    - '21197'
+    - '21198'
+    - '21199'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mandibular_prognathism_severe_2025_09
+    - dx_in_value_set: vs_mandibular_retrognathism_severe_2025_09
+    - dx_in_value_set: vs_mandibular_asymmetry_severe_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Mandibular osteotomy requires severe mandibular deformity with functional impairment and imaging confirmation
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21120'
+    - '21121'
+    - '21122'
+    - '21123'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_chin_deficiency_microgenia_2025_09
+    - dx_in_value_set: vs_chin_excess_macrogenia_2025_09
+    - dx_in_value_set: vs_chin_asymmetry_severe_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Genioplasty requires severe chin deformity with functional impairment and imaging confirmation
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21141'
+    - '21142'
+    - '21196'
+    - '21197'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bimaxillary_protrusion_severe_2025_09
+    - dx_in_value_set: vs_open_bite_skeletal_severe_2025_09
+    - dx_in_value_set: vs_facial_asymmetry_severe_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Bimaxillary surgery requires severe skeletal deformity with functional impairment and comprehensive imaging
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21175'
+    - '21176'
+    - '21179'
+    - '21180'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_congenital_mandibular_deficiency_2025_09
+    - dx_in_value_set: vs_hemifacial_microsomia_2025_09
+    - dx_in_value_set: vs_mandibular_growth_disturbance_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 25
+  logic:
+    outcome: PA_REQUIRED
+    notes: Distraction osteogenesis requires congenital mandibular deficiency with growth potential and imaging confirmation
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"

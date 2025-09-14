@@ -1,0 +1,294 @@
+- id: rule_hematology_esa_cancer_exclusion
+  name: ESA Therapy Cancer Exclusion - Curative Intent
+  description: Exclude ESA therapy for cancer patients receiving curative-intent treatment
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "26"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0881  # Darbepoetin alfa
+          - J0885  # Epoetin alfa
+          - '96365' # IV infusion
+      - diagnosis_code:
+          any_of:
+          - C78.00  # Secondary malignant neoplasm
+          - C80.1   # Malignant neoplasm, unspecified
+          - Z51.11  # Encounter for antineoplastic chemotherapy
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - '96413' # Curative-intent chemotherapy
+            - '96415'
+            - '77301' # Radiation therapy planning
+            - '77338' # Multi-leaf collimator treatment delivery
+            days: 30
+            description: Curative-intent treatment within past 30 days
+        - diagnosis_code:
+            any_of:
+            - C50.911 # Malignant neoplasm of unspecified site of right female breast
+            - C78.1   # Secondary malignant neoplasm of mediastinum
+            - C25.9   # Malignant neoplasm of pancreas, unspecified
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # Hemoglobin >10 g/dL
+          days: 14
+          description: Hemoglobin above ESA threshold within past 2 weeks
+  logic:
+    outcome: denied
+    reason: ESA therapy excluded for cancer patients receiving curative-intent treatment due to increased mortality risk
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: ESAs contraindicated in curative cancer treatment due to FDA black box warning regarding tumor progression
+
+- id: rule_hematology_iron_infusion_oral_tolerance_exclusion
+  name: IV Iron Exclusion - Oral Iron Tolerance
+  description: Exclude IV iron for patients who can tolerate oral iron supplementation
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J1439  # Ferric carboxymaltose
+          - J1447  # Iron sucrose
+          - J2916  # Sodium ferric gluconate
+          - '96365' # IV infusion
+      - diagnosis_code:
+          any_of:
+          - D50.0  # Iron deficiency anemia secondary to blood loss
+          - D50.9  # Iron deficiency anemia, unspecified
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - K59.1  # Diarrhea, unspecified
+            - K50.90 # Crohn's disease
+            - K51.90 # Ulcerative colitis
+            - N18.3  # Chronic kidney disease
+            - N18.4
+            - N18.5
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - J3490  # Failed oral iron trial
+            days: 90
+            description: Failed oral iron therapy within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '82728' # Ferritin >30 ng/mL (mild deficiency)
+          days: 30
+          description: Mild iron deficiency within past 30 days
+  logic:
+    outcome: denied
+    reason: IV iron excluded when oral iron supplementation is appropriate and tolerated
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Oral iron is first-line therapy for iron deficiency anemia when gastrointestinal tolerance permits
+
+- id: rule_hematology_factor_prophylaxis_mild_exclusion
+  name: Factor Prophylaxis Exclusion - Mild Hemophilia
+  description: Exclude routine prophylactic factor replacement for mild hemophilia
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J7182  # Factor VIII
+          - J7185
+          - J7193  # Factor IX
+          - J7195
+      - diagnosis_code:
+          any_of:
+          - D66    # Hemophilia A
+          - D67    # Hemophilia B
+      - prior_service_within_days:
+          service_codes:
+          - '85240' # Factor VIII 5-40% (mild hemophilia A)
+          - '85250' # Factor IX 5-40% (mild hemophilia B)
+          days: 365
+          description: Mild factor deficiency (5-40%) within past year
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent bleeding episode
+            - '99222'
+            - '99223'
+            - '99281'
+            - '99282'
+            days: 90
+            description: No bleeding episodes within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '00142' # Planned surgical procedure
+            - '00300'
+            days: 30
+            description: No planned surgical procedures within next 30 days
+  logic:
+    outcome: denied
+    reason: Routine prophylactic factor replacement excluded for mild hemophilia without bleeding history
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Mild hemophilia patients typically require treatment only for bleeding episodes or surgical procedures
+
+- id: rule_hematology_b12_injection_oral_absorption_exclusion
+  name: B12 Injection Exclusion - Normal Oral Absorption
+  description: Exclude B12 injections when oral supplementation is adequate
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3420  # Vitamin B12 injection
+          - '96372' # Therapeutic injection
+      - diagnosis_code:
+          any_of:
+          - D51.8  # Other vitamin B12 deficiency anemias
+          - D51.9  # Vitamin B12 deficiency anemia, unspecified
+          - E53.8  # Deficiency of other specified B group vitamins
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - D51.0  # Pernicious anemia
+            - K90.0  # Celiac disease
+            - K50.90 # Crohn's disease
+            - K91.2  # Postsurgical malabsorption
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '86255' # Intrinsic factor antibodies
+            - '86240' # Parietal cell antibodies
+            days: 180
+            description: No antibodies confirming pernicious anemia
+      - prior_service_within_days:
+          service_codes:
+          - '82607' # B12 level 200-400 pg/mL (borderline low)
+          days: 60
+          description: Borderline B12 deficiency within past 60 days
+  logic:
+    outcome: denied
+    reason: B12 injections excluded when oral supplementation is appropriate for non-malabsorptive deficiency
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Oral B12 supplementation is effective for dietary deficiency without malabsorption
+
+- id: rule_hematology_anticoagulation_bleeding_risk_exclusion
+  name: Anticoagulation Exclusion - High Bleeding Risk
+  description: Exclude anticoagulation therapy for patients with high bleeding risk
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # DOACs
+          - '85610' # PT/INR monitoring for warfarin
+          - '99213' # Anticoagulation management
+          - '99214'
+      - diagnosis_code:
+          any_of:
+          - I48.0   # Atrial fibrillation
+          - I48.1
+          - I48.2
+          - I82.40  # DVT
+          - I26.90  # PE
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - I62.9   # Intracranial hemorrhage
+            - K92.2   # Active GI bleeding
+            - K25.0   # Acute gastric ulcer with hemorrhage
+            - K26.0   # Acute duodenal ulcer with hemorrhage
+        - all_of:
+          - patient_age:
+              min: 75
+          - diagnosis_code:
+              any_of:
+              - F03.90 # Unspecified dementia without behavioral disturbance
+              - G93.1  # Anoxic brain damage, not elsewhere classified
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent major bleeding event
+            - '99222'
+            - '99223'
+            days: 30
+            description: Major bleeding episode within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # Platelet count <50,000
+          days: 14
+          description: Severe thrombocytopenia within past 2 weeks
+  logic:
+    outcome: denied
+    reason: Anticoagulation excluded due to high bleeding risk outweighing thrombotic benefit
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Anticoagulation contraindicated when bleeding risk exceeds thrombotic risk
+
+- id: rule_hematology_emicizumab_thrombotic_exclusion
+  name: Emicizumab Exclusion - Thrombotic Risk
+  description: Exclude emicizumab for patients with thrombotic risk factors
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J7170  # Emicizumab
+          - '96372' # Subcutaneous injection
+      - diagnosis_code:
+          any_of:
+          - D66    # Hemophilia A
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - I25.9  # Coronary artery disease
+            - I50.9  # Heart failure
+            - I63.9  # Cerebral infarction, unspecified
+            - I74.3  # Embolism and thrombosis of arteries of the lower extremities
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent thrombotic event
+            - '99222'
+            - '99223'
+            days: 180
+            description: Thrombotic event within past 6 months
+        - all_of:
+          - patient_age:
+              min: 65
+          - diagnosis_code:
+              any_of:
+              - E11.9  # Type 2 diabetes mellitus
+              - I10    # Essential hypertension
+      - prior_service_within_days:
+          service_codes:
+          - J7194  # Concurrent bypassing agent use
+          - J7189
+          days: 30
+          description: Recent bypassing agent therapy within past 30 days
+  logic:
+    outcome: denied
+    reason: Emicizumab excluded due to increased thrombotic risk with concurrent bypassing agents or cardiovascular disease
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Emicizumab with bypassing agents increases thrombotic microangiopathy risk

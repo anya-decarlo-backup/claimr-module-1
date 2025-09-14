@@ -1,0 +1,433 @@
+- id: rule_ophthalmology_cataract_surgery_evaluation
+  name: Cataract Surgery Pre-operative Evaluation
+  description: Prior authorization for comprehensive cataract surgery evaluation and biometry
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '76519' # Ophthalmic biometry by partial coherence interferometry
+          - '92136' # Ophthalmic biometry by ultrasound echography
+          - '76516' # Ophthalmic biometry by ultrasound echography, A-scan
+          - '92025' # Computerized corneal topography
+      - diagnosis_code:
+          any_of:
+          - H25.10  # Age-related nuclear cataract, unspecified eye
+          - H25.11  # Age-related nuclear cataract, right eye
+          - H25.12  # Age-related nuclear cataract, left eye
+          - H25.13  # Age-related nuclear cataract, bilateral
+          - H25.20  # Age-related cortical cataract, unspecified eye
+          - H25.21  # Age-related cortical cataract, right eye
+          - H25.22  # Age-related cortical cataract, left eye
+          - H25.23  # Age-related cortical cataract, bilateral
+          - H25.811 # Combined forms of age-related cataract, right eye
+          - H25.812 # Combined forms of age-related cataract, left eye
+          - H25.813 # Combined forms of age-related cataract, bilateral
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam documenting cataract
+          - '92014'
+          days: 90
+          description: Ophthalmologic evaluation within past 90 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Visual acuity 20/50 or worse
+              - '99214'
+              - '99215'
+              days: 60
+              description: Visual impairment within past 60 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92081' # Visual field defects due to cataract
+              - '92082'
+              - '92083'
+              days: 180
+              description: Functional visual impairment within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92012' # Glare disability affecting daily activities
+              - '92014'
+              days: 90
+              description: Symptomatic cataract evaluation within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '92015' # Determination of refractive state
+          days: 180
+          description: Refraction within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H44.001 # Endophthalmitis
+            - H35.32  # Active wet AMD (may affect surgical planning)
+        - prior_service_within_days:
+            service_codes:
+            - '66984' # Recent cataract surgery
+            days: 90
+            description: Recent cataract surgery within past 90 days
+  logic:
+    outcome: approved
+    reason: Cataract surgery evaluation approved for visually significant cataract with functional impairment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Pre-operative biometry essential for accurate IOL power calculation and optimal visual outcomes
+
+- id: rule_ophthalmology_premium_iol_evaluation
+  name: Premium Intraocular Lens Evaluation
+  description: Prior authorization for evaluation of premium IOL candidacy (multifocal, toric, accommodating)
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '92025' # Computerized corneal topography
+          - '92132' # Scanning computerized ophthalmic diagnostic imaging (OCT)
+          - '76519' # Ophthalmic biometry by partial coherence interferometry
+          - '92136' # Ophthalmic biometry by ultrasound echography
+      - diagnosis_code:
+          any_of:
+          - H25.10  # Age-related nuclear cataract
+          - H25.11  # Age-related nuclear cataract, right eye
+          - H25.12  # Age-related nuclear cataract, left eye
+          - H25.13  # Age-related nuclear cataract, bilateral
+          - H52.223 # Regular astigmatism, bilateral
+          - H52.221 # Regular astigmatism, right eye
+          - H52.222 # Regular astigmatism, left eye
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 60
+          description: Ophthalmologic evaluation within past 60 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H52.223 # Astigmatism ≥1.5 D for toric IOL
+              - H52.221
+              - H52.222
+          - prior_service_within_days:
+              service_codes:
+              - '92025' # Corneal topography confirming regular astigmatism
+              days: 90
+              description: Regular astigmatism assessment within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Presbyopia and desire for spectacle independence
+              - '99214'
+              - '99215'
+              days: 90
+              description: Presbyopia evaluation within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92015' # High refractive error
+              days: 180
+              description: Significant refractive error within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92132' # Macular OCT ruling out pathology
+          days: 180
+          description: Macular assessment within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H35.32  # Wet age-related macular degeneration
+            - H40.10  # Glaucoma with advanced visual field defects
+        - prior_service_within_days:
+            service_codes:
+            - '92081' # Significant visual field defects
+            - '92082'
+            - '92083'
+            days: 365
+            description: Visual field defects within past year
+  logic:
+    outcome: approved
+    reason: Premium IOL evaluation approved for appropriate candidate with realistic expectations
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Thorough evaluation ensures appropriate premium IOL selection and patient satisfaction
+
+- id: rule_ophthalmology_complex_cataract_evaluation
+  name: Complex Cataract Surgery Evaluation
+  description: Prior authorization for evaluation of complex cataract cases requiring specialized techniques
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '76519' # Ophthalmic biometry
+          - '92136' # Ultrasound biometry
+          - '92132' # OCT imaging
+          - '92025' # Corneal topography
+      - diagnosis_code:
+          any_of:
+          - H26.00  # Infantile and juvenile cataract, unspecified
+          - H26.001 # Infantile and juvenile nuclear cataract, right eye
+          - H26.002 # Infantile and juvenile nuclear cataract, left eye
+          - H26.003 # Infantile and juvenile nuclear cataract, bilateral
+          - H25.81  # Combined forms of age-related cataract
+          - H26.10  # Traumatic cataract, unspecified eye
+          - H26.11  # Traumatic cataract, right eye
+          - H26.12  # Traumatic cataract, left eye
+          - H26.13  # Traumatic cataract, bilateral
+      - patient_age:
+          min: 1
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 60
+          description: Ophthalmologic evaluation within past 60 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H26.00  # Pediatric cataract
+              - H26.001
+              - H26.002
+              - H26.003
+          - patient_age:
+              max: 18
+          - prior_service_within_days:
+              service_codes:
+              - '92012' # Amblyopia risk assessment
+              - '92014'
+              days: 30
+              description: Pediatric evaluation within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H26.10  # Traumatic cataract
+              - H26.11
+              - H26.12
+              - H26.13
+          - prior_service_within_days:
+              service_codes:
+              - '92132' # Assessment of zonular integrity
+              days: 60
+              description: Trauma evaluation within past 60 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H25.81  # Mature/hypermature cataract
+          - prior_service_within_days:
+              service_codes:
+              - '92100' # IOP assessment for phacolytic glaucoma
+              days: 30
+              description: Glaucoma evaluation within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '92132' # Detailed anterior segment imaging
+          days: 90
+          description: Anterior segment assessment within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H44.001 # Active endophthalmitis
+        - prior_service_within_days:
+            service_codes:
+            - '67040' # Recent vitreoretinal surgery
+            days: 180
+            description: Recent vitrectomy within past 6 months
+  logic:
+    outcome: approved
+    reason: Complex cataract evaluation approved for high-risk case requiring specialized surgical planning
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Complex cataracts require detailed pre-operative assessment to optimize surgical outcomes
+
+- id: rule_ophthalmology_secondary_iol_evaluation
+  name: Secondary Intraocular Lens Implantation Evaluation
+  description: Prior authorization for evaluation of secondary IOL placement in aphakic eyes
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '76519' # Ophthalmic biometry
+          - '92136' # Ultrasound biometry
+          - '92132' # OCT imaging
+          - '92025' # Corneal topography
+      - diagnosis_code:
+          any_of:
+          - H27.00  # Aphakia, unspecified eye
+          - H27.01  # Aphakia, right eye
+          - H27.02  # Aphakia, left eye
+          - H27.03  # Aphakia, bilateral
+          - T85.21XA # Displacement of intraocular lens, initial encounter
+          - T85.22XA # Displacement of other ocular prosthetic devices, materials and implants
+      - patient_age:
+          min: 1
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 60
+          description: Ophthalmologic evaluation within past 60 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H27.00  # Primary aphakia
+              - H27.01
+              - H27.02
+              - H27.03
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Significant visual impairment
+              - '99214'
+              - '99215'
+              days: 90
+              description: Visual disability assessment within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - T85.21XA # IOL dislocation
+              - T85.22XA
+          - prior_service_within_days:
+              service_codes:
+              - '92132' # Imaging confirming IOL malposition
+              days: 30
+              description: IOL position assessment within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '92132' # Detailed anterior and posterior segment evaluation
+          days: 60
+          description: Comprehensive imaging within past 60 days
+      - prior_service_within_days:
+          service_codes:
+          - '92100' # IOP assessment
+          days: 60
+          description: Glaucoma evaluation within past 60 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H44.001 # Active inflammation
+        - prior_service_within_days:
+            service_codes:
+            - '67040' # Recent vitrectomy (may affect timing)
+            days: 90
+            description: Recent vitrectomy within past 90 days
+  logic:
+    outcome: approved
+    reason: Secondary IOL evaluation approved for aphakic eye or IOL malposition with visual impairment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Secondary IOL implantation restores visual function in aphakic eyes or corrects IOL malposition
+
+- id: rule_ophthalmology_iol_exchange_evaluation
+  name: Intraocular Lens Exchange Evaluation
+  description: Prior authorization for evaluation of IOL exchange due to complications or refractive surprise
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '76519' # Ophthalmic biometry
+          - '92136' # Ultrasound biometry
+          - '92132' # OCT imaging
+          - '92015' # Refraction
+      - diagnosis_code:
+          any_of:
+          - T85.21XA # Displacement of intraocular lens
+          - T85.22XA # Displacement of other ocular prosthetic devices
+          - H59.031 # Cystoid macular edema following cataract surgery, right eye
+          - H59.032 # Cystoid macular edema following cataract surgery, left eye
+          - H59.033 # Cystoid macular edema following cataract surgery, bilateral
+          - H59.091 # Other disorders of the eye following cataract surgery, right eye
+          - H59.092 # Other disorders of the eye following cataract surgery, left eye
+          - H59.093 # Other disorders of the eye following cataract surgery, bilateral
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '66984' # Previous cataract surgery
+          days: 730
+          description: Cataract surgery within past 2 years
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 60
+          description: Ophthalmologic evaluation within past 60 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - T85.21XA # IOL dislocation
+              - T85.22XA
+          - prior_service_within_days:
+              service_codes:
+              - '92132' # Imaging confirming IOL malposition
+              days: 30
+              description: IOL dislocation assessment within past 30 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92015' # Significant refractive error (>2.0 D)
+              days: 90
+              description: Refractive surprise within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '76519' # Biometry error analysis
+              days: 90
+              description: IOL power calculation review within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H59.031 # Persistent CME
+              - H59.032
+              - H59.033
+          - prior_service_within_days:
+              service_codes:
+              - '92132' # OCT confirming CME
+              days: 30
+              description: Macular edema assessment within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Visual impairment assessment
+          - '99214'
+          - '99215'
+          days: 60
+          description: Visual function evaluation within past 60 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '66984' # Recent cataract surgery (<3 months)
+            days: 90
+            description: Very recent cataract surgery within past 90 days
+  logic:
+    outcome: approved
+    reason: IOL exchange evaluation approved for documented complications or significant refractive surprise
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: IOL exchange may be necessary for complications or significant refractive errors affecting visual function

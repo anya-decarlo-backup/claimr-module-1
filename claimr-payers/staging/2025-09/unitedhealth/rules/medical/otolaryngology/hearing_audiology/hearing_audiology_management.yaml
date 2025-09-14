@@ -1,0 +1,443 @@
+- id: rule_ent_hearing_aid_evaluation
+  name: Hearing Aid Evaluation and Fitting
+  description: Prior authorization for comprehensive hearing aid evaluation and fitting services
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '92590' # Hearing aid examination and selection; monaural
+          - '92591' # Hearing aid examination and selection; binaural
+          - '92592' # Hearing aid check; monaural
+          - '92593' # Hearing aid check; binaural
+          - '92594' # Electroacoustic evaluation for hearing aid; monaural
+          - '92595' # Electroacoustic evaluation for hearing aid; binaural
+      - diagnosis_code:
+          any_of:
+          - H90.3   # Sensorineural hearing loss, bilateral
+          - H90.11  # Conductive hearing loss, unilateral, right ear, with unrestricted hearing on the contralateral side
+          - H90.12  # Conductive hearing loss, unilateral, left ear, with unrestricted hearing on the contralateral side
+          - H90.0   # Conductive hearing loss, bilateral
+          - H90.5   # Unspecified sensorineural hearing loss
+          - H90.6   # Mixed conductive and sensorineural hearing loss, bilateral
+          - H91.90  # Unspecified hearing loss, unspecified ear
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '92557' # Comprehensive audiometry showing hearing loss ≥25 dB HL
+          - '92553'
+          days: 180
+          description: Audiometry confirming hearing loss within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92504' # Binaural microscopy (otoscopy)
+          days: 180
+          description: Otologic examination within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92557' # Bilateral hearing loss ≥25 dB HL
+              - '92553'
+              days: 180
+              description: Bilateral hearing impairment within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92557' # Unilateral hearing loss ≥40 dB HL
+              - '92553'
+              days: 180
+              description: Significant unilateral hearing loss within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H90.0  # Conductive hearing loss
+              - H90.11
+              - H90.12
+          - prior_service_within_days:
+              service_codes:
+              - '92567' # Tympanometry showing conductive pathology
+              days: 180
+              description: Conductive hearing loss evaluation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # ENT or audiology evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Specialist evaluation within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H61.20 # Impacted cerumen (treatable cause)
+        - prior_service_within_days:
+            service_codes:
+            - '92590' # Recent hearing aid evaluation
+            - '92591'
+            days: 365
+            description: Hearing aid evaluation within past year
+  logic:
+    outcome: approved
+    reason: Hearing aid evaluation approved for documented hearing loss meeting criteria
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Hearing aids improve quality of life for patients with significant hearing loss
+
+- id: rule_ent_cochlear_implant_evaluation
+  name: Cochlear Implant Candidacy Evaluation
+  description: Prior authorization for cochlear implant evaluation in severe to profound hearing loss
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '92626' # Evaluation of auditory rehabilitation status; first hour
+          - '92627' # Evaluation of auditory rehabilitation status; each additional 15 minutes
+          - '92640' # Diagnostic analysis with programming of auditory brainstem implant, per hour
+      - diagnosis_code:
+          any_of:
+          - H90.3   # Sensorineural hearing loss, bilateral
+          - H90.5   # Unspecified sensorineural hearing loss
+          - H91.20  # Sudden idiopathic hearing loss, unspecified ear
+          - H83.3X1 # Noise effects on right inner ear
+          - H83.3X2 # Noise effects on left inner ear
+          - H83.3X3 # Noise effects on inner ear, bilateral
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '92557' # Audiometry showing severe to profound hearing loss (≥70 dB HL)
+          - '92553'
+          days: 180
+          description: Severe hearing loss documentation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92556' # Speech audiometry showing poor word recognition (≤50%)
+          days: 180
+          description: Speech recognition testing within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92590' # Hearing aid trial failure (≥3 months)
+              - '92591'
+              days: 365
+              description: Hearing aid trial within past year
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Limited benefit from hearing aids
+              - '99214'
+              - '99215'
+              days: 180
+              description: Hearing aid outcome evaluation within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92557' # Profound hearing loss (≥90 dB HL)
+              - '92553'
+              days: 180
+              description: Profound hearing loss within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '70482' # CT or MRI of temporal bones
+          - '70551'
+          - '70552'
+          days: 365
+          description: Temporal bone imaging within past year
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Otolaryngology evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: ENT consultation within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H93.13 # Tinnitus, bilateral (may affect outcomes)
+        - prior_service_within_days:
+            service_codes:
+            - '69930' # Recent ear surgery
+            days: 180
+            description: Ear surgery within past 6 months
+  logic:
+    outcome: approved
+    reason: Cochlear implant evaluation approved for severe to profound hearing loss with hearing aid failure
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Cochlear implants provide hearing restoration for severe to profound sensorineural hearing loss
+
+- id: rule_ent_bone_anchored_hearing_aid
+  name: Bone Anchored Hearing Aid Evaluation
+  description: Prior authorization for BAHA evaluation in conductive or mixed hearing loss
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '92626' # Auditory rehabilitation evaluation
+          - '92627' # Additional auditory rehabilitation time
+          - '69714' # Implantation, osseointegrated implant, temporal bone
+          - '69715' # Template and surgical guide for implantation of osseointegrated implant
+      - diagnosis_code:
+          any_of:
+          - H90.0   # Conductive hearing loss, bilateral
+          - H90.11  # Conductive hearing loss, unilateral, right ear
+          - H90.12  # Conductive hearing loss, unilateral, left ear
+          - H90.6   # Mixed conductive and sensorineural hearing loss, bilateral
+          - Q16.1   # Absence, atresia and stricture of auditory canal (congenital)
+          - H61.1   # Acquired stenosis of external ear canal
+      - patient_age:
+          min: 5
+      - prior_service_within_days:
+          service_codes:
+          - '92557' # Audiometry showing conductive or mixed hearing loss
+          - '92553'
+          days: 180
+          description: Hearing loss documentation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92567' # Tympanometry showing conductive pathology
+          days: 180
+          description: Middle ear evaluation within past 6 months
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q16.1  # Congenital ear canal atresia
+          - prior_service_within_days:
+              service_codes:
+              - '70482' # CT showing ear canal atresia
+              days: 365
+              description: Anatomic evaluation within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H90.0  # Conductive hearing loss
+              - H90.11
+              - H90.12
+          - prior_service_within_days:
+              service_codes:
+              - '69436' # Failed tympanoplasty or ossiculoplasty
+              days: 365
+              description: Surgical failure within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92590' # Conventional hearing aid contraindicated
+              - '92591'
+              days: 180
+              description: Hearing aid evaluation within past 6 months
+          - diagnosis_code:
+              any_of:
+              - H61.1  # External ear canal stenosis
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # ENT evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Otolaryngology consultation within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H60.9  # Active external otitis
+        - prior_service_within_days:
+            service_codes:
+            - '69714' # Previous BAHA implantation
+            days: 1825
+            description: BAHA surgery within past 5 years
+  logic:
+    outcome: approved
+    reason: BAHA evaluation approved for conductive or mixed hearing loss with contraindications to conventional aids
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: BAHA bypasses conductive hearing loss by direct bone conduction stimulation
+
+- id: rule_ent_tympanoplasty
+  name: Tympanoplasty for Hearing Loss
+  description: Prior authorization for tympanoplasty to repair tympanic membrane perforation
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '69433' # Tympanoplasty (eardrum repair), without mastoidectomy
+          - '69436' # Tympanoplasty (eardrum repair), with mastoidectomy
+          - '69631' # Tympanoplasty without mastoidectomy (including canalplasty, atticotomy, or atticotomy), initial or revision
+          - '69632' # Tympanoplasty without mastoidectomy (including canalplasty, atticotomy, or atticotomy), initial or revision; with ossicular chain reconstruction
+      - diagnosis_code:
+          any_of:
+          - H72.90  # Unspecified perforation of tympanic membrane, unspecified ear
+          - H72.91  # Unspecified perforation of tympanic membrane, right ear
+          - H72.92  # Unspecified perforation of tympanic membrane, left ear
+          - H90.0   # Conductive hearing loss, bilateral
+          - H90.11  # Conductive hearing loss, unilateral, right ear
+          - H90.12  # Conductive hearing loss, unilateral, left ear
+      - patient_age:
+          min: 8
+      - prior_service_within_days:
+          service_codes:
+          - '92504' # Otoscopy showing tympanic membrane perforation
+          days: 180
+          description: Otologic examination within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92557' # Audiometry showing conductive hearing loss
+          - '92553'
+          days: 180
+          description: Hearing loss documentation within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '87205' # Recurrent otitis media
+              days: 365
+              description: Chronic ear infections within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92557' # Conductive hearing loss ≥20 dB
+              - '92553'
+              days: 180
+              description: Significant hearing loss within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Persistent perforation >6 months
+              - '99214'
+              - '99215'
+              days: 180
+              description: Chronic perforation evaluation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92567' # Tympanometry confirming perforation
+          days: 180
+          description: Middle ear evaluation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # ENT evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Otolaryngology consultation within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H60.9  # Active external otitis
+        - prior_service_within_days:
+            service_codes:
+            - '69433' # Recent tympanoplasty
+            - '69436'
+            days: 365
+            description: Tympanoplasty within past year
+  logic:
+    outcome: approved
+    reason: Tympanoplasty approved for tympanic membrane perforation with hearing loss or recurrent infections
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Tympanoplasty restores hearing and prevents recurrent infections in chronic perforations
+
+- id: rule_ent_stapedectomy
+  name: Stapedectomy for Otosclerosis
+  description: Prior authorization for stapedectomy in otosclerosis with conductive hearing loss
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '69661' # Stapedectomy or stapedotomy with reestablishment of ossicular continuity, with or without use of foreign material
+          - '69662' # Revision of stapedectomy or stapedotomy
+      - diagnosis_code:
+          any_of:
+          - H80.90  # Unspecified otosclerosis, unspecified ear
+          - H80.91  # Unspecified otosclerosis, right ear
+          - H80.92  # Unspecified otosclerosis, left ear
+          - H80.00  # Otosclerosis involving oval window, nonobliterative, unspecified ear
+          - H80.01  # Otosclerosis involving oval window, nonobliterative, right ear
+          - H80.02  # Otosclerosis involving oval window, nonobliterative, left ear
+      - patient_age:
+          min: 18
+          max: 70
+      - prior_service_within_days:
+          service_codes:
+          - '92557' # Audiometry showing conductive hearing loss with air-bone gap ≥20 dB
+          - '92553'
+          days: 180
+          description: Hearing loss documentation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92567' # Tympanometry showing normal middle ear pressure
+          days: 180
+          description: Middle ear evaluation within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92557' # Progressive hearing loss
+              - '92553'
+              days: 365
+              description: Documented progression within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92590' # Hearing aid limitation due to conductive loss
+              - '92591'
+              days: 180
+              description: Hearing aid evaluation within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Carhart notch on audiometry
+              - '99214'
+              - '99215'
+              days: 180
+              description: Otosclerosis-specific findings within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '70482' # CT showing otosclerotic changes (if indicated)
+          days: 365
+          description: Temporal bone imaging within past year
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # ENT evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Otolaryngology consultation within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H81.10 # Benign paroxysmal positional vertigo
+        - prior_service_within_days:
+            service_codes:
+            - '69661' # Previous stapedectomy
+            days: 730
+            description: Stapedectomy within past 2 years
+  logic:
+    outcome: approved
+    reason: Stapedectomy approved for otosclerosis with significant conductive hearing loss
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Stapedectomy is highly effective treatment for otosclerotic conductive hearing loss

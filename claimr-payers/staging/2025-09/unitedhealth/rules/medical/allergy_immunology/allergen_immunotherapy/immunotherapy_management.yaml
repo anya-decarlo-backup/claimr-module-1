@@ -1,0 +1,308 @@
+- id: rule_allergy_scit_environmental
+  name: Environmental Allergen Immunotherapy - Subcutaneous
+  description: Prior authorization for subcutaneous immunotherapy (SCIT) for environmental allergies
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '95115'
+          - '95117'
+          - '95144'
+          - '95145'
+          - '95146'
+          - '95147'
+          - '95148'
+          - '95149'
+          - '95165'
+          - '95170'
+      - diagnosis_code:
+          any_of:
+          - J30.1
+          - J30.2
+          - J30.81
+          - J30.89
+          - J45.909
+          - H10.13
+          - H10.23
+      - any_of:
+        - all_of:
+          - patient_age:
+              min: 5
+              max: 65
+          - prior_service_within_days:
+              service_codes:
+              - '95004'
+              - '95024'
+              - '95027'
+              - '95028'
+              days: 365
+              description: Allergy skin testing within past year
+        - all_of:
+          - patient_age:
+              min: 5
+              max: 65
+          - prior_service_within_days:
+              service_codes:
+              - '86003'
+              - '86005'
+              days: 365
+              description: Specific IgE testing within past year
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - J44.0
+            - J44.1
+            - C78.00
+            - D84.9
+            - Z87.891
+  logic:
+    outcome: approved
+    reason: Environmental allergen immunotherapy approved for documented allergic rhinitis/asthma with positive testing
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: SCIT effective for environmental allergies with documented sensitization
+- id: rule_allergy_slit_environmental
+  name: Environmental Allergen Immunotherapy - Sublingual
+  description: Prior authorization for sublingual immunotherapy (SLIT) for environmental allergies
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+    conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '95131'
+          - '95132'
+          - '95133'
+          - '95134'
+          - '95135'
+          - '95136'
+          - '95137'
+          - '95138'
+          - '95139'
+      - diagnosis_code:
+          any_of:
+          - J30.1
+          - J30.2
+          - J30.81
+          - J30.89
+          - J45.909
+      - patient_age:
+          min: 5
+          max: 65
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - '95004'
+            - '95024'
+            - '95027'
+            - '95028'
+            days: 365
+            description: Allergy skin testing within past year
+        - prior_service_within_days:
+            service_codes:
+            - '86003'
+            - '86005'
+            days: 365
+            description: Specific IgE testing within past year
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - J44.0
+            - J44.1
+            - K92.2
+            - D84.9
+  logic:
+    outcome: approved
+    reason: Sublingual immunotherapy approved for environmental allergies with documented sensitization
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: SLIT approved for grass/ragweed allergies with positive testing
+- id: rule_allergy_venom_immunotherapy
+  name: Venom Immunotherapy
+  description: Prior authorization for venom immunotherapy for insect sting allergies
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+    conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '95115'
+          - '95117'
+          - '95144'
+          - '95145'
+          - '95146'
+          - '95147'
+          - '95165'
+          - '95170'
+      - diagnosis_code:
+          any_of:
+          - T63.441A
+          - T63.451A
+          - T63.461A
+          - Z87.892
+          - Z91.038
+      - patient_age:
+          min: 3
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '95004'
+              - '95024'
+              - '95028'
+              days: 730
+              description: Venom skin testing within past 2 years
+          - diagnosis_code:
+              any_of:
+              - T78.2XXA
+              - T78.00XA
+              - T88.6XXA
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '86003'
+              - '86005'
+              days: 730
+              description: Venom-specific IgE within past 2 years
+          - diagnosis_code:
+              any_of:
+              - T78.2XXA
+              - T78.00XA
+              - T88.6XXA
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - I25.10
+            - I50.9
+            - D84.9
+            - C80.1
+  logic:
+    outcome: approved
+    reason: Venom immunotherapy approved for systemic allergic reactions with positive venom testing
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: VIT prevents life-threatening anaphylaxis in venom-allergic patients
+- id: rule_allergy_food_oit
+  name: Food Allergen Immunotherapy - Oral
+  description: Prior authorization for oral immunotherapy (OIT) for food allergies
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+    conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '95180'
+          - '95181'
+          - '95182'
+          - '95183'
+          - '95184'
+      - diagnosis_code:
+          any_of:
+          - Z91.010
+          - Z91.011
+          - Z91.012
+          - Z91.013
+          - T78.1XXA
+          - T78.05XA
+      - patient_age:
+          min: 4
+          max: 17
+      - prior_service_within_days:
+          service_codes:
+          - '86003'
+          - '86005'
+          - '95004'
+          days: 365
+          description: Food allergy testing within past year
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - T78.00XA
+            - T78.2XXA
+            - T88.6XXA
+        - prior_service_within_days:
+            service_codes:
+            - J0171
+            - J0172
+            days: 1095
+            description: Epinephrine use within past 3 years
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - J45.901
+            - K90.0
+            - D84.9
+            - F84.0
+  logic:
+    outcome: approved
+    reason: Food oral immunotherapy approved for documented IgE-mediated food allergy with anaphylaxis history
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: OIT reduces anaphylaxis risk in high-risk pediatric food allergy patients
+- id: rule_allergy_immunotherapy_monitoring
+  name: Immunotherapy Monitoring and Maintenance
+  description: Coverage for immunotherapy monitoring visits and maintenance dosing
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+    conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '99211'
+          - '99212'
+          - '99213'
+          - '95115'
+          - '95117'
+      - diagnosis_code:
+          any_of:
+          - J30.1
+          - J30.2
+          - J30.81
+          - J30.89
+          - J45.909
+          - Z91.010
+          - Z91.011
+          - Z91.012
+          - Z91.013
+          - Z87.892
+      - prior_service_within_days:
+          service_codes:
+          - '95144'
+          - '95145'
+          - '95146'
+          - '95147'
+          - '95148'
+          - '95149'
+          - '95131'
+          - '95132'
+          - '95133'
+          - '95180'
+          - '95181'
+          days: 90
+          description: Active immunotherapy within past 90 days
+      - utilization_limit:
+          per_year: 52
+          description: Maximum 52 monitoring visits per year
+  logic:
+    outcome: approved
+    reason: Immunotherapy monitoring approved for patients on active allergen immunotherapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Regular monitoring essential for immunotherapy safety and efficacy

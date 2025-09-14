@@ -1,0 +1,184 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61510'
+    - '61512'
+    - '61518'
+    - '61519'
+    - '61304'
+    - '61305'
+    - '61312'
+    - '61313'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_experimental_neurosurgery_procedures_2025_09
+    - dx_in_value_set: vs_investigational_cranial_surgery_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Experimental or investigational neurosurgical procedures not covered by UnitedHealth policy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_neurosurgery_exclusion_experimental_procedures
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61867'
+    - '61868'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dbs_inappropriate_candidate_2025_09
+    - dx_in_value_set: vs_psychiatric_contraindication_dbs_2025_09
+    - dx_in_value_set: vs_cognitive_impairment_severe_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: DBS excluded for inappropriate candidates with psychiatric contraindications or severe cognitive impairment
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_neurosurgery_exclusion_dbs_inappropriate_candidate
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '62223'
+    - '62225'
+    - '62230'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_shunt_surgery_without_indication_2025_09
+    - dx_in_value_set: vs_pseudotumor_cerebri_mild_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Shunt surgery excluded without clear indication or for mild pseudotumor cerebri without visual symptoms
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_neurosurgery_exclusion_shunt_without_indication
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61510'
+    - '61512'
+    - '61518'
+    - '61519'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_high_surgical_risk_neurosurgery_2025_09
+    - dx_in_value_set: vs_poor_prognosis_brain_tumor_2025_09
+    all_of:
+    - min_age: 85
+    - max_age: 100
+  logic:
+    outcome: EXCLUDED
+    notes: Cranial surgery excluded for high surgical risk patients or poor prognosis brain tumors in elderly
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_neurosurgery_exclusion_high_surgical_risk
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61548'
+    - '61566'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_epilepsy_surgery_without_evaluation_2025_09
+    - dx_in_value_set: vs_seizures_well_controlled_medical_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Epilepsy surgery excluded without comprehensive epilepsy center evaluation or well-controlled seizures
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_neurosurgery_exclusion_epilepsy_without_evaluation
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61700'
+    - '61702'
+    - '61703'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_aneurysm_small_low_risk_2025_09
+    - dx_in_value_set: vs_aneurysm_coiling_preferred_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Aneurysm clipping excluded for small low-risk aneurysms or when endovascular coiling is preferred
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurosurgery_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_neurosurgery_exclusion_aneurysm_low_risk

@@ -1,0 +1,318 @@
+- id: rule_hematology_esa_therapy
+  name: Erythropoiesis-Stimulating Agent (ESA) Therapy
+  description: Prior authorization for ESA therapy in chronic kidney disease and cancer patients
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "26"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0881  # Injection, darbepoetin alfa
+          - J0885  # Injection, epoetin alfa
+          - '96365' # IV infusion
+          - '96413' # Chemotherapy administration
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - N18.3  # Chronic kidney disease, stage 3
+              - N18.4  # Chronic kidney disease, stage 4
+              - N18.5  # Chronic kidney disease, stage 5
+              - N18.6  # End stage renal disease
+          - prior_service_within_days:
+              service_codes:
+              - '85025' # CBC showing hemoglobin <10 g/dL
+              - '85027'
+              days: 30
+              description: Recent CBC confirming anemia within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C78.00  # Secondary malignant neoplasm
+              - C80.1   # Malignant neoplasm, unspecified
+              - Z51.11  # Encounter for antineoplastic chemotherapy
+          - prior_service_within_days:
+              service_codes:
+              - '96413' # Recent chemotherapy administration
+              - '96415'
+              days: 21
+              description: Chemotherapy-induced anemia within past 3 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '82728' # Ferritin level
+          - '83540' # Iron level
+          - '82784' # Transferrin saturation
+          days: 90
+          description: Iron studies within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - D50.9  # Iron deficiency anemia, unspecified
+            - D51.9  # Vitamin B12 deficiency anemia
+            - D52.9  # Folate deficiency anemia
+  logic:
+    outcome: approved
+    reason: ESA therapy approved for anemia of chronic disease with appropriate hemoglobin target
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: ESAs indicated for anemia of chronic kidney disease or chemotherapy when hemoglobin <10 g/dL
+
+- id: rule_hematology_iron_infusion
+  name: Intravenous Iron Therapy
+  description: Prior authorization for IV iron preparations in iron deficiency anemia
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J1439  # Injection, ferric carboxymaltose
+          - J1447  # Injection, iron sucrose
+          - J2916  # Injection, sodium ferric gluconate
+          - '96365' # IV infusion initial
+          - '96366' # IV infusion additional
+      - diagnosis_code:
+          any_of:
+          - D50.0  # Iron deficiency anemia secondary to blood loss
+          - D50.1  # Sideropenic dysphagia
+          - D50.8  # Other iron deficiency anemias
+          - D50.9  # Iron deficiency anemia, unspecified
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # CBC showing microcytic anemia
+          - '85027'
+          days: 30
+          description: Recent CBC confirming iron deficiency anemia within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '82728' # Ferritin <30 ng/mL
+          - '83540' # Serum iron
+          - '84466' # Transferrin
+          days: 60
+          description: Iron studies confirming deficiency within past 60 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - K59.1  # Diarrhea, unspecified
+              - K50.90 # Crohn's disease
+              - K51.90 # Ulcerative colitis
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Failed oral iron therapy
+              days: 90
+              description: Gastrointestinal intolerance to oral iron within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - N18.3  # Chronic kidney disease
+              - N18.4
+              - N18.5
+          - prior_service_within_days:
+              service_codes:
+              - '82728' # Ferritin <200 ng/mL in CKD
+              days: 60
+              description: Functional iron deficiency in CKD within past 60 days
+        - prior_service_within_days:
+            service_codes:
+            - '85025' # Hemoglobin <8 g/dL
+            days: 14
+            description: Severe anemia requiring rapid iron repletion within past 2 weeks
+  logic:
+    outcome: approved
+    reason: IV iron therapy approved for iron deficiency anemia with appropriate clinical indications
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: IV iron indicated for oral iron intolerance, malabsorption, or severe deficiency
+
+- id: rule_hematology_b12_injections
+  name: Vitamin B12 Injection Therapy
+  description: Prior authorization for vitamin B12 injections in pernicious anemia and malabsorption
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3420  # Injection, vitamin B-12 cyanocobalamin
+          - J3570  # Injection, laetrile
+          - '96372' # Therapeutic injection
+      - diagnosis_code:
+          any_of:
+          - D51.0  # Vitamin B12 deficiency anemia due to intrinsic factor deficiency
+          - D51.1  # Vitamin B12 deficiency anemia due to selective vitamin B12 malabsorption
+          - D51.8  # Other vitamin B12 deficiency anemias
+          - D51.9  # Vitamin B12 deficiency anemia, unspecified
+          - E53.8  # Deficiency of other specified B group vitamins
+      - prior_service_within_days:
+          service_codes:
+          - '82607' # Vitamin B12 level <200 pg/mL
+          days: 90
+          description: Low vitamin B12 level within past 90 days
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - '83090' # Homocysteine elevated
+            - '82131' # Methylmalonic acid elevated
+            days: 90
+            description: Elevated metabolites confirming B12 deficiency within past 90 days
+        - diagnosis_code:
+            any_of:
+            - K90.0  # Celiac disease
+            - K50.90 # Crohn's disease
+            - K91.2  # Postsurgical malabsorption
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - D51.0  # Pernicious anemia
+          - prior_service_within_days:
+              service_codes:
+              - '86255' # Intrinsic factor antibodies positive
+              - '86240' # Parietal cell antibodies positive
+              days: 180
+              description: Positive antibodies confirming pernicious anemia within past 6 months
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - J3420  # Recent B12 injection
+            days: 28
+            description: B12 injection within past 4 weeks
+  logic:
+    outcome: approved
+    reason: Vitamin B12 injection therapy approved for documented deficiency with malabsorption
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: B12 injections indicated for pernicious anemia or malabsorption syndromes
+
+- id: rule_hematology_folate_therapy
+  name: Folate Deficiency Treatment
+  description: Prior authorization for high-dose folate therapy in megaloblastic anemia
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (high-dose folate)
+          - '99213' # Office visit for folate management
+          - '99214'
+      - diagnosis_code:
+          any_of:
+          - D52.0  # Dietary folate deficiency anemia
+          - D52.1  # Drug-induced folate deficiency anemia
+          - D52.8  # Other folate deficiency anemias
+          - D52.9  # Folate deficiency anemia, unspecified
+      - prior_service_within_days:
+          service_codes:
+          - '82746' # Folate level <2.7 ng/mL
+          days: 60
+          description: Low folate level within past 60 days
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # CBC showing macrocytic anemia
+          - '85027'
+          days: 30
+          description: Recent CBC confirming macrocytic anemia within past 30 days
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - K90.0  # Celiac disease
+            - K50.90 # Crohn's disease
+            - K70.30 # Alcoholic cirrhosis
+        - prior_service_within_days:
+            service_codes:
+            - J3490  # Methotrexate or other folate antagonist
+            days: 30
+            description: Folate antagonist therapy within past 30 days
+        - all_of:
+          - patient_age:
+              min: 15
+              max: 45
+          - diagnosis_code:
+              any_of:
+              - O09.90 # Supervision of high risk pregnancy
+              - Z33.1  # Pregnant state, incidental
+  logic:
+    outcome: approved
+    reason: Folate therapy approved for documented deficiency with appropriate clinical indication
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: High-dose folate indicated for malabsorption, drug-induced deficiency, or pregnancy
+
+- id: rule_hematology_aplastic_anemia_treatment
+  name: Aplastic Anemia Immunosuppressive Therapy
+  description: Prior authorization for immunosuppressive therapy in aplastic anemia
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "11"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J7513  # Antithymocyte globulin (ATG)
+          - J7515  # Cyclosporine oral
+          - J3490  # Unclassified drugs (eltrombopag for aplastic anemia)
+          - '96365' # IV infusion
+      - diagnosis_code:
+          any_of:
+          - D61.01 # Constitutional aplastic anemia
+          - D61.09 # Other constitutional aplastic anemias
+          - D61.1  # Drug-induced aplastic anemia
+          - D61.2  # Aplastic anemia due to other external agents
+          - D61.3  # Idiopathic aplastic anemia
+          - D61.9  # Aplastic anemia, unspecified
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # CBC showing pancytopenia
+          - '85027'
+          days: 14
+          description: Recent CBC confirming pancytopenia within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '85097' # Bone marrow biopsy confirming aplastic anemia
+          days: 90
+          description: Bone marrow biopsy confirming aplastic anemia within past 90 days
+      - any_of:
+        - all_of:
+          - patient_age:
+              min: 40
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - '38240' # Bone marrow transplant evaluation
+                days: 180
+                description: Not a transplant candidate
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - D61.1  # Drug-induced aplastic anemia
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Discontinuation of offending agent
+              days: 30
+              description: Offending drug discontinued within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C95.90 # Leukemia, unspecified
+            - D46.9  # Myelodysplastic syndrome
+  logic:
+    outcome: approved
+    reason: Immunosuppressive therapy approved for severe aplastic anemia with appropriate clinical criteria
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: ATG and cyclosporine are first-line therapy for severe aplastic anemia in non-transplant candidates

@@ -1,0 +1,431 @@
+- id: rule_psychiatry_sud_detox_inpatient
+  name: Inpatient Substance Use Disorder Detoxification
+  description: Prior authorization for medically supervised inpatient detoxification
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '99221' # Initial hospital care
+          - '99222' # Initial hospital care
+          - '99223' # Initial hospital care
+          - H0010  # Alcohol and/or drug services; sub-acute detoxification
+          - H0011  # Alcohol and/or drug services; acute detoxification
+      - diagnosis_code:
+          any_of:
+          - F10.230 # Alcohol dependence with withdrawal, uncomplicated
+          - F10.231 # Alcohol dependence with withdrawal delirium
+          - F11.23  # Opioid dependence with withdrawal
+          - F12.23  # Cannabis dependence with withdrawal
+          - F13.230 # Sedative dependence with withdrawal, uncomplicated
+          - F13.231 # Sedative dependence with withdrawal delirium
+          - F14.23  # Cocaine dependence with withdrawal
+          - F15.23  # Other stimulant dependence with withdrawal
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Substance use assessment
+          - '90792'
+          days: 7
+          description: SUD evaluation within past week
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F10.231 # Alcohol withdrawal delirium
+              - F13.231 # Sedative withdrawal delirium
+          - prior_service_within_days:
+              service_codes:
+              - '99281' # Emergency department visit
+              - '99282'
+              - '99283'
+              - '99284'
+              - '99285'
+              days: 24
+              description: Emergency presentation within past 24 hours
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F11.23  # Opioid withdrawal
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Withdrawal severity assessment (COWS ≥13)
+              days: 24
+              description: Moderate to severe withdrawal within past 24 hours
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Medical complications
+              - '99214'
+              - '99215'
+              days: 7
+              description: Medical comorbidities within past week
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Medical clearance
+          - '99214'
+          - '99215'
+          days: 24
+          description: Medical evaluation within past 24 hours
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F20.9  # Active psychosis (may require specialized unit)
+        - prior_service_within_days:
+            service_codes:
+            - H0020  # Completed detox within past 30 days
+            days: 30
+            description: Recent detoxification within past 30 days
+  logic:
+    outcome: approved
+    reason: Inpatient detoxification approved for severe withdrawal or medical complications
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Inpatient detox required for severe withdrawal syndromes and medical complications
+
+- id: rule_psychiatry_sud_residential_treatment
+  name: Residential Substance Use Disorder Treatment
+  description: Prior authorization for residential SUD treatment programs
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["55", "56"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - H0018  # Alcohol and/or drug services; short term residential
+          - H0019  # Alcohol and/or drug services; long term residential
+          - '90834' # Individual therapy in residential setting
+          - '90853' # Group therapy
+      - diagnosis_code:
+          any_of:
+          - F10.20  # Alcohol dependence, uncomplicated
+          - F10.21  # Alcohol dependence, in remission
+          - F11.20  # Opioid dependence, uncomplicated
+          - F11.21  # Opioid dependence, in remission
+          - F14.20  # Cocaine dependence, uncomplicated
+          - F15.20  # Other stimulant dependence, uncomplicated
+          - F19.20  # Other psychoactive substance dependence
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Comprehensive SUD assessment
+          - '90792'
+          days: 14
+          description: SUD evaluation within past 2 weeks
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - H0010  # Completed detoxification
+              - H0011
+              days: 30
+              description: Recent detoxification within past 30 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - H0005  # Failed outpatient treatment
+              days: 90
+              description: Outpatient SUD treatment failure within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Multiple relapses documented
+              days: 180
+              description: Treatment failures within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99281' # Multiple emergency visits for substance use
+              - '99282'
+              - '99283'
+              - '99284'
+              - '99285'
+              days: 90
+              description: Emergency interventions within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Functional impairment assessment
+          days: 14
+          description: Severe functional impairment within past 2 weeks
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F20.9  # Active psychosis requiring specialized care
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Active medical instability
+            - '99222'
+            - '99223'
+            days: 7
+            description: Medical instability within past week
+  logic:
+    outcome: approved
+    reason: Residential SUD treatment approved for severe dependence with outpatient treatment failures
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Residential treatment provides intensive structured environment for severe SUD
+
+- id: rule_psychiatry_sud_intensive_outpatient
+  name: Intensive Outpatient Substance Use Disorder Treatment
+  description: Prior authorization for intensive outpatient SUD programs
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["53", "02"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - H0015  # Alcohol and/or drug services; intensive outpatient
+          - '90834' # Individual therapy
+          - '90853' # Group therapy
+          - H0005  # Alcohol and/or drug services
+      - diagnosis_code:
+          any_of:
+          - F10.10  # Alcohol abuse, uncomplicated
+          - F10.20  # Alcohol dependence, uncomplicated
+          - F11.10  # Opioid abuse, uncomplicated
+          - F11.20  # Opioid dependence, uncomplicated
+          - F14.10  # Cocaine abuse, uncomplicated
+          - F14.20  # Cocaine dependence, uncomplicated
+          - F15.10  # Other stimulant abuse, uncomplicated
+          - F15.20  # Other stimulant dependence, uncomplicated
+      - patient_age:
+          min: 12
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # SUD assessment
+          - '90792'
+          days: 30
+          description: SUD evaluation within past 30 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - H0010  # Step-down from detox or residential
+              - H0011
+              - H0018
+              - H0019
+              days: 30
+              description: Higher level of care within past 30 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - H0005  # Failed standard outpatient treatment
+              days: 90
+              description: Outpatient treatment within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Continued substance use despite treatment
+              days: 30
+              description: Treatment non-response within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '99281' # Crisis interventions
+            - '99282'
+            - '99283'
+            days: 60
+            description: Emergency visits within past 60 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Functional assessment
+          days: 30
+          description: Functional impairment assessment within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F10.231 # Severe withdrawal requiring inpatient care
+            - F13.231
+        - prior_service_within_days:
+            service_codes:
+            - F20.9   # Active psychosis
+            days: 30
+            description: Psychotic symptoms within past 30 days
+  logic:
+    outcome: approved
+    reason: Intensive outpatient SUD treatment approved for moderate to severe substance use with treatment failures
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: IOP provides structured treatment while maintaining community integration
+
+- id: rule_psychiatry_sud_medication_assisted_treatment
+  name: Medication-Assisted Treatment for Opioid Use Disorder
+  description: Prior authorization for MAT including buprenorphine, methadone, and naltrexone
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "53"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0570  # Buprenorphine implant
+          - J0571  # Buprenorphine, oral
+          - J0572  # Buprenorphine/naloxone
+          - J1230  # Methadone
+          - J2315  # Naltrexone injection
+          - H0020  # Alcohol and/or drug services; methadone administration
+      - diagnosis_code:
+          any_of:
+          - F11.10  # Opioid abuse, uncomplicated
+          - F11.20  # Opioid dependence, uncomplicated
+          - F11.21  # Opioid dependence, in remission
+          - F11.23  # Opioid dependence with withdrawal
+      - patient_age:
+          min: 16
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Opioid use disorder assessment
+          - '90792'
+          days: 30
+          description: OUD evaluation within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Opioid use severity assessment
+          days: 14
+          description: Moderate to severe OUD within past 2 weeks
+      - any_of:
+        - all_of:
+          - service_code:
+              any_of:
+              - J0570  # Buprenorphine products
+              - J0571
+              - J0572
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Medical evaluation for buprenorphine
+              - '99214'
+              - '99215'
+              days: 30
+              description: Medical clearance within past 30 days
+        - all_of:
+          - service_code:
+              any_of:
+              - J1230  # Methadone
+              - H0020
+          - prior_service_within_days:
+              service_codes:
+              - H0010  # Failed other treatments
+              - H0015
+              days: 180
+              description: Treatment failures within past 6 months
+        - all_of:
+          - service_code:
+              any_of:
+              - J2315  # Naltrexone injection
+          - prior_service_within_days:
+              service_codes:
+              - H0010  # Completed detoxification
+              - H0011
+              days: 14
+              description: Recent detox within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '90834' # Concurrent counseling
+          - '90853'
+          days: 30
+          description: Psychosocial treatment within past 30 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Active medical instability
+            - '99222'
+            - '99223'
+            days: 7
+            description: Medical complications within past week
+  logic:
+    outcome: approved
+    reason: MAT approved for opioid use disorder with appropriate medical and psychosocial support
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: MAT is evidence-based treatment for OUD reducing overdose risk and improving outcomes
+
+- id: rule_psychiatry_sud_adolescent_treatment
+  name: Adolescent Substance Use Disorder Treatment
+  description: Prior authorization for adolescent-specific SUD treatment programs
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["53", "55"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - H0015  # Adolescent intensive outpatient
+          - H0018  # Adolescent residential treatment
+          - '90834' # Individual therapy
+          - '90847' # Family therapy with patient present
+          - '90853' # Group therapy
+      - diagnosis_code:
+          any_of:
+          - F10.10  # Alcohol abuse
+          - F12.10  # Cannabis abuse
+          - F12.20  # Cannabis dependence
+          - F14.10  # Cocaine abuse
+          - F15.10  # Other stimulant abuse
+          - F19.10  # Other psychoactive substance abuse
+      - patient_age:
+          min: 12
+          max: 17
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Adolescent SUD assessment
+          - '90792'
+          days: 14
+          description: Adolescent SUD evaluation within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '90847' # Family assessment
+          days: 30
+          description: Family evaluation within past 30 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # School problems related to substance use
+              days: 30
+              description: Academic/behavioral issues within past 30 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99281' # Legal problems
+              - '99282'
+              days: 90
+              description: Legal consequences within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - H0005  # Failed outpatient treatment
+            days: 90
+            description: Treatment failure within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Functional impairment assessment
+          days: 14
+          description: Functional assessment within past 2 weeks
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F11.10 # Opioid use (requires specialized protocols)
+            - F11.20
+        - prior_service_within_days:
+            service_codes:
+            - F20.9  # Active psychosis
+            days: 30
+            description: Psychotic symptoms within past 30 days
+  logic:
+    outcome: approved
+    reason: Adolescent SUD treatment approved with family involvement and functional impairment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Adolescent SUD treatment requires developmentally appropriate interventions with family involvement

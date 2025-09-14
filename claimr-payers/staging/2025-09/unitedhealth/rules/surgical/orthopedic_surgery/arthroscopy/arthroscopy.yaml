@@ -1,0 +1,146 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '29881'
+    - '29882'
+    - '29883'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_meniscal_tear_mri_confirmed_2025_09
+    - dx_in_value_set: vs_knee_mechanical_symptoms_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Knee arthroscopy for meniscal repair requires MRI confirmation and failed conservative treatment for 6+ weeks
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_arthroscopy_knee_meniscal_repair
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '29827'
+    - '29828'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_rotator_cuff_tear_mri_2025_09
+    - dx_in_value_set: vs_shoulder_impingement_refractory_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 70
+  logic:
+    outcome: PA_REQUIRED
+    notes: Shoulder arthroscopy for rotator cuff repair requires MRI confirmation and failed conservative management
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_arthroscopy_shoulder_rotator_cuff
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '29914'
+    - '29915'
+    - '29916'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hip_labral_tear_mri_2025_09
+    - dx_in_value_set: vs_femoroacetabular_impingement_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 50
+  logic:
+    outcome: PA_REQUIRED
+    notes: Hip arthroscopy for labral repair requires MRI confirmation and failed conservative treatment in young active patients
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_arthroscopy_hip_labral_repair
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '29891'
+    - '29892'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ankle_impingement_syndrome_2025_09
+    - dx_in_value_set: vs_osteochondral_lesion_ankle_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Ankle arthroscopy requires imaging confirmation and 3+ months failed conservative treatment
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_arthroscopy_ankle_impingement
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '29837'
+    - '29838'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_elbow_lateral_epicondylitis_refractory_2025_09
+    - dx_in_value_set: vs_elbow_osteochondritis_dissecans_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Elbow arthroscopy requires refractory lateral epicondylitis after 6+ months conservative treatment
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_arthroscopy_elbow_lateral_epicondylitis

@@ -1,0 +1,426 @@
+- id: rule_nicu_respiratory_support
+  name: NICU Respiratory Support and Ventilation
+  description: Prior authorization for advanced respiratory support in neonatal intensive care
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '94002' # Ventilation assist and management, initiation of pressure or volume preset ventilators for assisted or controlled breathing
+          - '94003' # Ventilation assist and management, patient-initiated pressure or volume preset ventilators for assisted or controlled breathing
+          - '94660' # Continuous positive airway pressure ventilation (CPAP), initiation and management
+          - '31500' # Intubation, endotracheal, emergency procedure
+      - diagnosis_code:
+          any_of:
+          - P22.0   # Respiratory distress syndrome of newborn
+          - P28.5   # Respiratory failure of newborn
+          - P07.20  # Extreme immaturity of newborn, unspecified weeks of gestation
+          - P07.30  # Preterm newborn, unspecified weeks of gestation
+          - P24.01  # Meconium aspiration syndrome with respiratory symptoms
+          - Q33.6   # Hypoplasia and dysplasia of lung
+      - patient_age:
+          min: 0
+          max: 1
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P22.0  # Respiratory distress syndrome
+          - prior_service_within_days:
+              service_codes:
+              - '82803' # Arterial blood gas showing respiratory failure
+              days: 1
+              description: ABG confirming respiratory failure within past day
+          - prior_service_within_days:
+              service_codes:
+              - '76700' # Chest X-ray showing RDS pattern
+              days: 1
+              description: Chest imaging within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P07.20 # Extreme prematurity (<28 weeks)
+              - P07.30
+          - prior_service_within_days:
+              service_codes:
+              - '99468' # Initial neonatal critical care
+              days: 1
+              description: NICU admission within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P24.01 # Meconium aspiration syndrome
+          - prior_service_within_days:
+              service_codes:
+              - '31515' # Laryngoscopy showing meconium
+              days: 1
+              description: Airway evaluation within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q33.6  # Congenital lung hypoplasia
+          - prior_service_within_days:
+              service_codes:
+              - '71275' # CT chest showing lung abnormalities
+              days: 7
+              description: Lung imaging within past week
+      - prior_service_within_days:
+          service_codes:
+          - '99468' # Neonatal critical care evaluation
+          - '99469'
+          days: 1
+          description: Neonatology consultation within past day
+      - none_of:
+        - patient_age:
+            min: 2   # Pediatric rather than neonatal care
+        - diagnosis_code:
+            any_of:
+            - P96.9  # Condition originating in perinatal period, unspecified (too vague)
+  logic:
+    outcome: approved
+    reason: NICU respiratory support approved for documented neonatal respiratory failure or prematurity
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Advanced respiratory support is life-saving for critically ill neonates
+
+- id: rule_nicu_surfactant_therapy
+  name: Pulmonary Surfactant Replacement Therapy
+  description: Prior authorization for surfactant administration in neonatal respiratory distress syndrome
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'J7608' # Acetylcysteine, inhalation solution, compounded product, administered through DME, unit dose form, per gram
+          - 'J7611' # Albuterol, inhalation solution, compounded product, administered through DME, unit dose form, per milligram
+          - 'Q4081' # Injection, epoetin alfa, 100 units (for anemia of prematurity)
+      - diagnosis_code:
+          any_of:
+          - P22.0   # Respiratory distress syndrome of newborn
+          - P22.1   # Transient tachypnea of newborn
+          - P28.5   # Respiratory failure of newborn
+          - P07.20  # Extreme immaturity of newborn
+      - patient_age:
+          min: 0
+          max: 0.25  # First 3 months of life
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P22.0  # RDS requiring surfactant
+          - prior_service_within_days:
+              service_codes:
+              - '76700' # Chest X-ray showing ground glass appearance
+              days: 1
+              description: Chest X-ray confirming RDS within past day
+          - prior_service_within_days:
+              service_codes:
+              - '82803' # ABG showing severe hypoxemia
+              days: 1
+              description: Blood gas analysis within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P07.20 # Extreme prematurity (<32 weeks) at high risk
+          - prior_service_within_days:
+              service_codes:
+              - '94002' # Already on mechanical ventilation
+              - '94003'
+              days: 1
+              description: Mechanical ventilation within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P28.5  # Respiratory failure
+          - prior_service_within_days:
+              service_codes:
+              - '99468' # Critical care requiring intervention
+              days: 1
+              description: Critical care within past day
+      - prior_service_within_days:
+          service_codes:
+          - '99468' # Neonatology evaluation
+          - '99469'
+          days: 1
+          description: Neonatology consultation within past day
+      - none_of:
+        - patient_age:
+            min: 0.5  # Beyond typical surfactant therapy age
+        - diagnosis_code:
+            any_of:
+            - P29.9  # Cardiovascular disorder originating in perinatal period (may complicate)
+  logic:
+    outcome: approved
+    reason: Surfactant therapy approved for documented RDS or severe respiratory failure in premature infants
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Surfactant replacement reduces mortality and morbidity in neonatal RDS
+
+- id: rule_nicu_therapeutic_hypothermia
+  name: Therapeutic Hypothermia for Neonatal Encephalopathy
+  description: Prior authorization for whole-body cooling therapy in hypoxic-ischemic encephalopathy
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '99468' # Initial neonatal critical care, per day, for the evaluation and management of a critically ill neonate, 28 days of age or younger
+          - '99469' # Subsequent neonatal critical care, per day, for the evaluation and management of a critically ill neonate, 28 days of age or younger
+      - diagnosis_code:
+          any_of:
+          - P91.60  # Hypoxic ischemic encephalopathy [HIE], unspecified
+          - P91.61  # Mild hypoxic ischemic encephalopathy [HIE]
+          - P91.62  # Moderate hypoxic ischemic encephalopathy [HIE]
+          - P91.63  # Severe hypoxic ischemic encephalopathy [HIE]
+          - P21.9   # Birth asphyxia, unspecified
+      - patient_age:
+          min: 0
+          max: 0.02  # Within 6 hours of birth
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P91.62 # Moderate HIE
+              - P91.63 # Severe HIE
+          - prior_service_within_days:
+              service_codes:
+              - '95816' # EEG showing encephalopathy pattern
+              days: 1
+              description: EEG within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P21.9  # Birth asphyxia
+          - prior_service_within_days:
+              service_codes:
+              - '82803' # Cord blood gas showing severe acidosis (pH <7.0)
+              days: 1
+              description: Cord blood analysis within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P91.60 # HIE with clinical criteria
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Apgar score ≤5 at 10 minutes
+              - '99214'
+              - '99215'
+              days: 1
+              description: Birth assessment within past day
+      - prior_service_within_days:
+          service_codes:
+          - '99468' # Neonatology evaluation
+          days: 1
+          description: Neonatology consultation within past day
+      - none_of:
+        - patient_age:
+            min: 0.25  # Beyond therapeutic window (>6 hours)
+        - diagnosis_code:
+            any_of:
+            - P91.61 # Mild HIE (not indicated for cooling)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Major congenital anomalies incompatible with survival
+            - '99214'
+            - '99215'
+            days: 1
+            description: Lethal anomalies within past day
+  logic:
+    outcome: approved
+    reason: Therapeutic hypothermia approved for moderate to severe HIE within therapeutic window
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Therapeutic hypothermia reduces death and disability in moderate to severe HIE
+
+- id: rule_nicu_extracorporeal_membrane_oxygenation
+  name: Extracorporeal Membrane Oxygenation (ECMO)
+  description: Prior authorization for ECMO support in critically ill neonates
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '33946' # Extracorporeal membrane oxygenation (ECMO)/extracorporeal life support (ECLS) provided by physician; initiation, veno-venous
+          - '33947' # Extracorporeal membrane oxygenation (ECMO)/extracorporeal life support (ECLS) provided by physician; initiation, veno-arterial
+          - '33948' # Extracorporeal membrane oxygenation (ECMO)/extracorporeal life support (ECLS) provided by physician; daily management, each day
+      - diagnosis_code:
+          any_of:
+          - P22.0   # Respiratory distress syndrome of newborn
+          - P28.5   # Respiratory failure of newborn
+          - P29.0   # Neonatal cardiac failure
+          - Q20.9   # Congenital malformation of cardiac chambers and connections, unspecified
+          - P24.01  # Meconium aspiration syndrome with respiratory symptoms
+      - patient_age:
+          min: 0
+          max: 1
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P22.0  # Severe RDS refractory to conventional therapy
+              - P28.5
+          - prior_service_within_days:
+              service_codes:
+              - '94002' # Failed conventional mechanical ventilation
+              - '94003'
+              days: 3
+              description: Ventilator failure within past 3 days
+          - prior_service_within_days:
+              service_codes:
+              - '82803' # Oxygenation index >25-40
+              days: 1
+              description: Severe hypoxemia within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P29.0  # Cardiac failure
+              - Q20.9  # Congenital heart disease
+          - prior_service_within_days:
+              service_codes:
+              - '93312' # Echocardiogram showing severe dysfunction
+              - '93313'
+              days: 1
+              description: Cardiac evaluation within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P24.01 # Severe meconium aspiration
+          - prior_service_within_days:
+              service_codes:
+              - '94660' # Failed high-frequency ventilation
+              days: 2
+              description: Advanced ventilation failure within past 2 days
+      - prior_service_within_days:
+          service_codes:
+          - '99468' # Neonatal critical care
+          days: 1
+          description: NICU evaluation within past day
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Multidisciplinary ECMO team evaluation
+          - '99214'
+          - '99215'
+          days: 1
+          description: ECMO team consultation within past day
+      - none_of:
+        - patient_age:
+            min: 2   # Pediatric ECMO protocols
+        - diagnosis_code:
+            any_of:
+            - P91.63 # Severe HIE (relative contraindication)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Irreversible multi-organ failure
+            - '99214'
+            - '99215'
+            days: 1
+            description: Futile care assessment within past day
+  logic:
+    outcome: approved
+    reason: ECMO approved for severe cardiopulmonary failure refractory to conventional therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: ECMO is life-saving rescue therapy for reversible severe cardiopulmonary failure
+
+- id: rule_nicu_nutritional_support
+  name: NICU Specialized Nutritional Support
+  description: Prior authorization for parenteral nutrition and specialized feeding in NICU
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'B4164' # Parenteral nutrition solution; carbohydrates (dextrose), 50% or less
+          - 'B4168' # Parenteral nutrition solution; amino acid, 3.5%, (500 ml = 1 unit) - home mix
+          - 'B4172' # Parenteral nutrition solution; amino acid, 5.5% through 7%, (500 ml = 1 unit) - home mix
+          - 'B4150' # Enteral formula, nutritionally complete with intact nutrients
+      - diagnosis_code:
+          any_of:
+          - P92.9   # Feeding problem of newborn, unspecified
+          - P78.3   # Noninfective necrotizing enterocolitis of newborn
+          - Q39.0   # Atresia of esophagus without fistula
+          - Q39.1   # Atresia of esophagus with tracheo-esophageal fistula
+          - Q41.9   # Congenital absence, atresia and stenosis of small intestine, part unspecified
+          - P07.20  # Extreme immaturity of newborn
+      - patient_age:
+          min: 0
+          max: 1
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P92.9  # Feeding intolerance
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Failed enteral feeding attempts
+              - '99214'
+              - '99215'
+              days: 3
+              description: Feeding trial failure within past 3 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P78.3  # Necrotizing enterocolitis
+          - prior_service_within_days:
+              service_codes:
+              - '76700' # Abdominal X-ray showing NEC
+              days: 1
+              description: NEC imaging within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q39.0  # Esophageal atresia
+              - Q39.1
+              - Q41.9  # Intestinal atresia
+          - prior_service_within_days:
+              service_codes:
+              - '74220' # Upper GI series confirming anatomy
+              days: 7
+              description: GI imaging within past week
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P07.20 # Extreme prematurity unable to feed
+          - prior_service_within_days:
+              service_codes:
+              - '99468' # NICU care with feeding immaturity
+              days: 1
+              description: NICU evaluation within past day
+      - prior_service_within_days:
+          service_codes:
+          - '99468' # Neonatology evaluation
+          - '99469'
+          days: 1
+          description: Neonatology consultation within past day
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - P96.9  # Unspecified condition (need specific indication)
+        - patient_age:
+            min: 2   # Pediatric nutrition protocols
+  logic:
+    outcome: approved
+    reason: Specialized nutrition approved for documented feeding problems or GI anomalies in neonates
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Specialized nutrition is essential for growth and development in critically ill neonates

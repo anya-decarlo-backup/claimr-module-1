@@ -1,0 +1,148 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43848'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_sleeve_gastrectomy_failure_2025_09
+    - dx_in_value_set: vs_inadequate_weight_loss_sleeve_2025_09
+    - dx_in_value_set: vs_gerd_severe_post_sleeve_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 70
+  logic:
+    outcome: PA_REQUIRED
+    notes: Sleeve to bypass revision requires failed sleeve gastrectomy with inadequate weight loss or severe GERD
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_bariatric_revision_sleeve_to_bypass
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43772'
+    - '43774'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_gastric_band_complications_2025_09
+    - dx_in_value_set: vs_band_slippage_erosion_2025_09
+    - dx_in_value_set: vs_band_failure_inadequate_loss_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Band removal with conversion requires band complications or failure with comprehensive evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_bariatric_revision_band_removal_conversion
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43847'
+    - '43886'
+    - '43887'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_gastric_bypass_complications_2025_09
+    - dx_in_value_set: vs_anastomotic_leak_stricture_2025_09
+    - dx_in_value_set: vs_bowel_obstruction_bypass_2025_09
+    - dx_in_value_set: vs_hemorrhage_post_bypass_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Gastric bypass revision requires complications including leak, stricture, obstruction, or hemorrhage
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_bariatric_revision_bypass_complications
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43848'
+    - '43644'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_significant_weight_regain_2025_09
+    - dx_in_value_set: vs_bariatric_failure_50_percent_regain_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 70
+  logic:
+    outcome: PA_REQUIRED
+    notes: Revision for weight regain requires >50% regain of lost weight with comprehensive evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_bariatric_revision_weight_regain
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43848'
+    - '43775'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pouch_dilation_symptomatic_2025_09
+    - dx_in_value_set: vs_sleeve_dilation_functional_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 70
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pouch or sleeve dilation repair requires symptomatic anatomical changes affecting outcomes
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_bariatric_revision_pouch_sleeve_dilation

@@ -1,0 +1,134 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '38240'
+    - '38241'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hematopoietic_stem_cell_transplant_2025_09
+    - dx_in_value_set: vs_bone_marrow_transplant_autologous_2025_09
+    - dx_in_value_set: vs_acute_leukemia_hsct_2025_09
+    - dx_in_value_set: vs_lymphoma_hsct_indication_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 75
+    - prior_service_required:
+        cpt: ['99214', '99215']
+        lookback_days: 90
+        description: "Hematology-oncology evaluation and staging"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Autologous HSCT requires appropriate malignancy indication and disease status evaluation
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '38242'
+    - '38243'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_allogeneic_hsct_2025_09
+    - dx_in_value_set: vs_matched_related_donor_hsct_2025_09
+    - dx_in_value_set: vs_matched_unrelated_donor_hsct_2025_09
+    - dx_in_value_set: vs_aplastic_anemia_hsct_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 70
+    - prior_service_required:
+        cpt: ['86812', '86813', '86817']
+        lookback_days: 180
+        description: "HLA typing and donor compatibility testing"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Allogeneic HSCT requires HLA-matched donor and appropriate indication with failed conventional therapy
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '38230'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bone_marrow_harvest_2025_09
+    - dx_in_value_set: vs_stem_cell_collection_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 75
+    - prior_service_required:
+        cpt: ['99401', '99402']
+        lookback_days: 60
+        description: "Donor evaluation and informed consent"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Bone marrow harvest requires comprehensive donor evaluation and medical clearance
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '38205'
+    - '38206'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_peripheral_blood_stem_cell_harvest_2025_09
+    - dx_in_value_set: vs_apheresis_stem_cell_collection_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 70
+    - prior_service_required:
+        cpt: ['99214', '99215']
+        lookback_days: 30
+        description: "Pre-collection evaluation and mobilization assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Peripheral blood stem cell collection requires adequate mobilization and collection planning
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"

@@ -1,0 +1,142 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '46221'
+    - '46945'
+    - '46946'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_grade_3_4_hemorrhoids_2025_09
+    - dx_in_value_set: vs_prolapsed_hemorrhoids_2025_09
+    - dx_in_value_set: vs_bleeding_hemorrhoids_refractory_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Hemorrhoidectomy requires grade 3-4 hemorrhoids with failed conservative management
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hemorrhoidectomy_excisional
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '46947'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prolapsing_internal_hemorrhoids_2025_09
+    - dx_in_value_set: vs_grade_3_internal_hemorrhoids_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Stapled hemorrhoidopexy (PPH) requires prolapsing internal hemorrhoids grade 2-3
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hemorrhoid_stapled_pph
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '46320'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_thrombosed_external_hemorrhoid_2025_09
+    - dx_in_value_set: vs_acute_hemorrhoid_thrombosis_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Thrombosed hemorrhoid excision requires acute thrombosis within 72 hours
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hemorrhoid_thrombosed_excision
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '46500'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_grade_1_2_hemorrhoids_bleeding_2025_09
+    - dx_in_value_set: vs_internal_hemorrhoids_bleeding_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Hemorrhoid injection sclerotherapy requires bleeding grade 1-2 internal hemorrhoids
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hemorrhoid_sclerotherapy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '46930'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bleeding_internal_hemorrhoids_2025_09
+    - dx_in_value_set: vs_grade_1_2_hemorrhoids_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Infrared coagulation requires bleeding internal hemorrhoids grade 1-2
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_hemorrhoid_infrared_coagulation

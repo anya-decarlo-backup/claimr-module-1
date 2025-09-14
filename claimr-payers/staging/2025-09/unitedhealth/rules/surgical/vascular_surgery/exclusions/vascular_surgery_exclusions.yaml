@@ -1,0 +1,223 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '35081'
+    - '35082'
+    - '35091'
+    - '35092'
+    - '34800'
+    - '34802'
+    - '34803'
+    - '34804'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_experimental_vascular_procedures_2025_09
+    - dx_in_value_set: vs_investigational_aaa_repair_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Experimental or investigational vascular procedures not covered by UnitedHealth policy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_vascular_exclusion_experimental_procedures
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '34800'
+    - '34802'
+    - '34803'
+    - '34804'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_aaa_small_asymptomatic_2025_09
+    - dx_in_value_set: vs_aaa_unsuitable_anatomy_evar_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: AAA repair excluded for small asymptomatic aneurysms <5.5cm or unsuitable anatomy for EVAR
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_vascular_exclusion_aaa_small_unsuitable
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37220'
+    - '37221'
+    - '37222'
+    - '37223'
+    - '37236'
+    - '37237'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_peripheral_intervention_without_symptoms_2025_09
+    - dx_in_value_set: vs_mild_claudication_conservative_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Peripheral vascular intervention excluded for asymptomatic disease or mild claudication without conservative treatment trial
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_vascular_exclusion_peripheral_asymptomatic
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37184'
+    - '37185'
+    - '37186'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_carotid_stenosis_mild_asymptomatic_2025_09
+    - dx_in_value_set: vs_high_surgical_risk_carotid_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Carotid intervention excluded for mild asymptomatic stenosis <60% or prohibitive surgical risk
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_vascular_exclusion_carotid_mild_stenosis
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36818'
+    - '36819'
+    - '36820'
+    - '36821'
+    - '36825'
+    - '36830'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dialysis_access_without_ckd_2025_09
+    - dx_in_value_set: vs_dialysis_access_premature_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Dialysis access creation excluded without CKD stage 4-5 or premature creation >6 months before anticipated dialysis
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_vascular_exclusion_dialysis_access_premature
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37211'
+    - '37212'
+    - '37213'
+    - '37214'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_thrombolysis_contraindications_2025_09
+    - dx_in_value_set: vs_chronic_thrombosis_old_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Thrombolysis excluded with absolute contraindications or chronic thrombosis >14 days old
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_vascular_exclusion_thrombolysis_contraindications
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '35081'
+    - '35082'
+    - '35091'
+    - '35092'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_high_operative_risk_vascular_2025_09
+    - dx_in_value_set: vs_life_expectancy_limited_2025_09
+    all_of:
+    - min_age: 85
+    - max_age: 100
+  logic:
+    outcome: EXCLUDED
+    notes: Major vascular surgery excluded for high operative risk patients or limited life expectancy <2 years
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_vascular_exclusion_high_operative_risk

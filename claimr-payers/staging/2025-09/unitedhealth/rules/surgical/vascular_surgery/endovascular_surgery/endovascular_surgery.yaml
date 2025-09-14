@@ -1,0 +1,153 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37220'
+    - '37221'
+    - '37222'
+    - '37223'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_peripheral_artery_disease_severe_2025_09
+    - dx_in_value_set: vs_critical_limb_ischemia_2025_09
+    - dx_in_value_set: vs_claudication_lifestyle_limiting_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Peripheral angioplasty requires severe PAD with critical limb ischemia or lifestyle-limiting claudication
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_endovascular_surgery_peripheral_angioplasty
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37236'
+    - '37237'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_peripheral_stent_placement_2025_09
+    - dx_in_value_set: vs_vessel_dissection_angioplasty_2025_09
+    - dx_in_value_set: vs_restenosis_peripheral_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Peripheral stent placement requires failed angioplasty, vessel dissection, or significant restenosis
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_endovascular_surgery_peripheral_stent
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37184'
+    - '37185'
+    - '37186'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_carotid_stenosis_symptomatic_2025_09
+    - dx_in_value_set: vs_carotid_stenosis_asymptomatic_severe_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Carotid stenting requires symptomatic stenosis >50% or asymptomatic stenosis >80% with high surgical risk
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_endovascular_surgery_carotid_stenting
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37191'
+    - '37192'
+    - '37193'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_renal_artery_stenosis_hypertension_2025_09
+    - dx_in_value_set: vs_renal_artery_stenosis_renal_failure_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Renal artery intervention requires hemodynamically significant stenosis with resistant hypertension or renal dysfunction
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_endovascular_surgery_renal_artery_intervention
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37211'
+    - '37212'
+    - '37213'
+    - '37214'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_deep_vein_thrombosis_acute_2025_09
+    - dx_in_value_set: vs_pulmonary_embolism_massive_2025_09
+    - dx_in_value_set: vs_thrombolysis_indicated_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Thrombolysis requires acute DVT or massive PE with contraindications to anticoagulation or failed medical therapy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_vascular_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_endovascular_surgery_thrombolysis

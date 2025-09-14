@@ -1,0 +1,308 @@
+- id: rule_infectious_hiv_art_initiation
+  name: HIV Antiretroviral Therapy - Initial Treatment
+  description: Prior authorization for initial HIV antiretroviral therapy regimens
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J1439  # Ferric carboxymaltose
+          - J3490  # Unclassified drugs
+          - '96365' # IV infusion initial
+          - '96366' # IV infusion additional
+          - '96413' # Chemotherapy administration
+      - diagnosis_code:
+          any_of:
+          - B20     # Human immunodeficiency virus disease
+          - Z21     # Asymptomatic HIV infection status
+          - B97.35  # Human immunodeficiency virus 2 as the cause of diseases classified elsewhere
+      - patient_age:
+          min: 13
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '86701' # HIV-1 antibody
+            - '86702' # HIV-2 antibody
+            - '87390' # HIV-1 antigen
+            days: 30
+            description: HIV confirmation testing within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '87536' # HIV-1 quantification
+            - '87537' # HIV-1 reverse transcriptase
+            days: 30
+            description: Viral load testing within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '86360' # T-cell absolute CD4/CD8 ratio
+            - '86361' # T-cell absolute CD4
+            days: 30
+            description: CD4 count within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - N18.6  # End stage renal disease
+            - K72.90 # Hepatic failure, unspecified
+            - D84.9  # Immunodeficiency, unspecified (other than HIV)
+  logic:
+    outcome: approved
+    reason: HIV antiretroviral therapy approved with confirmed diagnosis and baseline laboratory evaluation
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Early ART initiation improves outcomes and reduces transmission risk
+
+- id: rule_infectious_prep_prophylaxis
+  name: HIV Pre-Exposure Prophylaxis (PrEP)
+  description: Prior authorization for HIV pre-exposure prophylaxis in high-risk individuals
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (for PrEP medications)
+          - '96365' # IV infusion initial
+          - '99401' # Preventive counseling individual 15 min
+          - '99402' # Preventive counseling individual 30 min
+      - diagnosis_code:
+          any_of:
+          - Z87.891 # Personal history of nicotine dependence
+          - Z72.52  # High risk sexual behavior
+          - Z72.53  # High risk bisexual behavior
+          - Z11.4   # Encounter for screening for human immunodeficiency virus
+          - Z20.6   # Contact with and exposure to human immunodeficiency virus
+      - patient_age:
+          min: 18
+          max: 65
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '86701' # HIV-1 antibody
+            - '86702' # HIV-2 antibody
+            - '87390' # HIV-1 antigen
+            days: 90
+            description: Negative HIV testing within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '80053' # Comprehensive metabolic panel
+            - '82565' # Creatinine, blood
+            days: 90
+            description: Renal function assessment within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '87340' # Hepatitis B surface antigen
+            - '87350' # Hepatitis B core antibody
+            days: 180
+            description: Hepatitis B screening within past 6 months
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - Z72.52  # High risk sexual behavior
+            - Z72.53  # High risk bisexual behavior
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - A54.9   # Gonococcal infection, unspecified
+              - A56.00  # Chlamydial infection
+              - A53.9   # Syphilis, unspecified
+          - prior_service_within_days:
+              service_codes:
+              - '87590' # Neisseria gonorrhoeae
+              - '87110' # Chlamydia culture
+              - '86592' # Syphilis test
+              days: 365
+              description: STI diagnosis within past year
+      - utilization_limit:
+          per_year: 4
+          description: Maximum 4 PrEP monitoring visits per year
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - B20     # HIV disease
+            - Z21     # Asymptomatic HIV infection
+            - N18.6   # End stage renal disease
+            - K72.90  # Hepatic failure
+  logic:
+    outcome: approved
+    reason: PrEP approved for high-risk individual with negative HIV status and appropriate screening
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: PrEP reduces HIV acquisition risk by >90% when used consistently
+
+- id: rule_infectious_hiv_resistance_testing
+  name: HIV Drug Resistance Testing
+  description: Prior authorization for HIV genotypic and phenotypic resistance testing
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '87901' # HIV-1 drug resistance analysis
+          - '87906' # HIV-1 reverse transcriptase and protease regions
+          - '87912' # Hepatitis B virus drug resistance
+      - diagnosis_code:
+          any_of:
+          - B20     # Human immunodeficiency virus disease
+          - Z21     # Asymptomatic HIV infection status
+      - patient_age:
+          min: 13
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '87536' # HIV-1 quantification
+              days: 30
+              description: Detectable viral load within past 30 days
+          - prior_service_within_days:
+              service_codes:
+              - J3490   # ART medications
+              days: 180
+              description: On ART therapy for at least 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - B20     # HIV disease with symptoms
+          - prior_service_within_days:
+              service_codes:
+              - '87536' # HIV-1 quantification
+              days: 14
+              description: Initial diagnosis with high viral load
+      - utilization_limit:
+          per_year: 2
+          description: Maximum 2 resistance tests per year
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '87901' # Previous resistance testing
+            - '87906'
+            days: 90
+            description: No resistance testing within past 90 days
+  logic:
+    outcome: approved
+    reason: HIV resistance testing approved for treatment failure or initial high viral load
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Resistance testing guides optimal ART regimen selection
+
+- id: rule_infectious_hiv_monitoring
+  name: HIV Treatment Monitoring
+  description: Coverage for routine HIV monitoring laboratory tests and visits
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '99213' # Office visit moderate complexity
+          - '99214' # Office visit high complexity
+          - '87536' # HIV-1 quantification
+          - '86360' # T-cell absolute CD4/CD8 ratio
+          - '86361' # T-cell absolute CD4
+          - '80053' # Comprehensive metabolic panel
+          - '82565' # Creatinine, blood
+      - diagnosis_code:
+          any_of:
+          - B20     # Human immunodeficiency virus disease
+          - Z21     # Asymptomatic HIV infection status
+      - patient_age:
+          min: 13
+      - prior_service_within_days:
+          service_codes:
+          - J3490   # ART medications
+          - '96365' # IV infusion
+          days: 90
+          description: Active HIV treatment within past 90 days
+      - utilization_limit:
+          per_year: 6
+          description: Maximum 6 monitoring visits per year for stable patients
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F10.20  # Alcohol dependence, uncomplicated
+            - F11.20  # Opioid dependence, uncomplicated
+            - F14.20  # Cocaine dependence, uncomplicated
+  logic:
+    outcome: approved
+    reason: HIV monitoring approved for patients on active antiretroviral therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Regular monitoring ensures treatment efficacy and early detection of complications
+
+- id: rule_infectious_pep_postexposure
+  name: HIV Post-Exposure Prophylaxis (PEP)
+  description: Prior authorization for HIV post-exposure prophylaxis following occupational or non-occupational exposure
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "23"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (for PEP medications)
+          - '96365' # IV infusion initial
+          - '99281' # Emergency department visit
+          - '99282'
+          - '99283'
+          - '99284'
+          - '99285'
+      - diagnosis_code:
+          any_of:
+          - Z20.6   # Contact with and exposure to human immunodeficiency virus
+          - Z87.891 # Personal history of nicotine dependence
+          - S31.001A # Unspecified open wound of lower back and pelvis with penetration into retroperitoneum, initial encounter
+      - patient_age:
+          min: 13
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99281' # Emergency visit or urgent care
+            - '99282'
+            - '99283'
+            - '99284'
+            - '99285'
+            - '99213' # Office visit
+            - '99214'
+            days: 3
+            description: Exposure evaluation within 72 hours
+        - prior_service_within_days:
+            service_codes:
+            - '86701' # HIV-1 antibody
+            - '87390' # HIV-1 antigen
+            days: 7
+            description: Baseline HIV testing within past week
+      - utilization_limit:
+          per_episode: 28
+          description: Maximum 28 days of PEP therapy per exposure episode
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - B20     # HIV disease
+            - Z21     # Asymptomatic HIV infection
+            - N18.6   # End stage renal disease
+        - prior_service_within_days:
+            service_codes:
+            - Z20.6   # Previous HIV exposure
+            days: 180
+            description: No recent PEP within past 6 months
+  logic:
+    outcome: approved
+    reason: PEP approved for documented HIV exposure within 72 hours with negative baseline testing
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: PEP most effective when initiated within 72 hours of exposure

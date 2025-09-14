@@ -1,0 +1,113 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21120'
+    - '21208'
+    - '15824'
+    - '15825'
+    - '15826'
+    - '15828'
+    - '15829'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cosmetic_facial_enhancement_2025_09
+    - dx_in_value_set: vs_aesthetic_chin_augmentation_2025_09
+    - dx_in_value_set: vs_facial_aging_cosmetic_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Cosmetic facial procedures without functional impairment or medical necessity
+  exclusion_reason: "Cosmetic facial procedures without functional impairment or medical necessity"
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21299'
+    - '21499'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_experimental_omfs_procedures_2025_09
+    - dx_in_value_set: vs_investigational_jaw_surgery_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Experimental or investigational oral and maxillofacial surgical procedures not proven safe and effective
+  exclusion_reason: "Experimental or investigational oral and maxillofacial surgical procedures not proven safe and effective"
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21141'
+    - '21196'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mild_malocclusion_orthodontic_only_2025_09
+    - dx_in_value_set: vs_class_i_malocclusion_mild_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Mild malocclusion correctable with orthodontic treatment alone without surgical intervention
+  exclusion_reason: "Mild malocclusion correctable with orthodontic treatment alone without surgical intervention"
+  patient_demographics:
+    age_range:
+      min: 16
+      max: 65
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '29800'
+    - '21010'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_tmj_mild_symptoms_2025_09
+    - dx_in_value_set: vs_tmj_no_conservative_treatment_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: TMJ surgery without adequate trial of conservative treatment including physical therapy and medical management
+  exclusion_reason: "TMJ surgery without adequate trial of conservative treatment including physical therapy and medical management"
+  patient_demographics:
+    age_range:
+      min: 16
+      max: 75
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"

@@ -1,0 +1,99 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33935'
+    - '33945'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_end_stage_heart_failure_2025_09
+    - dx_in_value_set: vs_cardiomyopathy_transplant_candidate_2025_09
+    - dx_in_value_set: vs_congenital_heart_disease_transplant_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 70
+    - prior_service_required:
+        cpt: ['93306', '93307', '93308']
+        lookback_days: 90
+        description: "Comprehensive cardiac evaluation and catheterization"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Heart transplant requires end-stage heart failure, EF <25%, and failed optimal medical therapy
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33940'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pediatric_heart_transplant_2025_09
+    - dx_in_value_set: vs_hypoplastic_left_heart_syndrome_2025_09
+    - dx_in_value_set: vs_complex_congenital_heart_disease_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 18
+    - prior_service_required:
+        cpt: ['93303', '93304']
+        lookback_days: 60
+        description: "Pediatric cardiology evaluation and imaging"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pediatric heart transplant requires specialized pediatric cardiac transplant center evaluation
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33933'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_heart_lung_transplant_2025_09
+    - dx_in_value_set: vs_eisenmenger_syndrome_2025_09
+    - dx_in_value_set: vs_primary_pulmonary_hypertension_heart_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 65
+    - prior_service_required:
+        cpt: ['94010', '94060']
+        lookback_days: 90
+        description: "Pulmonary function testing and right heart catheterization"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Combined heart-lung transplant requires dual organ failure and specialized center evaluation
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"

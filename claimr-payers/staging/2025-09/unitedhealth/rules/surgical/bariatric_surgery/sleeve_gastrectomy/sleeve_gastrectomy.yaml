@@ -1,0 +1,112 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43775'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_morbid_obesity_bmi_40_2025_09
+    - dx_in_value_set: vs_obesity_bmi_35_comorbidities_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Laparoscopic sleeve gastrectomy requires BMI ≥40 or ≥35 with comorbidities and multidisciplinary evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_sleeve_gastrectomy_primary
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43775'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_adolescent_obesity_severe_2025_09
+    - dx_in_value_set: vs_pediatric_morbid_obesity_2025_09
+    all_of:
+    - min_age: 13
+    - max_age: 17
+  logic:
+    outcome: PA_REQUIRED
+    notes: Adolescent sleeve gastrectomy requires severe obesity with comprehensive evaluation and family support
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_sleeve_gastrectomy_adolescent
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43775'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_diabetes_type2_uncontrolled_2025_09
+    - dx_in_value_set: vs_sleep_apnea_severe_2025_09
+    - dx_in_value_set: vs_hypertension_resistant_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 70
+  logic:
+    outcome: PA_REQUIRED
+    notes: Sleeve gastrectomy with comorbidity management requires obesity with poorly controlled diabetes, sleep apnea, or hypertension
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_sleeve_gastrectomy_comorbidity_management
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43775'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_preoperative_optimization_required_2025_09
+    - dx_in_value_set: vs_bariatric_center_excellence_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Sleeve gastrectomy requires preoperative medical clearance, nutritional assessment, and accredited center
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_sleeve_gastrectomy_preoperative_optimization

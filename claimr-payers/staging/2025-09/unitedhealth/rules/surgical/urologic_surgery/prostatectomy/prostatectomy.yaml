@@ -1,0 +1,176 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55840'
+    - '55842'
+    - '55845'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostate_cancer_localized_2025_09
+    - dx_in_value_set: vs_prostate_cancer_intermediate_risk_2025_09
+    - dx_in_value_set: vs_prostate_cancer_high_risk_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Radical prostatectomy requires localized prostate cancer with life expectancy >10 years and appropriate surgical candidacy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_radical_prostatectomy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55866'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostate_cancer_laparoscopic_eligible_2025_09
+    - dx_in_value_set: vs_prostate_cancer_minimally_invasive_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Laparoscopic prostatectomy requires localized prostate cancer with appropriate anatomy for minimally invasive approach
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_laparoscopic_prostatectomy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55876'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostate_cancer_robotic_eligible_2025_09
+    - dx_in_value_set: vs_prostate_cancer_nerve_sparing_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Robotic prostatectomy requires localized prostate cancer with surgeon expertise and appropriate patient selection
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_robotic_prostatectomy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55801'
+    - '55810'
+    - '55812'
+    - '55815'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostate_biopsy_indicated_2025_09
+    - dx_in_value_set: vs_elevated_psa_suspicious_2025_09
+    - dx_in_value_set: vs_abnormal_dre_findings_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Prostate biopsy requires elevated PSA, abnormal DRE, or suspicious imaging findings
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_prostate_biopsy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '52630'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_benign_prostatic_hyperplasia_severe_2025_09
+    - dx_in_value_set: vs_urinary_retention_bph_2025_09
+    - dx_in_value_set: vs_bph_medical_therapy_failure_2025_09
+    all_of:
+    - min_age: 45
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: TURP requires severe BPH symptoms with failed medical therapy or urinary retention
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_turp
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '55821'
+    - '55831'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostatectomy_salvage_radiation_failure_2025_09
+    - dx_in_value_set: vs_recurrent_prostate_cancer_localized_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Salvage prostatectomy requires locally recurrent prostate cancer after radiation therapy with no metastases
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_salvage_prostatectomy

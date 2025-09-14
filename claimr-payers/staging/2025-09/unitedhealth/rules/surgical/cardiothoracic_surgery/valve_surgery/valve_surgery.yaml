@@ -1,0 +1,185 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33405'
+    - '33406'
+    - '33410'
+    - '33411'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_aortic_stenosis_severe_2025_09
+    - dx_in_value_set: vs_aortic_regurgitation_severe_2025_09
+    - dx_in_value_set: vs_aortic_valve_disease_symptomatic_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Aortic valve replacement requires severe aortic stenosis or regurgitation with symptoms or LV dysfunction
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_aortic_valve_replacement
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33425'
+    - '33426'
+    - '33427'
+    - '33430'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mitral_stenosis_severe_2025_09
+    - dx_in_value_set: vs_mitral_regurgitation_severe_2025_09
+    - dx_in_value_set: vs_mitral_valve_disease_symptomatic_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Mitral valve replacement requires severe mitral stenosis or regurgitation with symptoms or LV dysfunction
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_mitral_valve_replacement
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33418'
+    - '33419'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mitral_regurgitation_repair_eligible_2025_09
+    - dx_in_value_set: vs_mitral_valve_prolapse_severe_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Mitral valve repair requires severe mitral regurgitation with suitable anatomy for repair
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_mitral_valve_repair
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33361'
+    - '33362'
+    - '33363'
+    - '33364'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_aortic_stenosis_tavr_eligible_2025_09
+    - dx_in_value_set: vs_high_surgical_risk_aortic_2025_09
+    all_of:
+    - min_age: 65
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: TAVR requires severe aortic stenosis with high surgical risk or inoperable status
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_tavr
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33460'
+    - '33463'
+    - '33464'
+    - '33465'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_tricuspid_valve_disease_severe_2025_09
+    - dx_in_value_set: vs_pulmonary_valve_disease_severe_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Tricuspid or pulmonary valve surgery requires severe valve disease with symptoms or RV dysfunction
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_tricuspid_pulmonary_valve
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33405'
+    - '33406'
+    - '33425'
+    - '33426'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_double_valve_replacement_2025_09
+    - dx_in_value_set: vs_multiple_valve_disease_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Double valve replacement requires severe disease of multiple valves with appropriate surgical risk
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_double_valve_replacement

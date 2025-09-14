@@ -1,0 +1,246 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33405'
+    - '33406'
+    - '33425'
+    - '33426'
+    - '33510'
+    - '33511'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_experimental_cardiac_procedures_2025_09
+    - dx_in_value_set: vs_investigational_heart_surgery_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Experimental or investigational cardiothoracic procedures not covered by UnitedHealth policy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_exclusion_experimental_procedures
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33405'
+    - '33406'
+    - '33425'
+    - '33426'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_valve_disease_mild_asymptomatic_2025_09
+    - dx_in_value_set: vs_valve_replacement_inappropriate_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Valve surgery excluded for mild asymptomatic valve disease without hemodynamic significance
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_exclusion_mild_valve_disease
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33510'
+    - '33511'
+    - '33512'
+    - '33513'
+    - '33514'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_single_vessel_cad_pci_eligible_2025_09
+    - dx_in_value_set: vs_coronary_disease_medical_management_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: CABG excluded for single vessel CAD amenable to PCI or stable CAD manageable with medical therapy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_exclusion_inappropriate_cabg
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33361'
+    - '33362'
+    - '33363'
+    - '33364'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_tavr_low_surgical_risk_2025_09
+    - dx_in_value_set: vs_aortic_stenosis_mild_moderate_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 65
+  logic:
+    outcome: EXCLUDED
+    notes: TAVR excluded for low surgical risk patients <65 years or mild-moderate aortic stenosis
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_exclusion_tavr_inappropriate
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33405'
+    - '33406'
+    - '33510'
+    - '33511'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prohibitive_surgical_risk_cardiac_2025_09
+    - dx_in_value_set: vs_life_expectancy_limited_cardiac_2025_09
+    - dx_in_value_set: vs_severe_comorbidities_cardiac_2025_09
+    all_of:
+    - min_age: 85
+    - max_age: 100
+  logic:
+    outcome: EXCLUDED
+    notes: Major cardiac surgery excluded for prohibitive surgical risk, limited life expectancy <1 year, or severe comorbidities
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_exclusion_prohibitive_risk
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33140'
+    - '33141'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_tmr_conventional_options_available_2025_09
+    - dx_in_value_set: vs_tmr_inappropriate_candidate_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Transmyocardial revascularization excluded when conventional revascularization options are available
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_exclusion_tmr_inappropriate
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33517'
+    - '33518'
+    - '33519'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_redo_cabg_pci_option_available_2025_09
+    - dx_in_value_set: vs_graft_failure_medical_management_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Redo CABG excluded when PCI is feasible option for graft stenosis or medical management is appropriate
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_exclusion_redo_cabg_inappropriate
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33418'
+    - '33419'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mitral_repair_unsuitable_anatomy_2025_09
+    - dx_in_value_set: vs_mitral_valve_calcified_rheumatic_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: EXCLUDED
+    notes: Mitral valve repair excluded for unsuitable anatomy, heavily calcified or rheumatic valves requiring replacement
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_exclusion_mitral_repair_unsuitable

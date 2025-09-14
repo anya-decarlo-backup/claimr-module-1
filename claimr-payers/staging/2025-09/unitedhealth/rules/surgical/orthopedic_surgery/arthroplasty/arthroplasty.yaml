@@ -1,0 +1,142 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '27447'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_knee_osteoarthritis_severe_2025_09
+    - dx_in_value_set: vs_knee_functional_limitation_2025_09
+    all_of:
+    - min_age: 50
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Primary total knee arthroplasty requires severe osteoarthritis with functional limitation and failed conservative treatment
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_arthroplasty_total_knee_primary
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '27130'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hip_osteoarthritis_severe_2025_09
+    - dx_in_value_set: vs_hip_fracture_displaced_2025_09
+    - dx_in_value_set: vs_avascular_necrosis_hip_2025_09
+    all_of:
+    - min_age: 45
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Primary total hip arthroplasty requires severe arthritis, fracture, or AVN with failed conservative management
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_arthroplasty_total_hip_primary
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '23472'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_glenohumeral_arthritis_severe_2025_09
+    - dx_in_value_set: vs_rotator_cuff_arthropathy_2025_09
+    all_of:
+    - min_age: 50
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Total shoulder arthroplasty requires severe glenohumeral arthritis with intact or repairable rotator cuff
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_arthroplasty_total_shoulder_primary
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '27486'
+    - '27487'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_knee_prosthetic_loosening_2025_09
+    - dx_in_value_set: vs_periprosthetic_infection_knee_2025_09
+    - dx_in_value_set: vs_osteolysis_knee_prosthetic_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Revision knee arthroplasty requires prosthetic complications including loosening, infection, or osteolysis
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_arthroplasty_revision_knee_complications
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '27446'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_unicompartmental_knee_arthritis_2025_09
+    - dx_in_value_set: vs_isolated_medial_compartment_disease_2025_09
+    all_of:
+    - min_age: 45
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Unicompartmental knee arthroplasty requires isolated compartment disease with intact ACL and normal alignment
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_orthopedic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_arthroplasty_unicompartmental_knee

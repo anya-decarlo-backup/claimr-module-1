@@ -1,0 +1,431 @@
+- id: rule_geriatrics_exclusion_routine_wellness_visits
+  name: Routine Wellness Visits Without Specific Geriatric Concerns
+  description: Exclusion for routine annual wellness visits without documented geriatric syndromes
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'G0438' # Annual wellness visit; includes a personalized prevention plan of service (pps), initial visit
+          - 'G0439' # Annual wellness visit, includes a personalized prevention plan of service (pps), subsequent visit
+          - '99401' # Preventive medicine counseling and/or risk factor reduction intervention(s) provided to an individual (separate procedure); approximately 15 minutes
+          - '99402' # Preventive medicine counseling and/or risk factor reduction intervention(s) provided to an individual (separate procedure); approximately 30 minutes
+      - diagnosis_code:
+          any_of:
+          - Z00.00  # Encounter for general adult medical examination without abnormal findings
+          - Z00.01  # Encounter for general adult medical examination with abnormal findings
+      - patient_age:
+          min: 65
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - R54    # Age-related physical debility (geriatric syndrome)
+            - Z91.81 # History of falling (geriatric concern)
+            - R29.6  # Repeated falls
+            - F03.90 # Dementia (geriatric condition)
+            - M62.84 # Sarcopenia (geriatric syndrome)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Polypharmacy or medication concerns documented
+            - '99214'
+            - '99215'
+            days: 180
+            description: Medication complexity within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Functional decline or ADL limitations documented
+            - '99214'
+            - '99215'
+            days: 180
+            description: Functional concerns within past 6 months
+  logic:
+    outcome: denied
+    reason: Routine wellness visits excluded without specific geriatric syndromes per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Routine wellness visits covered under preventive care; geriatric specialty services require specific indications
+
+- id: rule_geriatrics_exclusion_cognitive_testing_mild_complaints
+  name: Cognitive Testing for Mild Memory Complaints
+  description: Exclusion for extensive neuropsychological testing without objective cognitive impairment
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96116' # Neurobehavioral status exam
+          - '96118' # Neuropsychological testing
+          - '96125' # Standardized cognitive performance testing
+      - diagnosis_code:
+          any_of:
+          - R41.3   # Other amnesia
+          - R41.840 # Attention and concentration deficit
+          - Z71.9   # Counseling, unspecified
+      - patient_age:
+          min: 65
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F03.90 # Dementia (objective impairment)
+            - G31.84 # Mild cognitive impairment (documented MCI)
+            - F06.8  # Other specified mental disorders due to known physiological condition
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Functional impairment in ADLs/IADLs documented
+            - '99214'
+            - '99215'
+            days: 180
+            description: Functional impact within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Progressive cognitive decline documented
+            - '99214'
+            - '99215'
+            days: 180
+            description: Cognitive progression within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Caregiver concerns about safety or judgment
+            - '99214'
+            - '99215'
+            days: 90
+            description: Safety concerns within past 90 days
+  logic:
+    outcome: denied
+    reason: Cognitive testing excluded for mild memory complaints without objective impairment per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Extensive cognitive testing requires objective evidence of impairment affecting function
+
+- id: rule_geriatrics_exclusion_home_safety_evaluation_independent
+  name: Home Safety Evaluation for Independent Elderly
+  description: Exclusion for home safety assessments in functionally independent elderly without fall history
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["12"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '97535' # Self-care/home management training
+          - 'S9131' # Physical therapy; in the home, per diem
+          - 'G0151' # Services performed by a qualified occupational therapist in the home health or hospice setting, each 15 minutes
+      - diagnosis_code:
+          any_of:
+          - Z71.89  # Other specified counseling
+          - Z87.891 # Personal history of nicotine dependence
+      - patient_age:
+          min: 65
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Z91.81 # History of falling (safety risk)
+            - R29.6  # Repeated falls
+            - Z74.09 # Reduced mobility (functional limitation)
+            - F03.90 # Dementia (safety concerns)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Recent hospitalization or functional decline
+            - '99214'
+            - '99215'
+            days: 90
+            description: Medical event within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # ADL or IADL limitations documented
+            - '99214'
+            - '99215'
+            days: 180
+            description: Functional limitations within past 6 months
+  logic:
+    outcome: denied
+    reason: Home safety evaluation excluded for independent elderly without documented risk factors per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Home safety assessments require specific risk factors or functional limitations
+
+- id: rule_geriatrics_exclusion_nutritional_counseling_stable_weight
+  name: Nutritional Counseling for Stable Weight Elderly
+  description: Exclusion for medical nutrition therapy without documented malnutrition or weight loss
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '97802' # Medical nutrition therapy; initial assessment
+          - '97803' # Medical nutrition therapy; re-assessment
+      - diagnosis_code:
+          any_of:
+          - Z71.3   # Dietary counseling and surveillance
+          - E66.9   # Obesity, unspecified
+      - patient_age:
+          min: 65
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - E43    # Severe protein-calorie malnutrition
+            - E44.0  # Moderate protein-calorie malnutrition
+            - E44.1  # Mild protein-calorie malnutrition
+            - R63.4  # Abnormal weight loss
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Unintentional weight loss >5% documented
+            - '99214'
+            - '99215'
+            days: 180
+            description: Weight loss within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '82040' # Albumin or nutritional labs showing deficiency
+            - '84134'
+            days: 90
+            description: Nutritional deficiency within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Dysphagia or feeding difficulties documented
+            - '99214'
+            - '99215'
+            days: 90
+            description: Feeding problems within past 90 days
+  logic:
+    outcome: denied
+    reason: Nutritional counseling excluded without documented malnutrition or weight loss per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Medical nutrition therapy requires evidence of nutritional deficiency or feeding problems
+
+- id: rule_geriatrics_exclusion_dme_without_functional_need
+  name: DME Without Documented Functional Need
+  description: Exclusion for durable medical equipment without documented functional impairment or safety need
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "12"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'E0130' # Walker, rigid
+          - 'E0143' # Walker, wheeled
+          - 'E0163' # Commode chair
+          - 'E0185' # Pressure pad
+          - 'E0250' # Hospital bed
+      - diagnosis_code:
+          any_of:
+          - Z87.891 # Personal history of nicotine dependence
+          - M79.3   # Panniculitis, unspecified
+      - patient_age:
+          min: 65
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Z74.09 # Reduced mobility (functional need)
+            - Z91.81 # History of falling (safety need)
+            - R29.6  # Repeated falls
+            - I69.398 # Stroke sequelae (functional impairment)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Gait instability or weakness documented
+            - '99214'
+            - '99215'
+            days: 90
+            description: Mobility impairment within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '97110' # Physical therapy recommending equipment
+            - '97112'
+            - '97116'
+            days: 180
+            description: Therapy evaluation within past 6 months
+  logic:
+    outcome: denied
+    reason: DME excluded without documented functional impairment or safety need per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Durable medical equipment requires documented functional limitation or safety risk
+
+- id: rule_geriatrics_exclusion_care_coordination_independent
+  name: Care Coordination for Independent Elderly
+  description: Exclusion for care management services in functionally independent elderly without complex conditions
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "12", "13"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '99490' # Chronic care management services
+          - '99491' # Chronic care management services, physician time
+          - '99487' # Complex chronic care management
+      - diagnosis_code:
+          any_of:
+          - I10     # Essential hypertension
+          - E78.5   # Hyperlipidemia, unspecified
+      - patient_age:
+          min: 65
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F03.90 # Dementia (complex condition)
+            - I50.9  # Heart failure (complex condition)
+            - N18.6  # End stage renal disease (complex condition)
+            - Z74.01 # Bed confinement (functional dependency)
+            - Z74.09 # Reduced mobility
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Multiple hospitalizations documented
+            - '99214'
+            - '99215'
+            days: 365
+            description: Healthcare utilization within past year
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # ≥3 chronic conditions documented
+            - '99214'
+            - '99215'
+            days: 90
+            description: Multiple comorbidities within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Polypharmacy or medication complexity
+            - '99214'
+            - '99215'
+            days: 90
+            description: Medication complexity within past 90 days
+  logic:
+    outcome: denied
+    reason: Care coordination excluded for independent elderly without complex conditions per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Care management services require complex medical conditions or functional dependency
+
+- id: rule_geriatrics_exclusion_respite_care_without_caregiver_burden
+  name: Respite Care Without Documented Caregiver Burden
+  description: Exclusion for respite services without evidence of caregiver stress or intensive care needs
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["12", "13", "21"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'S5150' # Unskilled respite care
+          - 'S5151' # Unskilled respite care, per diem
+          - 'T1005' # Respite care services
+          - 'H0045' # Respite care services, not in home
+      - diagnosis_code:
+          any_of:
+          - Z87.891 # Personal history of nicotine dependence
+          - I10     # Essential hypertension
+      - patient_age:
+          min: 65
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F03.90 # Dementia (supervision needs)
+            - F03.91 # Dementia with behavioral disturbance
+            - Z74.01 # Bed confinement (intensive care needs)
+            - Z74.09 # Reduced mobility
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # 24-hour supervision needs documented
+            - '99214'
+            - '99215'
+            days: 90
+            description: Supervision needs within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Caregiver stress or health issues documented
+            - '99214'
+            - '99215'
+            days: 90
+            description: Caregiver burden within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Multiple daily care interventions required
+            - '99214'
+            - '99215'
+            days: 90
+            description: Intensive care needs within past 90 days
+  logic:
+    outcome: denied
+    reason: Respite care excluded without documented caregiver burden or intensive care needs per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Respite services require evidence of caregiver stress and intensive patient care needs
+
+- id: rule_geriatrics_exclusion_adult_day_services_independent
+  name: Adult Day Services for Independent Elderly
+  description: Exclusion for adult day programs without cognitive impairment or functional limitations
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["13"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'S5100' # Day care services, adult; per half day
+          - 'S5101' # Day care services, adult; per day
+          - 'S5102' # Day care services, adult; per diem
+      - diagnosis_code:
+          any_of:
+          - Z87.891 # Personal history of nicotine dependence
+          - Z71.9   # Counseling, unspecified
+      - patient_age:
+          min: 65
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F03.90 # Dementia (cognitive impairment)
+            - F03.91 # Dementia with behavioral disturbance
+            - G30.9  # Alzheimer's disease
+            - Z74.09 # Reduced mobility (functional limitation)
+            - I69.398 # Stroke sequelae
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # IADL limitations documented
+            - '99214'
+            - '99215'
+            days: 90
+            description: Functional limitations within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Social isolation or caregiver respite needs
+            - '99214'
+            - '99215'
+            days: 90
+            description: Socialization needs within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Behavioral symptoms requiring structured setting
+            - '99214'
+            - '99215'
+            days: 180
+            description: Behavioral management within past 6 months
+  logic:
+    outcome: denied
+    reason: Adult day services excluded for independent elderly without cognitive or functional impairment per UnitedHealth policy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Adult day programs require cognitive impairment or functional limitations necessitating structured care

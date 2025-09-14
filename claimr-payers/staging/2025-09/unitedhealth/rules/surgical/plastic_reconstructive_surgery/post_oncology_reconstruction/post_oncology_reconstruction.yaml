@@ -1,0 +1,154 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '19357'
+    - '19361'
+    - '19364'
+    - '19366'
+    - '19367'
+    - '19368'
+    - '19369'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_breast_cancer_post_mastectomy_2025_09
+    - dx_in_value_set: vs_breast_cancer_post_lumpectomy_2025_09
+    - dx_in_value_set: vs_prophylactic_mastectomy_brca_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Breast reconstruction requires cancer treatment or prophylactic mastectomy with oncology documentation
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '15756'
+    - '15757'
+    - '15758'
+    - '20969'
+    - '20970'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_head_neck_cancer_post_resection_2025_09
+    - dx_in_value_set: vs_oral_cancer_post_resection_2025_09
+    - dx_in_value_set: vs_facial_defect_oncologic_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Head and neck reconstruction requires oncologic resection with functional or aesthetic defect
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '27590'
+    - '27591'
+    - '27592'
+    - '15734'
+    - '15738'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_limb_sarcoma_post_resection_2025_09
+    - dx_in_value_set: vs_bone_cancer_post_resection_2025_09
+    - dx_in_value_set: vs_limb_defect_oncologic_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Limb reconstruction requires oncologic resection with functional limb defect
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '49560'
+    - '49561'
+    - '49566'
+    - '15734'
+    - '15738'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_abdominal_wall_defect_oncologic_2025_09
+    - dx_in_value_set: vs_ventral_hernia_post_oncologic_2025_09
+    - dx_in_value_set: vs_abdominal_sarcoma_post_resection_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Abdominal wall reconstruction requires oncologic resection with hernia or wall defect
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '19350'
+    - '19355'
+    - '11920'
+    - '11921'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_nipple_areola_defect_oncologic_2025_09
+    - dx_in_value_set: vs_breast_asymmetry_post_oncologic_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Nipple and areola reconstruction requires post-oncologic breast reconstruction completion
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"

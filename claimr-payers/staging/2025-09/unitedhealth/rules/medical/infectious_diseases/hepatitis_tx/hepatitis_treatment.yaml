@@ -1,0 +1,302 @@
+- id: rule_infectious_hepatitis_c_daa
+  name: Hepatitis C Direct-Acting Antiviral Therapy
+  description: Prior authorization for hepatitis C direct-acting antiviral (DAA) treatment regimens
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (for DAA medications)
+          - '99213' # Office visit moderate complexity
+          - '99214' # Office visit high complexity
+      - diagnosis_code:
+          any_of:
+          - B18.2   # Chronic viral hepatitis C
+          - B17.10  # Acute hepatitis C without hepatic coma
+          - B17.11  # Acute hepatitis C with hepatic coma
+          - Z87.19  # Personal history of other diseases of the digestive system
+      - patient_age:
+          min: 18
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '87520' # Hepatitis C antibody
+            - '87521' # Hepatitis C antibody confirmation
+            days: 90
+            description: HCV antibody confirmation within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '87522' # Hepatitis C virus quantification
+            days: 30
+            description: HCV RNA quantification within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '87902' # Hepatitis C virus genotype analysis
+            days: 180
+            description: HCV genotype testing within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '80053' # Comprehensive metabolic panel
+            - '84460' # Alanine aminotransferase (ALT)
+            - '84450' # Aspartate aminotransferase (AST)
+            days: 30
+            description: Liver function testing within past 30 days
+      - utilization_limit:
+          per_lifetime: 1
+          description: One DAA treatment course per lifetime unless reinfection documented
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - K72.90 # Hepatic failure, unspecified
+            - K76.7  # Hepatorenal syndrome
+            - C78.7  # Secondary malignant neoplasm of liver and intrahepatic bile duct
+            - F10.20 # Alcohol dependence, uncomplicated (active)
+  logic:
+    outcome: approved
+    reason: Hepatitis C DAA therapy approved with confirmed viremia and genotype testing
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: DAA therapy achieves >95% sustained virologic response with minimal side effects
+
+- id: rule_infectious_hepatitis_b_antiviral
+  name: Hepatitis B Antiviral Therapy
+  description: Prior authorization for chronic hepatitis B antiviral treatment
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (for HBV antivirals)
+          - '99213' # Office visit moderate complexity
+          - '99214' # Office visit high complexity
+      - diagnosis_code:
+          any_of:
+          - B18.1   # Chronic viral hepatitis B without delta-agent
+          - B18.0   # Chronic viral hepatitis B with delta-agent
+          - B16.9   # Acute hepatitis B without delta-agent and without hepatic coma
+      - patient_age:
+          min: 18
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '87340' # Hepatitis B surface antigen
+            - '87341' # Hepatitis B surface antigen neutralization
+            days: 90
+            description: HBsAg confirmation within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '87516' # Hepatitis B virus DNA quantification
+            days: 30
+            description: HBV DNA quantification within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '80053' # Comprehensive metabolic panel
+            - '84460' # Alanine aminotransferase (ALT)
+            - '84450' # Aspartate aminotransferase (AST)
+            days: 30
+            description: Liver function testing within past 30 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '87516' # HBV DNA
+              days: 30
+              description: Detectable HBV DNA >2000 IU/mL
+          - prior_service_within_days:
+              service_codes:
+              - '84460' # ALT elevated
+              days: 30
+              description: Elevated ALT >2x upper limit normal
+        - diagnosis_code:
+            any_of:
+            - K70.30 # Alcoholic cirrhosis of liver without ascites
+            - K74.60 # Other and unspecified cirrhosis of liver
+      - utilization_limit:
+          per_year: 12
+          description: Maximum 12 months initial treatment course
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - K72.90 # Hepatic failure, unspecified
+            - N18.6  # End stage renal disease
+            - C22.0  # Liver cell carcinoma
+  logic:
+    outcome: approved
+    reason: Hepatitis B antiviral therapy approved for active disease with elevated DNA and ALT
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Antiviral therapy reduces progression to cirrhosis and hepatocellular carcinoma
+
+- id: rule_infectious_hepatitis_monitoring
+  name: Viral Hepatitis Treatment Monitoring
+  description: Coverage for viral hepatitis treatment monitoring laboratory tests and visits
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '99213' # Office visit moderate complexity
+          - '99214' # Office visit high complexity
+          - '87522' # Hepatitis C virus quantification
+          - '87516' # Hepatitis B virus DNA quantification
+          - '80053' # Comprehensive metabolic panel
+          - '84460' # Alanine aminotransferase (ALT)
+          - '84450' # Aspartate aminotransferase (AST)
+      - diagnosis_code:
+          any_of:
+          - B18.2   # Chronic viral hepatitis C
+          - B18.1   # Chronic viral hepatitis B
+          - B18.0   # Chronic viral hepatitis B with delta-agent
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - J3490   # Antiviral medications
+          days: 90
+          description: Active antiviral therapy within past 90 days
+      - utilization_limit:
+          per_month: 2
+          description: Maximum 2 monitoring visits per month during treatment
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F10.20  # Alcohol dependence, uncomplicated
+            - F11.20  # Opioid dependence, uncomplicated
+  logic:
+    outcome: approved
+    reason: Viral hepatitis monitoring approved for patients on active antiviral therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Regular monitoring ensures treatment efficacy and early detection of adverse effects
+
+- id: rule_infectious_hepatitis_coinfection
+  name: HIV-Hepatitis Coinfection Treatment
+  description: Prior authorization for HIV-hepatitis coinfection management
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (combination therapy)
+          - '99214' # Office visit high complexity
+          - '99215' # Office visit comprehensive
+      - diagnosis_code:
+          all_of:
+          - any_of:
+            - B20     # Human immunodeficiency virus disease
+            - Z21     # Asymptomatic HIV infection status
+          - any_of:
+            - B18.2   # Chronic viral hepatitis C
+            - B18.1   # Chronic viral hepatitis B
+      - patient_age:
+          min: 18
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '86701' # HIV-1 antibody
+            - '87536' # HIV-1 quantification
+            days: 90
+            description: HIV confirmation and viral load within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '87522' # Hepatitis C virus quantification
+            days: 30
+            description: HCV RNA or HBV DNA within past 30 days (depending on coinfection)
+        - prior_service_within_days:
+            service_codes:
+            - '86360' # T-cell absolute CD4
+            days: 90
+            description: CD4 count within past 90 days
+      - utilization_limit:
+          per_episode: 24
+          description: Maximum 24 weeks combination therapy per treatment episode
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - K72.90 # Hepatic failure, unspecified
+            - N18.6  # End stage renal disease
+            - C22.0  # Liver cell carcinoma
+  logic:
+    outcome: approved
+    reason: HIV-hepatitis coinfection treatment approved with confirmed dual infection and monitoring
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Coinfection requires coordinated treatment to avoid drug interactions and optimize outcomes
+
+- id: rule_infectious_hepatitis_post_transplant
+  name: Post-Liver Transplant Hepatitis Management
+  description: Prior authorization for hepatitis management in liver transplant recipients
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (antivirals)
+          - '99214' # Office visit high complexity
+          - '99215' # Office visit comprehensive
+      - diagnosis_code:
+          all_of:
+          - any_of:
+            - Z94.4   # Liver transplant status
+            - T86.40  # Unspecified complication of liver transplant
+          - any_of:
+            - B18.2   # Chronic viral hepatitis C
+            - B18.1   # Chronic viral hepatitis B
+            - B17.10  # Acute hepatitis C
+      - patient_age:
+          min: 18
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '47135' # Liver transplantation
+            - '47136' # Liver transplantation with recipient hepatectomy
+            days: 1095
+            description: Liver transplant within past 3 years
+        - prior_service_within_days:
+            service_codes:
+            - '87522' # Hepatitis C virus quantification
+            - '87516' # Hepatitis B virus DNA quantification
+            days: 30
+            description: Viral load testing within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '80053' # Comprehensive metabolic panel
+            - '84460' # ALT
+            - '84450' # AST
+            days: 14
+            description: Recent liver function testing within past 2 weeks
+      - utilization_limit:
+          per_year: 2
+          description: Maximum 2 treatment courses per year post-transplant
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - T86.41  # Liver transplant rejection
+            - T86.42  # Liver transplant failure
+            - C78.7   # Secondary malignant neoplasm of liver
+  logic:
+    outcome: approved
+    reason: Post-transplant hepatitis treatment approved with confirmed recurrence and stable graft function
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Early treatment of recurrent hepatitis prevents graft loss and improves long-term outcomes

@@ -1,0 +1,240 @@
+- id: rule_allergy_immunotherapy_age_exclusion
+  name: Immunotherapy Age Restrictions - Pediatric
+  description: Exclude immunotherapy for children under 5 years old due to safety concerns
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '95115'
+          - '95117'
+          - '95131'
+          - '95132'
+          - '95133'
+          - '95144'
+          - '95145'
+          - '95146'
+          - '95147'
+          - '95148'
+          - '95149'
+          - '95180'
+          - '95181'
+      - patient_age:
+          max: 4
+      - diagnosis_code:
+          any_of:
+          - J30.1
+          - J30.2
+          - J30.81
+          - J30.89
+          - J45.909
+          - Z91.010
+          - Z91.011
+          - Z91.012
+          - Z91.013
+  logic:
+    outcome: denied
+    reason: Immunotherapy excluded for children under 5 years due to increased risk of severe reactions and inability to communicate symptoms
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Safety profile not established in very young children
+- id: rule_allergy_biologics_contraindications
+  name: Severe Asthma Biologics - Uncontrolled Disease
+  description: Exclude biologics for patients with severe uncontrolled asthma or active malignancy
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J2357
+          - J2182
+          - J0517
+          - J1439
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - J44.0
+            - J44.1
+            - J96.00
+            - J96.90
+        - diagnosis_code:
+            any_of:
+            - C78.00
+            - C80.1
+            - D47.5
+            - C96.20
+        - diagnosis_code:
+            any_of:
+            - D84.9
+            - D89.9
+            - Z87.891
+      - diagnosis_code:
+          any_of:
+          - J45.909
+          - J45.901
+          - J45.902
+          - L20.9
+          - L50.1
+  logic:
+    outcome: denied
+    reason: Biologic therapy excluded for severe uncontrolled asthma, active malignancy, or immunodeficiency
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Contraindicated in severe respiratory compromise or immunocompromised states
+- id: rule_allergy_venom_cardiac_exclusion
+  name: Venom Immunotherapy - Cardiac Contraindications
+  description: Exclude venom immunotherapy for patients with severe cardiac disease
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '95115'
+          - '95117'
+          - '95144'
+          - '95145'
+          - '95146'
+          - '95147'
+          - '95165'
+          - '95170'
+      - diagnosis_code:
+          any_of:
+          - T63.441A
+          - T63.451A
+          - T63.461A
+          - Z87.892
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - I25.10
+            - I25.110
+            - I25.700
+            - I25.750
+        - diagnosis_code:
+            any_of:
+            - I50.9
+            - I50.20
+            - I50.30
+            - I50.40
+        - diagnosis_code:
+            any_of:
+            - I47.2
+            - I49.01
+            - I49.02
+            - I46.9
+  logic:
+    outcome: denied
+    reason: Venom immunotherapy excluded for severe coronary artery disease, heart failure, or arrhythmias
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Risk of anaphylaxis during buildup phase contraindicated with severe cardiac disease
+- id: rule_allergy_food_asthma_exclusion
+  name: Food Immunotherapy - Severe Asthma Exclusion
+  description: Exclude oral immunotherapy for patients with severe or poorly controlled asthma
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '95180'
+          - '95181'
+          - '95182'
+          - '95183'
+          - '95184'
+      - diagnosis_code:
+          any_of:
+          - Z91.010
+          - Z91.011
+          - Z91.012
+          - Z91.013
+          - T78.1XXA
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - J45.901
+            - J45.902
+            - J96.00
+            - J96.90
+        - prior_service_within_days:
+            service_codes:
+            - '99281'
+            - '99282'
+            - '99283'
+            - '99284'
+            - '99285'
+            days: 180
+            description: ED visit for asthma within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - J1100
+            - J7506
+            - J7509
+            days: 90
+            description: Systemic steroids for asthma within past 90 days
+  logic:
+    outcome: denied
+    reason: Food oral immunotherapy excluded for severe or poorly controlled asthma due to increased anaphylaxis risk
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Severe asthma increases risk of fatal anaphylaxis during food OIT
+- id: rule_allergy_hae_organ_exclusion
+  name: HAE Biologics - Renal/Hepatic Contraindications
+  description: Exclude HAE prophylaxis for patients with severe renal or hepatic impairment
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0596
+          - J0597
+          - J0598
+          - J1786
+          - J3590
+      - diagnosis_code:
+          any_of:
+          - D84.1
+          - T78.3XXA
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - N18.5
+            - N18.6
+            - Z99.2
+            - Z94.0
+        - diagnosis_code:
+            any_of:
+            - K72.90
+            - K72.00
+            - K76.6
+            - Z94.4
+        - diagnosis_code:
+            any_of:
+            - I50.9
+            - I25.10
+            - I46.9
+  logic:
+    outcome: denied
+    reason: HAE prophylaxis excluded for severe renal failure, liver failure, or severe cardiac disease
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Contraindicated in end-stage organ disease due to clearance and safety concerns

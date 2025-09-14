@@ -1,0 +1,122 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '47562'
+    - '47563'
+    - '47564'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cholelithiasis_2025_09
+    - dx_in_value_set: vs_cholecystitis_2025_09
+    - dx_in_value_set: vs_gallbladder_polyps_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Laparoscopic cholecystectomy requires symptomatic gallbladder disease or complications
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cholecystectomy_laparoscopic
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '47600'
+    - '47605'
+    - '47610'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_acute_cholecystitis_2025_09
+    - dx_in_value_set: vs_gallbladder_perforation_2025_09
+    - dx_in_value_set: vs_cholangitis_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Open cholecystectomy requires acute complications or contraindication to laparoscopy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cholecystectomy_open
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '47570'
+    - '47579'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_choledocholithiasis_2025_09
+    - dx_in_value_set: vs_bile_duct_stricture_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Bile duct exploration requires documented stones or stricture with ERCP failure
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_bile_duct_exploration
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '47562'
+    - '47563'
+    - '47564'
+    - '47600'
+    - '47605'
+    - '47610'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_asymptomatic_gallstones_2025_09
+    - dx_in_value_set: vs_prophylactic_cholecystectomy_2025_09
+    all_of:
+    - min_age: 86
+  logic:
+    outcome: DENIED
+    notes: Cholecystectomy excluded for asymptomatic stones, prophylactic removal, or age >85
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cholecystectomy_exclusions

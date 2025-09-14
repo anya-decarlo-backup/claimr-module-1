@@ -1,0 +1,65 @@
+# Dermatology Step Therapy Rules - UHC CA
+
+- id: rule_derm_step_topical_systemic
+  type: STEP_THERAPY
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J0717", "J1438", "J3262"]
+    ndc: ["0074-0554", "50242-0134", "0078-0659"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_psoriasis_moderate_severe_2025_09"
+      - age_gte: 18
+    none_of:
+      - has_flag: "tried_topical_therapy_adequate"
+      - has_flag: "topical_therapy_contraindicated"
+      - dx_in_value_set: "vs_psoriatic_arthritis_2025_09"
+  logic:
+    outcome: "STEP_THERAPY_REQUIRED"
+    note: "Must try topical therapy before systemic biologics unless contraindicated or PsA present"
+    required_steps: ["topical_corticosteroids_4_weeks", "topical_vitamin_d_analogs_4_weeks"]
+    step_duration_days: 56
+  precedence: 80
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_step_therapy_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_step_conventional_biologics
+  type: STEP_THERAPY
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J3590", "J3262"]
+    ndc: ["0078-0659", "0078-0660"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_psoriasis_moderate_severe_2025_09"
+      - age_gte: 18
+    none_of:
+      - has_flag: "tried_tnf_inhibitor_adequate"
+      - has_flag: "tnf_inhibitor_contraindicated"
+      - dx_in_value_set: "vs_inflammatory_bowel_disease_2025_09"
+  logic:
+    outcome: "STEP_THERAPY_REQUIRED"
+    note: "Must try TNF inhibitor before IL-17 inhibitors unless contraindicated or IBD present"
+    required_steps: ["tnf_inhibitor_trial_3_months"]
+    step_duration_days: 90
+  precedence: 75
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_psoriasis_biologic_sequence_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"

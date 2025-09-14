@@ -1,0 +1,391 @@
+- id: rule_ent_cosmetic_rhinoplasty_exclusion
+  name: Cosmetic Rhinoplasty Exclusion
+  description: Exclusion for cosmetic rhinoplasty without functional indication
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '30400' # Rhinoplasty, primary; lateral and alar cartilages and/or elevation of nasal tip
+          - '30410' # Rhinoplasty, primary; complete, external parts including bony pyramid, lateral and alar cartilages, and/or elevation of nasal tip
+          - '30420' # Rhinoplasty, primary; including major septal repair
+          - '30430' # Rhinoplasty, secondary; minor revision
+          - '30435' # Rhinoplasty, secondary; intermediate revision
+          - '30450' # Rhinoplasty, secondary; major revision
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - J34.2   # Deviated nasal septum
+            - S02.2XX # Nasal bone fracture
+            - Q30.0   # Choanal atresia
+            - Q30.2   # Fissured, notched and cleft nose
+            - M95.0   # Acquired deformity of nose
+        - prior_service_within_days:
+            service_codes:
+            - '31231' # Nasal endoscopy showing functional obstruction
+            - '31237'
+            days: 180
+            description: Functional nasal obstruction within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - '92511' # Rhinomanometry showing significant obstruction
+            days: 180
+            description: Objective nasal airway testing within past 6 months
+  logic:
+    outcome: denied
+    reason: Cosmetic rhinoplasty without functional indication is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Cosmetic procedures without medical necessity are not covered
+
+- id: rule_ent_mild_sleep_apnea_surgery_exclusion
+  name: Sleep Apnea Surgery for Mild OSA Exclusion
+  description: Exclusion for OSA surgery in mild sleep apnea without CPAP trial
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '42145' # Palatopharyngoplasty (UPPP)
+          - '41530' # Tongue base reduction
+          - '21199' # Genioglossus advancement
+      - diagnosis_code:
+          any_of:
+          - G47.33  # Obstructive sleep apnea
+          - G47.30  # Sleep apnea, unspecified
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '95810' # Mild OSA (AHI 5-14)
+              - '95811'
+              days: 365
+              description: Mild sleep apnea within past year
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - E0601  # CPAP trial
+                days: 180
+                description: CPAP trial within past 6 months
+        - all_of:
+          - patient_age:
+              max: 18  # Pediatric cases require different criteria
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - '99213' # Pediatric sleep specialist evaluation
+                - '99214'
+                - '99215'
+                days: 90
+                description: Pediatric sleep evaluation within past 90 days
+  logic:
+    outcome: denied
+    reason: OSA surgery for mild sleep apnea without conservative treatment trial is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Conservative treatment should be attempted before surgical intervention in mild OSA
+
+- id: rule_ent_bilateral_simultaneous_surgery_exclusion
+  name: Bilateral Simultaneous ENT Surgery Exclusion
+  description: Exclusion for bilateral simultaneous ENT procedures for safety reasons
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '69433' # Bilateral tympanoplasty
+          - '69661' # Bilateral stapedectomy
+          - '69714' # Bilateral BAHA implantation
+      - any_of:
+        - all_of:
+          - service_code:
+              any_of:
+              - '69433' # Same-day bilateral tympanoplasty
+          - prior_service_within_days:
+              service_codes:
+              - '69433'
+              days: 1
+              description: Bilateral tympanoplasty same day
+        - all_of:
+          - service_code:
+              any_of:
+              - '69661' # Same-day bilateral stapedectomy
+          - prior_service_within_days:
+              service_codes:
+              - '69661'
+              days: 1
+              description: Bilateral stapedectomy same day
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Q16.1  # Congenital ear canal atresia (may require bilateral)
+        - patient_age:
+            max: 12  # Pediatric cases may have different considerations
+  logic:
+    outcome: denied
+    reason: Bilateral simultaneous ENT surgery poses increased safety risks
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Staged bilateral procedures reduce complications and preserve hearing in contralateral ear
+
+- id: rule_ent_hearing_aid_cosmetic_exclusion
+  name: Hearing Aid Cosmetic Features Exclusion
+  description: Exclusion for cosmetic hearing aid features without medical necessity
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '92590' # Hearing aid evaluation
+          - '92591'
+          - 'V5014' # Hearing aid, digital, binaural, BTE
+          - 'V5020' # Hearing aid, digital, monaural, BTE
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92557' # Mild hearing loss (<25 dB HL)
+              - '92553'
+              days: 180
+              description: Mild hearing loss within past 6 months
+          - none_of:
+            - diagnosis_code:
+                any_of:
+                - H90.3  # Sensorineural hearing loss, bilateral
+                - H90.0  # Conductive hearing loss, bilateral
+        - all_of:
+          - patient_age:
+              max: 65
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - '99213' # Occupational hearing loss
+                - '99214'
+                - '99215'
+                days: 180
+                description: Work-related hearing evaluation within past 6 months
+  logic:
+    outcome: denied
+    reason: Hearing aids for cosmetic purposes or mild hearing loss without functional impairment are excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Hearing aids covered only for medically necessary hearing rehabilitation
+
+- id: rule_ent_experimental_procedures_exclusion
+  name: Experimental ENT Procedures Exclusion
+  description: Exclusion for investigational or experimental ENT procedures
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '0207T' # Evacuation of meibomian glands, automated, using heat and intermittent pressure
+          - '0208T' # Pure tone audiometry (threshold), automated
+          - '0209T' # Electroretinography, full field, multifocal flicker, with interpretation and report
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Clinical trial enrollment
+            - '99214'
+            - '99215'
+            days: 30
+            description: Clinical trial participation within past 30 days
+  logic:
+    outcome: denied
+    reason: Experimental or investigational ENT procedures are excluded from coverage
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Coverage limited to FDA-approved and evidence-based treatments
+
+- id: rule_ent_sinus_surgery_mild_disease_exclusion
+  name: Sinus Surgery for Mild Disease Exclusion
+  description: Exclusion for sinus surgery in mild rhinosinusitis without medical therapy trial
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '31237' # Nasal/sinus endoscopy, surgical; with biopsy, polypectomy or debridement
+          - '31254' # Nasal/sinus endoscopy, surgical; ethmoidectomy, partial (anterior)
+          - '31255' # Nasal/sinus endoscopy, surgical; ethmoidectomy, total (anterior and posterior)
+          - '31256' # Nasal/sinus endoscopy, surgical; maxillary antrostomy
+      - diagnosis_code:
+          any_of:
+          - J32.9   # Chronic sinusitis, unspecified
+          - J32.0   # Chronic maxillary sinusitis
+          - J32.1   # Chronic frontal sinusitis
+          - J32.2   # Chronic ethmoidal sinusitis
+      - any_of:
+        - all_of:
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - 'J7506' # Prednisone trial (≥2 weeks)
+                days: 180
+                description: Steroid trial within past 6 months
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - 'J7631' # Antibiotic trial (≥3 weeks)
+                days: 180
+                description: Antibiotic trial within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # CT showing minimal mucosal disease
+              - '70487'
+              - '70488'
+              days: 180
+              description: Minimal sinus disease on imaging within past 6 months
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - '31231' # Nasal polyps on endoscopy
+                - '31237'
+                days: 180
+                description: Nasal polyps within past 6 months
+  logic:
+    outcome: denied
+    reason: Sinus surgery for mild disease without adequate medical therapy trial is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Conservative medical management should precede surgical intervention in mild sinus disease
+
+- id: rule_ent_cochlear_implant_inadequate_trial_exclusion
+  name: Cochlear Implant Without Adequate Hearing Aid Trial Exclusion
+  description: Exclusion for cochlear implant without sufficient hearing aid trial period
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '69930' # Cochlear device implantation, with or without mastoidectomy
+      - diagnosis_code:
+          any_of:
+          - H90.3   # Sensorineural hearing loss, bilateral
+          - H90.5   # Unspecified sensorineural hearing loss
+      - any_of:
+        - all_of:
+          - patient_age:
+              min: 18
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - '92590' # Hearing aid trial (≥3 months)
+                - '92591'
+                days: 180
+                description: Adequate hearing aid trial within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92557' # Moderate hearing loss (40-69 dB HL)
+              - '92553'
+              days: 180
+              description: Moderate hearing loss within past 6 months
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - '92557' # Severe hearing loss (≥70 dB HL)
+                - '92553'
+                days: 180
+                description: Severe hearing loss within past 6 months
+      - none_of:
+        - patient_age:
+            max: 5   # Pediatric criteria different
+        - diagnosis_code:
+            any_of:
+            - Q16.5  # Congenital malformation of inner ear
+  logic:
+    outcome: denied
+    reason: Cochlear implant without adequate hearing aid trial or insufficient hearing loss severity is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Hearing aid trial required before considering cochlear implantation in appropriate candidates
+
+- id: rule_ent_sleep_study_insufficient_symptoms_exclusion
+  name: Sleep Study for Insufficient Symptoms Exclusion
+  description: Exclusion for sleep studies without adequate clinical symptoms of sleep apnea
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '95810' # Polysomnography; sleep staging with 4 or more additional parameters
+          - '95811' # Polysomnography; sleep staging with 4 or more additional parameters, with initiation of continuous positive airway pressure therapy or bilevel ventilation
+          - '95782' # Polysomnography; younger than 6 years, sleep staging with 4 or more additional parameters
+          - '95783' # Polysomnography; younger than 6 years, sleep staging with 4 or more additional parameters, with initiation of continuous positive airway pressure therapy or bilevel ventilation
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - G47.33  # Obstructive sleep apnea
+            - G47.30  # Sleep apnea, unspecified
+            - G47.31  # Primary central sleep apnea
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Documented snoring with witnessed apneas
+            - '99214'
+            - '99215'
+            days: 180
+            description: Sleep apnea symptoms within past 6 months
+        - prior_service_within_days:
+            service_codes:
+            - 'G8842' # Epworth Sleepiness Scale >10
+            days: 180
+            description: Excessive daytime sleepiness within past 6 months
+      - any_of:
+        - all_of:
+          - patient_age:
+              max: 30
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - 'E66.9' # Obesity (BMI >30)
+                days: 180
+                description: Obesity within past 6 months
+        - all_of:
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - '99213' # Cardiovascular comorbidities
+                - '99214'
+                - '99215'
+                days: 365
+                description: Cardiovascular disease within past year
+  logic:
+    outcome: denied
+    reason: Sleep study without adequate clinical symptoms or risk factors for sleep apnea is excluded
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Sleep studies should be performed only when clinical presentation suggests sleep-disordered breathing

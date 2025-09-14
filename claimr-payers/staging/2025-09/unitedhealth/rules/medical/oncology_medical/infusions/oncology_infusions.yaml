@@ -1,0 +1,333 @@
+- id: rule_oncology_chemotherapy_infusion
+  name: Chemotherapy Infusion Administration
+  description: Prior authorization for chemotherapy infusion therapy in cancer patients
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96413' # Chemotherapy administration, IV infusion technique
+          - '96415' # Chemotherapy administration, IV infusion, each additional hour
+          - '96416' # Chemotherapy administration, IV push technique
+          - '96417' # Chemotherapy administration, IV push technique, each additional substance
+          - J9999   # Unclassified drugs (chemotherapy agents)
+          - J3490   # Unclassified drugs
+      - diagnosis_code:
+          any_of:
+          - C78.00  # Secondary malignant neoplasm of unspecified lung
+          - C80.1   # Malignant neoplasm, unspecified
+          - C50.911 # Malignant neoplasm of unspecified site of right female breast
+          - C25.9   # Malignant neoplasm of pancreas, unspecified
+          - C34.10  # Malignant neoplasm of upper lobe, unspecified bronchus or lung
+          - C18.9   # Malignant neoplasm of colon, unspecified
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '88305' # Tissue examination by pathologist confirming malignancy
+          - '88307'
+          days: 180
+          description: Pathologic confirmation of malignancy within past 6 months
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Oncology consultation
+            - '99214'
+            - '99215'
+            days: 30
+            description: Oncology evaluation within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '77301' # Radiation therapy planning (multimodal treatment)
+            days: 60
+            description: Radiation therapy planning within past 60 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C95.90 # Leukemia, unspecified (requires hematology-oncology)
+            - C81.90 # Hodgkin lymphoma, unspecified
+  logic:
+    outcome: approved
+    reason: Chemotherapy infusion approved for documented malignancy with oncology oversight
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Chemotherapy infusions require pathologic confirmation and oncology supervision
+
+- id: rule_oncology_immunotherapy_infusion
+  name: Cancer Immunotherapy Infusion
+  description: Prior authorization for immune checkpoint inhibitor and monoclonal antibody therapy
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96413' # IV infusion technique
+          - '96415' # IV infusion, each additional hour
+          - J9999   # Unclassified drugs (immunotherapy agents)
+          - J3490   # Unclassified drugs
+      - diagnosis_code:
+          any_of:
+          - C78.00  # Secondary malignant neoplasm
+          - C80.1   # Malignant neoplasm, unspecified
+          - C34.10  # Lung cancer
+          - C43.9   # Malignant melanoma of skin, unspecified
+          - C25.9   # Pancreatic cancer
+          - C16.9   # Malignant neoplasm of stomach, unspecified
+      - prior_service_within_days:
+          service_codes:
+          - '81479' # PD-L1 expression testing
+          - '81445' # Targeted genomic sequence analysis panel
+          days: 90
+          description: Biomarker testing for immunotherapy selection within past 90 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C34.10 # Lung cancer
+          - prior_service_within_days:
+              service_codes:
+              - '81479' # PD-L1 ≥50% expression
+              days: 90
+              description: High PD-L1 expression for first-line therapy
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '96413' # Failed first-line chemotherapy
+              days: 180
+              description: Progressive disease on standard chemotherapy within past 6 months
+        - diagnosis_code:
+            any_of:
+            - C43.9  # Melanoma (immunotherapy first-line)
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Recent oncology evaluation
+          - '99214'
+          - '99215'
+          days: 30
+          description: Oncology evaluation within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - M32.9  # Systemic lupus erythematosus
+            - M06.9  # Rheumatoid arthritis (autoimmune contraindication)
+  logic:
+    outcome: approved
+    reason: Cancer immunotherapy approved with appropriate biomarker selection and oncology oversight
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Immunotherapy requires biomarker testing and appropriate patient selection
+
+- id: rule_oncology_targeted_therapy
+  name: Targeted Cancer Therapy
+  description: Prior authorization for targeted molecular therapy based on genetic testing
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96413' # IV infusion technique
+          - '96415' # IV infusion, each additional hour
+          - J3490   # Unclassified drugs (targeted agents)
+          - J9999   # Unclassified drugs
+      - diagnosis_code:
+          any_of:
+          - C50.911 # Breast cancer
+          - C34.10  # Lung cancer
+          - C18.9   # Colorectal cancer
+          - C25.9   # Pancreatic cancer
+          - C43.9   # Melanoma
+      - prior_service_within_days:
+          service_codes:
+          - '81445' # Targeted genomic sequence analysis panel
+          - '81479' # Molecular pathology procedure
+          - '88271' # Molecular cytogenetics
+          days: 180
+          description: Molecular testing identifying targetable mutation within past 6 months
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C50.911 # HER2+ breast cancer
+          - prior_service_within_days:
+              service_codes:
+              - '88342' # HER2 testing positive
+              days: 180
+              description: HER2 overexpression within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C34.10 # EGFR+ lung cancer
+          - prior_service_within_days:
+              service_codes:
+              - '81235' # EGFR mutation analysis
+              days: 180
+              description: EGFR mutation within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C18.9  # KRAS wild-type colorectal cancer
+          - prior_service_within_days:
+              service_codes:
+              - '81275' # KRAS gene analysis
+              days: 180
+              description: KRAS wild-type status within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology consultation
+          - '99214'
+          - '99215'
+          days: 30
+          description: Oncology evaluation within past 30 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '85025' # Severe cytopenias
+            days: 14
+            description: Severe bone marrow suppression within past 2 weeks
+  logic:
+    outcome: approved
+    reason: Targeted therapy approved for appropriate molecular target with oncology oversight
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Targeted therapy requires molecular testing to identify appropriate therapeutic targets
+
+- id: rule_oncology_biosimilar_infusion
+  name: Biosimilar Cancer Therapy
+  description: Prior authorization for biosimilar monoclonal antibodies and supportive care
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96413' # IV infusion technique
+          - '96415' # IV infusion, each additional hour
+          - J3490   # Unclassified drugs (biosimilars)
+      - diagnosis_code:
+          any_of:
+          - C78.00  # Secondary malignant neoplasm
+          - C80.1   # Malignant neoplasm, unspecified
+          - C50.911 # Breast cancer
+          - C18.9   # Colorectal cancer
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Reference product failure or intolerance
+              days: 90
+              description: Intolerance to reference biologic within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Cost-effectiveness evaluation
+              - '99214'
+              days: 30
+              description: Clinical evaluation supporting biosimilar use within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '88305' # Pathologic confirmation
+          - '88307'
+          days: 180
+          description: Pathologic confirmation of malignancy within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oncology oversight
+          - '99214'
+          - '99215'
+          days: 30
+          description: Oncology evaluation within past 30 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent hospitalization for infusion reaction
+            - '99222'
+            - '99223'
+            days: 30
+            description: Recent infusion reaction within past 30 days
+  logic:
+    outcome: approved
+    reason: Biosimilar therapy approved with appropriate clinical justification and oncology oversight
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Biosimilars provide cost-effective alternatives with equivalent efficacy to reference products
+
+- id: rule_oncology_supportive_infusion
+  name: Oncology Supportive Care Infusions
+  description: Prior authorization for supportive care infusions including bone-modifying agents
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96365' # IV infusion initial
+          - '96366' # IV infusion additional
+          - J3489   # Injection, zoledronic acid
+          - J1436   # Injection, etidronate disodium
+          - J3490   # Unclassified drugs (denosumab, pamidronate)
+      - diagnosis_code:
+          any_of:
+          - C78.00  # Bone metastases
+          - C79.51  # Secondary malignant neoplasm of bone
+          - C90.00  # Multiple myeloma
+          - C25.9   # Malignant neoplasm with bone involvement
+      - prior_service_within_days:
+          service_codes:
+          - '77012' # CT scan showing bone lesions
+          - '78815' # Bone scan showing metastases
+          - '70551' # MRI showing bone involvement
+          days: 90
+          description: Imaging confirming bone metastases within past 90 days
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - C79.51 # Bone metastases
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C90.00 # Multiple myeloma
+          - prior_service_within_days:
+              service_codes:
+              - '85025' # CBC monitoring
+              days: 30
+              description: Hematologic monitoring within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '82565' # Creatinine (renal function assessment)
+          - '82374' # Carbon dioxide (electrolyte assessment)
+          days: 30
+          description: Renal function assessment within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - N18.5  # Chronic kidney disease, stage 5
+            - N18.6  # End stage renal disease
+        - prior_service_within_days:
+            service_codes:
+            - '70486' # Osteonecrosis of jaw
+            days: 180
+            description: Osteonecrosis of jaw within past 6 months
+  logic:
+    outcome: approved
+    reason: Supportive care infusion approved for bone metastases with appropriate monitoring
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Bone-modifying agents reduce skeletal-related events in patients with bone metastases

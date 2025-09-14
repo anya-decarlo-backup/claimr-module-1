@@ -1,0 +1,80 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'E0485'
+    - 'E0486'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_obstructive_sleep_apnea_2025_09
+    - dx_in_value_set: vs_sleep_disordered_breathing_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Oral appliance for sleep apnea requires sleep study confirmation and CPAP intolerance or contraindication
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D5999'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mandibular_advancement_device_2025_09
+    - dx_in_value_set: vs_tongue_retaining_device_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Custom oral sleep appliance requires sleep medicine evaluation and appropriate AHI severity
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D7880'
+    - 'D7899'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_occlusal_guard_bruxism_2025_09
+    - dx_in_value_set: vs_tmj_disorder_medical_2025_09
+    - dx_in_value_set: vs_sleep_bruxism_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Occlusal guard requires documented bruxism or TMJ disorder with medical necessity
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"

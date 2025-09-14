@@ -1,0 +1,180 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32480'
+    - '32482'
+    - '32484'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_cancer_resectable_2025_09
+    - dx_in_value_set: vs_pulmonary_nodule_suspicious_2025_09
+    - dx_in_value_set: vs_lung_metastases_isolated_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Lobectomy requires resectable lung cancer, suspicious pulmonary nodule, or isolated lung metastases with adequate pulmonary function
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_surgery_lobectomy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32440'
+    - '32442'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_cancer_early_stage_2025_09
+    - dx_in_value_set: vs_pulmonary_nodule_small_2025_09
+    - dx_in_value_set: vs_lung_biopsy_wedge_resection_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Wedge resection requires early stage lung cancer, small pulmonary nodules, or diagnostic wedge biopsy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_surgery_wedge_resection
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32440'
+    - '32663'
+    - '32664'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_cancer_vats_eligible_2025_09
+    - dx_in_value_set: vs_pulmonary_nodule_vats_2025_09
+    - dx_in_value_set: vs_pleural_disease_vats_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: VATS procedures require appropriate anatomy for minimally invasive approach with adequate visualization
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_surgery_vats_procedures
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32488'
+    - '32491'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_cancer_bilobectomy_2025_09
+    - dx_in_value_set: vs_pulmonary_disease_bilobectomy_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Bilobectomy requires extensive lung cancer or pulmonary disease involving two lobes with adequate remaining lung function
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_surgery_bilobectomy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32440'
+    - '32505'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_cancer_pneumonectomy_2025_09
+    - dx_in_value_set: vs_pulmonary_disease_pneumonectomy_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pneumonectomy requires extensive unilateral lung cancer or disease with contraindication to lesser resection and adequate cardiac function
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_surgery_pneumonectomy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32096'
+    - '32097'
+    - '32098'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_biopsy_open_indicated_2025_09
+    - dx_in_value_set: vs_pulmonary_nodule_biopsy_2025_09
+    - dx_in_value_set: vs_interstitial_lung_disease_biopsy_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Open lung biopsy requires failed bronchoscopic biopsy or need for larger tissue sample for diagnosis
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_thoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_thoracic_surgery_open_lung_biopsy

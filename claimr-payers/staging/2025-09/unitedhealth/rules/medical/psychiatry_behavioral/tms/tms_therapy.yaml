@@ -1,0 +1,380 @@
+- id: rule_psychiatry_tms_depression
+  name: Transcranial Magnetic Stimulation for Treatment-Resistant Depression
+  description: Prior authorization for TMS therapy in treatment-resistant major depressive disorder
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90867' # Therapeutic repetitive transcranial magnetic stimulation (TMS)
+          - '90868' # Therapeutic repetitive transcranial magnetic stimulation (TMS), subsequent motor threshold re-determination
+          - '90869' # Therapeutic repetitive transcranial magnetic stimulation (TMS), subsequent delivery and management
+      - diagnosis_code:
+          any_of:
+          - F32.9   # Major depressive disorder, single episode, unspecified
+          - F33.1   # Major depressive disorder, recurrent, moderate
+          - F33.2   # Major depressive disorder, recurrent, severe without psychotic features
+          - F33.3   # Major depressive disorder, recurrent, severe with psychotic features
+      - patient_age:
+          min: 18
+          max: 70
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Psychiatric evaluation confirming treatment-resistant depression
+          - '90792'
+          days: 60
+          description: Psychiatric evaluation within past 60 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Depression severity assessment (PHQ-9 ≥15 or MADRS ≥20)
+          days: 30
+          description: Severe depression rating within past 30 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Failed at least 4 adequate antidepressant trials
+              days: 730
+              description: Multiple antidepressant failures within past 2 years
+          - prior_service_within_days:
+              service_codes:
+              - '90834' # Concurrent psychotherapy
+              - '90837'
+              days: 180
+              description: Psychotherapy trial within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '90870' # Failed ECT or contraindicated
+              days: 365
+              description: ECT trial or contraindication within past year
+      - prior_service_within_days:
+          service_codes:
+          - '70551' # Brain MRI ruling out contraindications
+          days: 180
+          description: Brain imaging within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F31.9  # Bipolar disorder (different protocols)
+            - F20.9  # Schizophrenia
+            - F06.0  # Secondary mood disorder
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent psychiatric hospitalization
+            - '99222'
+            - '99223'
+            days: 30
+            description: Psychiatric hospitalization within past 30 days
+  logic:
+    outcome: approved
+    reason: TMS therapy approved for treatment-resistant major depressive disorder with documented medication failures
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: TMS is FDA-approved for treatment-resistant depression after adequate medication trials
+
+- id: rule_psychiatry_tms_ocd
+  name: Transcranial Magnetic Stimulation for Obsessive-Compulsive Disorder
+  description: Prior authorization for TMS therapy in treatment-resistant obsessive-compulsive disorder
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90867' # Therapeutic repetitive transcranial magnetic stimulation (TMS)
+          - '90868' # TMS motor threshold re-determination
+          - '90869' # TMS delivery and management
+      - diagnosis_code:
+          any_of:
+          - F42.2   # Mixed obsessional thoughts and acts
+          - F42.3   # Hoarding disorder
+          - F42.4   # Excoriation (skin-picking) disorder
+          - F42.8   # Other obsessive-compulsive disorder
+          - F42.9   # Obsessive-compulsive disorder, unspecified
+      - patient_age:
+          min: 18
+          max: 65
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # OCD assessment
+          - '90792'
+          days: 60
+          description: OCD evaluation within past 60 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # OCD severity assessment (Y-BOCS ≥16)
+          days: 30
+          description: Moderate to severe OCD symptoms within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - J3490   # Failed at least 2 SRI trials (clomipramine, SSRIs)
+          days: 365
+          description: Adequate SRI trials within past year
+      - prior_service_within_days:
+          service_codes:
+          - '90834' # ERP (Exposure and Response Prevention) therapy trial
+          - '90837'
+          days: 180
+          description: Specialized OCD therapy within past 6 months
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - J3490  # Augmentation strategies failed (antipsychotics)
+            days: 180
+            description: Medication augmentation trial within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Severe functional impairment
+              days: 30
+              description: Significant functional impairment within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '70551' # Brain MRI
+          days: 180
+          description: Brain imaging within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F84.0  # Autism spectrum disorder (different approach)
+            - F70    # Intellectual disability
+  logic:
+    outcome: approved
+    reason: TMS therapy approved for treatment-resistant OCD with documented SRI and ERP therapy failures
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: TMS shows efficacy for OCD refractory to standard treatments including SRIs and CBT
+
+- id: rule_psychiatry_tms_migraine
+  name: Transcranial Magnetic Stimulation for Migraine Prevention
+  description: Prior authorization for TMS therapy in chronic migraine prevention
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90867' # Single-pulse TMS for migraine
+          - '90868' # TMS motor threshold determination
+          - '90869' # TMS delivery and management
+      - diagnosis_code:
+          any_of:
+          - G43.709 # Chronic migraine without aura, not intractable, without status migrainosus
+          - G43.719 # Chronic migraine without aura, intractable, without status migrainosus
+          - G43.809 # Other migraine, not intractable, without status migrainosus
+          - G43.819 # Other migraine, intractable, without status migrainosus
+      - patient_age:
+          min: 18
+          max: 65
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Neurology evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Neurologic evaluation within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Headache diary showing ≥15 headache days/month
+          days: 30
+          description: Chronic migraine documentation within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - J3490   # Failed at least 2 preventive medications
+          days: 365
+          description: Preventive medication trials within past year
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - J3490  # Failed botulinum toxin therapy
+            days: 180
+            description: Botox trial within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Failed CGRP inhibitors
+              days: 180
+              description: CGRP inhibitor trial within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '70551' # Brain MRI ruling out secondary causes
+          days: 365
+          description: Brain imaging within past year
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - G93.1  # Anoxic brain damage
+            - G40.9  # Epilepsy, unspecified
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent stroke or TIA
+            days: 180
+            description: Cerebrovascular event within past 6 months
+  logic:
+    outcome: approved
+    reason: TMS approved for chronic migraine prevention after failure of standard preventive treatments
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Single-pulse TMS FDA-approved for acute migraine treatment and shows promise for prevention
+
+- id: rule_psychiatry_tms_maintenance
+  name: TMS Maintenance Therapy
+  description: Prior authorization for maintenance TMS therapy following initial treatment course
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90867' # Maintenance TMS sessions
+          - '90869' # TMS delivery and management
+      - diagnosis_code:
+          any_of:
+          - F32.9   # Major depressive disorder
+          - F33.1   # Major depressive disorder, recurrent
+          - F33.2   # Major depressive disorder, recurrent, severe
+          - F42.9   # Obsessive-compulsive disorder
+      - patient_age:
+          min: 18
+          max: 70
+      - prior_service_within_days:
+          service_codes:
+          - '90867' # Completed initial TMS course (≥20 sessions)
+          - '90869'
+          days: 180
+          description: Initial TMS treatment course within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Clinical response to initial TMS (≥50% improvement)
+          days: 90
+          description: Documented clinical response within past 90 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F32.9  # Depression with symptom recurrence
+              - F33.1
+              - F33.2
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Depression rating scale worsening
+              days: 30
+              description: Symptom recurrence within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F42.9  # OCD with symptom return
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Y-BOCS score increase
+              days: 30
+              description: OCD symptom worsening within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Psychiatric evaluation
+          - '99214'
+          - '99215'
+          days: 30
+          description: Psychiatric assessment within past 30 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Psychiatric hospitalization
+            - '99222'
+            - '99223'
+            days: 60
+            description: Psychiatric hospitalization within past 60 days
+  logic:
+    outcome: approved
+    reason: Maintenance TMS approved for documented responder with symptom recurrence
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Maintenance TMS prevents relapse in patients who responded to initial treatment course
+
+- id: rule_psychiatry_tms_adolescent
+  name: TMS Therapy for Adolescent Depression
+  description: Prior authorization for TMS therapy in treatment-resistant adolescent depression
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90867' # Adolescent TMS protocol
+          - '90868' # TMS motor threshold determination
+          - '90869' # TMS delivery and management
+      - diagnosis_code:
+          any_of:
+          - F32.9   # Major depressive disorder, single episode
+          - F33.1   # Major depressive disorder, recurrent, moderate
+          - F33.2   # Major depressive disorder, recurrent, severe
+      - patient_age:
+          min: 16
+          max: 17
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Adolescent psychiatric evaluation
+          - '90792'
+          days: 30
+          description: Adolescent psychiatric evaluation within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Adolescent depression assessment (PHQ-A ≥11)
+          days: 14
+          description: Severe adolescent depression within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - J3490   # Failed at least 2 antidepressant trials
+          days: 365
+          description: Adequate medication trials within past year
+      - prior_service_within_days:
+          service_codes:
+          - '90834' # Psychotherapy trial (CBT or IPT)
+          - '90837'
+          days: 180
+          description: Evidence-based psychotherapy within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '90847' # Family therapy involvement
+          days: 90
+          description: Family involvement in treatment within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '70551' # Brain MRI
+          days: 180
+          description: Brain imaging within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F31.9  # Bipolar disorder
+            - F84.0  # Autism spectrum disorder
+            - F70    # Intellectual disability
+        - prior_service_within_days:
+            service_codes:
+            - F10.20 # Substance use disorders
+            - F11.20
+            days: 90
+            description: Active substance use within past 90 days
+  logic:
+    outcome: approved
+    reason: Adolescent TMS approved for treatment-resistant depression with comprehensive evaluation and family involvement
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: TMS shows promise in adolescents with treatment-resistant depression when standard treatments fail

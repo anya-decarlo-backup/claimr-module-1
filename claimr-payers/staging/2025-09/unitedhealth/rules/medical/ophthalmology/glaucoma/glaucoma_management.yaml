@@ -1,0 +1,414 @@
+- id: rule_ophthalmology_glaucoma_laser_trabeculoplasty
+  name: Selective Laser Trabeculoplasty for Glaucoma
+  description: Prior authorization for SLT in open-angle glaucoma management
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '65855' # Trabeculoplasty by laser surgery
+          - '0191T' # Insertion of anterior segment aqueous drainage device
+      - diagnosis_code:
+          any_of:
+          - H40.10  # Unspecified open-angle glaucoma
+          - H40.11  # Primary open-angle glaucoma, right eye
+          - H40.12  # Primary open-angle glaucoma, left eye
+          - H40.13  # Primary open-angle glaucoma, bilateral
+          - H40.151 # Residual stage of open-angle glaucoma, right eye
+          - H40.152 # Residual stage of open-angle glaucoma, left eye
+          - H40.153 # Residual stage of open-angle glaucoma, bilateral
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '92081' # Visual field testing showing defects
+          - '92082'
+          - '92083'
+          days: 180
+          description: Visual field defects within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92136' # Optic nerve head evaluation (OCT)
+          days: 180
+          description: Optic nerve assessment within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92100' # Intraocular pressure >21 mmHg on medication
+              days: 90
+              description: Elevated IOP despite treatment within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92081' # Progressive visual field loss
+              - '92082'
+              - '92083'
+              days: 365
+              description: Documented progression within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Intolerance to topical medications
+              days: 90
+              description: Medication intolerance within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 90
+          description: Ophthalmologic evaluation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H40.20  # Unspecified primary angle-closure glaucoma
+        - prior_service_within_days:
+            service_codes:
+            - '65855' # Previous laser trabeculoplasty
+            days: 365
+            description: Recent SLT within past year
+  logic:
+    outcome: approved
+    reason: SLT approved for open-angle glaucoma with inadequate IOP control or medication intolerance
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: SLT is effective second-line therapy for open-angle glaucoma with good safety profile
+
+- id: rule_ophthalmology_glaucoma_drainage_device
+  name: Glaucoma Drainage Device Implantation
+  description: Prior authorization for aqueous shunt devices in refractory glaucoma
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '66180' # Aqueous shunt to extraocular equatorial plate reservoir
+          - '66185' # Revision of aqueous shunt to extraocular equatorial plate reservoir
+          - '0191T' # Insertion of anterior segment aqueous drainage device
+          - '0376T' # Insertion of anterior segment aqueous drainage device, without extraocular reservoir
+      - diagnosis_code:
+          any_of:
+          - H40.10  # Unspecified open-angle glaucoma
+          - H40.11  # Primary open-angle glaucoma, right eye
+          - H40.12  # Primary open-angle glaucoma, left eye
+          - H40.13  # Primary open-angle glaucoma, bilateral
+          - H40.20  # Unspecified primary angle-closure glaucoma
+          - H40.21  # Acute angle-closure glaucoma, right eye
+          - H40.22  # Acute angle-closure glaucoma, left eye
+          - H40.23  # Acute angle-closure glaucoma, bilateral
+          - H40.30  # Glaucoma secondary to eye trauma, unspecified eye
+          - H40.40  # Glaucoma secondary to eye inflammation, unspecified eye
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '92081' # Visual field testing showing progression
+          - '92082'
+          - '92083'
+          days: 180
+          description: Progressive visual field loss within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92100' # IOP >21 mmHg despite maximum medical therapy
+          days: 60
+          description: Uncontrolled IOP within past 60 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '66170' # Failed trabeculectomy
+              days: 365
+              description: Trabeculectomy failure within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '65855' # Failed laser trabeculoplasty
+              days: 180
+              description: SLT failure within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H40.30 # Secondary glaucoma
+              - H40.40
+          - prior_service_within_days:
+              service_codes:
+              - '92100' # High-risk glaucoma
+              days: 30
+              description: Severe secondary glaucoma within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 30
+          description: Ophthalmologic evaluation within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H44.001 # Endophthalmitis
+        - prior_service_within_days:
+            service_codes:
+            - '67040' # Recent vitrectomy
+            days: 90
+            description: Vitrectomy within past 90 days
+  logic:
+    outcome: approved
+    reason: Glaucoma drainage device approved for refractory glaucoma with failed conventional surgery
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Drainage devices indicated for complex glaucoma cases with poor surgical prognosis
+
+- id: rule_ophthalmology_glaucoma_trabeculectomy
+  name: Trabeculectomy for Glaucoma
+  description: Prior authorization for trabeculectomy in advanced glaucoma
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '66170' # Trabeculectomy ab externo
+          - '66172' # Trabeculectomy ab externo with scarring from previous ocular surgery
+      - diagnosis_code:
+          any_of:
+          - H40.10  # Unspecified open-angle glaucoma
+          - H40.11  # Primary open-angle glaucoma, right eye
+          - H40.12  # Primary open-angle glaucoma, left eye
+          - H40.13  # Primary open-angle glaucoma, bilateral
+          - H40.151 # Residual stage of open-angle glaucoma
+          - H40.152 # Residual stage of open-angle glaucoma
+          - H40.153 # Residual stage of open-angle glaucoma
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '92081' # Advanced visual field defects
+          - '92082'
+          - '92083'
+          days: 180
+          description: Severe visual field loss within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92136' # Optic nerve cupping >0.7
+          days: 180
+          description: Advanced optic nerve damage within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92100' # IOP >21 mmHg on maximum medical therapy
+              days: 90
+              description: Uncontrolled IOP despite medications within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '65855' # Failed laser trabeculoplasty
+              days: 180
+              description: SLT failure within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92081' # Rapid progression despite treatment
+              - '92082'
+              - '92083'
+              days: 365
+              description: Progressive visual field loss within past year
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 60
+          description: Ophthalmologic evaluation within past 60 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H40.20  # Angle-closure glaucoma (different surgical approach)
+        - prior_service_within_days:
+            service_codes:
+            - '66170' # Previous trabeculectomy
+            days: 365
+            description: Recent trabeculectomy within past year
+  logic:
+    outcome: approved
+    reason: Trabeculectomy approved for advanced open-angle glaucoma with failed medical and laser therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Trabeculectomy is gold standard surgery for advanced glaucoma requiring significant IOP reduction
+
+- id: rule_ophthalmology_glaucoma_minimally_invasive_surgery
+  name: Minimally Invasive Glaucoma Surgery (MIGS)
+  description: Prior authorization for MIGS procedures in mild to moderate glaucoma
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '0191T' # Insertion of anterior segment aqueous drainage device
+          - '0376T' # Insertion of anterior segment aqueous drainage device, without extraocular reservoir
+          - '65820' # Goniotomy
+          - '0449T' # Insertion of aqueous drainage device
+      - diagnosis_code:
+          any_of:
+          - H40.10  # Unspecified open-angle glaucoma
+          - H40.11  # Primary open-angle glaucoma, right eye
+          - H40.12  # Primary open-angle glaucoma, left eye
+          - H40.13  # Primary open-angle glaucoma, bilateral
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '92081' # Mild to moderate visual field defects
+          - '92082'
+          - '92083'
+          days: 180
+          description: Visual field defects within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '92100' # IOP 18-25 mmHg on medication
+          days: 90
+          description: Moderately elevated IOP within past 90 days
+      - any_of:
+        - all_of:
+          - service_code:
+              any_of:
+              - '66984' # Concurrent cataract surgery
+          - prior_service_within_days:
+              service_codes:
+              - '92012' # Visually significant cataract
+              - '92014'
+              days: 90
+              description: Cataract evaluation within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Medication intolerance or compliance issues
+              days: 90
+              description: Medical therapy limitations within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '92081' # Early progression on medical therapy
+              - '92082'
+              - '92083'
+              days: 365
+              description: Documented progression within past year
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 60
+          description: Ophthalmologic evaluation within past 60 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H40.151 # End-stage glaucoma
+            - H40.152
+            - H40.153
+        - prior_service_within_days:
+            service_codes:
+            - '66170' # Previous filtering surgery
+            days: 365
+            description: Previous trabeculectomy within past year
+  logic:
+    outcome: approved
+    reason: MIGS approved for mild to moderate glaucoma with medication limitations or concurrent cataract
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: MIGS offers good safety profile for early to moderate glaucoma with modest IOP reduction
+
+- id: rule_ophthalmology_glaucoma_cyclodestructive_procedures
+  name: Cyclodestructive Procedures for Refractory Glaucoma
+  description: Prior authorization for cycloablation in end-stage or refractory glaucoma
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '66710' # Ciliary body destruction; cyclocryotherapy
+          - '66711' # Ciliary body destruction; cyclophotocoagulation
+          - '66720' # Ciliary body destruction; cyclodiathermy
+      - diagnosis_code:
+          any_of:
+          - H40.10  # Unspecified open-angle glaucoma
+          - H40.11  # Primary open-angle glaucoma, right eye
+          - H40.12  # Primary open-angle glaucoma, left eye
+          - H40.13  # Primary open-angle glaucoma, bilateral
+          - H40.151 # Residual stage of open-angle glaucoma
+          - H40.152 # Residual stage of open-angle glaucoma
+          - H40.153 # Residual stage of open-angle glaucoma
+          - H40.30  # Glaucoma secondary to eye trauma
+          - H40.40  # Glaucoma secondary to eye inflammation
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '92100' # IOP >30 mmHg despite maximum therapy
+          days: 30
+          description: Severe IOP elevation within past 30 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '66170' # Failed trabeculectomy
+              days: 365
+              description: Trabeculectomy failure within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '66180' # Failed drainage device
+              days: 365
+              description: Drainage device failure within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - H40.151 # End-stage glaucoma
+              - H40.152
+              - H40.153
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Poor visual prognosis
+              - '99214'
+              - '99215'
+              days: 60
+              description: End-stage disease evaluation within past 60 days
+      - prior_service_within_days:
+          service_codes:
+          - '92012' # Comprehensive eye exam
+          - '92014'
+          days: 30
+          description: Ophthalmologic evaluation within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - H44.001 # Active inflammation
+        - prior_service_within_days:
+            service_codes:
+            - '66710' # Recent cyclodestructive procedure
+            - '66711'
+            - '66720'
+            days: 180
+            description: Recent cyclodestructive procedure within past 6 months
+  logic:
+    outcome: approved
+    reason: Cyclodestructive procedure approved for refractory glaucoma with failed conventional surgery
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Cyclodestructive procedures reserved for refractory cases when other surgical options have failed

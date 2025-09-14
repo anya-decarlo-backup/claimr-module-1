@@ -1,0 +1,144 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43644'
+    - '43645'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_morbid_obesity_bmi_40_2025_09
+    - dx_in_value_set: vs_obesity_bmi_35_comorbidities_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Roux-en-Y gastric bypass requires BMI ≥40 or ≥35 with comorbidities and comprehensive evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_gastric_bypass_primary_roux_en_y
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43644'
+    - '43645'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_diabetes_type2_metabolic_syndrome_2025_09
+    - dx_in_value_set: vs_inadequate_glycemic_control_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 70
+  logic:
+    outcome: PA_REQUIRED
+    notes: Gastric bypass for diabetes management requires inadequate glycemic control despite optimal medical therapy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_gastric_bypass_diabetes_management
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43846'
+    - '43847'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_laparoscopic_conversion_open_2025_09
+    - dx_in_value_set: vs_technical_complications_bypass_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 70
+  logic:
+    outcome: PA_REQUIRED
+    notes: Open gastric bypass requires conversion from laparoscopic or technical contraindications
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_gastric_bypass_open_conversion
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43644'
+    - '43645'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_super_obesity_bmi_50_2025_09
+    - dx_in_value_set: vs_metabolic_syndrome_severe_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Enhanced malabsorptive gastric bypass for super-obesity or severe metabolic syndrome
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_gastric_bypass_enhanced_malabsorptive
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43644'
+    - '43645'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_postoperative_management_bariatric_2025_09
+    - dx_in_value_set: vs_multidisciplinary_followup_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Gastric bypass requires comprehensive postoperative management with multidisciplinary team follow-up
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_bariatric_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_gastric_bypass_postoperative_management

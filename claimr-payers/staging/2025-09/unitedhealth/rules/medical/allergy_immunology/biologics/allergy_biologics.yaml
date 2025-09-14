@@ -1,0 +1,351 @@
+- id: rule_allergy_asthma_anti_ige
+  name: Severe Asthma Biologics - Anti-IgE
+  description: Prior authorization for omalizumab (Xolair) for severe allergic asthma
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J2357
+          - '96401'
+          - '96413'
+          - '96365'
+      - diagnosis_code:
+          any_of:
+          - J45.909
+          - J45.901
+          - J45.902
+          - J45.998
+      - patient_age:
+          min: 6
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '86003'
+            - '86005'
+            days: 365
+            description: Total IgE and specific IgE testing within past year
+        - prior_service_within_days:
+            service_codes:
+            - '94010'
+            - '94060'
+            - '94070'
+            days: 180
+            description: Pulmonary function testing within past 6 months
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - J7613
+            - J7614
+            - J7622
+            - J7626
+            days: 90
+            description: High-dose ICS within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - J7505
+            - J7506
+            - J7515
+            - J7516
+            days: 90
+            description: ICS/LABA combination within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C78.00
+            - D84.9
+            - Z87.891
+            - J44.0
+  logic:
+    outcome: approved
+    reason: Anti-IgE biologic approved for severe allergic asthma with documented IgE sensitization
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Omalizumab reduces exacerbations in severe allergic asthma patients
+- id: rule_allergy_asthma_anti_il5
+  name: Severe Asthma Biologics - Anti-IL5
+  description: Prior authorization for mepolizumab (Nucala) or benralizumab (Fasenra) for severe eosinophilic asthma
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J2182
+          - J0517
+          - '96401'
+          - '96413'
+          - '96365'
+      - diagnosis_code:
+          any_of:
+          - J45.909
+          - J45.901
+          - J45.902
+          - J82.81
+      - patient_age:
+          min: 12
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '85048'
+            - '85025'
+            days: 90
+            description: CBC with eosinophil count within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '94010'
+            - '94060'
+            - '94070'
+            days: 180
+            description: Pulmonary function testing within past 6 months
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - J7613
+            - J7614
+            - J7622
+            - J7626
+            days: 90
+            description: High-dose ICS within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - J1100
+            - J7506
+            - J7509
+            days: 180
+            description: Systemic corticosteroids within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C78.00
+            - D47.5
+            - D84.9
+            - J44.0
+  logic:
+    outcome: approved
+    reason: Anti-IL5 biologic approved for severe eosinophilic asthma with elevated eosinophils
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: IL-5 antagonists effective for eosinophilic asthma phenotype
+- id: rule_allergy_asthma_anti_il4_il13
+  name: Severe Asthma Biologics - Anti-IL4/IL13
+  description: Prior authorization for dupilumab (Dupixent) for severe asthma with Type 2 inflammation
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J1439
+          - '96401'
+          - '96413'
+          - '96365'
+      - diagnosis_code:
+          any_of:
+          - J45.909
+          - J45.901
+          - J45.902
+          - L20.9
+          - L50.1
+      - patient_age:
+          min: 6
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '94010'
+            - '94060'
+            - '94070'
+            days: 180
+            description: Pulmonary function testing within past 6 months
+        - any_of:
+          - prior_service_within_days:
+              service_codes:
+              - '85048'
+              - '85025'
+              days: 90
+              description: Eosinophil count within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '83018'
+              - '83036'
+              days: 180
+              description: FeNO testing within past 6 months
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - J7613
+            - J7614
+            - J7622
+            - J7626
+            days: 90
+            description: High-dose ICS within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - J1100
+            - J7506
+            - J7509
+            days: 180
+            description: Systemic corticosteroids within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C78.00
+            - D84.9
+            - Z87.891
+            - J44.0
+  logic:
+    outcome: approved
+    reason: Anti-IL4/IL13 biologic approved for severe asthma with Type 2 inflammation markers
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Dupilumab targets Type 2 inflammatory pathway in severe asthma
+- id: rule_allergy_urticaria_biologics
+  name: Chronic Spontaneous Urticaria Biologics
+  description: Prior authorization for omalizumab for chronic spontaneous urticaria
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J2357
+          - '96401'
+          - '96413'
+          - '96365'
+      - diagnosis_code:
+          any_of:
+          - L50.1
+          - L50.8
+          - L50.9
+      - patient_age:
+          min: 12
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - J0129
+            - J1200
+            - J2545
+            days: 90
+            description: H1 antihistamine trial within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - J1200
+            - J2545
+            - J0129
+            days: 90
+            description: H2 antihistamine or leukotriene antagonist trial within past
+              90 days
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - J1100
+            - J7506
+            - J7509
+            days: 180
+            description: Systemic corticosteroids within past 6 months
+        - diagnosis_code:
+            any_of:
+            - L50.1
+            - L50.8
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - D84.1
+            - C96.20
+            - D47.02
+            - L93.0
+  logic:
+    outcome: approved
+    reason: Anti-IgE biologic approved for chronic spontaneous urticaria refractory to antihistamines
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Omalizumab effective for antihistamine-refractory chronic urticaria
+- id: rule_allergy_hae_prophylaxis
+  name: Hereditary Angioedema Prophylaxis
+  description: Prior authorization for C1 esterase inhibitor and other HAE prophylaxis biologics
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0596
+          - J0597
+          - J0598
+          - J1786
+          - J3590
+      - diagnosis_code:
+          any_of:
+          - D84.1
+          - T78.3XXA
+          - K92.1
+      - patient_age:
+          min: 6
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '86160'
+            - '86162'
+            - '83516'
+            days: 365
+            description: C1 esterase inhibitor level and function testing within past
+              year
+        - any_of:
+          - prior_service_within_days:
+              service_codes:
+              - J0171
+              - J0172
+              days: 1095
+              description: Epinephrine use within past 3 years
+          - diagnosis_code:
+              any_of:
+              - T78.3XXA
+              - R06.02
+              - K92.1
+      - any_of:
+        - utilization_within_days:
+            service_codes:
+            - '99281'
+            - '99282'
+            - '99283'
+            - '99284'
+            - '99285'
+            days: 365
+            count: 2
+            description: 2 or more ED visits for angioedema within past year
+        - prior_service_within_days:
+            service_codes:
+            - J0596
+            - J0597
+            - J0598
+            days: 180
+            description: Acute HAE treatment within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - I25.10
+            - I50.9
+            - N18.6
+            - K72.90
+  logic:
+    outcome: approved
+    reason: HAE prophylaxis approved for documented hereditary angioedema with recurrent attacks
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Prophylactic therapy prevents life-threatening HAE attacks

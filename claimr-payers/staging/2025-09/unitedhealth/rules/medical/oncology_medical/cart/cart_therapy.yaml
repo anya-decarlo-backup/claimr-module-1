@@ -1,0 +1,354 @@
+- id: rule_oncology_cart_cd19_lymphoma
+  name: CAR-T Cell Therapy for CD19+ Lymphoma
+  description: Prior authorization for CD19-directed CAR-T cell therapy in relapsed/refractory lymphoma
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (CAR-T products)
+          - '96365' # IV infusion
+          - '38240' # Bone marrow or blood-derived peripheral stem cells
+      - diagnosis_code:
+          any_of:
+          - C85.90  # Non-Hodgkin lymphoma, unspecified
+          - C83.30  # Diffuse large B-cell lymphoma
+          - C83.00  # Small cell B-cell lymphoma
+          - C82.90  # Follicular lymphoma, unspecified
+      - prior_service_within_days:
+          service_codes:
+          - '88342' # CD19 expression testing positive
+          - '88271' # Molecular cytogenetics
+          days: 180
+          description: CD19+ expression confirmed within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '96413' # At least 2 prior systemic therapies failed
+          - '96415'
+          days: 365
+          description: Multiple prior treatment failures within past year
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C83.30 # DLBCL relapsed after autologous transplant
+          - prior_service_within_days:
+              service_codes:
+              - '38241' # Autologous stem cell transplant
+              days: 730
+              description: Relapse after autologous transplant within past 2 years
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '38240' # Ineligible for transplant
+              days: 180
+              description: Transplant ineligibility assessment within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Hematology-oncology consultation
+          - '99214'
+          - '99215'
+          days: 30
+          description: Hematology-oncology evaluation within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '93000' # ECG (cardiac assessment)
+          - '78452' # Echocardiogram
+          days: 30
+          description: Cardiac function assessment within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - G93.1  # Anoxic brain damage
+            - F03.90 # Dementia
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Active CNS involvement
+            days: 90
+            description: Active CNS disease within past 90 days
+  logic:
+    outcome: approved
+    reason: CAR-T therapy approved for relapsed/refractory CD19+ lymphoma with appropriate patient selection
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: CAR-T therapy indicated for multiply relapsed CD19+ lymphomas after standard therapies
+
+- id: rule_oncology_cart_all_pediatric
+  name: CAR-T Cell Therapy for Pediatric ALL
+  description: Prior authorization for CD19-directed CAR-T cell therapy in pediatric acute lymphoblastic leukemia
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (CAR-T products)
+          - '96365' # IV infusion
+          - '38240' # Bone marrow or blood-derived peripheral stem cells
+      - diagnosis_code:
+          any_of:
+          - C91.00  # Acute lymphoblastic leukemia not having achieved remission
+          - C91.01  # Acute lymphoblastic leukemia, in remission
+      - patient_age:
+          min: 3
+          max: 25
+      - prior_service_within_days:
+          service_codes:
+          - '88342' # CD19+ expression confirmed
+          - '88271' # Molecular cytogenetics
+          days: 90
+          description: CD19+ B-cell ALL confirmed within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '96413' # At least 2 relapses or refractory disease
+          - '96415'
+          days: 180
+          description: Relapsed or refractory disease within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '38240' # Relapse after allogeneic transplant
+              days: 365
+              description: Relapse after allogeneic transplant within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '96413' # Primary refractory disease
+              days: 90
+              description: Primary refractory disease within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Pediatric hematology-oncology consultation
+          - '99214'
+          - '99215'
+          days: 14
+          description: Pediatric hematology-oncology evaluation within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # Adequate performance status
+          days: 7
+          description: Laboratory assessment within past week
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - G93.1  # Severe neurologic impairment
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Active graft-versus-host disease
+            days: 30
+            description: Active GVHD within past 30 days
+  logic:
+    outcome: approved
+    reason: CAR-T therapy approved for relapsed/refractory pediatric CD19+ ALL with appropriate selection criteria
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: CAR-T therapy provides curative potential for multiply relapsed pediatric ALL
+
+- id: rule_oncology_cart_multiple_myeloma
+  name: CAR-T Cell Therapy for Multiple Myeloma
+  description: Prior authorization for BCMA-directed CAR-T cell therapy in relapsed/refractory multiple myeloma
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # Unclassified drugs (CAR-T products)
+          - '96365' # IV infusion
+          - '38240' # Bone marrow or blood-derived peripheral stem cells
+      - diagnosis_code:
+          any_of:
+          - C90.00  # Multiple myeloma not having achieved remission
+          - C90.01  # Multiple myeloma in remission
+      - prior_service_within_days:
+          service_codes:
+          - '88342' # BCMA expression testing
+          - '88271' # Molecular cytogenetics
+          days: 180
+          description: BCMA expression confirmed within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '96413' # At least 4 prior therapies including:
+          - '96415' # Immunomodulatory agent, proteasome inhibitor, anti-CD38
+          days: 730
+          description: Multiple prior therapy failures within past 2 years
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Lenalidomide refractory
+              days: 180
+              description: Lenalidomide-refractory disease within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Pomalidomide refractory
+              days: 180
+              description: Pomalidomide-refractory disease within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Hematology-oncology consultation
+          - '99214'
+          - '99215'
+          days: 30
+          description: Hematology-oncology evaluation within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '78815' # Bone marrow biopsy confirming disease
+          - '85097'
+          days: 90
+          description: Disease assessment within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - N18.5  # Chronic kidney disease, stage 5
+            - I50.9  # Heart failure
+        - patient_age:
+            min: 80
+  logic:
+    outcome: approved
+    reason: CAR-T therapy approved for heavily pretreated relapsed/refractory multiple myeloma
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: BCMA CAR-T therapy effective for multiple myeloma after standard therapies
+
+- id: rule_oncology_cart_manufacturing
+  name: CAR-T Cell Manufacturing and Processing
+  description: Prior authorization for CAR-T cell manufacturing, processing, and cryopreservation
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "11"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '38205' # Blood-derived hematopoietic progenitor cell harvesting
+          - '38206' # Blood-derived hematopoietic progenitor cell harvesting, each additional collection
+          - '38240' # Hematopoietic progenitor cell (HPC); allogeneic transplantation per donor
+          - J3490   # Unclassified drugs (CAR-T manufacturing)
+      - diagnosis_code:
+          any_of:
+          - C85.90  # Non-Hodgkin lymphoma
+          - C83.30  # Diffuse large B-cell lymphoma
+          - C91.00  # Acute lymphoblastic leukemia
+          - C90.00  # Multiple myeloma
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # CAR-T eligibility assessment
+          - '99214'
+          - '99215'
+          days: 30
+          description: CAR-T eligibility confirmed within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # Adequate lymphocyte count for collection
+          days: 7
+          description: Adequate lymphocyte count within past week
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - J3490  # Approved CAR-T product indication
+            days: 30
+            description: Approved CAR-T indication within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '86355' # Infectious disease screening
+          - '86701' # HIV testing
+          - '87340' # Hepatitis B surface antigen
+          - '87390' # Hepatitis C antibody
+          days: 30
+          description: Infectious disease screening within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - B20    # HIV disease
+            - B18.1  # Chronic viral hepatitis B
+            - B18.2  # Chronic viral hepatitis C
+  logic:
+    outcome: approved
+    reason: CAR-T manufacturing approved for eligible patient with appropriate screening and collection criteria
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: CAR-T manufacturing requires adequate lymphocyte collection and infectious disease screening
+
+- id: rule_oncology_cart_supportive_care
+  name: CAR-T Supportive Care Management
+  description: Prior authorization for CAR-T-related supportive care including CRS and ICANS management
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "23"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J1100  # Dexamethasone injection
+          - J2323  # Natalizumab injection
+          - J3490  # Unclassified drugs (tocilizumab, anakinra)
+          - '96365' # IV infusion
+          - '99221' # Hospital admission for monitoring
+          - '99222'
+          - '99223'
+      - diagnosis_code:
+          any_of:
+          - T80.89XA # Other complications following infusion, transfusion and therapeutic injection, initial encounter
+          - G93.40   # Other encephalopathy
+          - R50.9    # Fever, unspecified (cytokine release syndrome)
+      - prior_service_within_days:
+          service_codes:
+          - J3490  # CAR-T infusion within past 30 days
+          - '38240'
+          days: 30
+          description: CAR-T cell infusion within past 30 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - R50.9  # Cytokine release syndrome
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Hospitalization for CRS
+              - '99222'
+              - '99223'
+              days: 3
+              description: CRS symptoms within past 3 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - G93.40 # Immune effector cell-associated neurotoxicity syndrome
+          - prior_service_within_days:
+              service_codes:
+              - '70551' # Brain MRI for ICANS evaluation
+              days: 7
+              description: Neurologic symptoms within past week
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Hematology-oncology evaluation
+          - '99214'
+          - '99215'
+          days: 7
+          description: Hematology-oncology evaluation within past week
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - A41.9  # Sepsis, unspecified organism (infection exclusion)
+  logic:
+    outcome: approved
+    reason: CAR-T supportive care approved for documented CRS or ICANS with appropriate monitoring
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: CRS and ICANS are expected CAR-T toxicities requiring prompt recognition and treatment

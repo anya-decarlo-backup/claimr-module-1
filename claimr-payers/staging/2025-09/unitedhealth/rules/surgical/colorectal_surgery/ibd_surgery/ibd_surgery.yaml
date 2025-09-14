@@ -1,0 +1,151 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44140'
+    - '44141'
+    - '44143'
+    - '44144'
+    - '44145'
+    - '44146'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_crohns_disease_2025_09
+    - dx_in_value_set: vs_ulcerative_colitis_2025_09
+    - dx_in_value_set: vs_ibd_complications_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Colectomy for IBD requires failed medical management and gastroenterology evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_ibd_colectomy_total
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44160'
+    - '44205'
+    - '44207'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_crohns_ileocecal_2025_09
+    - dx_in_value_set: vs_terminal_ileum_crohns_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Ileocecal resection requires localized Crohns disease with failed medical therapy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_ibd_ileocecal_resection
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44680'
+    - '44700'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_crohns_stricture_2025_09
+    - dx_in_value_set: vs_small_bowel_obstruction_crohns_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Stricturoplasty requires Crohns strictures with obstructive symptoms and imaging
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_ibd_stricturoplasty
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44157'
+    - '44158'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ulcerative_colitis_refractory_2025_09
+    - dx_in_value_set: vs_familial_polyposis_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: IPAA requires ulcerative colitis with sphincter function assessment and patient counseling
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_ibd_ipaa_procedure
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '46270'
+    - '46275'
+    - '46280'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_crohns_perianal_fistula_2025_09
+    - dx_in_value_set: vs_complex_anal_fistula_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Perianal fistula repair requires MRI evaluation and medical optimization for Crohns
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_ibd_perianal_fistula_repair

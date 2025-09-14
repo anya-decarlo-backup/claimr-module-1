@@ -1,0 +1,427 @@
+- id: rule_ent_uvulopalatopharyngoplasty
+  name: Uvulopalatopharyngoplasty for Obstructive Sleep Apnea
+  description: Prior authorization for UPPP surgery in obstructive sleep apnea
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '42145' # Palatopharyngoplasty (eg, uvulopalatopharyngoplasty, uvulopharyngoplasty)
+          - '42140' # Uvulectomy, excision of uvula
+          - '42160' # Destruction of lesion, palate or uvula (thermal, cryo or chemical)
+      - diagnosis_code:
+          any_of:
+          - G47.33  # Obstructive sleep apnea (adult)
+          - G47.30  # Sleep apnea, unspecified
+          - Z87.891 # Personal history of nicotine dependence
+      - patient_age:
+          min: 18
+          max: 65
+      - prior_service_within_days:
+          service_codes:
+          - '95810' # Polysomnography showing moderate to severe OSA (AHI ≥15)
+          - '95811'
+          - '95782'
+          - '95783'
+          days: 365
+          description: Sleep study confirming OSA within past year
+      - prior_service_within_days:
+          service_codes:
+          - '31231' # Nasal endoscopy or laryngoscopy
+          - '31575'
+          - '31579'
+          days: 180
+          description: Upper airway evaluation within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - E0601  # CPAP trial failure (≥3 months)
+              days: 180
+              description: CPAP intolerance within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Documented CPAP compliance issues
+              - '99214'
+              - '99215'
+              days: 90
+              description: CPAP failure evaluation within past 90 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - E0486  # Oral appliance trial failure
+              days: 180
+              description: Oral appliance intolerance within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '95810' # Severe OSA (AHI ≥30) with anatomic abnormalities
+              - '95811'
+              days: 365
+              description: Severe OSA within past year
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Imaging showing retropalatal obstruction
+              - '70487'
+              - '70488'
+              days: 180
+              description: Anatomic evaluation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # ENT evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Otolaryngology consultation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - G47.31 # Primary central sleep apnea
+        - prior_service_within_days:
+            service_codes:
+            - '42145' # Previous UPPP
+            days: 730
+            description: UPPP surgery within past 2 years
+        - patient_age:
+            min: 70  # Higher surgical risk in elderly
+  logic:
+    outcome: approved
+    reason: UPPP approved for moderate to severe OSA with CPAP failure and appropriate anatomy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: UPPP indicated for OSA patients with retropalatal obstruction who cannot tolerate CPAP
+
+- id: rule_ent_tongue_base_reduction
+  name: Tongue Base Reduction for Sleep Apnea
+  description: Prior authorization for tongue base surgery in multilevel sleep apnea
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '41530' # Submucosal ablation of the tongue base, radiofrequency, 1 or more sites, per session
+          - '41512' # Tongue base suspension, permanent suture
+          - '41155' # Lingual frenectomy (frenotomy); with excision of abnormal fold of mucous membrane (plica fimbriata)
+      - diagnosis_code:
+          any_of:
+          - G47.33  # Obstructive sleep apnea (adult)
+          - G47.30  # Sleep apnea, unspecified
+      - patient_age:
+          min: 18
+          max: 65
+      - prior_service_within_days:
+          service_codes:
+          - '95810' # Polysomnography showing moderate to severe OSA
+          - '95811'
+          - '95782'
+          - '95783'
+          days: 365
+          description: Sleep study confirming OSA within past year
+      - prior_service_within_days:
+          service_codes:
+          - '31575' # Laryngoscopy showing tongue base obstruction
+          - '31579'
+          days: 180
+          description: Upper airway evaluation within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - E0601  # CPAP failure
+              days: 180
+              description: CPAP intolerance within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '42145' # Previous UPPP with residual OSA
+              days: 365
+              description: Prior palatal surgery within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '95810' # Severe OSA with multilevel obstruction
+              - '95811'
+              days: 365
+              description: Severe OSA within past year
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Imaging showing retroglossal obstruction
+              - '70487'
+              - '70488'
+              days: 180
+              description: Anatomic evaluation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # ENT evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Otolaryngology consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '41530' # Recent tongue base surgery
+            - '41512'
+            days: 365
+            description: Tongue base surgery within past year
+  logic:
+    outcome: approved
+    reason: Tongue base reduction approved for multilevel OSA with retroglossal obstruction
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Tongue base surgery addresses retroglossal obstruction in multilevel OSA
+
+- id: rule_ent_genioglossus_advancement
+  name: Genioglossus Advancement for Sleep Apnea
+  description: Prior authorization for genioglossus advancement in severe OSA
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '21199' # Osteotomy, mandible, segmental; with genioglossus advancement
+          - '21196' # Reconstruction of mandibular rami, horizontal, vertical, C, or L osteotomy; with bone graft
+      - diagnosis_code:
+          any_of:
+          - G47.33  # Obstructive sleep apnea (adult)
+          - G47.30  # Sleep apnea, unspecified
+      - patient_age:
+          min: 18
+          max: 60
+      - prior_service_within_days:
+          service_codes:
+          - '95810' # Polysomnography showing severe OSA (AHI ≥30)
+          - '95811'
+          - '95782'
+          - '95783'
+          days: 365
+          description: Sleep study confirming severe OSA within past year
+      - prior_service_within_days:
+          service_codes:
+          - '70486' # Cephalometric analysis showing mandibular deficiency
+          - '70487'
+          - '70488'
+          days: 180
+          description: Anatomic evaluation within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '42145' # Failed UPPP
+              days: 365
+              description: Previous palatal surgery within past year
+          - prior_service_within_days:
+              service_codes:
+              - '95810' # Persistent severe OSA post-UPPP
+              - '95811'
+              days: 180
+              description: Post-operative sleep study within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - E0601  # CPAP failure
+              days: 180
+              description: CPAP intolerance within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '31575' # Multilevel obstruction on endoscopy
+              - '31579'
+              days: 180
+              description: Upper airway evaluation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oral and maxillofacial surgery consultation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Surgical consultation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - M26.00 # Major dental malocclusion
+        - prior_service_within_days:
+            service_codes:
+            - '21199' # Previous genioglossus advancement
+            days: 730
+            description: GA surgery within past 2 years
+  logic:
+    outcome: approved
+    reason: Genioglossus advancement approved for severe OSA with mandibular deficiency and failed prior treatments
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: GA addresses mandibular deficiency contributing to severe OSA
+
+- id: rule_ent_hypoglossal_nerve_stimulation
+  name: Hypoglossal Nerve Stimulation for Sleep Apnea
+  description: Prior authorization for hypoglossal nerve stimulator implantation
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '64568' # Incision for implantation of cranial nerve (eg, vagus nerve) neurostimulator electrode array and pulse generator
+          - '64569' # Revision or replacement of cranial nerve (eg, vagus nerve) neurostimulator electrode array, including connection to existing pulse generator
+      - diagnosis_code:
+          any_of:
+          - G47.33  # Obstructive sleep apnea (adult)
+      - patient_age:
+          min: 22
+          max: 75
+      - prior_service_within_days:
+          service_codes:
+          - '95810' # Polysomnography showing moderate to severe OSA (AHI 15-65)
+          - '95811'
+          - '95782'
+          - '95783'
+          days: 365
+          description: Sleep study confirming OSA within past year
+      - prior_service_within_days:
+          service_codes:
+          - E0601  # CPAP trial failure (≥3 months)
+          days: 365
+          description: CPAP intolerance within past year
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '31575' # Drug-induced sleep endoscopy showing non-concentric collapse
+              - '31579'
+              days: 180
+              description: DISE evaluation within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '70486' # Imaging showing appropriate anatomy
+              - '70487'
+              - '70488'
+              days: 180
+              description: Anatomic evaluation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Multidisciplinary evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Sleep medicine and ENT consultation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - G47.31 # Central sleep apnea
+        - prior_service_within_days:
+            service_codes:
+            - '95810' # AHI >65 (too severe)
+            - '95811'
+            days: 365
+            description: Very severe OSA within past year
+        - prior_service_within_days:
+            service_codes:
+            - '64568' # Previous hypoglossal stimulator
+            days: 1825
+            description: HNS implant within past 5 years
+  logic:
+    outcome: approved
+    reason: Hypoglossal nerve stimulation approved for moderate to severe OSA with CPAP failure and appropriate anatomy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: HNS is FDA-approved alternative for OSA patients who cannot tolerate CPAP
+
+- id: rule_ent_maxillomandibular_advancement
+  name: Maxillomandibular Advancement for Sleep Apnea
+  description: Prior authorization for MMA surgery in severe OSA
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '21141' # Reconstruction midface, LeFort I; single piece, segment movement in any direction
+          - '21142' # Reconstruction midface, LeFort I; 2 pieces, segment movement in any direction
+          - '21143' # Reconstruction midface, LeFort I; 3 or more pieces, segment movement in any direction
+          - '21196' # Reconstruction of mandibular rami, horizontal, vertical, C, or L osteotomy
+      - diagnosis_code:
+          any_of:
+          - G47.33  # Obstructive sleep apnea (adult)
+          - G47.30  # Sleep apnea, unspecified
+      - patient_age:
+          min: 18
+          max: 65
+      - prior_service_within_days:
+          service_codes:
+          - '95810' # Polysomnography showing severe OSA (AHI ≥30)
+          - '95811'
+          - '95782'
+          - '95783'
+          days: 365
+          description: Sleep study confirming severe OSA within past year
+      - prior_service_within_days:
+          service_codes:
+          - '70486' # Cephalometric analysis showing maxillomandibular deficiency
+          - '70487'
+          - '70488'
+          days: 180
+          description: Anatomic evaluation within past 6 months
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '42145' # Failed multiple prior surgeries
+              days: 730
+              description: Previous OSA surgery within past 2 years
+          - prior_service_within_days:
+              service_codes:
+              - '95810' # Persistent severe OSA
+              - '95811'
+              days: 180
+              description: Post-operative sleep study within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - E0601  # CPAP failure
+              days: 365
+              description: CPAP intolerance within past year
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Life-threatening OSA complications
+              - '99214'
+              - '99215'
+              days: 180
+              description: Severe OSA complications within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Oral and maxillofacial surgery consultation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Surgical consultation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '21141' # Previous MMA
+            - '21142'
+            - '21143'
+            days: 1825
+            description: MMA surgery within past 5 years
+  logic:
+    outcome: approved
+    reason: MMA approved for severe OSA with maxillomandibular deficiency and failed prior treatments
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: MMA is most effective surgical treatment for severe OSA with skeletal deficiency

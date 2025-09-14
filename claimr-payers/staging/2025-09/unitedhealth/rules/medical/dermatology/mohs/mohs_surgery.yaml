@@ -1,0 +1,157 @@
+# Mohs Surgery - UHC CA
+
+- id: rule_derm_mohs_basal_cell
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["17311", "17312", "17313", "17314", "17315"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_basal_cell_carcinoma_2025_09"
+      - age_gte: 18
+    any_of:
+      - anatomic_location_in: ["face", "neck", "scalp", "eyelids", "nose", "lips", "ears"]
+      - lesion_size_gte: 2
+      - dx_in_value_set: "vs_aggressive_bcc_histology_2025_09"
+      - has_flag: "recurrent_tumor"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Mohs surgery for BCC on high-risk locations or aggressive features"
+    auth_duration_days: 90
+    max_units_per_period: 1
+    period_type: "per_lesion"
+  precedence: 70
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_mohs_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_mohs_squamous_cell
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["17311", "17312", "17313", "17314", "17315"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_squamous_cell_carcinoma_2025_09"
+      - age_gte: 18
+    any_of:
+      - anatomic_location_in: ["face", "neck", "scalp", "genitals", "hands", "feet"]
+      - lesion_size_gte: 2
+      - dx_in_value_set: "vs_high_risk_scc_features_2025_09"
+      - has_flag: "immunosuppressed_patient"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Mohs surgery for SCC on high-risk locations or in high-risk patients"
+    auth_duration_days: 90
+    max_units_per_period: 1
+    period_type: "per_lesion"
+  precedence: 70
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_mohs_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_mohs_reconstruction
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["14040", "14041", "14060", "14061", "15120", "15121"]
+  conditions:
+    all_of:
+      - has_flag: "mohs_surgery_same_day"
+      - defect_size_gte: 2
+    any_of:
+      - anatomic_location_in: ["face", "neck", "scalp", "eyelids"]
+      - has_flag: "functional_impairment_risk"
+      - defect_size_gte: 4
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Complex reconstruction after Mohs surgery for large defects or functional areas"
+    auth_duration_days: 30
+    max_units_per_period: 1
+    period_type: "per_procedure"
+  precedence: 75
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_reconstruction_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_mohs_pathology
+  type: EDIT
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["88331", "88332", "88333"]
+  conditions:
+    all_of:
+      - has_flag: "mohs_surgery_same_day"
+      - dx_in_value_set: "vs_skin_cancer_2025_09"
+  logic:
+    outcome: "COVERED"
+    note: "Enhanced coverage for Mohs pathology interpretation"
+    frequency_limit: "per_stage"
+  precedence: 80
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_mohs_pathology_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_mohs_melanoma_insitu
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["17311", "17312", "17313", "17314", "17315"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_melanoma_in_situ_2025_09"
+      - age_gte: 18
+    any_of:
+      - anatomic_location_in: ["face", "neck", "scalp", "acral_sites"]
+      - lesion_size_gte: 1
+      - has_flag: "lentigo_maligna_subtype"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Mohs surgery for melanoma in situ on high-risk locations"
+    auth_duration_days: 90
+    max_units_per_period: 1
+    period_type: "per_lesion"
+  precedence: 65
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_melanoma_insitu_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"

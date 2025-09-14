@@ -1,0 +1,149 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45111'
+    - '45112'
+    - '45113'
+    - '45114'
+    - '45119'
+    - '45120'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_rectal_adenocarcinoma_2025_09
+    - dx_in_value_set: vs_mid_low_rectal_cancer_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Low anterior resection requires rectal cancer with appropriate staging and oncology evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_rectal_cancer_low_anterior_resection
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45110'
+    - '45395'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_low_rectal_cancer_2025_09
+    - dx_in_value_set: vs_rectal_cancer_sphincter_involvement_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Abdominoperineal resection requires low rectal cancer when sphincter preservation not possible
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_rectal_cancer_abdominoperineal_resection
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45160'
+    - '45161'
+    - '45162'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mid_low_rectal_cancer_tme_2025_09
+    - dx_in_value_set: vs_rectal_adenocarcinoma_t2_t3_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Total mesorectal excision requires mid/low rectal cancer with oncologic principles
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_rectal_cancer_total_mesorectal_excision
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45171'
+    - '45172'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_early_rectal_cancer_t1_2025_09
+    - dx_in_value_set: vs_rectal_polyp_malignant_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Transanal excision requires early T1 rectal cancer with favorable histologic features
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_rectal_cancer_transanal_excision
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45126'
+    - '58240'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_locally_advanced_rectal_cancer_2025_09
+    - dx_in_value_set: vs_recurrent_rectal_cancer_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pelvic exenteration requires locally advanced rectal cancer with multidisciplinary evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_colorectal_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_rectal_cancer_pelvic_exenteration

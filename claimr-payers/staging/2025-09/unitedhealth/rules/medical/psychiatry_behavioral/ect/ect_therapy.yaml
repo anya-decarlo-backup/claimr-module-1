@@ -1,0 +1,395 @@
+- id: rule_psychiatry_ect_depression
+  name: Electroconvulsive Therapy for Treatment-Resistant Depression
+  description: Prior authorization for ECT in severe treatment-resistant major depressive disorder
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "21"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90870' # Electroconvulsive therapy (ECT)
+          - '00104' # Anesthesia for ECT
+      - diagnosis_code:
+          any_of:
+          - F32.2   # Major depressive disorder, single episode, severe without psychotic features
+          - F32.3   # Major depressive disorder, single episode, severe with psychotic features
+          - F33.2   # Major depressive disorder, recurrent, severe without psychotic features
+          - F33.3   # Major depressive disorder, recurrent, severe with psychotic features
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Psychiatric evaluation
+          - '90792'
+          days: 30
+          description: Psychiatric evaluation within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Severe depression assessment (PHQ-9 ≥20 or MADRS ≥30)
+          days: 14
+          description: Severe depression rating within past 2 weeks
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Failed at least 3 adequate antidepressant trials
+              days: 730
+              description: Multiple medication failures within past 2 years
+          - prior_service_within_days:
+              service_codes:
+              - '90834' # Psychotherapy trial
+              - '90837'
+              days: 180
+              description: Psychotherapy within past 6 months
+        - diagnosis_code:
+            any_of:
+            - F32.3  # Psychotic depression
+            - F33.3
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Recent psychiatric hospitalization for suicidality
+              - '99222'
+              - '99223'
+              days: 30
+              description: Psychiatric hospitalization within past 30 days
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Severe suicidal ideation
+              days: 7
+              description: Active suicidal risk within past week
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Medical clearance for anesthesia
+          - '99214'
+          - '99215'
+          days: 30
+          description: Medical evaluation within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '93000' # ECG within past 30 days
+          days: 30
+          description: Cardiac evaluation within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - I25.10 # Recent myocardial infarction
+            - G93.1  # Increased intracranial pressure
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent stroke
+            days: 180
+            description: Cerebrovascular event within past 6 months
+  logic:
+    outcome: approved
+    reason: ECT approved for severe treatment-resistant depression with medical clearance
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: ECT is highly effective for severe treatment-resistant depression and psychotic depression
+
+- id: rule_psychiatry_ect_bipolar
+  name: Electroconvulsive Therapy for Bipolar Disorder
+  description: Prior authorization for ECT in severe bipolar depression or mania
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "21"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90870' # Electroconvulsive therapy (ECT)
+          - '00104' # Anesthesia for ECT
+      - diagnosis_code:
+          any_of:
+          - F31.4   # Bipolar disorder, current episode depressed, severe, without psychotic features
+          - F31.5   # Bipolar disorder, current episode depressed, severe, with psychotic features
+          - F31.13  # Bipolar disorder, current episode manic severe, with psychotic features
+          - F31.2   # Bipolar disorder, current episode manic severe without psychotic features
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Bipolar disorder evaluation
+          - '90792'
+          days: 30
+          description: Psychiatric evaluation within past 30 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F31.4  # Bipolar depression
+              - F31.5
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Failed mood stabilizer and antidepressant
+              days: 180
+              description: Medication trials within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F31.13 # Manic episode with psychosis
+              - F31.2  # Severe mania
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Failed mood stabilizer and antipsychotic
+              days: 60
+              description: Medication trials within past 60 days
+        - diagnosis_code:
+            any_of:
+            - F31.5  # Bipolar with psychotic features
+            - F31.13
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Medical clearance
+          - '99214'
+          - '99215'
+          days: 30
+          description: Medical evaluation within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '93000' # ECG
+          days: 30
+          description: Cardiac evaluation within past 30 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - J3490  # Lithium toxicity
+            days: 30
+            description: Lithium toxicity within past 30 days
+  logic:
+    outcome: approved
+    reason: ECT approved for severe bipolar disorder with medication failure or psychotic features
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: ECT is effective for severe bipolar episodes, especially with psychotic features
+
+- id: rule_psychiatry_ect_catatonia
+  name: Electroconvulsive Therapy for Catatonia
+  description: Prior authorization for ECT in catatonic disorders
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "21"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90870' # Electroconvulsive therapy (ECT)
+          - '00104' # Anesthesia for ECT
+      - diagnosis_code:
+          any_of:
+          - F06.1   # Catatonic disorder due to known physiological condition
+          - F20.2   # Catatonic schizophrenia
+          - F44.2   # Dissociative stupor
+          - R40.1   # Stupor
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Catatonia assessment
+          - '90792'
+          days: 14
+          description: Psychiatric evaluation within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Catatonia rating scale (BFCRS ≥8)
+          days: 7
+          description: Catatonia severity assessment within past week
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - J3490  # Failed lorazepam challenge
+            days: 7
+            description: Benzodiazepine trial within past week
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F06.1  # Medical catatonia
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Medical complications
+              - '99222'
+              - '99223'
+              days: 7
+              description: Medical instability within past week
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Medical evaluation
+          - '99214'
+          - '99215'
+          days: 14
+          description: Medical clearance within past 2 weeks
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Neuroleptic malignant syndrome
+            days: 30
+            description: NMS within past 30 days
+  logic:
+    outcome: approved
+    reason: ECT approved for catatonia with failed benzodiazepine trial or medical complications
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: ECT is highly effective for catatonia and may be life-saving in severe cases
+
+- id: rule_psychiatry_ect_maintenance
+  name: Maintenance Electroconvulsive Therapy
+  description: Prior authorization for maintenance ECT following acute treatment course
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "21"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90870' # Maintenance ECT
+          - '00104' # Anesthesia for ECT
+      - diagnosis_code:
+          any_of:
+          - F32.2   # Major depressive disorder, severe
+          - F32.3   # Major depressive disorder with psychotic features
+          - F33.2   # Recurrent major depressive disorder, severe
+          - F33.3   # Recurrent major depressive disorder with psychotic features
+          - F31.4   # Bipolar disorder, current episode depressed, severe
+          - F31.5   # Bipolar disorder with psychotic features
+      - patient_age:
+          min: 18
+      - prior_service_within_days:
+          service_codes:
+          - '90870' # Completed acute ECT course (≥6 treatments)
+          days: 180
+          description: Acute ECT course within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Clinical response to acute ECT (≥50% improvement)
+          days: 90
+          description: Documented ECT response within past 90 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # History of medication resistance
+              days: 365
+              description: Medication failures within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Symptom recurrence without maintenance
+              days: 60
+              description: Relapse risk assessment within past 60 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Ongoing medical monitoring
+          - '99214'
+          - '99215'
+          days: 90
+          description: Medical evaluation within past 90 days
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Psychiatric hospitalization
+            - '99222'
+            - '99223'
+            days: 30
+            description: Psychiatric hospitalization within past 30 days
+  logic:
+    outcome: approved
+    reason: Maintenance ECT approved for documented responder with high relapse risk
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Maintenance ECT prevents relapse in patients who responded to acute treatment
+
+- id: rule_psychiatry_ect_geriatric
+  name: Geriatric Electroconvulsive Therapy
+  description: Prior authorization for ECT in elderly patients with special considerations
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "21"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90870' # Geriatric ECT protocol
+          - '00104' # Anesthesia for ECT
+      - diagnosis_code:
+          any_of:
+          - F32.2   # Late-life depression, severe
+          - F32.3   # Late-life depression with psychotic features
+          - F33.2   # Recurrent late-life depression, severe
+          - F33.3   # Recurrent late-life depression with psychotic features
+          - F03.90  # Dementia with depression
+      - patient_age:
+          min: 65
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Geriatric psychiatric evaluation
+          - '90792'
+          days: 30
+          description: Geriatric psychiatric evaluation within past 30 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # Cognitive assessment (MMSE, MoCA)
+          days: 30
+          description: Cognitive evaluation within past 30 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J3490  # Failed antidepressant trials (lower threshold)
+              days: 180
+              description: Medication trials within past 6 months
+        - diagnosis_code:
+            any_of:
+            - F32.3  # Psychotic depression
+            - F33.3
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Medical complications from depression
+              - '99222'
+              - '99223'
+              days: 60
+              description: Medical hospitalization within past 60 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Comprehensive medical evaluation
+          - '99214'
+          - '99215'
+          days: 14
+          description: Medical clearance within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '93000' # ECG
+          days: 14
+          description: Cardiac evaluation within past 2 weeks
+      - prior_service_within_days:
+          service_codes:
+          - '93306' # Echocardiogram if cardiac disease
+          days: 90
+          description: Cardiac function assessment within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - I25.10 # Recent MI
+            - G93.1  # Increased ICP
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent stroke
+            days: 180
+            description: Cerebrovascular event within past 6 months
+  logic:
+    outcome: approved
+    reason: Geriatric ECT approved with comprehensive medical and cognitive evaluation
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: ECT is often preferred in elderly patients due to medication intolerance and high efficacy

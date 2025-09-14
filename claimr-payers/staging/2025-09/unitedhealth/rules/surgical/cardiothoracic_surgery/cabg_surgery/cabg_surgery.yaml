@@ -1,0 +1,182 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33510'
+    - '33511'
+    - '33512'
+    - '33513'
+    - '33514'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_coronary_artery_disease_multivessel_2025_09
+    - dx_in_value_set: vs_left_main_stenosis_significant_2025_09
+    - dx_in_value_set: vs_unstable_angina_refractory_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: CABG requires multivessel CAD, left main stenosis >50%, or refractory unstable angina with appropriate anatomy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_cabg_multivessel
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33533'
+    - '33534'
+    - '33535'
+    - '33536'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_coronary_artery_disease_arterial_grafts_2025_09
+    - dx_in_value_set: vs_lima_to_lad_indicated_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Arterial coronary grafts require multivessel CAD with preference for LIMA to LAD and arterial conduits
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_arterial_grafts
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33140'
+    - '33141'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_transmyocardial_revascularization_2025_09
+    - dx_in_value_set: vs_refractory_angina_no_bypass_option_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Transmyocardial revascularization requires refractory angina with no conventional revascularization options
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_transmyocardial_revascularization
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33517'
+    - '33518'
+    - '33519'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cabg_redo_graft_failure_2025_09
+    - dx_in_value_set: vs_recurrent_angina_post_cabg_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Redo CABG requires graft failure or recurrent angina with anatomy unsuitable for PCI
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_redo_cabg
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33510'
+    - '33511'
+    - '33405'
+    - '33406'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cabg_plus_valve_surgery_2025_09
+    - dx_in_value_set: vs_combined_cardiac_procedures_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Combined CABG and valve surgery requires both coronary and valvular disease with appropriate surgical risk
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_cabg_valve_combined
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33130'
+    - '33135'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_minimally_invasive_cabg_2025_09
+    - dx_in_value_set: vs_robotic_cabg_eligible_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Minimally invasive CABG requires appropriate anatomy for limited access approach with single or double vessel disease
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiothoracic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_cardiothoracic_surgery_minimally_invasive_cabg

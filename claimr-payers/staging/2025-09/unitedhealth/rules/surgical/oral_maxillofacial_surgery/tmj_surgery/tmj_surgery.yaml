@@ -1,0 +1,87 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '29800'
+    - '29804'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_tmj_internal_derangement_2025_09
+    - dx_in_value_set: vs_tmj_arthritis_degenerative_2025_09
+    - dx_in_value_set: vs_tmj_synovitis_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: TMJ arthroscopy requires internal derangement with failed conservative treatment and imaging confirmation
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21010'
+    - '21050'
+    - '21060'
+    - '21070'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_tmj_ankylosis_2025_09
+    - dx_in_value_set: vs_tmj_arthritis_severe_2025_09
+    - dx_in_value_set: vs_tmj_disc_displacement_nonreducing_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Open TMJ surgery requires severe joint pathology with failed conservative treatment and imaging confirmation
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21243'
+    - '21245'
+    - '21247'
+    - '21248'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_tmj_end_stage_arthritis_2025_09
+    - dx_in_value_set: vs_tmj_condylar_resorption_severe_2025_09
+    - dx_in_value_set: vs_tmj_failed_multiple_surgeries_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 70
+  logic:
+    outcome: PA_REQUIRED
+    notes: TMJ total joint replacement requires end-stage joint disease with failed previous surgeries
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"

@@ -1,0 +1,116 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44970'
+    - '44979'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_acute_appendicitis_2025_09
+    - dx_in_value_set: vs_perforated_appendicitis_2025_09
+    all_of:
+    - min_age: 5
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Laparoscopic appendectomy requires acute appendicitis with clinical symptoms
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_appendectomy_laparoscopic
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44960'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_complicated_appendicitis_2025_09
+    - dx_in_value_set: vs_appendiceal_abscess_2025_09
+    all_of:
+    - min_age: 5
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Open appendectomy requires complicated appendicitis or contraindication to laparoscopy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_appendectomy_open
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44955'
+    - '44950'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_appendiceal_neoplasm_2025_09
+    - dx_in_value_set: vs_cecal_pathology_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Appendectomy with cecectomy requires neoplasm or complex pathology
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_appendectomy_with_cecectomy
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '44970'
+    - '44979'
+    - '44960'
+    - '44955'
+    - '44950'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prophylactic_appendectomy_2025_09
+    - dx_in_value_set: vs_incidental_appendectomy_2025_09
+    all_of:
+    - min_age: 86
+  logic:
+    outcome: DENIED
+    notes: Appendectomy excluded for prophylactic removal, incidental procedures, or age >85
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_surgical_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_appendectomy_exclusions

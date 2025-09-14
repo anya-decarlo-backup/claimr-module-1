@@ -1,0 +1,161 @@
+# Dermatology Phototherapy - UHC CA
+
+- id: rule_derm_narrowband_uvb
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["96910", "96912", "96913"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_psoriasis_moderate_severe_2025_09"
+      - has_flag: "failed_topical_therapy"
+      - bsa_affected_gte: 5
+      - age_gte: 12
+    none_of:
+      - dx_in_value_set: "vs_skin_cancer_history_2025_09"
+      - dx_in_value_set: "vs_photosensitive_conditions_2025_09"
+      - has_flag: "immunosuppressed"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Narrowband UVB requires moderate psoriasis and topical therapy failure"
+    auth_duration_days: 180
+    max_units_per_period: 36
+    period_type: "course_of_treatment"
+  precedence: 70
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_phototherapy_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_puva_therapy
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["96912", "96913", "J8999"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_psoriasis_severe_2025_09"
+      - has_flag: "failed_narrowband_uvb"
+      - age_gte: 18
+      - has_flag: "ophthalmology_clearance"
+    none_of:
+      - dx_in_value_set: "vs_skin_cancer_history_2025_09"
+      - dx_in_value_set: "vs_cataract_2025_09"
+      - has_flag: "pregnancy"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "PUVA therapy requires severe psoriasis, UVB failure, and ophthalmology clearance"
+    auth_duration_days: 180
+    max_units_per_period: 25
+    period_type: "course_of_treatment"
+  precedence: 65
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_puva_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_excimer_laser
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["96920", "96921", "96922"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_psoriasis_localized_2025_09"
+      - has_flag: "failed_topical_therapy"
+      - lesion_count_lte: 10
+      - bsa_affected_lte: 10
+    any_of:
+      - dx_in_value_set: "vs_vitiligo_2025_09"
+      - has_flag: "localized_plaque_psoriasis"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Excimer laser for localized psoriasis/vitiligo with topical therapy failure"
+    auth_duration_days: 90
+    max_units_per_period: 20
+    period_type: "course_of_treatment"
+  precedence: 70
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_excimer_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_home_phototherapy
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    hcpcs: ["E0691", "E0692", "E0693"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_psoriasis_moderate_severe_2025_09"
+      - has_flag: "office_phototherapy_successful"
+      - has_flag: "dermatologist_supervised"
+      - distance_to_facility_gte: 50
+    none_of:
+      - dx_in_value_set: "vs_skin_cancer_history_2025_09"
+      - has_flag: "compliance_concerns"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Home phototherapy requires office success and geographic access barriers"
+    auth_duration_days: 365
+    max_units_per_period: 1
+    period_type: "yearly"
+  precedence: 65
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_home_phototherapy_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_phototherapy_monitoring
+  type: EDIT
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["99212", "99213", "99214"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_dermatologic_conditions_phototherapy_2025_09"
+      - has_flag: "active_phototherapy_course"
+  logic:
+    outcome: "COVERED"
+    note: "Enhanced coverage for phototherapy monitoring visits"
+    frequency_limit: "weekly_during_treatment"
+  precedence: 80
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_phototherapy_monitoring_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"

@@ -1,0 +1,361 @@
+- id: rule_psychiatry_individual_psychotherapy
+  name: Individual Psychotherapy Sessions
+  description: Prior authorization for individual psychotherapy for mental health conditions
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "53", "02"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90834' # Psychotherapy, 45 minutes
+          - '90837' # Psychotherapy, 60 minutes
+          - '90847' # Family psychotherapy with patient present
+          - '90853' # Group psychotherapy
+      - diagnosis_code:
+          any_of:
+          - F32.9   # Major depressive disorder, single episode, unspecified
+          - F33.9   # Major depressive disorder, recurrent, unspecified
+          - F41.1   # Generalized anxiety disorder
+          - F43.10  # Post-traumatic stress disorder, unspecified
+          - F84.0   # Autistic disorder
+          - F90.9   # Attention-deficit hyperactivity disorder, unspecified type
+      - patient_age:
+          min: 6
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - '90791' # Psychiatric diagnostic evaluation
+            - '90792' # Psychiatric diagnostic evaluation with medical services
+            days: 90
+            description: Initial psychiatric evaluation within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Psychiatry follow-up visit
+            - '99214'
+            - '99215'
+            days: 180
+            description: Psychiatric follow-up within past 6 months
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F32.9  # Major depression
+              - F33.9
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Depression screening (PHQ-9 ≥10)
+              days: 30
+              description: Moderate to severe depression screening within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F41.1  # Generalized anxiety
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Anxiety screening (GAD-7 ≥8)
+              days: 30
+              description: Moderate to severe anxiety screening within past 30 days
+        - diagnosis_code:
+            any_of:
+            - F43.10 # PTSD
+            - F84.0  # Autism
+            - F90.9  # ADHD
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F20.9  # Schizophrenia (requires specialized care)
+            - F31.9  # Bipolar disorder (medication management priority)
+  logic:
+    outcome: approved
+    reason: Individual psychotherapy approved for documented mental health condition with appropriate evaluation
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Evidence-based psychotherapy is first-line treatment for anxiety and depressive disorders
+
+- id: rule_psychiatry_family_therapy
+  name: Family Therapy Sessions
+  description: Prior authorization for family therapy in pediatric and adolescent mental health
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "53", "02"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90846' # Family psychotherapy without patient present
+          - '90847' # Family psychotherapy with patient present
+          - '90849' # Multiple-family group psychotherapy
+      - diagnosis_code:
+          any_of:
+          - F84.0   # Autistic disorder
+          - F90.9   # ADHD
+          - F91.9   # Conduct disorder, unspecified
+          - F93.0   # Separation anxiety disorder of childhood
+          - F32.9   # Major depressive disorder
+          - F50.9   # Eating disorder, unspecified
+      - patient_age:
+          min: 3
+          max: 21
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Initial psychiatric evaluation
+          - '90792'
+          days: 90
+          description: Psychiatric evaluation within past 90 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F84.0  # Autism spectrum disorder
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Developmental assessment
+              days: 180
+              description: Developmental assessment within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F90.9  # ADHD
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # ADHD rating scales
+              days: 90
+              description: ADHD assessment within past 90 days
+        - diagnosis_code:
+            any_of:
+            - F91.9  # Conduct disorder
+            - F93.0  # Separation anxiety
+            - F50.9  # Eating disorder
+      - prior_service_within_days:
+          service_codes:
+          - '90834' # Individual therapy trial
+          - '90837'
+          days: 60
+          description: Individual therapy sessions within past 60 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F70    # Mild intellectual disabilities (different approach)
+  logic:
+    outcome: approved
+    reason: Family therapy approved for pediatric mental health condition with family system involvement
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Family therapy indicated for childhood disorders affecting family functioning
+
+- id: rule_psychiatry_group_therapy
+  name: Group Psychotherapy Sessions
+  description: Prior authorization for group therapy for mental health and substance use disorders
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "53", "02"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90853' # Group psychotherapy
+          - '90875' # Individual psychophysiological therapy incorporating biofeedback
+      - diagnosis_code:
+          any_of:
+          - F10.20  # Alcohol dependence, uncomplicated
+          - F11.20  # Opioid dependence, uncomplicated
+          - F32.9   # Major depressive disorder
+          - F41.1   # Generalized anxiety disorder
+          - F43.10  # Post-traumatic stress disorder
+          - F50.9   # Eating disorder, unspecified
+      - patient_age:
+          min: 12
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Psychiatric evaluation
+          - '90792'
+          days: 90
+          description: Psychiatric evaluation within past 90 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F10.20 # Substance use disorders
+              - F11.20
+          - prior_service_within_days:
+              service_codes:
+              - '99408' # Substance abuse screening
+              - '99409'
+              days: 30
+              description: Substance abuse assessment within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F32.9  # Depression
+              - F41.1  # Anxiety
+          - prior_service_within_days:
+              service_codes:
+              - '90834' # Individual therapy sessions
+              - '90837'
+              days: 90
+              description: Individual therapy within past 90 days
+        - diagnosis_code:
+            any_of:
+            - F43.10 # PTSD
+            - F50.9  # Eating disorders
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F20.9  # Schizophrenia (individual therapy preferred)
+            - F22    # Delusional disorders
+  logic:
+    outcome: approved
+    reason: Group therapy approved for appropriate mental health condition with peer support benefit
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Group therapy provides peer support and is cost-effective for appropriate conditions
+
+- id: rule_psychiatry_emdr_therapy
+  name: Eye Movement Desensitization and Reprocessing (EMDR)
+  description: Prior authorization for EMDR therapy for trauma-related disorders
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "53"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90834' # Psychotherapy with EMDR
+          - '90837' # Psychotherapy with EMDR, 60 minutes
+      - diagnosis_code:
+          any_of:
+          - F43.10  # Post-traumatic stress disorder, unspecified
+          - F43.11  # Post-traumatic stress disorder, acute
+          - F43.12  # Post-traumatic stress disorder, chronic
+          - F94.1   # Reactive attachment disorder of childhood
+      - patient_age:
+          min: 8
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Trauma-focused psychiatric evaluation
+          - '90792'
+          days: 60
+          description: Trauma assessment within past 60 days
+      - prior_service_within_days:
+          service_codes:
+          - '96116' # PTSD assessment (PCL-5 or CAPS-5)
+          days: 30
+          description: PTSD severity assessment within past 30 days
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - '90834' # Failed standard trauma therapy
+            - '90837'
+            days: 180
+            description: Standard trauma therapy trial within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F43.12 # Chronic PTSD
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Severe PTSD symptoms
+              days: 30
+              description: Severe PTSD symptoms within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F20.9  # Active psychosis
+            - F06.0  # Psychotic disorder due to known physiological condition
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent psychiatric hospitalization
+            - '99222'
+            - '99223'
+            days: 30
+            description: Psychiatric hospitalization within past 30 days
+  logic:
+    outcome: approved
+    reason: EMDR therapy approved for documented trauma disorder with appropriate assessment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: EMDR is evidence-based treatment for PTSD with strong efficacy data
+
+- id: rule_psychiatry_dbt_therapy
+  name: Dialectical Behavior Therapy (DBT)
+  description: Prior authorization for DBT for borderline personality disorder and emotion dysregulation
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "53", "02"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90834' # Individual DBT
+          - '90837' # Individual DBT, 60 minutes
+          - '90853' # DBT skills group
+          - '90847' # DBT family sessions
+      - diagnosis_code:
+          any_of:
+          - F60.3   # Borderline personality disorder
+          - F32.9   # Major depressive disorder with self-harm
+          - F43.10  # PTSD with emotion dysregulation
+          - F50.9   # Eating disorder with self-harm behaviors
+      - patient_age:
+          min: 14
+      - prior_service_within_days:
+          service_codes:
+          - '90791' # Comprehensive psychiatric evaluation
+          - '90792'
+          days: 60
+          description: Psychiatric evaluation within past 60 days
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F60.3  # Borderline personality disorder
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Personality assessment
+              days: 180
+              description: Personality disorder assessment within past 6 months
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # History of self-harm or suicidal behavior
+              - '99222'
+              - '99223'
+              - '99281' # Emergency visits for self-harm
+              - '99282'
+              - '99283'
+              days: 365
+              description: Self-harm or suicidal behavior within past year
+      - prior_service_within_days:
+          service_codes:
+          - '90834' # Standard therapy trial
+          - '90837'
+          days: 180
+          description: Standard psychotherapy trial within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F20.9  # Schizophrenia
+            - F70    # Intellectual disability
+        - prior_service_within_days:
+            service_codes:
+            - F10.20 # Active substance use (requires stabilization first)
+            - F11.20
+            days: 30
+            description: Active substance use within past 30 days
+  logic:
+    outcome: approved
+    reason: DBT approved for emotion dysregulation disorder with documented need for specialized intervention
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: DBT is evidence-based treatment for borderline personality disorder and chronic suicidality

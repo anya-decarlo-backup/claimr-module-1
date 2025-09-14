@@ -1,0 +1,340 @@
+- id: rule_hematology_factor_viii_replacement
+  name: Factor VIII Replacement Therapy
+  description: Prior authorization for Factor VIII concentrate in hemophilia A patients
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J7182  # Injection, factor VIII (antihemophilic factor, recombinant)
+          - J7185  # Injection, factor VIII (antihemophilic factor, recombinant), per IU
+          - J7190  # Factor VIII (antihemophilic factor, human)
+          - J7191  # Factor VIII (antihemophilic factor, human), per IU
+          - '96365' # IV infusion
+      - diagnosis_code:
+          any_of:
+          - D66    # Hereditary factor VIII deficiency (Hemophilia A)
+          - D68.0  # Von Willebrand disease
+      - prior_service_within_days:
+          service_codes:
+          - '85240' # Factor VIII activity level
+          - '85244' # Factor VIII inhibitor assay
+          days: 180
+          description: Factor VIII activity and inhibitor testing within past 6 months
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - D66   # Severe hemophilia A
+          - prior_service_within_days:
+              service_codes:
+              - '85240' # Factor VIII <1%
+              days: 365
+              description: Severe factor VIII deficiency (<1%) within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Hospitalization for bleeding
+              - '99222'
+              - '99223'
+              - '99281' # Emergency visit for bleeding
+              - '99282'
+              - '99283'
+              - '99284'
+              - '99285'
+              days: 7
+              description: Acute bleeding episode within past week
+        - prior_service_within_days:
+            service_codes:
+            - '00142' # Anesthesia for procedures on eye
+            - '00300' # Anesthesia for all procedures on the integumentary system
+            days: 14
+            description: Planned surgical procedure within next 2 weeks
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '85244' # High-titer inhibitors (>5 BU)
+            days: 90
+            description: High-titer factor VIII inhibitors within past 90 days
+  logic:
+    outcome: approved
+    reason: Factor VIII replacement approved for documented hemophilia A with appropriate clinical indication
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Factor VIII replacement is standard therapy for hemophilia A bleeding episodes and prophylaxis
+
+- id: rule_hematology_factor_ix_replacement
+  name: Factor IX Replacement Therapy
+  description: Prior authorization for Factor IX concentrate in hemophilia B patients
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J7193  # Factor IX (antihemophilic factor, purified, nonrecombinant)
+          - J7194  # Factor IX complex, per IU
+          - J7195  # Injection, factor IX (antihemophilic factor, recombinant)
+          - J7200  # Injection, factor IX, (antihemophilic factor, recombinant), Rixubis, per IU
+          - '96365' # IV infusion
+      - diagnosis_code:
+          any_of:
+          - D67    # Hereditary factor IX deficiency (Hemophilia B)
+      - prior_service_within_days:
+          service_codes:
+          - '85250' # Factor IX activity level
+          - '85247' # Factor IX inhibitor assay
+          days: 180
+          description: Factor IX activity and inhibitor testing within past 6 months
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - D67   # Severe hemophilia B
+          - prior_service_within_days:
+              service_codes:
+              - '85250' # Factor IX <1%
+              days: 365
+              description: Severe factor IX deficiency (<1%) within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Hospitalization for bleeding
+              - '99222'
+              - '99223'
+              - '99281' # Emergency visit for bleeding
+              - '99282'
+              - '99283'
+              - '99284'
+              - '99285'
+              days: 7
+              description: Acute bleeding episode within past week
+        - prior_service_within_days:
+            service_codes:
+            - '00142' # Planned surgical procedure
+            - '00300'
+            days: 14
+            description: Planned surgical procedure within next 2 weeks
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '85247' # High-titer inhibitors
+            days: 90
+            description: High-titer factor IX inhibitors within past 90 days
+  logic:
+    outcome: approved
+    reason: Factor IX replacement approved for documented hemophilia B with appropriate clinical indication
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Factor IX replacement is standard therapy for hemophilia B bleeding episodes and prophylaxis
+
+- id: rule_hematology_bypassing_agents
+  name: Bypassing Agent Therapy
+  description: Prior authorization for bypassing agents in hemophilia patients with inhibitors
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "23"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J7189  # Factor VIIa (coagulation factor VIIa, recombinant)
+          - J7194  # Factor IX complex (FEIBA)
+          - '96365' # IV infusion
+      - diagnosis_code:
+          any_of:
+          - D66    # Hemophilia A with inhibitors
+          - D67    # Hemophilia B with inhibitors
+          - D68.311 # Acquired hemophilia
+      - prior_service_within_days:
+          service_codes:
+          - '85244' # Factor VIII inhibitor >5 BU
+          - '85247' # Factor IX inhibitor >5 BU
+          days: 90
+          description: High-titer inhibitors within past 90 days
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Hospitalization for bleeding
+              - '99222'
+              - '99223'
+              - '99281' # Emergency visit for bleeding
+              - '99282'
+              - '99283'
+              - '99284'
+              - '99285'
+              days: 3
+              description: Acute bleeding episode within past 3 days
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J7182  # Failed factor VIII replacement
+              - J7185
+              - J7193  # Failed factor IX replacement
+              - J7195
+              days: 24
+              description: Failed standard factor replacement within past 24 hours
+        - prior_service_within_days:
+            service_codes:
+            - '00142' # Urgent surgical procedure
+            - '00300'
+            days: 7
+            description: Urgent surgical procedure within next week
+  logic:
+    outcome: approved
+    reason: Bypassing agent therapy approved for hemophilia with inhibitors and active bleeding
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Bypassing agents are indicated for bleeding episodes in inhibitor patients when standard factors are ineffective
+
+- id: rule_hematology_emicizumab_prophylaxis
+  name: Emicizumab Prophylaxis Therapy
+  description: Prior authorization for emicizumab prophylaxis in hemophilia A patients
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J7170  # Injection, emicizumab-kxwh
+          - '96372' # Subcutaneous injection
+      - diagnosis_code:
+          any_of:
+          - D66    # Hemophilia A
+      - patient_age:
+          min: 12
+      - any_of:
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '85244' # Factor VIII inhibitors present
+              days: 180
+              description: Factor VIII inhibitors within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Recurrent bleeding episodes
+              - '99222'
+              - '99223'
+              - '99281'
+              - '99282'
+              days: 90
+              description: Recurrent bleeding episodes within past 90 days
+        - all_of:
+          - none_of:
+            - prior_service_within_days:
+                service_codes:
+                - '85244' # No inhibitors
+                days: 180
+                description: No factor VIII inhibitors
+          - prior_service_within_days:
+              service_codes:
+              - J7182  # Frequent factor VIII use (>2x/week)
+              - J7185
+              days: 30
+              description: Frequent factor VIII replacement indicating severe disease
+      - prior_service_within_days:
+          service_codes:
+          - '85240' # Factor VIII activity <1% (severe hemophilia)
+          days: 365
+          description: Severe factor VIII deficiency within past year
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - I25.9  # Coronary artery disease
+            - I50.9  # Heart failure
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent thrombotic event
+            days: 180
+            description: Thrombotic event within past 6 months
+  logic:
+    outcome: approved
+    reason: Emicizumab prophylaxis approved for severe hemophilia A with appropriate clinical criteria
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Emicizumab provides effective prophylaxis for severe hemophilia A patients with or without inhibitors
+
+- id: rule_hematology_vwf_concentrate
+  name: Von Willebrand Factor Concentrate
+  description: Prior authorization for VWF concentrate in von Willebrand disease patients
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "23"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J7179  # Von Willebrand factor (recombinant), per IU VWF:RCo
+          - J7183  # Von Willebrand factor complex (humate-P)
+          - '96365' # IV infusion
+      - diagnosis_code:
+          any_of:
+          - D68.0  # Von Willebrand disease
+      - prior_service_within_days:
+          service_codes:
+          - '85245' # Von Willebrand factor activity
+          - '85246' # Von Willebrand factor antigen
+          - '85247' # Von Willebrand factor multimers
+          days: 180
+          description: VWF studies confirming diagnosis within past 6 months
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - D68.0  # Type 3 VWD (severe)
+          - prior_service_within_days:
+              service_codes:
+              - '85245' # VWF:RCo <10%
+              days: 365
+              description: Severe VWF deficiency within past year
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Hospitalization for bleeding
+              - '99222'
+              - '99223'
+              - '99281' # Emergency visit for bleeding
+              - '99282'
+              - '99283'
+              - '99284'
+              - '99285'
+              days: 7
+              description: Acute bleeding episode within past week
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J2270  # Failed DDAVP therapy
+              days: 7
+              description: Failed desmopressin therapy within past week
+          - prior_service_within_days:
+              service_codes:
+              - '85245' # Poor response to DDAVP
+              days: 30
+              description: Inadequate VWF response to DDAVP within past 30 days
+        - prior_service_within_days:
+            service_codes:
+            - '00142' # Planned surgical procedure
+            - '00300'
+            days: 14
+            description: Planned surgical procedure within next 2 weeks
+  logic:
+    outcome: approved
+    reason: VWF concentrate approved for documented von Willebrand disease with appropriate clinical indication
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: VWF concentrate indicated for severe VWD or when DDAVP is contraindicated or ineffective

@@ -1,0 +1,450 @@
+- id: rule_pediatrics_growth_hormone_therapy
+  name: Growth Hormone Therapy for Pediatric Growth Disorders
+  description: Prior authorization for recombinant human growth hormone therapy in children
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'J2941' # Injection, somatropin, 1 mg
+          - 'S0126' # Injection, follitropin alfa, 75 IU
+      - diagnosis_code:
+          any_of:
+          - E23.0   # Hypopituitarism
+          - E34.3   # Short stature due to endocrine disorder
+          - Q96.9   # Turner syndrome, unspecified
+          - E22.0   # Acromegaly and pituitary gigantism
+          - N25.0   # Renal osteodystrophy
+          - Q87.1   # Congenital malformation syndromes predominantly associated with short stature
+      - patient_age:
+          min: 2
+          max: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - E23.0  # Growth hormone deficiency
+          - prior_service_within_days:
+              service_codes:
+              - '83003' # Growth hormone stimulation test showing deficiency
+              days: 365
+              description: GH stimulation test within past year
+          - prior_service_within_days:
+              service_codes:
+              - '76700' # Bone age X-ray showing delayed skeletal maturation
+              days: 180
+              description: Bone age assessment within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q96.9  # Turner syndrome
+          - prior_service_within_days:
+              service_codes:
+              - '88261' # Karyotype confirming Turner syndrome
+              days: 1825
+              description: Genetic confirmation within past 5 years
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - N25.0  # Chronic kidney disease with growth failure
+          - prior_service_within_days:
+              service_codes:
+              - '82565' # Creatinine showing CKD stage 2-5
+              days: 180
+              description: Kidney function assessment within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Pediatric endocrinology evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Pediatric endocrinology consultation within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C80.1  # Active malignancy (contraindication)
+        - prior_service_within_days:
+            service_codes:
+            - '76700' # Closed epiphyses on bone age
+            days: 180
+            description: Closed growth plates within past 6 months
+        - patient_age:
+            min: 19  # Adult age
+  logic:
+    outcome: approved
+    reason: Growth hormone therapy approved for documented growth hormone deficiency or qualifying condition
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Growth hormone therapy improves final adult height in children with documented deficiency
+
+- id: rule_pediatrics_developmental_therapies
+  name: Pediatric Developmental Therapies
+  description: Prior authorization for speech, occupational, and physical therapy in children
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '92507' # Treatment of speech, language, voice, communication, and/or auditory processing disorder; individual
+          - '97110' # Therapeutic procedure, 1 or more areas, each 15 minutes; therapeutic exercises
+          - '97112' # Therapeutic procedure, 1 or more areas, each 15 minutes; neuromuscular reeducation
+          - '97530' # Therapeutic activities, direct (one-on-one) patient contact (use of dynamic activities)
+      - diagnosis_code:
+          any_of:
+          - F80.9   # Developmental disorder of speech and language, unspecified
+          - F82     # Specific developmental disorder of motor function
+          - F84.0   # Autistic disorder
+          - F84.5   # Asperger's syndrome
+          - G80.9   # Cerebral palsy, unspecified
+          - Q90.9   # Down syndrome, unspecified
+          - R62.50  # Unspecified lack of expected normal physiological development in childhood
+      - patient_age:
+          min: 0
+          max: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F80.9  # Speech and language delay
+          - prior_service_within_days:
+              service_codes:
+              - '92523' # Speech and language evaluation showing delay
+              days: 365
+              description: Speech evaluation within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F82    # Motor delay
+              - G80.9  # Cerebral palsy
+          - prior_service_within_days:
+              service_codes:
+              - '97161' # Physical therapy evaluation showing functional deficits
+              - '97165'
+              - '97167'
+              days: 365
+              description: PT/OT evaluation within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F84.0  # Autism spectrum disorder
+              - F84.5
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Neurobehavioral status exam
+              days: 365
+              description: Autism evaluation within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q90.9  # Down syndrome
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multidisciplinary team evaluation
+              - '99214'
+              - '99215'
+              days: 180
+              description: Team evaluation within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Pediatric evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Pediatric consultation within past 6 months
+      - none_of:
+        - patient_age:
+            min: 19  # Adult services
+        - diagnosis_code:
+            any_of:
+            - F70.9  # Profound intellectual disability (may need different approach)
+  logic:
+    outcome: approved
+    reason: Developmental therapies approved for documented developmental delays with functional impact
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Early intervention therapies improve developmental outcomes in children
+
+- id: rule_pediatrics_specialized_formulas
+  name: Specialized Pediatric Nutritional Formulas
+  description: Prior authorization for medical foods and specialized formulas for metabolic disorders
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'B4150' # Enteral formula, nutritionally complete with intact nutrients
+          - 'B4152' # Enteral formula, nutritionally complete, calorically dense
+          - 'B4153' # Enteral formula, nutritionally complete, hydrolyzed proteins
+          - 'B4154' # Enteral formula, nutritionally complete, for special metabolic needs
+      - diagnosis_code:
+          any_of:
+          - E70.9   # Disorder of aromatic amino-acid metabolism, unspecified
+          - E71.9   # Disorder of branched-chain amino-acid metabolism, unspecified
+          - E74.9   # Disorder of carbohydrate metabolism, unspecified
+          - K90.0   # Celiac disease
+          - K90.9   # Intestinal malabsorption, unspecified
+          - P92.9   # Feeding problem of newborn, unspecified
+          - Q39.9   # Congenital malformation of digestive system, unspecified
+      - patient_age:
+          min: 0
+          max: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - E70.9  # Phenylketonuria or other amino acid disorders
+              - E71.9
+          - prior_service_within_days:
+              service_codes:
+              - '82615' # Amino acid analysis confirming metabolic disorder
+              days: 365
+              description: Metabolic testing within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - K90.0  # Celiac disease
+          - prior_service_within_days:
+              service_codes:
+              - '83516' # Tissue transglutaminase antibodies
+              days: 365
+              description: Celiac testing within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - K90.9  # Malabsorption
+          - prior_service_within_days:
+              service_codes:
+              - '82270' # Fecal fat showing malabsorption
+              days: 180
+              description: Malabsorption testing within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P92.9  # Feeding problems in newborn
+          - patient_age:
+              max: 2   # Infants and toddlers
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Failure to thrive evaluation
+              - '99214'
+              - '99215'
+              days: 90
+              description: Growth evaluation within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Pediatric gastroenterology or genetics evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Specialist consultation within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Z87.891 # History resolved condition
+        - patient_age:
+            min: 19  # Adult formulations available
+  logic:
+    outcome: approved
+    reason: Specialized formula approved for documented metabolic disorder or malabsorption
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Medical foods are essential for managing inborn errors of metabolism
+
+- id: rule_pediatrics_genetic_testing
+  name: Pediatric Genetic Testing for Developmental Delays
+  description: Prior authorization for genetic testing in children with unexplained developmental delays
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '81228' # Cytogenomic constitutional (genome-wide) microarray analysis
+          - '88261' # Chromosome analysis; count 15-20 cells, 2 karyotypes, with banding
+          - '81415' # Exome (eg, unexplained constitutional or heritable disorder or syndrome); sequence analysis
+      - diagnosis_code:
+          any_of:
+          - Q87.89  # Other specified congenital malformation syndromes, not elsewhere classified
+          - F79     # Unspecified intellectual disabilities
+          - R62.50  # Unspecified lack of expected normal physiological development in childhood
+          - Q99.9   # Chromosomal abnormality, unspecified
+          - F84.9   # Pervasive developmental disorder, unspecified
+      - patient_age:
+          min: 0
+          max: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F79    # Intellectual disability of unknown cause
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Neurobehavioral status exam showing significant delay
+              days: 365
+              description: Developmental assessment within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q87.89 # Multiple congenital anomalies
+          - prior_service_within_days:
+              service_codes:
+              - '76700' # Imaging showing structural abnormalities
+              - '70551'
+              - '70552'
+              days: 365
+              description: Imaging studies within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - R62.50 # Global developmental delay
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multidisciplinary evaluation
+              - '99214'
+              - '99215'
+              days: 180
+              description: Comprehensive evaluation within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F84.9  # Autism spectrum disorder with additional features
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Autism evaluation with dysmorphic features
+              days: 365
+              description: Autism assessment within past year
+      - prior_service_within_days:
+          service_codes:
+          - '99401' # Genetic counseling
+          - '96040'
+          days: 180
+          description: Genetic counseling within past 6 months
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Medical genetics consultation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Genetics consultation within past 6 months
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '81228' # Previous genetic testing
+            - '88261'
+            - '81415'
+            days: 1825
+            description: Genetic testing within past 5 years
+        - patient_age:
+            min: 19  # Adult genetic testing protocols
+  logic:
+    outcome: approved
+    reason: Genetic testing approved for unexplained developmental delays with appropriate evaluation
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Genetic testing identifies underlying causes of developmental delays and guides treatment
+
+- id: rule_pediatrics_behavioral_health_services
+  name: Pediatric Behavioral Health Services
+  description: Prior authorization for intensive behavioral health services in children
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "53"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '90834' # Psychotherapy, 45 minutes
+          - '90837' # Psychotherapy, 60 minutes
+          - '90847' # Family psychotherapy (conjoint psychotherapy) with patient present
+          - '90853' # Group psychotherapy (other than of a multiple-family group)
+          - 'H0032' # Mental health service plan development by non-physician
+      - diagnosis_code:
+          any_of:
+          - F90.9   # Attention-deficit hyperactivity disorder, unspecified type
+          - F91.9   # Conduct disorder, unspecified
+          - F93.0   # Separation anxiety disorder of childhood
+          - F94.9   # Childhood disorder of social functioning, unspecified
+          - F84.0   # Autistic disorder
+          - F32.9   # Major depressive disorder, single episode, unspecified
+      - patient_age:
+          min: 3
+          max: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F90.9  # ADHD requiring behavioral intervention
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # ADHD evaluation with functional impairment
+              days: 365
+              description: ADHD assessment within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F91.9  # Conduct disorder
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Behavioral problems affecting multiple settings
+              - '99214'
+              - '99215'
+              days: 180
+              description: Behavioral evaluation within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F84.0  # Autism with behavioral challenges
+          - prior_service_within_days:
+              service_codes:
+              - '96116' # Autism evaluation with behavioral needs
+              days: 365
+              description: Autism assessment within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F32.9  # Childhood depression
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Depression screening positive
+              - '99214'
+              - '99215'
+              days: 90
+              description: Depression evaluation within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Child psychiatry or psychology evaluation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Mental health evaluation within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F20.9  # Schizophrenia (requires specialized care)
+        - patient_age:
+            max: 2   # Too young for traditional therapy
+        - patient_age:
+            min: 19  # Adult mental health services
+  logic:
+    outcome: approved
+    reason: Behavioral health services approved for documented mental health condition with functional impairment
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Early behavioral health intervention improves long-term outcomes in children

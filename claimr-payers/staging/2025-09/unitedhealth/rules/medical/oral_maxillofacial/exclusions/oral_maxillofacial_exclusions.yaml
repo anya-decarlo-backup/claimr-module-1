@@ -1,0 +1,220 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D1110'
+    - 'D1120'
+    - 'D0120'
+    - 'D0150'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_dental_prophylaxis_2025_09
+    - dx_in_value_set: vs_routine_dental_examination_2025_09
+    - dx_in_value_set: vs_dental_cleaning_routine_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Routine dental care is excluded from medical coverage
+  exclusion_reason: "Routine dental care is excluded from medical coverage"
+  place_of_service:
+    include: ['11', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D2140'
+    - 'D2150'
+    - 'D2160'
+    - 'D2161'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dental_restorations_routine_2025_09
+    - dx_in_value_set: vs_dental_fillings_2025_09
+    - dx_in_value_set: vs_dental_crowns_routine_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Routine dental restorations are excluded from medical coverage
+  exclusion_reason: "Routine dental restorations are excluded from medical coverage"
+  place_of_service:
+    include: ['11', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D8010'
+    - 'D8020'
+    - 'D8030'
+    - 'D8040'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_orthodontic_treatment_cosmetic_2025_09
+    - dx_in_value_set: vs_braces_aesthetic_only_2025_09
+    - dx_in_value_set: vs_mild_malocclusion_cosmetic_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Orthodontic treatment for cosmetic purposes without functional impairment
+  exclusion_reason: "Orthodontic treatment for cosmetic purposes without functional impairment"
+  place_of_service:
+    include: ['11', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D5110'
+    - 'D5120'
+    - 'D5130'
+    - 'D5140'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dentures_routine_replacement_2025_09
+    - dx_in_value_set: vs_partial_dentures_cosmetic_2025_09
+    - dx_in_value_set: vs_dental_prosthetics_routine_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Routine dental prosthetics and dentures are excluded from medical coverage
+  exclusion_reason: "Routine dental prosthetics and dentures are excluded from medical coverage"
+  place_of_service:
+    include: ['11', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D7210'
+    - 'D7220'
+    - 'D7230'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_tooth_extraction_2025_09
+    - dx_in_value_set: vs_dental_extraction_cosmetic_2025_09
+    - dx_in_value_set: vs_wisdom_teeth_asymptomatic_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Routine tooth extractions without medical necessity are excluded
+  exclusion_reason: "Routine tooth extractions without medical necessity are excluded"
+  place_of_service:
+    include: ['11', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'E0485'
+    - 'E0486'
+    - 'D5999'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_sleep_appliance_no_sleep_study_2025_09
+    - dx_in_value_set: vs_oral_appliance_snoring_only_2025_09
+    - dx_in_value_set: vs_mild_sleep_apnea_cpap_appropriate_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Sleep appliances without documented sleep apnea or appropriate CPAP trial
+  exclusion_reason: "Sleep appliances without documented sleep apnea or appropriate CPAP trial"
+  place_of_service:
+    include: ['11', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D7960'
+    - 'D7970'
+    - 'D7971'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_frenectomy_cosmetic_only_2025_09
+    - dx_in_value_set: vs_mild_ankyloglossia_no_impairment_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Frenectomy for cosmetic purposes without functional impairment
+  exclusion_reason: "Frenectomy for cosmetic purposes without functional impairment"
+  patient_demographics:
+    age_range:
+      min: 0
+      max: 18
+  place_of_service:
+    include: ['11', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D7880'
+    - 'D7899'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_occlusal_guard_no_bruxism_2025_09
+    - dx_in_value_set: vs_night_guard_preventive_only_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Occlusal guards without documented bruxism or TMJ disorder
+  exclusion_reason: "Occlusal guards without documented bruxism or TMJ disorder"
+  place_of_service:
+    include: ['11', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"

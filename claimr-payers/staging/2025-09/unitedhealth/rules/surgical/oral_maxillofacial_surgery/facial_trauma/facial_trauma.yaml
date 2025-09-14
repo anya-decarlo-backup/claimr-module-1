@@ -1,0 +1,101 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21385'
+    - '21386'
+    - '21387'
+    - '21390'
+    - '21395'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_orbital_floor_fracture_2025_09
+    - dx_in_value_set: vs_orbital_wall_fracture_medial_2025_09
+    - dx_in_value_set: vs_orbital_rim_fracture_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Orbital fracture repair requires displaced fracture with functional impairment and imaging confirmation
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21421'
+    - '21422'
+    - '21423'
+    - '21431'
+    - '21432'
+    - '21433'
+    - '21435'
+    - '21436'
+    - '21445'
+    - '21446'
+    - '21447'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mandibular_fracture_displaced_2025_09
+    - dx_in_value_set: vs_mandibular_fracture_comminuted_2025_09
+    - dx_in_value_set: vs_mandibular_fracture_bilateral_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Mandibular fracture repair requires displaced or comminuted fracture with imaging confirmation
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '21345'
+    - '21346'
+    - '21347'
+    - '21348'
+    - '21355'
+    - '21356'
+    - '21360'
+    - '21365'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lefort_fracture_type_i_ii_iii_2025_09
+    - dx_in_value_set: vs_zygomatic_fracture_displaced_2025_09
+    - dx_in_value_set: vs_maxillary_fracture_comminuted_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Maxillary fracture repair requires displaced or comminuted fracture with imaging confirmation
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Oral and Maxillofacial Surgery"
+    last_verified: "2025-09-14T13:34:02-07:00"

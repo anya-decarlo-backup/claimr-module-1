@@ -1,0 +1,541 @@
+- id: rule_geriatrics_care_coordination_services
+  name: Long-Term Services and Supports Care Coordination
+  description: Prior authorization for LTSS care coordination and case management services
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "12", "13"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '99490' # Chronic care management services, at least 20 minutes of clinical staff time directed by a physician or other qualified health care professional, per calendar month
+          - '99491' # Chronic care management services; provided personally by a physician or other qualified health care professional, at least 30 minutes of physician or other qualified health care professional time, per calendar month
+          - '99487' # Complex chronic care management services, with the following required elements: multiple (two or more) chronic conditions expected to last at least 12 months, or until the death of the patient, chronic conditions place the patient at significant risk of death, acute exacerbation/decompensation, or functional decline, comprehensive care plan established, implemented, revised, or monitored, first 60 minutes of clinical staff time directed by a physician or other qualified health care professional, per calendar month
+          - '99489' # Complex chronic care management services, with the following required elements: multiple (two or more) chronic conditions expected to last at least 12 months, or until the death of the patient, chronic conditions place the patient at significant risk of death, acute exacerbation/decompensation, or functional decline, comprehensive care plan established, implemented, revised, or monitored, each additional 30 minutes of clinical staff time directed by a physician or other qualified health care professional, per calendar month
+      - diagnosis_code:
+          any_of:
+          - Z74.01  # Bed confinement status
+          - Z74.09  # Other reduced mobility
+          - Z87.891 # Personal history of nicotine dependence
+          - I50.9   # Heart failure, unspecified
+          - E11.9   # Type 2 diabetes mellitus without complications
+          - F03.90  # Unspecified dementia without behavioral disturbance
+          - N18.6   # End stage renal disease
+      - patient_age:
+          min: 65
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z74.01 # Bed confinement or severe mobility limitation
+              - Z74.09
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # ADL dependency documented (≥2 ADLs)
+              - '99214'
+              - '99215'
+              days: 90
+              description: Functional assessment within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multiple hospitalizations or ED visits
+              - '99214'
+              - '99215'
+              days: 365
+              description: Healthcare utilization within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F03.90 # Dementia requiring coordination
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Caregiver burden or safety concerns
+              - '99214'
+              - '99215'
+              days: 180
+              description: Caregiver assessment within past 6 months
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Complex medication regimen
+              - '99214'
+              - '99215'
+              days: 90
+              description: Medication complexity within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I50.9  # Heart failure with frequent exacerbations
+              - N18.6  # ESRD requiring coordination
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multiple specialists involved in care
+              - '99214'
+              - '99215'
+              days: 180
+              description: Multi-specialty care within past 6 months
+        - all_of:
+          - patient_age:
+              min: 80   # Advanced age with multiple conditions
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # ≥3 chronic conditions documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Multiple comorbidities within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Care coordinator or case manager evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Care coordination evaluation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Z51.11 # Active hospice care (different coordination needs)
+        - prior_service_within_days:
+            service_codes:
+            - '99490' # Recent care management services
+            - '99491'
+            - '99487'
+            - '99489'
+            days: 30
+            description: Care management within past 30 days
+  logic:
+    outcome: approved
+    reason: LTSS care coordination approved for complex elderly patient with multiple chronic conditions
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Care coordination reduces hospitalizations and improves quality of life in complex elderly patients
+
+- id: rule_geriatrics_home_health_aide_services
+  name: Home Health Aide and Personal Care Services
+  description: Prior authorization for home health aide services for functionally impaired elderly
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["12"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'G0156' # Services of home health/hospice aide in home health or hospice setting, each 15 minutes
+          - 'S5125' # Attendant care services; per hour
+          - 'S5126' # Attendant care services; per diem
+          - 'T1019' # Personal care services, per 15 minutes, not for an inpatient or resident of a hospital, nursing facility, intermediate care facility for individuals with intellectual disability, or institution for mental disease, part of the individualized plan of treatment
+      - diagnosis_code:
+          any_of:
+          - Z74.01  # Bed confinement status
+          - Z74.09  # Other reduced mobility
+          - Z87.891 # Personal history of nicotine dependence
+          - I69.398 # Other sequelae of cerebral infarction
+          - M79.3   # Panniculitis, unspecified
+          - F03.90  # Unspecified dementia without behavioral disturbance
+      - patient_age:
+          min: 65
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z74.01 # Severe functional impairment
+              - Z74.09
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # ADL dependency ≥3 activities documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Functional assessment within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Safety concerns in home environment
+              - '99214'
+              - '99215'
+              days: 90
+              description: Safety assessment within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I69.398 # Stroke with residual deficits
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Hemiplegia or significant weakness documented
+              - '99214'
+              - '99215'
+              days: 180
+              description: Neurological assessment within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F03.90 # Dementia with supervision needs
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Wandering or safety concerns documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Behavioral assessment within past 90 days
+        - all_of:
+          - patient_age:
+              min: 85   # Advanced age with frailty
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Caregiver unavailable or overwhelmed
+              - '99214'
+              - '99215'
+              days: 90
+              description: Caregiver assessment within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Home health nursing or therapy evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Home health evaluation within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Physician certification of homebound status
+          - '99214'
+          - '99215'
+          days: 60
+          description: Homebound certification within past 60 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Z74.2  # Need for assistance at home and no other household member able to render care (may indicate nursing facility need)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # 24-hour supervision required
+            - '99214'
+            - '99215'
+            days: 30
+            description: Continuous care needs within past 30 days
+  logic:
+    outcome: approved
+    reason: Home health aide services approved for functionally impaired elderly patient with documented ADL needs
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Home health aide services enable safe community living for functionally impaired elderly
+
+- id: rule_geriatrics_adult_day_services
+  name: Adult Day Health Services
+  description: Prior authorization for adult day health programs for elderly with functional or cognitive impairment
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["13"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'S5100' # Day care services, adult; per half day
+          - 'S5101' # Day care services, adult; per day
+          - 'S5102' # Day care services, adult; per diem
+          - 'T2025' # Waiver services; specialized medical equipment and supplies
+      - diagnosis_code:
+          any_of:
+          - F03.90  # Unspecified dementia without behavioral disturbance
+          - F03.91  # Unspecified dementia with behavioral disturbance
+          - G30.9   # Alzheimer's disease, unspecified
+          - Z74.09  # Other reduced mobility
+          - Z87.891 # Personal history of nicotine dependence
+          - I69.398 # Other sequelae of cerebral infarction
+      - patient_age:
+          min: 65
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F03.90 # Dementia requiring structured activities
+              - F03.91
+              - G30.9
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Social isolation or caregiver respite needs
+              - '99214'
+              - '99215'
+              days: 90
+              description: Social assessment within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Behavioral symptoms managed in structured setting
+              - '99214'
+              - '99215'
+              days: 180
+              description: Behavioral management within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z74.09 # Functional impairment with socialization needs
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # IADL limitations documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Functional assessment within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I69.398 # Stroke with rehabilitation needs
+          - prior_service_within_days:
+              service_codes:
+              - '97110' # Ongoing therapy needs in group setting
+              - '97112'
+              - '97116'
+              days: 180
+              description: Therapy services within past 6 months
+        - all_of:
+          - patient_age:
+              min: 75   # Advanced age with socialization needs
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Caregiver working or needing respite
+              - '99214'
+              - '99215'
+              days: 90
+              description: Caregiver support needs within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Adult day program evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Program evaluation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - F03.91 # Severe behavioral disturbances requiring specialized care
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Aggressive behaviors unsafe in group setting
+            - '99214'
+            - '99215'
+            days: 90
+            description: Behavioral contraindications within past 90 days
+  logic:
+    outcome: approved
+    reason: Adult day services approved for elderly patient with cognitive/functional impairment and socialization needs
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Adult day programs provide structured activities and caregiver respite for elderly with impairments
+
+- id: rule_geriatrics_respite_care_services
+  name: Respite Care Services for Caregivers
+  description: Prior authorization for temporary respite care to support family caregivers
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["12", "13", "21"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'S5150' # Unskilled respite care, not hospice; per 15 minutes
+          - 'S5151' # Unskilled respite care, not hospice; per diem
+          - 'T1005' # Respite care services, up to 15 minutes
+          - 'H0045' # Respite care services, not in the home, per diem
+      - diagnosis_code:
+          any_of:
+          - F03.90  # Unspecified dementia without behavioral disturbance
+          - F03.91  # Unspecified dementia with behavioral disturbance
+          - Z74.01  # Bed confinement status
+          - Z74.09  # Other reduced mobility
+          - I69.398 # Other sequelae of cerebral infarction
+          - G93.1   # Anoxic brain damage, not elsewhere classified
+      - patient_age:
+          min: 65
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F03.90 # Dementia requiring continuous supervision
+              - F03.91
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # 24-hour supervision needs documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Supervision needs within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Primary caregiver stress or health issues
+              - '99214'
+              - '99215'
+              days: 90
+              description: Caregiver assessment within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z74.01 # Severe functional dependency
+              - Z74.09
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Total care needs documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Care needs assessment within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I69.398 # Stroke with complex care needs
+              - G93.1
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multiple daily interventions required
+              - '99214'
+              - '99215'
+              days: 90
+              description: Care complexity within past 90 days
+        - all_of:
+          - patient_age:
+              min: 80   # Advanced age with intensive care needs
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Caregiver providing >40 hours/week care
+              - '99214'
+              - '99215'
+              days: 90
+              description: Caregiver burden within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Social worker or case manager evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Respite needs assessment within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Z51.11 # Hospice care (different respite services)
+        - prior_service_within_days:
+            service_codes:
+            - 'S5150' # Recent respite services
+            - 'S5151'
+            - 'T1005'
+            - 'H0045'
+            days: 30
+            description: Respite care within past 30 days
+  logic:
+    outcome: approved
+    reason: Respite care approved for elderly patient with intensive care needs and documented caregiver burden
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Respite care prevents caregiver burnout and enables continued community-based care
+
+- id: rule_geriatrics_assistive_technology_dme
+  name: Assistive Technology and Durable Medical Equipment
+  description: Prior authorization for assistive devices and DME to support aging in place
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "12"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - 'E0130' # Walker, rigid (pickup), adjustable or fixed height
+          - 'E0143' # Walker, folding, wheeled, adjustable or fixed height
+          - 'E0163' # Commode chair, mobile or stationary, with fixed arms
+          - 'E0185' # Gel or gel-like pressure pad for mattress, standard mattress length and width
+          - 'E0250' # Hospital bed, fixed height, with any type side rails, with mattress
+          - 'E1399' # Durable medical equipment, miscellaneous
+      - diagnosis_code:
+          any_of:
+          - Z74.09  # Other reduced mobility
+          - Z91.81  # History of falling
+          - R29.6   # Repeated falls
+          - I69.398 # Other sequelae of cerebral infarction
+          - M25.561 # Pain in right knee
+          - M25.562 # Pain in left knee
+          - F03.90  # Unspecified dementia without behavioral disturbance
+      - patient_age:
+          min: 65
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z74.09 # Mobility impairment requiring assistive device
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Gait instability or fall risk documented
+              - '99214'
+              - '99215'
+              days: 90
+              description: Mobility assessment within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '97110' # Physical therapy evaluation recommending device
+              - '97112'
+              - '97116'
+              days: 180
+              description: Therapy evaluation within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Z91.81 # Fall history requiring safety equipment
+              - R29.6
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multiple falls documented
+              - '99214'
+              - '99215'
+              days: 365
+              description: Fall history within past year
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - I69.398 # Stroke with residual mobility deficits
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Hemiparesis or weakness documented
+              - '99214'
+              - '99215'
+              days: 180
+              description: Neurological assessment within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - F03.90 # Dementia with safety concerns
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Wandering or confusion creating safety risks
+              - '99214'
+              - '99215'
+              days: 90
+              description: Safety assessment within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # DME supplier or therapist evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Equipment evaluation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Z74.2  # Need for assistance and no household member (may need institutional care)
+        - prior_service_within_days:
+            service_codes:
+            - 'E0130' # Recent similar equipment provided
+            - 'E0143'
+            - 'E0163'
+            - 'E0185'
+            - 'E0250'
+            days: 365
+            description: Similar DME within past year
+  logic:
+    outcome: approved
+    reason: Assistive technology approved for elderly patient with documented mobility impairment and safety needs
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Assistive devices promote independence and safety for elderly with functional limitations

@@ -1,0 +1,176 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50590'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kidney_stones_eswl_eligible_2025_09
+    - dx_in_value_set: vs_ureteral_stones_eswl_2025_09
+    - dx_in_value_set: vs_renal_calculi_shock_wave_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: ESWL requires kidney or ureteral stones with appropriate size and location for shock wave lithotripsy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_eswl
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '52353'
+    - '52356'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ureteral_stones_ureteroscopy_2025_09
+    - dx_in_value_set: vs_kidney_stones_ureteroscopy_2025_09
+    - dx_in_value_set: vs_stone_eswl_failure_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Ureteroscopic lithotripsy requires ureteral or renal stones not amenable to ESWL or failed ESWL
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_ureteroscopic_lithotripsy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50080'
+    - '50081'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kidney_stones_percutaneous_2025_09
+    - dx_in_value_set: vs_staghorn_calculi_2025_09
+    - dx_in_value_set: vs_large_renal_stones_pcnl_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Percutaneous nephrolithotomy requires large renal stones >2cm or staghorn calculi not amenable to other methods
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_pcnl
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50060'
+    - '50065'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kidney_stones_open_surgery_2025_09
+    - dx_in_value_set: vs_complex_renal_calculi_2025_09
+    - dx_in_value_set: vs_stone_minimally_invasive_failure_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Open stone surgery requires complex stones not amenable to minimally invasive techniques or failed endoscopic procedures
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_open_stone_surgery
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '52320'
+    - '52325'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bladder_stones_cystolithotripsy_2025_09
+    - dx_in_value_set: vs_vesical_calculi_large_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cystolithotripsy requires large bladder stones not amenable to simple cystoscopic removal
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_cystolithotripsy
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '52352'
+    - '52354'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ureteral_stricture_stone_2025_09
+    - dx_in_value_set: vs_impacted_ureteral_stone_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Ureteral stone extraction requires impacted stones or associated stricture with obstruction
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_urologic_guidelines_2025.pdf
+    last_verified_at: '2025-09-13'
+  id: rule_urologic_surgery_ureteral_stone_extraction

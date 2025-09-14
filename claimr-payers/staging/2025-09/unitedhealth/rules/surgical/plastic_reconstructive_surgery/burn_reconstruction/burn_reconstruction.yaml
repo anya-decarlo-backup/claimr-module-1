@@ -1,0 +1,185 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '15002'
+    - '15003'
+    - '15004'
+    - '15005'
+    - '11000'
+    - '11001'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_thermal_burns_second_third_degree_2025_09
+    - dx_in_value_set: vs_chemical_burns_deep_2025_09
+    - dx_in_value_set: vs_electrical_burns_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Acute burn debridement and grafting requires second or third degree burns with tissue necrosis
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '15200'
+    - '15201'
+    - '15220'
+    - '15221'
+    - '15240'
+    - '15241'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_full_thickness_burn_2025_09
+    - dx_in_value_set: vs_burn_contracture_2025_09
+    - dx_in_value_set: vs_burn_scar_functional_impairment_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Full thickness skin grafting requires deep burns or contractures with functional impairment
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '15734'
+    - '15738'
+    - '15756'
+    - '15757'
+    - '15758'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_burn_defect_complex_2025_09
+    - dx_in_value_set: vs_burn_facial_reconstruction_2025_09
+    - dx_in_value_set: vs_burn_hand_reconstruction_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Flap reconstruction requires complex burn defects not amenable to simple grafting
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '26121'
+    - '26123'
+    - '25447'
+    - '14040'
+    - '14041'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_burn_contracture_joint_2025_09
+    - dx_in_value_set: vs_burn_scar_band_2025_09
+    - dx_in_value_set: vs_burn_functional_limitation_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Contracture release requires burn contractures with documented functional limitation
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '13100'
+    - '13101'
+    - '13120'
+    - '13121'
+    - '14000'
+    - '14001'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_burn_scar_hypertrophic_2025_09
+    - dx_in_value_set: vs_burn_scar_keloid_2025_09
+    - dx_in_value_set: vs_burn_scar_aesthetic_functional_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 70
+  logic:
+    outcome: PA_REQUIRED
+    notes: Scar revision requires hypertrophic or keloid scars with functional or significant aesthetic impairment
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '11960'
+    - '11970'
+    - '11971'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_burn_reconstruction_staged_2025_09
+    - dx_in_value_set: vs_burn_defect_large_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Tissue expansion requires staged reconstruction of large burn defects
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Surgical Guidelines - Plastic and Reconstructive Surgery"
+    last_verified: "2025-09-14T14:00:08-07:00"

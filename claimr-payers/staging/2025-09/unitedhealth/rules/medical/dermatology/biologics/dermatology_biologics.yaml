@@ -1,0 +1,164 @@
+# Dermatology Biologics - UHC CA
+
+- id: rule_derm_psoriasis_tnf_inhibitors
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J0717", "J1438", "J3262"]
+    ndc: ["0074-0554", "50242-0134", "0074-3799"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_psoriasis_moderate_severe_2025_09"
+      - has_flag: "failed_topical_systemic_therapy"
+      - bsa_affected_gte: 10
+      - age_gte: 18
+    none_of:
+      - dx_in_value_set: "vs_active_infection_2025_09"
+      - dx_in_value_set: "vs_malignancy_active_2025_09"
+      - has_flag: "live_vaccine_recent"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "TNF inhibitors for psoriasis require moderate-severe disease and conventional therapy failure"
+    auth_duration_days: 180
+    max_units_per_period: 26
+    period_type: "yearly"
+  precedence: 70
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_biologics_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_psoriasis_il17_inhibitors
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J3590", "J3262"]
+    ndc: ["0078-0659", "0078-0660"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_psoriasis_moderate_severe_2025_09"
+      - has_flag: "failed_tnf_inhibitor"
+      - pasi_score_gte: 12
+      - age_gte: 18
+    none_of:
+      - dx_in_value_set: "vs_inflammatory_bowel_disease_2025_09"
+      - dx_in_value_set: "vs_candida_infection_history_2025_09"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "IL-17 inhibitors require TNF inhibitor failure and PASI ≥12"
+    auth_duration_days: 180
+    max_units_per_period: 12
+    period_type: "monthly"
+  precedence: 65
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_il17_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_atopic_dermatitis_biologics
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J0490", "J2357"]
+    ndc: ["0173-0781", "0173-0782"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_atopic_dermatitis_moderate_severe_2025_09"
+      - has_flag: "failed_topical_therapy_adequate"
+      - iga_score_gte: 3
+      - age_gte: 12
+    any_of:
+      - has_flag: "systemic_therapy_contraindicated"
+      - has_flag: "failed_systemic_immunosuppressants"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "Atopic dermatitis biologics require moderate-severe disease and topical therapy failure"
+    auth_duration_days: 180
+    max_units_per_period: 26
+    period_type: "yearly"
+  precedence: 70
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_atopic_dermatitis_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_hidradenitis_biologics
+  type: PRIOR_AUTH
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J0717", "J1438"]
+    ndc: ["0074-0554", "50242-0134"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_hidradenitis_suppurativa_2025_09"
+      - has_flag: "hurley_stage_2_or_3"
+      - has_flag: "failed_conventional_therapy"
+      - age_gte: 18
+    none_of:
+      - dx_in_value_set: "vs_active_skin_infection_2025_09"
+      - has_flag: "abscess_active_untreated"
+  logic:
+    outcome: "PRIOR_AUTH_REQUIRED"
+    note: "HS biologics require Hurley Stage II/III and conventional therapy failure"
+    auth_duration_days: 180
+    max_units_per_period: 26
+    period_type: "yearly"
+  precedence: 70
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_hidradenitis_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_biologic_monitoring
+  type: EDIT
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["85025", "80053", "86580", "87116"]
+  conditions:
+    all_of:
+      - dx_in_value_set: "vs_dermatologic_conditions_biologic_2025_09"
+      - has_flag: "on_biologic_therapy"
+  logic:
+    outcome: "COVERED"
+    note: "Enhanced coverage for biologic monitoring (CBC, CMP, TB screening)"
+    frequency_limit: "quarterly"
+  precedence: 80
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_biologic_monitoring_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"

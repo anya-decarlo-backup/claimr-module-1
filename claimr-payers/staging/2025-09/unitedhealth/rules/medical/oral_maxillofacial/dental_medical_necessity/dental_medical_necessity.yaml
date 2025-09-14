@@ -1,0 +1,145 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D7210'
+    - 'D7220'
+    - 'D7230'
+    - 'D7240'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_impacted_teeth_medical_necessity_2025_09
+    - dx_in_value_set: vs_cyst_tumor_oral_cavity_2025_09
+    - dx_in_value_set: vs_infection_cellulitis_oral_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Surgical tooth extraction requires medical necessity beyond routine dental care
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D7510'
+    - 'D7520'
+    - 'D7530'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_incision_drainage_oral_infection_2025_09
+    - dx_in_value_set: vs_abscess_oral_cavity_2025_09
+    - dx_in_value_set: vs_cellulitis_facial_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Incision and drainage requires acute infection with medical necessity
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D7410'
+    - 'D7411'
+    - 'D7412'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_benign_oral_lesion_2025_09
+    - dx_in_value_set: vs_oral_pathology_biopsy_2025_09
+    - dx_in_value_set: vs_suspicious_oral_lesion_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Excision of benign lesions requires pathologic confirmation and medical necessity
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D7140'
+    - 'D7210'
+    - 'D7220'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pre_radiation_dental_extraction_2025_09
+    - dx_in_value_set: vs_pre_chemotherapy_dental_2025_09
+    - dx_in_value_set: vs_pre_organ_transplant_dental_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pre-treatment dental extractions require oncology or transplant medical necessity
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - 'D7960'
+    - 'D7970'
+    - 'D7971'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_frenectomy_medical_necessity_2025_09
+    - dx_in_value_set: vs_ankyloglossia_severe_2025_09
+    - dx_in_value_set: vs_speech_impairment_frenulum_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 18
+  logic:
+    outcome: PA_REQUIRED
+    notes: Frenectomy requires documented functional impairment or speech therapy failure
+  precedence: 80
+  effective_start: '2025-01-01'
+  _meta:
+    source: "UnitedHealth 2025.09 Medical Guidelines - Oral and Maxillofacial"
+    last_verified: "2025-09-14T14:03:39-07:00"

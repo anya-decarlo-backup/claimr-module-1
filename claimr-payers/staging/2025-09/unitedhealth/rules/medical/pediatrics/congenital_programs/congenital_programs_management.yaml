@@ -1,0 +1,488 @@
+- id: rule_pediatrics_congenital_heart_surgery
+  name: Congenital Heart Surgery Programs
+  description: Prior authorization for complex congenital cardiac surgical procedures
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '33470' # Valvulotomy, pulmonary valve, closed heart; transventricular
+          - '33475' # Valvulotomy, pulmonary valve, open heart; with inflow occlusion
+          - '33510' # Caval to pulmonary artery anastomosis (eg, Fontan procedure)
+          - '33615' # Repair of major aortopulmonary septal defect (eg, aortopulmonary window)
+          - '33641' # Repair atrial septal defect, secundum, with cardiopulmonary bypass
+          - '33645' # Direct or patch closure, sinus venosus, with or without anomalous pulmonary venous drainage
+      - diagnosis_code:
+          any_of:
+          - Q21.0   # Ventricular septal defect
+          - Q21.1   # Atrial septal defect
+          - Q22.0   # Pulmonary valve atresia
+          - Q22.1   # Congenital pulmonary valve stenosis
+          - Q23.0   # Congenital stenosis of aortic valve
+          - Q23.4   # Hypoplastic left heart syndrome
+          - Q25.1   # Coarctation of aorta
+      - patient_age:
+          min: 0
+          max: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q21.0  # VSD requiring surgical closure
+          - prior_service_within_days:
+              service_codes:
+              - '93312' # Echocardiogram showing hemodynamically significant VSD
+              - '93313'
+              - '93314'
+              days: 90
+              description: Cardiac imaging within past 90 days
+          - prior_service_within_days:
+              service_codes:
+              - '93451' # Cardiac catheterization if indicated
+              days: 180
+              description: Cardiac catheterization within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q23.4  # Hypoplastic left heart syndrome
+          - prior_service_within_days:
+              service_codes:
+              - '93312' # Echo confirming HLHS anatomy
+              - '93313'
+              days: 30
+              description: Cardiac imaging within past 30 days
+          - patient_age:
+              max: 1   # Typically requires staged procedures in infancy
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q22.0  # Pulmonary atresia
+              - Q22.1  # Pulmonary stenosis
+          - prior_service_within_days:
+              service_codes:
+              - '93312' # Echo showing severe obstruction
+              - '93313'
+              days: 90
+              description: Cardiac imaging within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q25.1  # Coarctation of aorta
+          - prior_service_within_days:
+              service_codes:
+              - '93312' # Echo showing significant gradient
+              - '93313'
+              days: 90
+              description: Cardiac imaging within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Pediatric cardiology evaluation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Pediatric cardiology consultation within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Pediatric cardiac surgery consultation
+          - '99214'
+          - '99215'
+          days: 90
+          description: Cardiac surgery consultation within past 90 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - I50.9  # Heart failure, unspecified (may indicate inoperability)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Irreversible pulmonary vascular disease
+            - '99214'
+            - '99215'
+            days: 180
+            description: Eisenmenger syndrome within past 6 months
+  logic:
+    outcome: approved
+    reason: Congenital heart surgery approved for hemodynamically significant lesion with appropriate evaluation
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Timely surgical repair prevents irreversible complications in congenital heart disease
+
+- id: rule_pediatrics_neural_tube_defect_surgery
+  name: Neural Tube Defect Surgical Repair
+  description: Prior authorization for myelomeningocele and spina bifida surgical procedures
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '63704' # Repair of myelomeningocele; less than 5 cm diameter
+          - '63706' # Repair of myelomeningocele; 5 cm or greater diameter
+          - '62223' # Creation of shunt; ventriculo-peritoneal, -pleural, other terminus
+          - '63250' # Laminectomy for excision or occlusion of arteriovenous malformation of spinal cord
+      - diagnosis_code:
+          any_of:
+          - Q05.9   # Spina bifida, unspecified
+          - Q05.0   # Cervical spina bifida with hydrocephalus
+          - Q05.1   # Thoracic spina bifida with hydrocephalus
+          - Q05.2   # Lumbar spina bifida with hydrocephalus
+          - Q03.9   # Congenital hydrocephalus, unspecified
+          - G91.9   # Hydrocephalus, unspecified
+      - patient_age:
+          min: 0
+          max: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q05.9  # Myelomeningocele requiring closure
+              - Q05.0
+              - Q05.1
+              - Q05.2
+          - prior_service_within_days:
+              service_codes:
+              - '70551' # MRI spine showing neural tube defect
+              - '70552'
+              - '70553'
+              days: 30
+              description: Spinal imaging within past 30 days
+          - patient_age:
+              max: 0.1  # Typically repaired within days of birth
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q03.9  # Hydrocephalus requiring shunt
+              - G91.9
+          - prior_service_within_days:
+              service_codes:
+              - '70551' # MRI brain showing hydrocephalus
+              - '70552'
+              - '70553'
+              days: 30
+              description: Brain imaging within past 30 days
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Progressive head circumference or symptoms
+              - '99214'
+              - '99215'
+              days: 30
+              description: Clinical progression within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q05.0  # Associated hydrocephalus
+              - Q05.1
+              - Q05.2
+          - prior_service_within_days:
+              service_codes:
+              - '93312' # Echo if associated cardiac anomalies
+              - '93313'
+              days: 90
+              description: Cardiac evaluation within past 90 days
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Pediatric neurosurgery evaluation
+          - '99214'
+          - '99215'
+          days: 30
+          description: Neurosurgery consultation within past 30 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Q00.0  # Anencephaly (incompatible with survival)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Multiple severe anomalies incompatible with meaningful survival
+            - '99214'
+            - '99215'
+            days: 30
+            description: Lethal anomaly complex within past 30 days
+  logic:
+    outcome: approved
+    reason: Neural tube defect surgery approved for functional preservation and prevention of complications
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Early surgical intervention preserves neurological function and prevents infection
+
+- id: rule_pediatrics_cleft_lip_palate_repair
+  name: Cleft Lip and Palate Surgical Repair
+  description: Prior authorization for cleft lip and palate reconstructive procedures
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22", "24"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '40700' # Plastic repair of cleft lip/nasal deformity; primary, partial or complete, unilateral
+          - '40701' # Plastic repair of cleft lip/nasal deformity; primary, partial or complete, bilateral
+          - '42200' # Palatoplasty for cleft palate, soft and/or hard palate only
+          - '42205' # Palatoplasty for cleft palate, with closure of alveolar ridge; soft tissue
+          - '42210' # Palatoplasty for cleft palate, with closure of alveolar ridge; with bone graft to alveolar ridge
+      - diagnosis_code:
+          any_of:
+          - Q36.0   # Cleft lip, bilateral
+          - Q36.1   # Cleft lip, median
+          - Q36.9   # Cleft lip, unilateral
+          - Q37.0   # Cleft hard palate with bilateral cleft lip
+          - Q37.1   # Cleft hard palate with unilateral cleft lip
+          - Q35.9   # Cleft palate, unspecified
+      - patient_age:
+          min: 0
+          max: 18
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q36.0  # Cleft lip repair
+              - Q36.1
+              - Q36.9
+          - patient_age:
+              min: 0.25  # Typically repaired at 3-6 months
+              max: 1
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Plastic surgery evaluation
+              - '99214'
+              - '99215'
+              days: 90
+              description: Surgical consultation within past 90 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q35.9  # Cleft palate repair
+              - Q37.0
+              - Q37.1
+          - patient_age:
+              min: 0.75  # Typically repaired at 9-18 months
+              max: 2
+          - prior_service_within_days:
+              service_codes:
+              - '92523' # Speech evaluation if age appropriate
+              days: 180
+              description: Speech assessment within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q37.0  # Combined cleft lip and palate
+              - Q37.1
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Multidisciplinary cleft team evaluation
+              - '99214'
+              - '99215'
+              days: 180
+              description: Team evaluation within past 6 months
+        - all_of:
+          - patient_age:
+              min: 6   # Secondary procedures
+              max: 18
+          - prior_service_within_days:
+              service_codes:
+              - '42210' # Bone graft procedures in mixed dentition
+              days: 1825
+              description: Previous cleft repair within past 5 years
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Plastic surgery consultation
+          - '99214'
+          - '99215'
+          days: 180
+          description: Surgical consultation within past 6 months
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Q87.0  # Congenital malformation syndromes predominantly affecting facial appearance (may need different approach)
+        - patient_age:
+            min: 19  # Adult reconstructive procedures
+  logic:
+    outcome: approved
+    reason: Cleft repair approved for functional and aesthetic restoration at appropriate developmental stage
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Staged cleft repair optimizes speech, feeding, and facial development
+
+- id: rule_pediatrics_congenital_diaphragmatic_hernia
+  name: Congenital Diaphragmatic Hernia Repair
+  description: Prior authorization for CDH surgical repair and ECMO support
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '39503' # Repair, neonatal diaphragmatic hernia, with or without chest tube insertion and with or without creation of ventral hernia
+          - '39540' # Repair, diaphragmatic hernia (other than neonatal), traumatic; acute
+          - '33946' # Extracorporeal membrane oxygenation (ECMO) if required
+      - diagnosis_code:
+          any_of:
+          - Q79.0   # Congenital diaphragmatic hernia
+          - P28.5   # Respiratory failure of newborn
+          - P29.0   # Neonatal cardiac failure
+      - patient_age:
+          min: 0
+          max: 1
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q79.0  # CDH requiring repair
+          - prior_service_within_days:
+              service_codes:
+              - '76700' # Chest X-ray showing CDH
+              days: 1
+              description: Chest imaging within past day
+          - prior_service_within_days:
+              service_codes:
+              - '82803' # Blood gas showing respiratory compromise
+              days: 1
+              description: Blood gas analysis within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P28.5  # Respiratory failure from CDH
+          - prior_service_within_days:
+              service_codes:
+              - '94002' # Mechanical ventilation
+              - '94003'
+              days: 1
+              description: Ventilatory support within past day
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - P29.0  # Cardiac failure from CDH
+          - prior_service_within_days:
+              service_codes:
+              - '93312' # Echo showing pulmonary hypertension
+              - '93313'
+              days: 1
+              description: Cardiac evaluation within past day
+      - prior_service_within_days:
+          service_codes:
+          - '99468' # Neonatal critical care
+          - '99469'
+          days: 1
+          description: NICU evaluation within past day
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Pediatric surgery consultation
+          - '99214'
+          - '99215'
+          days: 7
+          description: Surgical consultation within past week
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Q89.7  # Multiple congenital malformations, not elsewhere classified (may affect prognosis)
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Severe associated anomalies
+            - '99214'
+            - '99215'
+            days: 7
+            description: Lethal anomaly assessment within past week
+  logic:
+    outcome: approved
+    reason: CDH repair approved for life-threatening congenital diaphragmatic hernia
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Surgical repair is essential for survival in congenital diaphragmatic hernia
+
+- id: rule_pediatrics_esophageal_atresia_repair
+  name: Esophageal Atresia and Tracheoesophageal Fistula Repair
+  description: Prior authorization for EA/TEF surgical correction
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["21", "22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '43305' # Esophagoplasty (plastic repair or reconstruction), cervical approach; without repair of tracheoesophageal fistula
+          - '43312' # Esophagoplasty (plastic repair or reconstruction), thoracic approach; with repair of tracheoesophageal fistula
+          - '43314' # Esophagoplasty (plastic repair or reconstruction), thoracic approach; with colon interposition or small intestine reconstruction
+      - diagnosis_code:
+          any_of:
+          - Q39.0   # Atresia of esophagus without fistula
+          - Q39.1   # Atresia of esophagus with tracheo-esophageal fistula
+          - Q39.2   # Congenital tracheo-esophageal fistula without atresia
+          - Q39.3   # Congenital stenosis and stricture of esophagus
+      - patient_age:
+          min: 0
+          max: 1
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q39.0  # Esophageal atresia
+              - Q39.1
+          - prior_service_within_days:
+              service_codes:
+              - '74220' # Upper GI series or contrast study showing anatomy
+              days: 3
+              description: GI imaging within past 3 days
+          - patient_age:
+              max: 0.02  # Typically repaired within days of birth
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q39.2  # TEF without atresia
+          - prior_service_within_days:
+              service_codes:
+              - '31622' # Bronchoscopy showing fistula
+              days: 7
+              description: Bronchoscopy within past week
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - Q39.1  # EA with TEF (most common type)
+          - prior_service_within_days:
+              service_codes:
+              - '99213' # Inability to pass nasogastric tube
+              - '99214'
+              - '99215'
+              days: 1
+              description: Clinical signs within past day
+      - prior_service_within_days:
+          service_codes:
+          - '99468' # Neonatal critical care
+          - '99469'
+          days: 1
+          description: NICU evaluation within past day
+      - prior_service_within_days:
+          service_codes:
+          - '99213' # Pediatric surgery consultation
+          - '99214'
+          - '99215'
+          days: 3
+          description: Surgical consultation within past 3 days
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - Q89.7  # Multiple severe anomalies
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Severe cardiac anomalies precluding surgery
+            - '99214'
+            - '99215'
+            days: 7
+            description: Cardiac contraindication within past week
+  logic:
+    outcome: approved
+    reason: EA/TEF repair approved for life-threatening congenital anomaly requiring urgent surgical correction
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Surgical repair is essential for survival and normal feeding in EA/TEF

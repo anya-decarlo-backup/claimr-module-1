@@ -1,0 +1,300 @@
+- id: rule_infectious_opat_cellulitis
+  name: OPAT for Cellulitis and Skin/Soft Tissue Infections
+  description: Prior authorization for outpatient parenteral antimicrobial therapy for complicated cellulitis
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0690  # Cefazolin
+          - J0692  # Cefepime
+          - J0696  # Ceftriaxone
+          - J1956  # Levofloxacin
+          - J2770  # Quinupristin/dalfopristin
+          - J3490  # Unclassified drugs
+          - '96365' # IV infusion initial
+          - '96366' # IV infusion additional
+      - diagnosis_code:
+          any_of:
+          - L03.90  # Cellulitis, unspecified
+          - L03.91  # Acute lymphangitis
+          - L08.9   # Local infection of skin
+          - L02.90  # Cutaneous abscess
+          - M79.3   # Panniculitis
+      - patient_age:
+          min: 18
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Hospital admission
+            - '99222'
+            - '99223'
+            days: 14
+            description: Recent hospitalization within past 2 weeks
+        - all_of:
+          - prior_service_within_days:
+              service_codes:
+              - J0690
+              - J0692
+              - J0696
+              days: 3
+              description: Failed oral antibiotic therapy within past 3 days
+          - diagnosis_code:
+              any_of:
+              - L03.116 # Cellulitis of right lower limb
+              - L03.126 # Cellulitis of left lower limb
+              - L03.90  # Cellulitis, unspecified
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - N18.6  # End stage renal disease
+            - I50.9  # Heart failure, unspecified
+            - D84.9  # Immunodeficiency, unspecified
+  logic:
+    outcome: approved
+    reason: OPAT approved for complicated cellulitis requiring parenteral therapy with appropriate monitoring
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: OPAT reduces hospital length of stay while maintaining clinical efficacy for appropriate infections
+
+- id: rule_infectious_opat_osteomyelitis
+  name: OPAT for Osteomyelitis
+  description: Prior authorization for outpatient parenteral antimicrobial therapy for osteomyelitis
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0690  # Cefazolin
+          - J0692  # Cefepime
+          - J0696  # Ceftriaxone
+          - J2770  # Quinupristin/dalfopristin
+          - J3490  # Unclassified drugs
+          - '96365' # IV infusion initial
+          - '96366' # IV infusion additional
+      - diagnosis_code:
+          any_of:
+          - M86.9   # Osteomyelitis, unspecified
+          - M86.10  # Other acute osteomyelitis
+          - M86.20  # Subacute osteomyelitis
+          - M86.30  # Chronic multifocal osteomyelitis
+          - M86.40  # Chronic osteomyelitis with draining sinus
+      - patient_age:
+          min: 18
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '73700' # CT scan without contrast
+            - '73701' # CT scan with contrast
+            - '78306' # Bone scan
+            days: 30
+            description: Imaging confirmation within past 30 days
+        - any_of:
+          - prior_service_within_days:
+              service_codes:
+              - '87040' # Blood culture
+              - '87070' # Culture, any source
+              days: 14
+              description: Culture results within past 2 weeks
+          - prior_service_within_days:
+              service_codes:
+              - '20220' # Bone biopsy
+              - '20225' # Bone biopsy with trocar
+              days: 30
+              description: Bone biopsy within past 30 days
+      - utilization_limit:
+          per_episode: 42
+          description: Maximum 6 weeks of OPAT therapy per episode
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - N18.6  # End stage renal disease
+            - I50.9  # Heart failure, unspecified
+            - D84.9  # Immunodeficiency, unspecified
+  logic:
+    outcome: approved
+    reason: OPAT approved for osteomyelitis with imaging confirmation and culture guidance
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Extended parenteral therapy required for bone penetration and infection eradication
+
+- id: rule_infectious_opat_endocarditis
+  name: OPAT for Endocarditis
+  description: Prior authorization for outpatient parenteral antimicrobial therapy for endocarditis
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0690  # Cefazolin
+          - J0692  # Cefepime
+          - J0696  # Ceftriaxone
+          - J2770  # Quinupristin/dalfopristin
+          - J3490  # Unclassified drugs
+          - '96365' # IV infusion initial
+          - '96366' # IV infusion additional
+      - diagnosis_code:
+          any_of:
+          - I33.0   # Acute and subacute infective endocarditis
+          - I33.9   # Acute endocarditis, unspecified
+          - I38     # Endocarditis, valve unspecified
+          - I39     # Endocarditis in diseases classified elsewhere
+      - patient_age:
+          min: 18
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '93306' # Echocardiography
+            - '93307' # Echo complete
+            - '93312' # TEE
+            days: 14
+            description: Echocardiographic evaluation within past 2 weeks
+        - prior_service_within_days:
+            service_codes:
+            - '87040' # Blood culture
+            days: 7
+            description: Positive blood cultures within past week
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Hospital admission
+            - '99222'
+            - '99223'
+            days: 7
+            description: Recent hospitalization for stabilization
+      - utilization_limit:
+          per_episode: 42
+          description: Maximum 6 weeks of OPAT therapy per episode
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - I50.9  # Heart failure, unspecified
+            - I46.9  # Cardiac arrest, unspecified
+            - I44.2  # Complete heart block
+            - N18.6  # End stage renal disease
+  logic:
+    outcome: approved
+    reason: OPAT approved for endocarditis following hospitalization with echo and culture confirmation
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Selected endocarditis cases appropriate for OPAT with close monitoring and follow-up
+
+- id: rule_infectious_opat_pyelonephritis
+  name: OPAT for Complicated Pyelonephritis
+  description: Prior authorization for outpatient parenteral antimicrobial therapy for complicated UTI/pyelonephritis
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0690  # Cefazolin
+          - J0692  # Cefepime
+          - J0696  # Ceftriaxone
+          - J1956  # Levofloxacin
+          - J3490  # Unclassified drugs
+          - '96365' # IV infusion initial
+          - '96366' # IV infusion additional
+      - diagnosis_code:
+          any_of:
+          - N10     # Acute pyelonephritis
+          - N11.1   # Chronic obstructive pyelonephritis
+          - N12     # Tubulo-interstitial nephritis
+          - N30.00  # Acute cystitis without hematuria
+          - N39.0   # Urinary tract infection
+      - patient_age:
+          min: 18
+      - all_of:
+        - prior_service_within_days:
+            service_codes:
+            - '87086' # Urine culture
+            - '87088' # Urine culture, bacterial count
+            days: 7
+            description: Urine culture within past week
+        - any_of:
+          - prior_service_within_days:
+              service_codes:
+              - '74400' # Urography
+              - '74420' # Urography with KUB
+              - '76700' # Abdominal ultrasound
+              days: 30
+              description: Imaging for complications within past 30 days
+          - diagnosis_code:
+              any_of:
+              - N13.1  # Hydronephrosis with ureteral stricture
+              - N20.0  # Calculus of kidney
+              - N20.1  # Calculus of ureter
+      - utilization_limit:
+          per_episode: 14
+          description: Maximum 2 weeks of OPAT therapy per episode
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - N18.6  # End stage renal disease
+            - I50.9  # Heart failure, unspecified
+            - D84.9  # Immunodeficiency, unspecified
+  logic:
+    outcome: approved
+    reason: OPAT approved for complicated pyelonephritis with culture guidance and imaging
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Complicated UTI requires parenteral therapy with monitoring for treatment response
+
+- id: rule_infectious_opat_monitoring
+  name: OPAT Monitoring and Laboratory Services
+  description: Coverage for OPAT monitoring visits and laboratory surveillance
+  type: PRIOR_AUTH
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '99211' # Office visit minimal
+          - '99212' # Office visit low complexity
+          - '99213' # Office visit moderate complexity
+          - '80047' # Basic metabolic panel
+          - '80053' # Comprehensive metabolic panel
+          - '85025' # Complete blood count
+          - '87040' # Blood culture
+      - diagnosis_code:
+          any_of:
+          - L03.90  # Cellulitis
+          - M86.9   # Osteomyelitis
+          - I33.0   # Endocarditis
+          - N10     # Pyelonephritis
+          - Z51.12  # Encounter for antineoplastic chemotherapy
+      - prior_service_within_days:
+          service_codes:
+          - J0690  # Cefazolin
+          - J0692  # Cefepime
+          - J0696  # Ceftriaxone
+          - J1956  # Levofloxacin
+          - J2770  # Quinupristin/dalfopristin
+          days: 7
+          description: Active OPAT therapy within past week
+      - utilization_limit:
+          per_week: 3
+          description: Maximum 3 monitoring visits per week
+  logic:
+    outcome: approved
+    reason: OPAT monitoring approved for patients on active parenteral antimicrobial therapy
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Regular monitoring essential for OPAT safety and efficacy assessment

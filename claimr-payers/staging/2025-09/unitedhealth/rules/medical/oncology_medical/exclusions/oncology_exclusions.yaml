@@ -1,0 +1,363 @@
+- id: rule_oncology_chemotherapy_curative_performance_exclusion
+  name: Chemotherapy Exclusion - Poor Performance Status
+  description: Exclude chemotherapy for patients with poor performance status (ECOG 3-4)
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96413' # Chemotherapy administration
+          - '96415'
+          - '96416'
+          - '96417'
+          - J9999   # Chemotherapy agents
+      - diagnosis_code:
+          any_of:
+          - C78.00  # Secondary malignant neoplasm
+          - C80.1   # Malignant neoplasm, unspecified
+          - C34.10  # Lung cancer
+          - C25.9   # Pancreatic cancer
+      - any_of:
+        - all_of:
+          - patient_age:
+              min: 75
+          - diagnosis_code:
+              any_of:
+              - F03.90 # Dementia
+              - G93.1  # Anoxic brain damage
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Recent hospitalization for complications
+            - '99222'
+            - '99223'
+            days: 30
+            description: Recent hospitalization for disease complications within past 30 days
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - N18.5  # End stage renal disease
+              - K72.90 # Hepatic failure
+              - I50.9  # Heart failure
+          - prior_service_within_days:
+              service_codes:
+              - '99221' # Organ failure hospitalization
+              days: 60
+              description: Organ failure hospitalization within past 60 days
+  logic:
+    outcome: denied
+    reason: Chemotherapy excluded for poor performance status or end-organ dysfunction with high treatment toxicity risk
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Chemotherapy contraindicated when risks exceed potential benefits in poor performance status patients
+
+- id: rule_oncology_immunotherapy_autoimmune_exclusion
+  name: Immunotherapy Exclusion - Active Autoimmune Disease
+  description: Exclude immune checkpoint inhibitors for patients with active autoimmune conditions
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96413' # Immunotherapy infusion
+          - '96415'
+          - J3490   # Checkpoint inhibitors
+      - diagnosis_code:
+          any_of:
+          - C34.10  # Lung cancer
+          - C43.9   # Melanoma
+          - C16.9   # Gastric cancer
+      - any_of:
+        - diagnosis_code:
+            any_of:
+            - M32.9  # Systemic lupus erythematosus
+            - M06.9  # Rheumatoid arthritis
+            - M35.9  # Systemic connective tissue disorder
+            - K50.90 # Crohn's disease
+            - K51.90 # Ulcerative colitis
+            - G35    # Multiple sclerosis
+        - prior_service_within_days:
+            service_codes:
+            - J1745  # Infliximab (active immunosuppression)
+            - J3262  # Tocilizumab
+            - J3490  # Other immunosuppressive agents
+            days: 90
+            description: Active immunosuppressive therapy within past 90 days
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Autoimmune flare hospitalization
+            - '99222'
+            - '99223'
+            days: 180
+            description: Autoimmune disease flare within past 6 months
+  logic:
+    outcome: denied
+    reason: Immunotherapy excluded for active autoimmune disease due to risk of severe immune-related adverse events
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Checkpoint inhibitors contraindicated in active autoimmune conditions due to risk of life-threatening flares
+
+- id: rule_oncology_gcsf_prophylaxis_low_risk_exclusion
+  name: G-CSF Exclusion - Low Neutropenia Risk
+  description: Exclude prophylactic G-CSF for low-risk chemotherapy regimens
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19", "99"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J1442  # Filgrastim
+          - J1447  # Tbo-filgrastim
+          - J2505  # Pegfilgrastim
+      - diagnosis_code:
+          any_of:
+          - C50.911 # Breast cancer
+          - C18.9   # Colorectal cancer
+          - C34.10  # Lung cancer
+      - prior_service_within_days:
+          service_codes:
+          - '96413' # Low-intensity chemotherapy regimens
+          - '96415'
+          days: 14
+          description: Low-intensity chemotherapy within past 2 weeks
+      - none_of:
+        - patient_age:
+            min: 65
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Previous febrile neutropenia
+            - '99222'
+            - '99223'
+            days: 365
+            description: No history of febrile neutropenia within past year
+        - diagnosis_code:
+            any_of:
+            - D70.9  # Neutropenia, unspecified
+            - D84.9  # Immunodeficiency, unspecified
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # ANC >1500 cells/μL
+          days: 7
+          description: Normal neutrophil count within past week
+  logic:
+    outcome: denied
+    reason: Prophylactic G-CSF excluded for low-risk regimens without neutropenia risk factors
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: G-CSF prophylaxis not indicated for regimens with <20% febrile neutropenia risk
+
+- id: rule_oncology_cart_age_exclusion
+  name: CAR-T Exclusion - Advanced Age and Comorbidities
+  description: Exclude CAR-T therapy for elderly patients with significant comorbidities
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["22"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J3490  # CAR-T products
+          - '38240' # Stem cell procedures
+      - diagnosis_code:
+          any_of:
+          - C85.90  # Non-Hodgkin lymphoma
+          - C90.00  # Multiple myeloma
+          - C91.00  # Acute lymphoblastic leukemia
+      - any_of:
+        - all_of:
+          - patient_age:
+              min: 75
+          - diagnosis_code:
+              any_of:
+              - I25.9  # Coronary artery disease
+              - I50.9  # Heart failure
+              - N18.4  # Chronic kidney disease, stage 4
+        - all_of:
+          - patient_age:
+              min: 80
+        - diagnosis_code:
+            any_of:
+            - F03.90 # Dementia
+            - G93.1  # Severe neurologic impairment
+            - K72.90 # Hepatic failure
+      - prior_service_within_days:
+          service_codes:
+          - '78452' # Ejection fraction <40%
+          - '93000' # ECG showing significant abnormalities
+          days: 30
+          description: Cardiac dysfunction within past 30 days
+  logic:
+    outcome: denied
+    reason: CAR-T therapy excluded for advanced age with significant comorbidities due to high toxicity risk
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: CAR-T toxicities poorly tolerated in elderly patients with multiple comorbidities
+
+- id: rule_oncology_targeted_therapy_mutation_negative_exclusion
+  name: Targeted Therapy Exclusion - Mutation Negative
+  description: Exclude targeted therapy for patients without appropriate molecular targets
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96413' # Targeted therapy infusion
+          - '96415'
+          - J3490   # Targeted agents
+      - diagnosis_code:
+          any_of:
+          - C34.10  # Lung cancer
+          - C50.911 # Breast cancer
+          - C18.9   # Colorectal cancer
+      - prior_service_within_days:
+          service_codes:
+          - '81445' # Comprehensive genomic profiling
+          - '81479' # Molecular pathology
+          days: 180
+          description: Molecular testing within past 6 months
+      - any_of:
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C34.10 # EGFR wild-type lung cancer
+          - prior_service_within_days:
+              service_codes:
+              - '81235' # EGFR mutation negative
+              days: 180
+              description: EGFR wild-type within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C50.911 # HER2-negative breast cancer
+          - prior_service_within_days:
+              service_codes:
+              - '88342' # HER2 testing negative
+              days: 180
+              description: HER2-negative within past 6 months
+        - all_of:
+          - diagnosis_code:
+              any_of:
+              - C18.9  # KRAS-mutant colorectal cancer
+          - prior_service_within_days:
+              service_codes:
+              - '81275' # KRAS mutation positive
+              days: 180
+              description: KRAS-mutant within past 6 months
+  logic:
+    outcome: denied
+    reason: Targeted therapy excluded for absence of appropriate molecular target
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Targeted therapies require specific molecular alterations for efficacy
+
+- id: rule_oncology_esa_curative_treatment_exclusion
+  name: ESA Exclusion - Curative Cancer Treatment
+  description: Exclude ESA therapy during curative-intent cancer treatment
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - J0881  # Darbepoetin alfa
+          - J0885  # Epoetin alfa
+      - diagnosis_code:
+          any_of:
+          - C50.911 # Breast cancer
+          - C18.9   # Colorectal cancer
+          - C34.10  # Lung cancer
+          - Z51.11  # Encounter for antineoplastic chemotherapy
+      - any_of:
+        - prior_service_within_days:
+            service_codes:
+            - '96413' # Curative-intent chemotherapy
+            - '96415'
+            - '77301' # Radiation therapy planning
+            days: 30
+            description: Curative-intent treatment within past 30 days
+        - diagnosis_code:
+            any_of:
+            - C50.911 # Early-stage breast cancer
+            - C78.1   # Limited metastatic disease
+      - prior_service_within_days:
+          service_codes:
+          - '85025' # Hemoglobin >10 g/dL
+          days: 14
+          description: Hemoglobin above ESA threshold within past 2 weeks
+      - none_of:
+        - diagnosis_code:
+            any_of:
+            - C78.00 # Extensive metastatic disease (palliative setting)
+            - C80.1  # Advanced malignancy
+  logic:
+    outcome: denied
+    reason: ESA therapy excluded during curative cancer treatment due to increased mortality and tumor progression risk
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: FDA black box warning prohibits ESAs in curative cancer treatment due to adverse outcomes
+
+- id: rule_oncology_biosimilar_reference_available_exclusion
+  name: Biosimilar Exclusion - Reference Product Available
+  description: Exclude biosimilar when reference product is clinically appropriate and available
+  type: EXCLUSION
+  scope:
+    service_types: ["MEDICAL"]
+    place_of_service: ["11", "22", "19"]
+  conditions:
+    all_of:
+      - service_code:
+          any_of:
+          - '96413' # Biosimilar infusion
+          - '96415'
+          - J3490   # Biosimilar agents
+      - diagnosis_code:
+          any_of:
+          - C50.911 # Breast cancer
+          - C18.9   # Colorectal cancer
+          - C78.00  # Secondary malignant neoplasm
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - J3490  # Reference product intolerance
+            days: 90
+            description: No documented intolerance to reference product
+        - prior_service_within_days:
+            service_codes:
+            - '99221' # Reference product infusion reaction
+            - '99222'
+            - '99223'
+            days: 180
+            description: No infusion reactions to reference product within past 6 months
+      - none_of:
+        - prior_service_within_days:
+            service_codes:
+            - '99213' # Clinical justification for biosimilar
+            - '99214'
+            days: 30
+            description: No documented clinical justification for biosimilar within past 30 days
+  logic:
+    outcome: denied
+    reason: Biosimilar excluded when reference product is clinically appropriate without documented intolerance
+  metadata:
+    source: UnitedHealth Medical Policy 2025.09
+    effective_date: '2025-09-01'
+    clinical_rationale: Reference products preferred unless clinical contraindication or intolerance documented

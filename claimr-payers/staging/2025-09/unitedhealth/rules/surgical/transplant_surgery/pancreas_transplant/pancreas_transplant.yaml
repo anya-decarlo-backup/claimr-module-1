@@ -1,0 +1,98 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '48160'
+    - '48550'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_type_1_diabetes_pancreas_transplant_2025_09
+    - dx_in_value_set: vs_brittle_diabetes_hypoglycemia_2025_09
+    - dx_in_value_set: vs_diabetic_nephropathy_pancreas_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 55
+    - prior_service_required:
+        cpt: ['99214', '99215']
+        lookback_days: 180
+        description: "Endocrinology evaluation and C-peptide assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pancreas transplant requires type 1 diabetes with severe hypoglycemic episodes and failed optimal medical management
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '48554'
+    - '48556'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pancreas_after_kidney_transplant_2025_09
+    - dx_in_value_set: vs_diabetic_nephropathy_post_kidney_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 60
+    - prior_service_required:
+        cpt: ['50360', '50365']
+        lookback_days: 365
+        description: "Prior kidney transplant with stable function"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pancreas after kidney transplant requires stable kidney function and ongoing diabetes management issues
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '48999'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_islet_cell_transplant_2025_09
+    - dx_in_value_set: vs_pancreatic_islet_infusion_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 65
+    - prior_service_required:
+        cpt: ['99214', '99215']
+        lookback_days: 90
+        description: "Endocrinology evaluation and diabetes management assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Islet cell transplant requires type 1 diabetes with hypoglycemia unawareness and failed medical management
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T14:08:37-07:00"

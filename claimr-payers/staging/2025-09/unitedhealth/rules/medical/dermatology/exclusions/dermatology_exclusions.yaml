@@ -1,0 +1,144 @@
+# Dermatology Exclusions - UHC CA
+
+- id: rule_derm_exclusion_biologics_age
+  type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J0717", "J1438", "J3262", "J0490", "J2357"]
+    ndc: ["0074-0554", "50242-0134", "0078-0659", "0173-0781"]
+  conditions:
+    all_of:
+      - age_lt: 12
+    none_of:
+      - dx_in_value_set: "vs_juvenile_psoriasis_severe_2025_09"
+      - has_flag: "pediatric_dermatology_specialist"
+  logic:
+    outcome: "EXCLUDED"
+    note: "Dermatology biologics excluded for patients under 12 without severe juvenile psoriasis"
+  precedence: 95
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_dermatology_exclusions_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_exclusion_phototherapy_skin_cancer
+  type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["96910", "96912", "96913", "96920", "96921", "96922"]
+  conditions:
+    any_of:
+      - dx_in_value_set: "vs_skin_cancer_history_2025_09"
+      - dx_in_value_set: "vs_melanoma_history_2025_09"
+      - dx_in_value_set: "vs_photosensitive_disorders_2025_09"
+    none_of:
+      - has_flag: "oncology_clearance_documented"
+  logic:
+    outcome: "EXCLUDED"
+    note: "Phototherapy excluded for patients with skin cancer history without oncology clearance"
+  precedence: 95
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_phototherapy_contraindications_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_exclusion_puva_pregnancy
+  type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["96912", "96913"]
+    j_codes: ["J8999"]
+  conditions:
+    any_of:
+      - dx_in_value_set: "vs_pregnancy_2025_09"
+      - has_flag: "pregnancy_planning"
+      - has_flag: "breastfeeding"
+    none_of:
+      - has_flag: "maternal_fetal_medicine_consult"
+  logic:
+    outcome: "EXCLUDED"
+    note: "PUVA therapy excluded in pregnancy, planning pregnancy, or breastfeeding"
+  precedence: 95
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_puva_pregnancy_safety_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_exclusion_mohs_cosmetic
+  type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    cpt: ["17311", "17312", "17313", "17314", "17315"]
+  conditions:
+    any_of:
+      - dx_in_value_set: "vs_benign_skin_lesions_2025_09"
+      - dx_code: "Z41.1"
+      - has_flag: "cosmetic_indication"
+    none_of:
+      - dx_in_value_set: "vs_skin_cancer_confirmed_2025_09"
+  logic:
+    outcome: "EXCLUDED"
+    note: "Mohs surgery excluded for benign lesions or cosmetic indications"
+  precedence: 95
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_mohs_medical_necessity_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
+
+- id: rule_derm_exclusion_biologics_infection
+  type: EXCLUSION
+  scope:
+    carrier_id: "crr_7f9b2e1a2b3c"
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ""
+    market: ""
+  service_ref:
+    j_codes: ["J0717", "J1438", "J3262", "J0490", "J2357"]
+    ndc: ["0074-0554", "50242-0134", "0078-0659", "0173-0781"]
+  conditions:
+    any_of:
+      - dx_in_value_set: "vs_active_infection_serious_2025_09"
+      - dx_in_value_set: "vs_tuberculosis_active_2025_09"
+      - dx_in_value_set: "vs_hepatitis_b_active_2025_09"
+    none_of:
+      - has_flag: "infection_treated_resolved"
+      - has_flag: "infectious_disease_clearance"
+  logic:
+    outcome: "EXCLUDED"
+    note: "Dermatology biologics excluded with active serious infections"
+  precedence: 95
+  effective_start: "2025-01-01"
+  effective_end: "2025-12-31"
+  _meta:
+    source: "sources/2025-09/unitedhealth/uhc_biologic_infection_screening_2025.pdf"
+    last_verified_at: "2025-09-11"
+    last_updated: "2025-09-11"
