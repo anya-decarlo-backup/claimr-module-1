@@ -1,0 +1,143 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93600'
+    - '93602'
+    - '93603'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_electrophysiology_study_2025_09
+    - dx_in_value_set: vs_syncope_unexplained_2025_09
+    - dx_in_value_set: vs_ventricular_tachycardia_2025_09
+    - dx_in_value_set: vs_supraventricular_tachycardia_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93224', '93225']
+        lookback_days: 90
+        description: "Extended cardiac monitoring with documented arrhythmia"
+  logic:
+    outcome: PA_REQUIRED
+    notes: EP study requires documented arrhythmia or high-risk syncope with prior monitoring
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93651'
+    - '93652'
+    - '93653'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_catheter_ablation_indication_2025_09
+    - dx_in_value_set: vs_atrial_fibrillation_ablation_2025_09
+    - dx_in_value_set: vs_svt_ablation_2025_09
+    - dx_in_value_set: vs_ventricular_tachycardia_ablation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['93600', '93602']
+        lookback_days: 90
+        description: "EP study confirming arrhythmia substrate amenable to ablation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Catheter ablation requires EP study confirmation and failed antiarrhythmic therapy
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33206'
+    - '33207'
+    - '33208'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pacemaker_implantation_2025_09
+    - dx_in_value_set: vs_symptomatic_bradycardia_2025_09
+    - dx_in_value_set: vs_heart_block_2025_09
+    - dx_in_value_set: vs_sick_sinus_syndrome_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['93224', '93225']
+        lookback_days: 90
+        description: "Extended monitoring documenting symptomatic bradycardia or heart block"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pacemaker implantation requires documented symptomatic bradycardia or heart block
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33249'
+    - '33262'
+    - '33263'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_icd_implantation_2025_09
+    - dx_in_value_set: vs_ventricular_fibrillation_survivor_2025_09
+    - dx_in_value_set: vs_heart_failure_ischemic_2025_09
+    - dx_in_value_set: vs_primary_prevention_sudden_death_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 90
+        description: "Echocardiogram showing reduced ejection fraction or arrhythmia risk"
+  logic:
+    outcome: PA_REQUIRED
+    notes: ICD implantation requires documented high risk of sudden cardiac death or VF survivor
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"

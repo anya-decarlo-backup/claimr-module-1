@@ -1,0 +1,143 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36200'
+    - '36215'
+    - '36216'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_arterial_catheterization_indication_2025_09
+    - dx_in_value_set: vs_peripheral_artery_disease_intervention_2025_09
+    - dx_in_value_set: vs_critical_limb_ischemia_2025_09
+    - dx_in_value_set: vs_claudication_severe_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93922', '93923']
+        lookback_days: 90
+        description: "Non-invasive arterial studies demonstrating significant stenosis"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Arterial catheterization requires non-invasive studies showing significant stenosis and clinical symptoms
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Interventional Procedures Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37220'
+    - '37221'
+    - '37222'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_peripheral_angioplasty_indication_2025_09
+    - dx_in_value_set: vs_iliac_artery_stenosis_2025_09
+    - dx_in_value_set: vs_femoral_artery_stenosis_2025_09
+    - dx_in_value_set: vs_popliteal_artery_stenosis_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['36200', '36215']
+        lookback_days: 30
+        description: "Diagnostic angiography confirming significant stenosis"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Peripheral angioplasty requires diagnostic angiography confirming significant stenosis and clinical symptoms
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Interventional Procedures Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37236'
+    - '37237'
+    - '37238'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_peripheral_stent_indication_2025_09
+    - dx_in_value_set: vs_angioplasty_failure_2025_09
+    - dx_in_value_set: vs_arterial_dissection_2025_09
+    - dx_in_value_set: vs_elastic_recoil_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['37220', '37221']
+        lookback_days: 30
+        description: "Failed angioplasty or suboptimal result requiring stent placement"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Peripheral stent placement requires failed angioplasty or suboptimal angioplasty result
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Interventional Procedures Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37204'
+    - '37211'
+    - '37212'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_transcatheter_embolization_2025_09
+    - dx_in_value_set: vs_arteriovenous_malformation_2025_09
+    - dx_in_value_set: vs_aneurysm_embolization_2025_09
+    - dx_in_value_set: vs_gastrointestinal_bleeding_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['36200', '36245']
+        lookback_days: 30
+        description: "Diagnostic angiography identifying bleeding source or vascular malformation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Transcatheter embolization requires diagnostic angiography identifying target lesion
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Interventional Procedures Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"

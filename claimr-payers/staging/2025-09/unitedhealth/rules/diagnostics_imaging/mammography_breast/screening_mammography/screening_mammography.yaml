@@ -1,0 +1,58 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77067'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_screening_mammography_indication_2025_09
+    - dx_in_value_set: vs_breast_cancer_screening_2025_09
+    - dx_in_value_set: vs_average_risk_breast_screening_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Screening mammography for average-risk women aged 40-75 per USPSTF guidelines
+  precedence: 60
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Breast Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77067'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_high_risk_breast_screening_2025_09
+    - dx_in_value_set: vs_brca_mutation_carrier_2025_09
+    - dx_in_value_set: vs_family_history_breast_cancer_2025_09
+    - dx_in_value_set: vs_chest_radiation_history_2025_09
+    all_of:
+    - min_age: 25
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: High-risk screening mammography for BRCA carriers, strong family history, or chest radiation
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Breast Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"

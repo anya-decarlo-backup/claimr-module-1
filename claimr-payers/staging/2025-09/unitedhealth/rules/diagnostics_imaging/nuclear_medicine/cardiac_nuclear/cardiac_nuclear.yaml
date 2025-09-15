@@ -1,0 +1,137 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78451'
+    - '78452'
+    - '78453'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_myocardial_perfusion_spect_2025_09
+    - dx_in_value_set: vs_coronary_artery_disease_suspected_2025_09
+    - dx_in_value_set: vs_chest_pain_atypical_2025_09
+    - dx_in_value_set: vs_stress_test_abnormal_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93015', '93017']
+        lookback_days: 90
+        description: "Prior stress ECG or clinical risk stratification"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Myocardial perfusion SPECT requires intermediate pretest probability of CAD or abnormal stress testing
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Cardiac"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78454'
+    - '78456'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_myocardial_viability_nuclear_2025_09
+    - dx_in_value_set: vs_ischemic_cardiomyopathy_viability_2025_09
+    - dx_in_value_set: vs_hibernating_myocardium_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 90
+        description: "Echocardiogram showing reduced EF <35%"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Viability study requires reduced EF, ischemic cardiomyopathy, and revascularization consideration
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Cardiac"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78472'
+    - '78473'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cardiac_function_assessment_2025_09
+    - dx_in_value_set: vs_ejection_fraction_evaluation_2025_09
+    - dx_in_value_set: vs_chemotherapy_cardiotoxicity_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 180
+        description: "Prior echocardiogram with suboptimal images or cardiotoxic therapy"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac blood pool study requires suboptimal echo or monitoring for cardiotoxic therapy
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Cardiac"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78428'
+    - '78429'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cardiac_shunt_evaluation_2025_09
+    - dx_in_value_set: vs_congenital_heart_disease_2025_09
+    - dx_in_value_set: vs_pulmonary_hypertension_evaluation_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['93303', '93304']
+        lookback_days: 90
+        description: "Echocardiogram with suspected shunt or congenital disease"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac shunt study requires echocardiographic suspicion of intracardiac shunt
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Cardiac"
+    last_verified: "2025-09-14T16:48:53-07:00"

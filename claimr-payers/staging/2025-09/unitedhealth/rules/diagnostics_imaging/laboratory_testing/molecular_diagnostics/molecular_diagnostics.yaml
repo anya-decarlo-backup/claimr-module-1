@@ -1,0 +1,135 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '81235'
+    - '81240'
+    - '81245'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_egfr_mutation_testing_2025_09
+    - dx_in_value_set: vs_lung_cancer_molecular_2025_09
+    - dx_in_value_set: vs_targeted_therapy_selection_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 90
+        description: "Tissue biopsy confirming adenocarcinoma of lung"
+  logic:
+    outcome: PA_REQUIRED
+    notes: EGFR mutation testing for lung adenocarcinoma targeted therapy selection
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '81275'
+    - '81276'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kras_mutation_testing_2025_09
+    - dx_in_value_set: vs_colorectal_cancer_molecular_2025_09
+    - dx_in_value_set: vs_anti_egfr_therapy_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 90
+        description: "Tissue biopsy confirming colorectal adenocarcinoma"
+  logic:
+    outcome: PA_REQUIRED
+    notes: KRAS mutation testing for colorectal cancer anti-EGFR therapy selection
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '81445'
+    - '81455'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_comprehensive_genomic_profiling_2025_09
+    - dx_in_value_set: vs_tumor_sequencing_2025_09
+    - dx_in_value_set: vs_precision_oncology_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 90
+        description: "Advanced stage solid tumor with adequate tissue for testing"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Comprehensive genomic profiling for advanced solid tumors when targeted therapy options exist
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '81479'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_unlisted_molecular_pathology_2025_09
+    - dx_in_value_set: vs_rare_mutation_testing_2025_09
+    - dx_in_value_set: vs_novel_biomarker_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 90
+        description: "Malignancy with clinical indication for novel biomarker testing"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Unlisted molecular pathology testing for rare mutations or novel biomarkers
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"

@@ -1,0 +1,179 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '74181'
+    - '74182'
+    - '74183'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_abdominal_mri_indication_2025_09
+    - dx_in_value_set: vs_liver_lesion_characterization_2025_09
+    - dx_in_value_set: vs_pancreatic_mass_evaluation_2025_09
+    - dx_in_value_set: vs_biliary_obstruction_evaluation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['74160', '74170']
+        lookback_days: 90
+        description: "Prior abdominal CT with contrast inadequate or contraindicated"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Abdominal MRI requires specific indication when CT is inadequate or contraindicated
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Body MRI Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '72195'
+    - '72196'
+    - '72197'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pelvis_mri_indication_2025_09
+    - dx_in_value_set: vs_prostate_cancer_staging_2025_09
+    - dx_in_value_set: vs_endometriosis_evaluation_2025_09
+    - dx_in_value_set: vs_pelvic_mass_characterization_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['72192', '72193']
+        lookback_days: 90
+        description: "Prior pelvic CT or ultrasound with inconclusive findings"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pelvic MRI requires specific indication for soft tissue characterization or staging
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Body MRI Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '73218'
+    - '73219'
+    - '73220'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_upper_extremity_mri_2025_09
+    - dx_in_value_set: vs_shoulder_mri_indication_2025_09
+    - dx_in_value_set: vs_rotator_cuff_tear_mri_2025_09
+    - dx_in_value_set: vs_elbow_mri_indication_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['73200', '73201']
+        lookback_days: 90
+        description: "Prior upper extremity X-ray or ultrasound inadequate"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Upper extremity MRI requires soft tissue pathology suspicion with prior imaging
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Body MRI Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '73721'
+    - '73722'
+    - '73723'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lower_extremity_mri_2025_09
+    - dx_in_value_set: vs_knee_mri_indication_2025_09
+    - dx_in_value_set: vs_meniscal_tear_suspected_2025_09
+    - dx_in_value_set: vs_ankle_mri_indication_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['73700', '73701']
+        lookback_days: 90
+        description: "Prior lower extremity X-ray with clinical suspicion of soft tissue injury"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Lower extremity MRI requires soft tissue pathology suspicion with prior imaging
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Body MRI Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '71550'
+    - '71551'
+    - '71552'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_chest_mri_indication_2025_09
+    - dx_in_value_set: vs_mediastinal_mass_evaluation_2025_09
+    - dx_in_value_set: vs_chest_wall_tumor_2025_09
+    - dx_in_value_set: vs_vascular_malformation_chest_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['71250', '71260']
+        lookback_days: 90
+        description: "Prior chest CT with contrast inadequate for soft tissue evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Chest MRI requires specific soft tissue or vascular indication when CT is inadequate
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Body MRI Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"

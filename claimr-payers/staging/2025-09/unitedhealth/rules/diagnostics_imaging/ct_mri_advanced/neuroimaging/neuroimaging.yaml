@@ -1,0 +1,143 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '70551'
+    - '70552'
+    - '70553'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_brain_mri_indication_2025_09
+    - dx_in_value_set: vs_headache_neuroimaging_2025_09
+    - dx_in_value_set: vs_seizure_disorder_evaluation_2025_09
+    - dx_in_value_set: vs_brain_tumor_suspected_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['70450', '70460']
+        lookback_days: 90
+        description: "Prior head CT with contrast inadequate or contraindicated"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Brain MRI requires specific neurologic indication when CT is inadequate or contraindicated
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Neuroimaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '72141'
+    - '72142'
+    - '72158'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cervical_spine_mri_indication_2025_09
+    - dx_in_value_set: vs_cervical_radiculopathy_2025_09
+    - dx_in_value_set: vs_cervical_myelopathy_2025_09
+    - dx_in_value_set: vs_neck_pain_neurologic_deficit_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['72125', '72126']
+        lookback_days: 90
+        description: "Prior cervical spine CT or X-ray with neurologic symptoms"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cervical spine MRI requires neurologic symptoms or radiculopathy with prior imaging
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Neuroimaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '72148'
+    - '72149'
+    - '72158'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lumbar_spine_mri_indication_2025_09
+    - dx_in_value_set: vs_lumbar_radiculopathy_2025_09
+    - dx_in_value_set: vs_cauda_equina_syndrome_2025_09
+    - dx_in_value_set: vs_low_back_pain_neurologic_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['72131', '72132']
+        lookback_days: 90
+        description: "Prior lumbar spine CT or X-ray with neurologic symptoms"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Lumbar spine MRI requires neurologic symptoms or radiculopathy with prior imaging
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Neuroimaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '70544'
+    - '70545'
+    - '70546'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mra_head_neck_indication_2025_09
+    - dx_in_value_set: vs_cerebral_aneurysm_screening_2025_09
+    - dx_in_value_set: vs_stroke_vascular_evaluation_2025_09
+    - dx_in_value_set: vs_carotid_stenosis_evaluation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93880', '93882']
+        lookback_days: 90
+        description: "Prior carotid ultrasound or clinical vascular assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: MRA head/neck requires vascular pathology suspicion with prior non-invasive assessment
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Neuroimaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"

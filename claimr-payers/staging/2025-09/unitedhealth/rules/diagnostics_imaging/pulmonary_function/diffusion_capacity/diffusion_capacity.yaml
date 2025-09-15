@@ -1,0 +1,132 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94729'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_diffusion_capacity_indication_2025_09
+    - dx_in_value_set: vs_interstitial_lung_disease_2025_09
+    - dx_in_value_set: vs_pulmonary_fibrosis_2025_09
+    - dx_in_value_set: vs_emphysema_evaluation_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['94010', '94060']
+        lookback_days: 90
+        description: "Spirometry with abnormal results requiring diffusion assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Diffusion capacity testing for interstitial lung disease or gas exchange evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94720'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_carbon_monoxide_diffusion_2025_09
+    - dx_in_value_set: vs_dlco_measurement_2025_09
+    - dx_in_value_set: vs_pulmonary_vascular_disease_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['94010', '94060']
+        lookback_days: 90
+        description: "Spirometry indicating need for gas exchange assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Carbon monoxide diffusion capacity for pulmonary vascular or parenchymal disease
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94726'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_plethysmography_indication_2025_09
+    - dx_in_value_set: vs_airway_resistance_2025_09
+    - dx_in_value_set: vs_thoracic_gas_volume_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['94200']
+        lookback_days: 30
+        description: "Lung volume measurement requiring plethysmographic assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Plethysmography for accurate lung volume and airway resistance measurement
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94728'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_airway_resistance_measurement_2025_09
+    - dx_in_value_set: vs_asthma_severity_assessment_2025_09
+    - dx_in_value_set: vs_copd_phenotyping_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['94726']
+        lookback_days: 30
+        description: "Plethysmography with need for specific airway resistance measurement"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Airway resistance measurement for asthma severity or COPD phenotyping
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"

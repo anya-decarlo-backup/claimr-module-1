@@ -1,0 +1,128 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77065'
+    - '77066'
+    - '77067'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_breast_screening_mammography_2025_09
+    - dx_in_value_set: vs_breast_cancer_family_history_2025_09
+    - dx_in_value_set: vs_brca_mutation_carrier_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Screening mammography requires age-appropriate indication or high-risk factors
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Mammography"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77065'
+    - '77066'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_diagnostic_mammography_indication_2025_09
+    - dx_in_value_set: vs_breast_lump_palpable_2025_09
+    - dx_in_value_set: vs_breast_pain_focal_2025_09
+    - dx_in_value_set: vs_nipple_discharge_2025_09
+    all_of:
+    - min_age: 30
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Diagnostic mammography requires specific breast symptoms or abnormal clinical findings
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Mammography"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77063'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_breast_tomosynthesis_indication_2025_09
+    - dx_in_value_set: vs_dense_breast_tissue_2025_09
+    - dx_in_value_set: vs_breast_cancer_high_risk_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 75
+    - prior_service_required:
+        cpt: ['77065', '77066']
+        lookback_days: 365
+        description: "Prior mammography with dense breast tissue or high risk"
+  logic:
+    outcome: PA_REQUIRED
+    notes: 3D mammography (tomosynthesis) requires dense breast tissue or high-risk indication
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Mammography"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77061'
+    - '77062'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_breast_mri_high_risk_2025_09
+    - dx_in_value_set: vs_brca_positive_screening_2025_09
+    - dx_in_value_set: vs_breast_cancer_staging_2025_09
+    all_of:
+    - min_age: 25
+    - max_age: 70
+    - prior_service_required:
+        cpt: ['77065', '77066']
+        lookback_days: 180
+        description: "Prior mammography and genetic counseling for high-risk patients"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Breast MRI requires high-risk indication, BRCA mutation, or cancer staging
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Mammography"
+    last_verified: "2025-09-14T16:40:03-07:00"

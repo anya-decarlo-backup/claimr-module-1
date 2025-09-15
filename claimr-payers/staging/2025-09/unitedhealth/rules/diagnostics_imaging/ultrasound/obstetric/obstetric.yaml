@@ -1,0 +1,124 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76801'
+    - '76802'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_obstetric_ultrasound_first_trimester_2025_09
+    - dx_in_value_set: vs_pregnancy_dating_2025_09
+    - dx_in_value_set: vs_vaginal_bleeding_pregnancy_2025_09
+    - dx_in_value_set: vs_ectopic_pregnancy_suspected_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 50
+  logic:
+    outcome: PA_REQUIRED
+    notes: First trimester obstetric ultrasound requires pregnancy confirmation, dating, or complications
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76805'
+    - '76810'
+    - '76811'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_obstetric_ultrasound_second_trimester_2025_09
+    - dx_in_value_set: vs_fetal_anatomy_survey_2025_09
+    - dx_in_value_set: vs_genetic_screening_abnormal_2025_09
+    - dx_in_value_set: vs_maternal_age_advanced_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 50
+  logic:
+    outcome: PA_REQUIRED
+    notes: Second trimester ultrasound requires anatomy survey, genetic screening, or risk factors
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76815'
+    - '76816'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_obstetric_ultrasound_third_trimester_2025_09
+    - dx_in_value_set: vs_fetal_growth_restriction_2025_09
+    - dx_in_value_set: vs_oligohydramnios_polyhydramnios_2025_09
+    - dx_in_value_set: vs_breech_presentation_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 50
+  logic:
+    outcome: PA_REQUIRED
+    notes: Third trimester ultrasound requires growth assessment, fluid abnormalities, or presentation issues
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76818'
+    - '76819'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_fetal_biophysical_profile_2025_09
+    - dx_in_value_set: vs_high_risk_pregnancy_2025_09
+    - dx_in_value_set: vs_decreased_fetal_movement_2025_09
+    - dx_in_value_set: vs_post_term_pregnancy_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 50
+  logic:
+    outcome: PA_REQUIRED
+    notes: Biophysical profile requires high-risk pregnancy or fetal well-being assessment
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"

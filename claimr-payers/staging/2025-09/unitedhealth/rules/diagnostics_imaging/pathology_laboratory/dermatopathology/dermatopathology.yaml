@@ -1,0 +1,135 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88305'
+    - '88307'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_skin_lesion_pathology_2025_09
+    - dx_in_value_set: vs_melanoma_suspected_2025_09
+    - dx_in_value_set: vs_basal_cell_carcinoma_2025_09
+    - dx_in_value_set: vs_squamous_cell_carcinoma_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['11100', '11101', '11102', '11103']
+        lookback_days: 30
+        description: "Skin biopsy or excision requiring pathologic evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Dermatopathology evaluation for skin lesions and suspected malignancies
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88342'
+    - '88344'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_melanoma_immunostaining_2025_09
+    - dx_in_value_set: vs_skin_tumor_markers_2025_09
+    - dx_in_value_set: vs_dermatopathology_ihc_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Initial dermatopathology requiring immunohistochemical characterization"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Immunohistochemistry for melanoma and skin tumor characterization
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88313'
+    - '88314'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_frozen_section_dermatology_2025_09
+    - dx_in_value_set: vs_mohs_surgery_margins_2025_09
+    - dx_in_value_set: vs_intraoperative_consultation_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['17311', '17312', '17313']
+        lookback_days: 1
+        description: "Mohs surgery requiring intraoperative margin assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Frozen section evaluation for Mohs surgery margin assessment
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '24', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88399'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_special_stains_dermatology_2025_09
+    - dx_in_value_set: vs_fungal_infection_skin_2025_09
+    - dx_in_value_set: vs_bacterial_infection_skin_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Dermatopathology with suspected infectious etiology"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Special stains for infectious organism identification in skin specimens
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"

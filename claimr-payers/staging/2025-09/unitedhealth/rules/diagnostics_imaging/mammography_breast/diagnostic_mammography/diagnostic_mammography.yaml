@@ -1,0 +1,63 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77066'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_diagnostic_mammography_indication_2025_09
+    - dx_in_value_set: vs_breast_lump_palpable_2025_09
+    - dx_in_value_set: vs_breast_pain_focal_2025_09
+    - dx_in_value_set: vs_nipple_discharge_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Diagnostic mammography requires specific breast symptoms or abnormal clinical findings
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Breast Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77065'
+    - '77066'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_abnormal_screening_mammography_2025_09
+    - dx_in_value_set: vs_birads_0_callback_2025_09
+    - dx_in_value_set: vs_breast_asymmetry_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['77067']
+        lookback_days: 30
+        description: "Abnormal screening mammography requiring diagnostic workup"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Diagnostic mammography callback following abnormal screening mammography
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Breast Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"

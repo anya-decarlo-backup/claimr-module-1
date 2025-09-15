@@ -1,0 +1,129 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94010'
+    - '94060'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_spirometry_indication_2025_09
+    - dx_in_value_set: vs_dyspnea_evaluation_2025_09
+    - dx_in_value_set: vs_asthma_copd_evaluation_2025_09
+    - dx_in_value_set: vs_preoperative_pulmonary_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Spirometry for respiratory symptoms evaluation or preoperative assessment
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94070'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bronchodilator_response_2025_09
+    - dx_in_value_set: vs_asthma_diagnosis_2025_09
+    - dx_in_value_set: vs_reversible_obstruction_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['94010', '94060']
+        lookback_days: 30
+        description: "Baseline spirometry showing obstructive pattern"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Bronchodilator response testing for asthma diagnosis or reversibility assessment
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94200'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_volume_measurement_2025_09
+    - dx_in_value_set: vs_restrictive_lung_disease_2025_09
+    - dx_in_value_set: vs_total_lung_capacity_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['94010', '94060']
+        lookback_days: 90
+        description: "Spirometry suggesting restrictive pattern or need for lung volume assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Lung volume measurement for restrictive disease evaluation or complete PFT assessment
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94375'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_respiratory_flow_volume_2025_09
+    - dx_in_value_set: vs_upper_airway_obstruction_2025_09
+    - dx_in_value_set: vs_vocal_cord_dysfunction_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['94010', '94060']
+        lookback_days: 90
+        description: "Spirometry with abnormal flow-volume loop suggesting upper airway pathology"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Flow-volume loop for upper airway obstruction or vocal cord dysfunction evaluation
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"

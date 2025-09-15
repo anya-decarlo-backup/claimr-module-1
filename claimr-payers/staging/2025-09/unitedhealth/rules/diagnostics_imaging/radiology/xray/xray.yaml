@@ -1,0 +1,160 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '71045'
+    - '71046'
+    - '71047'
+    - '71048'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_chest_xray_indication_2025_09
+    - dx_in_value_set: vs_pneumonia_suspected_2025_09
+    - dx_in_value_set: vs_chest_pain_cardiac_2025_09
+    - dx_in_value_set: vs_shortness_of_breath_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Chest X-ray requires clinical symptoms or specific indication beyond routine screening
+  precedence: 60
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '23', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - X-ray"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '73060'
+    - '73070'
+    - '73080'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_shoulder_xray_indication_2025_09
+    - dx_in_value_set: vs_shoulder_pain_acute_2025_09
+    - dx_in_value_set: vs_shoulder_trauma_2025_09
+    - dx_in_value_set: vs_shoulder_dislocation_2025_09
+    all_of:
+    - min_age: 5
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Shoulder X-ray requires acute trauma, pain, or specific clinical indication
+  precedence: 60
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '23', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - X-ray"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '73560'
+    - '73562'
+    - '73564'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_knee_xray_indication_2025_09
+    - dx_in_value_set: vs_knee_pain_acute_2025_09
+    - dx_in_value_set: vs_knee_trauma_2025_09
+    - dx_in_value_set: vs_knee_effusion_2025_09
+    all_of:
+    - min_age: 5
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Knee X-ray requires acute trauma, pain, effusion, or mechanical symptoms
+  precedence: 60
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '23', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - X-ray"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '72040'
+    - '72050'
+    - '72052'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cervical_spine_xray_indication_2025_09
+    - dx_in_value_set: vs_neck_pain_acute_2025_09
+    - dx_in_value_set: vs_cervical_trauma_2025_09
+    - dx_in_value_set: vs_whiplash_injury_2025_09
+    all_of:
+    - min_age: 5
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cervical spine X-ray requires trauma, acute neck pain, or neurologic symptoms
+  precedence: 65
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '23', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - X-ray"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '72100'
+    - '72110'
+    - '72114'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lumbar_spine_xray_indication_2025_09
+    - dx_in_value_set: vs_low_back_pain_acute_2025_09
+    - dx_in_value_set: vs_lumbar_trauma_2025_09
+    - dx_in_value_set: vs_sciatica_symptoms_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Lumbar spine X-ray requires acute trauma, red flag symptoms, or failed conservative therapy
+  precedence: 65
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '23', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - X-ray"
+    last_verified: "2025-09-14T16:40:03-07:00"

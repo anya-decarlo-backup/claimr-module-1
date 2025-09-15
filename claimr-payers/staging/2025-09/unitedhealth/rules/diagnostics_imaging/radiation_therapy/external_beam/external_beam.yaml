@@ -1,0 +1,142 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77301'
+    - '77302'
+    - '77303'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_radiation_therapy_planning_2025_09
+    - dx_in_value_set: vs_malignant_neoplasm_radiation_2025_09
+    - dx_in_value_set: vs_cancer_curative_intent_2025_09
+    - dx_in_value_set: vs_palliative_radiation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 180
+        description: "Tissue diagnosis confirming malignancy"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Radiation therapy planning requires tissue diagnosis and oncology evaluation
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Radiation Oncology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77385'
+    - '77386'
+    - '77387'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_imrt_indication_2025_09
+    - dx_in_value_set: vs_head_neck_cancer_2025_09
+    - dx_in_value_set: vs_prostate_cancer_radiation_2025_09
+    - dx_in_value_set: vs_complex_anatomy_radiation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['77301', '77302']
+        lookback_days: 30
+        description: "Radiation therapy planning with IMRT indication"
+  logic:
+    outcome: PA_REQUIRED
+    notes: IMRT requires complex anatomy or critical structure proximity requiring dose modulation
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Radiation Oncology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77373'
+    - '77435'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_stereotactic_radiosurgery_2025_09
+    - dx_in_value_set: vs_brain_metastases_srs_2025_09
+    - dx_in_value_set: vs_acoustic_neuroma_2025_09
+    - dx_in_value_set: vs_arteriovenous_malformation_srs_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['70551', '70552']
+        lookback_days: 90
+        description: "Brain MRI confirming target lesion appropriate for SRS"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Stereotactic radiosurgery requires imaging confirmation of appropriate target lesion
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Radiation Oncology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77401'
+    - '77402'
+    - '77407'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_external_beam_radiation_2025_09
+    - dx_in_value_set: vs_breast_cancer_radiation_2025_09
+    - dx_in_value_set: vs_lung_cancer_radiation_2025_09
+    - dx_in_value_set: vs_adjuvant_radiation_therapy_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['77301', '77302']
+        lookback_days: 30
+        description: "Radiation therapy planning and simulation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: External beam radiation requires treatment planning and appropriate oncologic indication
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Radiation Oncology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"

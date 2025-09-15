@@ -1,0 +1,138 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88305'
+    - '88307'
+    - '88309'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_brain_tumor_pathology_2025_09
+    - dx_in_value_set: vs_cns_malignancy_2025_09
+    - dx_in_value_set: vs_glioma_evaluation_2025_09
+    - dx_in_value_set: vs_meningioma_evaluation_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['61140', '61510', '61512']
+        lookback_days: 30
+        description: "Brain biopsy or craniotomy with tissue specimen"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Neuropathology evaluation for CNS tumors and brain lesions
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88342'
+    - '88344'
+    - '88346'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_glioma_molecular_markers_2025_09
+    - dx_in_value_set: vs_idh1_idh2_testing_2025_09
+    - dx_in_value_set: vs_mgmt_promoter_methylation_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Brain tumor pathology requiring molecular characterization"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Molecular markers for glioma classification and treatment planning
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88313'
+    - '88314'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_intraoperative_neuropathology_2025_09
+    - dx_in_value_set: vs_frozen_section_brain_2025_09
+    - dx_in_value_set: vs_tumor_margin_assessment_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['61140', '61510']
+        lookback_days: 1
+        description: "Brain surgery requiring intraoperative pathologic consultation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Intraoperative frozen section for brain tumor margin assessment
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88356'
+    - '88358'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_nerve_biopsy_pathology_2025_09
+    - dx_in_value_set: vs_peripheral_neuropathy_2025_09
+    - dx_in_value_set: vs_muscle_biopsy_pathology_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['20200', '20205']
+        lookback_days: 30
+        description: "Nerve or muscle biopsy for neuropathy evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Nerve and muscle biopsy evaluation for peripheral neuropathy diagnosis
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"

@@ -1,0 +1,101 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88104'
+    - '88106'
+    - '88108'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cytopathology_indication_2025_09
+    - dx_in_value_set: vs_fine_needle_aspiration_2025_09
+    - dx_in_value_set: vs_thyroid_nodule_evaluation_2025_09
+    - dx_in_value_set: vs_lymph_node_biopsy_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['10021', '10022']
+        lookback_days: 30
+        description: "Fine needle aspiration procedure"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cytopathology evaluation requires FNA procedure with appropriate clinical indication
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88141'
+    - '88142'
+    - '88143'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cervical_cytology_2025_09
+    - dx_in_value_set: vs_pap_smear_screening_2025_09
+    - dx_in_value_set: vs_cervical_cancer_screening_2025_09
+    all_of:
+    - min_age: 21
+    - max_age: 65
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cervical cytology for cancer screening per USPSTF guidelines
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88160'
+    - '88161'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_body_fluid_cytology_2025_09
+    - dx_in_value_set: vs_pleural_effusion_2025_09
+    - dx_in_value_set: vs_ascites_evaluation_2025_09
+    - dx_in_value_set: vs_pericardial_effusion_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['32554', '49082']
+        lookback_days: 30
+        description: "Body fluid aspiration procedure"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Body fluid cytology requires fluid aspiration with clinical indication for malignancy evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"

@@ -1,0 +1,203 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78811'
+    - '78812'
+    - '78813'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_cancer_pet_staging_2025_09
+    - dx_in_value_set: vs_lung_nodule_indeterminate_2025_09
+    - dx_in_value_set: vs_lung_cancer_recurrence_suspected_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['71250', '71260']
+        lookback_days: 90
+        description: "Prior chest CT showing lung nodule or mass"
+  logic:
+    outcome: PA_REQUIRED
+    notes: PET scan for lung cancer requires CT confirmation of nodule/mass and staging or recurrence evaluation
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - PET"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78814'
+    - '78815'
+    - '78816'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_colorectal_cancer_pet_staging_2025_09
+    - dx_in_value_set: vs_colorectal_cancer_recurrence_2025_09
+    - dx_in_value_set: vs_cea_elevation_unexplained_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['74150', '74160']
+        lookback_days: 90
+        description: "Prior CT abdomen/pelvis and tumor marker elevation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: PET scan for colorectal cancer requires staging, recurrence evaluation, or unexplained CEA elevation
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - PET"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78608'
+    - '78609'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lymphoma_pet_staging_2025_09
+    - dx_in_value_set: vs_hodgkin_lymphoma_2025_09
+    - dx_in_value_set: vs_non_hodgkin_lymphoma_2025_09
+    - dx_in_value_set: vs_lymphoma_treatment_response_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['71250', '74150']
+        lookback_days: 60
+        description: "Prior CT chest/abdomen/pelvis and tissue diagnosis"
+  logic:
+    outcome: PA_REQUIRED
+    notes: PET scan for lymphoma requires tissue diagnosis and staging or treatment response evaluation
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - PET"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78810'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_melanoma_pet_staging_2025_09
+    - dx_in_value_set: vs_melanoma_recurrence_suspected_2025_09
+    - dx_in_value_set: vs_melanoma_metastatic_evaluation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 180
+        description: "Tissue diagnosis of melanoma with Breslow thickness >1mm"
+  logic:
+    outcome: PA_REQUIRED
+    notes: PET scan for melanoma requires tissue diagnosis with high-risk features or suspected recurrence
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - PET"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78459'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_myocardial_viability_assessment_2025_09
+    - dx_in_value_set: vs_ischemic_cardiomyopathy_2025_09
+    - dx_in_value_set: vs_coronary_artery_disease_severe_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 90
+        description: "Echocardiogram showing reduced EF and stress testing"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac PET viability study requires reduced EF, ischemic cardiomyopathy, and revascularization consideration
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - PET"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78492'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_alzheimer_disease_suspected_2025_09
+    - dx_in_value_set: vs_dementia_differential_diagnosis_2025_09
+    - dx_in_value_set: vs_cognitive_impairment_evaluation_2025_09
+    all_of:
+    - min_age: 55
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['70551', '70552']
+        lookback_days: 180
+        description: "Brain MRI and neuropsychological testing"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Brain PET for dementia requires MRI, neuropsychological testing, and differential diagnosis need
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - PET"
+    last_verified: "2025-09-14T16:48:53-07:00"

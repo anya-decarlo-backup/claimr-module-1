@@ -1,0 +1,142 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '47533'
+    - '47534'
+    - '47535'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_biliary_drainage_indication_2025_09
+    - dx_in_value_set: vs_biliary_obstruction_2025_09
+    - dx_in_value_set: vs_cholangitis_2025_09
+    - dx_in_value_set: vs_pancreatic_duct_obstruction_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['74181', '74182']
+        lookback_days: 90
+        description: "MRCP or CT showing biliary obstruction"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Biliary drainage requires imaging confirmation of obstruction and clinical indication
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 GI Interventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37204'
+    - '37243'
+    - '37244'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_gi_bleeding_embolization_2025_09
+    - dx_in_value_set: vs_upper_gi_bleeding_2025_09
+    - dx_in_value_set: vs_lower_gi_bleeding_2025_09
+    - dx_in_value_set: vs_refractory_gi_bleeding_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['43235', '45378']
+        lookback_days: 7
+        description: "Endoscopic evaluation with failed hemostasis or rebleeding"
+  logic:
+    outcome: PA_REQUIRED
+    notes: GI bleeding embolization requires failed endoscopic therapy or ongoing bleeding
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 GI Interventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '37182'
+    - '37183'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_uterine_fibroid_embolization_2025_09
+    - dx_in_value_set: vs_symptomatic_uterine_fibroids_2025_09
+    - dx_in_value_set: vs_menorrhagia_fibroids_2025_09
+    - dx_in_value_set: vs_bulk_symptoms_fibroids_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 55
+    - prior_service_required:
+        cpt: ['76830', '76856']
+        lookback_days: 90
+        description: "Pelvic ultrasound or MRI confirming symptomatic fibroids"
+  logic:
+    outcome: PA_REQUIRED
+    notes: UFE requires symptomatic fibroids with imaging confirmation and gynecologic evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 GI Interventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36010'
+    - '36140'
+    - '36160'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_venous_access_indication_2025_09
+    - dx_in_value_set: vs_central_venous_catheter_2025_09
+    - dx_in_value_set: vs_port_placement_indication_2025_09
+    - dx_in_value_set: vs_chemotherapy_access_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['99213', '99214']
+        lookback_days: 60
+        description: "Oncology or specialist evaluation requiring long-term venous access"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Central venous access requires appropriate indication such as chemotherapy or long-term IV therapy
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 GI Interventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"

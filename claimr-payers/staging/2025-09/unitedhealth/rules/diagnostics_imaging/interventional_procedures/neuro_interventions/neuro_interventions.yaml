@@ -1,0 +1,139 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61624'
+    - '61626'
+    - '61630'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cerebral_aneurysm_coiling_2025_09
+    - dx_in_value_set: vs_intracranial_aneurysm_2025_09
+    - dx_in_value_set: vs_subarachnoid_hemorrhage_2025_09
+    - dx_in_value_set: vs_aneurysm_rupture_risk_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['70496', '70498']
+        lookback_days: 90
+        description: "CTA or MRA demonstrating cerebral aneurysm"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cerebral aneurysm coiling requires imaging confirmation of aneurysm and neurosurgical evaluation
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Neurointerventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61645'
+    - '61650'
+    - '61651'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mechanical_thrombectomy_2025_09
+    - dx_in_value_set: vs_acute_ischemic_stroke_2025_09
+    - dx_in_value_set: vs_large_vessel_occlusion_2025_09
+    - dx_in_value_set: vs_stroke_intervention_window_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['70450', '70460']
+        lookback_days: 1
+        description: "Head CT or CTA confirming large vessel occlusion within treatment window"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Mechanical thrombectomy requires acute stroke with large vessel occlusion within treatment window
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Neurointerventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61635'
+    - '61640'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_arteriovenous_malformation_embolization_2025_09
+    - dx_in_value_set: vs_cerebral_avm_2025_09
+    - dx_in_value_set: vs_intracranial_hemorrhage_avm_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 75
+    - prior_service_required:
+        cpt: ['70544', '70545']
+        lookback_days: 90
+        description: "MRA or conventional angiography confirming AVM"
+  logic:
+    outcome: PA_REQUIRED
+    notes: AVM embolization requires imaging confirmation and multidisciplinary evaluation
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Neurointerventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '61700'
+    - '61705'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_carotid_artery_stenting_2025_09
+    - dx_in_value_set: vs_carotid_stenosis_severe_2025_09
+    - dx_in_value_set: vs_high_surgical_risk_carotid_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['93880', '93882']
+        lookback_days: 90
+        description: "Carotid ultrasound showing >70% stenosis or symptomatic >50% stenosis"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Carotid artery stenting requires severe stenosis and high surgical risk or symptomatic disease
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Neurointerventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"

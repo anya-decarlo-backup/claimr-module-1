@@ -1,0 +1,128 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93880'
+    - '93882'
+    - '93886'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_carotid_ultrasound_indication_2025_09
+    - dx_in_value_set: vs_stroke_risk_assessment_2025_09
+    - dx_in_value_set: vs_carotid_bruit_2025_09
+    - dx_in_value_set: vs_transient_ischemic_attack_2025_09
+    all_of:
+    - min_age: 50
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Carotid ultrasound requires stroke risk factors, TIA, carotid bruit, or neurologic symptoms
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93922'
+    - '93923'
+    - '93924'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lower_extremity_arterial_2025_09
+    - dx_in_value_set: vs_claudication_symptoms_2025_09
+    - dx_in_value_set: vs_peripheral_artery_disease_2025_09
+    - dx_in_value_set: vs_absent_pedal_pulses_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Lower extremity arterial studies require claudication, absent pulses, or PAD suspicion
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93970'
+    - '93971'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_deep_vein_thrombosis_suspected_2025_09
+    - dx_in_value_set: vs_leg_swelling_unilateral_2025_09
+    - dx_in_value_set: vs_pulmonary_embolism_workup_2025_09
+    - dx_in_value_set: vs_venous_insufficiency_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Venous duplex requires DVT suspicion, unilateral leg swelling, or venous insufficiency
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '23', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93975'
+    - '93976'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_renal_artery_stenosis_2025_09
+    - dx_in_value_set: vs_renovascular_hypertension_2025_09
+    - dx_in_value_set: vs_renal_transplant_surveillance_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['80047', '80048']
+        lookback_days: 90
+        description: "Elevated creatinine or resistant hypertension"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Renal artery duplex requires resistant hypertension, renal dysfunction, or transplant surveillance
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"

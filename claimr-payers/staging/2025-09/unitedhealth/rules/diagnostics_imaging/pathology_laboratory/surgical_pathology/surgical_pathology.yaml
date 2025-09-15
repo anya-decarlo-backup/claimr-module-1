@@ -1,0 +1,138 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88305'
+    - '88307'
+    - '88309'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_surgical_pathology_indication_2025_09
+    - dx_in_value_set: vs_tissue_biopsy_evaluation_2025_09
+    - dx_in_value_set: vs_malignancy_suspected_2025_09
+    - dx_in_value_set: vs_surgical_specimen_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['19083', '19084', '11100', '11101']
+        lookback_days: 30
+        description: "Tissue biopsy or surgical procedure requiring pathologic evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Surgical pathology requires tissue specimen from biopsy or surgical procedure
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88342'
+    - '88344'
+    - '88346'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_immunohistochemistry_indication_2025_09
+    - dx_in_value_set: vs_tumor_marker_staining_2025_09
+    - dx_in_value_set: vs_cancer_subtyping_2025_09
+    - dx_in_value_set: vs_diagnostic_uncertainty_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Initial pathology evaluation requiring additional characterization"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Immunohistochemistry requires initial pathology with need for tumor characterization or subtyping
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88368'
+    - '88369'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_morphometric_analysis_2025_09
+    - dx_in_value_set: vs_her2_neu_testing_2025_09
+    - dx_in_value_set: vs_breast_cancer_biomarkers_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Breast cancer pathology requiring HER2 testing"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Morphometric analysis for HER2/neu testing in breast cancer for treatment planning
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88399'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_special_stains_indication_2025_09
+    - dx_in_value_set: vs_infectious_organism_identification_2025_09
+    - dx_in_value_set: vs_metabolic_disease_evaluation_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Initial pathology evaluation requiring special staining"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Special stains require initial pathology with specific indication for organism or metabolic evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"

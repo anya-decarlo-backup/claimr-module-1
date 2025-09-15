@@ -1,0 +1,211 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '50360'
+    - '50365'
+    - '50370'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_kidney_transplant_experimental_2025_09
+    - dx_in_value_set: vs_xenotransplantation_kidney_2025_09
+    - dx_in_value_set: vs_artificial_kidney_experimental_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Experimental kidney transplant procedures are excluded from coverage
+  exclusion_reason: "Experimental kidney transplant procedures are excluded from coverage"
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T16:34:25-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '47135'
+    - '47136'
+    - '47140'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_liver_transplant_alcoholic_cirrhosis_active_2025_09
+    - dx_in_value_set: vs_hepatocellular_carcinoma_advanced_2025_09
+    - dx_in_value_set: vs_liver_transplant_contraindicated_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Liver transplant excluded for active alcohol use, advanced HCC beyond Milan criteria, or medical contraindications
+  exclusion_reason: "Liver transplant excluded for active alcohol use, advanced HCC beyond Milan criteria, or medical contraindications"
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T16:34:25-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33935'
+    - '33940'
+    - '33945'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_heart_transplant_age_contraindication_2025_09
+    - dx_in_value_set: vs_heart_transplant_pulmonary_hypertension_2025_09
+    - dx_in_value_set: vs_heart_transplant_malignancy_active_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Heart transplant excluded for age >70, irreversible pulmonary hypertension, or active malignancy
+  exclusion_reason: "Heart transplant excluded for age >70, irreversible pulmonary hypertension, or active malignancy"
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T16:34:25-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '32851'
+    - '32852'
+    - '32853'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lung_transplant_smoking_active_2025_09
+    - dx_in_value_set: vs_lung_transplant_age_contraindication_2025_09
+    - dx_in_value_set: vs_lung_transplant_malignancy_recent_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Lung transplant excluded for active smoking, age >70, or recent malignancy within 5 years
+  exclusion_reason: "Lung transplant excluded for active smoking, age >70, or recent malignancy within 5 years"
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T16:34:25-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '48160'
+    - '48550'
+    - '48554'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pancreas_transplant_type_2_diabetes_2025_09
+    - dx_in_value_set: vs_pancreas_transplant_age_contraindication_2025_09
+    - dx_in_value_set: vs_pancreas_transplant_c_peptide_positive_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Pancreas transplant excluded for type 2 diabetes, age >55, or detectable C-peptide
+  exclusion_reason: "Pancreas transplant excluded for type 2 diabetes, age >55, or detectable C-peptide"
+  place_of_service:
+    include: ['21']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T16:34:25-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '38240'
+    - '38241'
+    - '38242'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hsct_experimental_indications_2025_09
+    - dx_in_value_set: vs_hsct_solid_tumor_inappropriate_2025_09
+    - dx_in_value_set: vs_hsct_age_contraindication_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: HSCT excluded for experimental indications, inappropriate solid tumors, or age >75
+  exclusion_reason: "HSCT excluded for experimental indications, inappropriate solid tumors, or age >75"
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T16:34:25-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '99401'
+    - '99402'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_living_donor_inappropriate_evaluation_2025_09
+    - dx_in_value_set: vs_living_donor_coercion_suspected_2025_09
+    - dx_in_value_set: vs_living_donor_medical_contraindication_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Living donor evaluation excluded for inappropriate candidates, suspected coercion, or medical contraindications
+  exclusion_reason: "Living donor evaluation excluded for inappropriate candidates, suspected coercion, or medical contraindications"
+  place_of_service:
+    include: ['11', '21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T16:34:25-07:00"
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '48999'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_islet_cell_transplant_experimental_2025_09
+    - dx_in_value_set: vs_islet_cell_transplant_insufficient_data_2025_09
+  logic:
+    outcome: EXCLUDED
+    notes: Islet cell transplant excluded when considered experimental or lacking sufficient efficacy data
+  exclusion_reason: "Islet cell transplant excluded when considered experimental or lacking sufficient efficacy data"
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Transplant Surgery Guidelines"
+    last_verified: "2025-09-14T16:34:25-07:00"

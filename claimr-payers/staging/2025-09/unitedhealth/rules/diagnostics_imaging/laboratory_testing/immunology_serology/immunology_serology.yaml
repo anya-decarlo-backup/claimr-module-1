@@ -1,0 +1,135 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '86038'
+    - '86039'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_antinuclear_antibody_2025_09
+    - dx_in_value_set: vs_autoimmune_disease_screening_2025_09
+    - dx_in_value_set: vs_connective_tissue_disease_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['99213', '99214']
+        lookbook_days: 90
+        description: "Clinical evaluation with symptoms suggestive of autoimmune disease"
+  logic:
+    outcome: PA_REQUIRED
+    notes: ANA testing for autoimmune disease screening with appropriate clinical symptoms
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '86140'
+    - '86141'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_c_reactive_protein_2025_09
+    - dx_in_value_set: vs_inflammatory_marker_2025_09
+    - dx_in_value_set: vs_cardiovascular_risk_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['99213', '99214']
+        lookback_days: 90
+        description: "Clinical evaluation for inflammatory condition or cardiovascular risk"
+  logic:
+    outcome: PA_REQUIRED
+    notes: CRP testing for inflammatory conditions or cardiovascular risk assessment
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '86200'
+    - '86215'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cyclic_citrullinated_peptide_2025_09
+    - dx_in_value_set: vs_rheumatoid_arthritis_diagnosis_2025_09
+    - dx_in_value_set: vs_anti_ccp_antibody_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['86430', '86431']
+        lookback_days: 90
+        description: "Rheumatoid factor testing with clinical suspicion of RA"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Anti-CCP antibody testing for rheumatoid arthritis diagnosis and prognosis
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '86255'
+    - '86256'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_fluorescent_treponemal_antibody_2025_09
+    - dx_in_value_set: vs_syphilis_confirmation_2025_09
+    - dx_in_value_set: vs_treponema_pallidum_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['86592', '86593']
+        lookback_days: 30
+        description: "Positive syphilis screening test requiring confirmatory testing"
+  logic:
+    outcome: PA_REQUIRED
+    notes: FTA-ABS testing for syphilis confirmation after positive screening
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"

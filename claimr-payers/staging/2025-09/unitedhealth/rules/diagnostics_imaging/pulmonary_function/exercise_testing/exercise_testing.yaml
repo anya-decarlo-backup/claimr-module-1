@@ -1,0 +1,129 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94617'
+    - '94618'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_exercise_pulmonary_testing_2025_09
+    - dx_in_value_set: vs_dyspnea_on_exertion_2025_09
+    - dx_in_value_set: vs_exercise_limitation_evaluation_2025_09
+    - dx_in_value_set: vs_cardiopulmonary_fitness_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['94010', '94060']
+        lookback_days: 90
+        description: "Resting pulmonary function tests with normal or mildly abnormal results"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Exercise pulmonary function testing for unexplained dyspnea or exercise limitation
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94621'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_methacholine_challenge_2025_09
+    - dx_in_value_set: vs_bronchial_hyperresponsiveness_2025_09
+    - dx_in_value_set: vs_asthma_diagnosis_challenge_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 75
+    - prior_service_required:
+        cpt: ['94010', '94060']
+        lookback_days: 90
+        description: "Normal spirometry with clinical suspicion of asthma"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Methacholine challenge for asthma diagnosis when spirometry is normal
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94640'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_inhaled_bronchodilator_2025_09
+    - dx_in_value_set: vs_nebulizer_treatment_2025_09
+    - dx_in_value_set: vs_acute_bronchospasm_2025_09
+    all_of:
+    - min_age: 2
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Inhaled bronchodilator administration for acute bronchospasm or diagnostic testing
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '23', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94664'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_aerosol_medication_demo_2025_09
+    - dx_in_value_set: vs_inhaler_technique_training_2025_09
+    - dx_in_value_set: vs_respiratory_therapy_education_2025_09
+    all_of:
+    - min_age: 2
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['94010', '94060']
+        lookback_days: 180
+        description: "Pulmonary function testing indicating need for inhaled medication therapy"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Aerosol medication demonstration and training for proper inhaler technique
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"

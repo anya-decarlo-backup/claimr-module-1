@@ -1,0 +1,143 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '92920'
+    - '92921'
+    - '92924'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_percutaneous_coronary_intervention_2025_09
+    - dx_in_value_set: vs_acute_myocardial_infarction_2025_09
+    - dx_in_value_set: vs_unstable_angina_2025_09
+    - dx_in_value_set: vs_coronary_artery_stenosis_severe_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93458', '93459']
+        lookback_days: 30
+        description: "Cardiac catheterization demonstrating significant coronary stenosis"
+  logic:
+    outcome: PA_REQUIRED
+    notes: PCI requires cardiac catheterization showing significant stenosis and appropriate clinical indication
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Interventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '92928'
+    - '92929'
+    - '92933'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_coronary_stent_placement_2025_09
+    - dx_in_value_set: vs_angioplasty_suboptimal_result_2025_09
+    - dx_in_value_set: vs_coronary_dissection_2025_09
+    - dx_in_value_set: vs_elastic_recoil_coronary_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['92920', '92921']
+        lookback_days: 30
+        description: "Coronary angioplasty with suboptimal result or complication"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Coronary stent placement requires angioplasty with suboptimal result or acute complication
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Interventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '92986'
+    - '92987'
+    - '92990'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_valvuloplasty_indication_2025_09
+    - dx_in_value_set: vs_mitral_stenosis_severe_2025_09
+    - dx_in_value_set: vs_aortic_stenosis_severe_2025_09
+    - dx_in_value_set: vs_high_surgical_risk_valve_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 90
+        description: "Echocardiogram demonstrating severe valvular stenosis"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Valvuloplasty requires severe valvular stenosis and high surgical risk or contraindication
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Interventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '33361'
+    - '33362'
+    - '33363'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_transcatheter_aortic_valve_2025_09
+    - dx_in_value_set: vs_aortic_stenosis_symptomatic_2025_09
+    - dx_in_value_set: vs_tavr_indication_2025_09
+    - dx_in_value_set: vs_prohibitive_surgical_risk_2025_09
+    all_of:
+    - min_age: 65
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['93306', '93312']
+        lookback_days: 90
+        description: "Comprehensive echocardiographic evaluation and heart team assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: TAVR requires symptomatic severe aortic stenosis with prohibitive or high surgical risk
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Interventional Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"

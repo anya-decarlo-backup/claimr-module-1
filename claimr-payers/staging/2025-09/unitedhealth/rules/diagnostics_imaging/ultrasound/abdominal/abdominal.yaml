@@ -1,0 +1,126 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76700'
+    - '76705'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_abdominal_pain_ultrasound_2025_09
+    - dx_in_value_set: vs_right_upper_quadrant_pain_2025_09
+    - dx_in_value_set: vs_gallbladder_disease_suspected_2025_09
+    - dx_in_value_set: vs_hepatomegaly_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Abdominal ultrasound requires specific clinical symptoms or physical findings
+  precedence: 65
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76770'
+    - '76775'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_renal_ultrasound_indication_2025_09
+    - dx_in_value_set: vs_kidney_stones_suspected_2025_09
+    - dx_in_value_set: vs_hydronephrosis_2025_09
+    - dx_in_value_set: vs_renal_mass_evaluation_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['80047', '80048']
+        lookback_days: 90
+        description: "Abnormal renal function tests or urinalysis"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Renal ultrasound requires abnormal lab values or clinical suspicion of renal pathology
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76830'
+    - '76856'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pelvic_ultrasound_indication_2025_09
+    - dx_in_value_set: vs_pelvic_pain_female_2025_09
+    - dx_in_value_set: vs_abnormal_uterine_bleeding_2025_09
+    - dx_in_value_set: vs_ovarian_cyst_suspected_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pelvic ultrasound requires gynecologic symptoms or abnormal physical examination
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76536'
+    - '76604'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_aortic_aneurysm_screening_2025_09
+    - dx_in_value_set: vs_abdominal_aortic_aneurysm_2025_09
+    - dx_in_value_set: vs_pulsatile_abdominal_mass_2025_09
+    all_of:
+    - min_age: 65
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Aortic ultrasound requires age-appropriate screening or clinical suspicion of aneurysm
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"

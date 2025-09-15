@@ -1,0 +1,132 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '75571'
+    - '75572'
+    - '75573'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cardiac_ct_angiography_indication_2025_09
+    - dx_in_value_set: vs_chest_pain_intermediate_risk_2025_09
+    - dx_in_value_set: vs_coronary_artery_disease_evaluation_2025_09
+    - dx_in_value_set: vs_preoperative_cardiac_assessment_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['93000', '93005']
+        lookback_days: 90
+        description: "ECG and cardiac risk stratification"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac CT angiography requires intermediate pretest probability of CAD and appropriate risk stratification
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Cardiac Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '75574'
+    - '75575'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cardiac_ct_calcium_scoring_2025_09
+    - dx_in_value_set: vs_cardiovascular_risk_assessment_2025_09
+    - dx_in_value_set: vs_family_history_premature_cad_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac CT calcium scoring for cardiovascular risk stratification in asymptomatic patients
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Cardiac Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '75576'
+    - '75577'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cardiac_ct_function_assessment_2025_09
+    - dx_in_value_set: vs_cardiomyopathy_evaluation_2025_09
+    - dx_in_value_set: vs_heart_failure_etiology_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 90
+        description: "Prior echocardiogram with suboptimal images"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac CT function assessment when echocardiography is inadequate or contraindicated
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Cardiac Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '75635'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pulmonary_vein_mapping_2025_09
+    - dx_in_value_set: vs_atrial_fibrillation_ablation_planning_2025_09
+    - dx_in_value_set: vs_left_atrial_appendage_evaluation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['93312', '93313']
+        lookback_days: 180
+        description: "TEE or planned electrophysiology procedure"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac CT for pulmonary vein mapping requires planned ablation or LAA evaluation
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Cardiac Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"

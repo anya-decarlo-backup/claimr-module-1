@@ -1,0 +1,98 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76641'
+    - '76642'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_breast_ultrasound_indication_2025_09
+    - dx_in_value_set: vs_palpable_breast_mass_2025_09
+    - dx_in_value_set: vs_breast_pain_focal_ultrasound_2025_09
+    - dx_in_value_set: vs_mammography_callback_ultrasound_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Breast ultrasound requires palpable mass, focal symptoms, or mammography callback
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Breast Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76641'
+    - '76642'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_breast_ultrasound_dense_tissue_2025_09
+    - dx_in_value_set: vs_dense_breast_tissue_screening_2025_09
+    - dx_in_value_set: vs_mammography_dense_tissue_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 75
+    - prior_service_required:
+        cpt: ['77067']
+        lookback_days: 30
+        description: "Dense breast tissue on screening mammography"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Breast ultrasound supplemental screening for dense breast tissue following mammography
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Breast Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76940'
+    - '76942'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ultrasound_guided_breast_biopsy_2025_09
+    - dx_in_value_set: vs_breast_lesion_biopsy_indication_2025_09
+    - dx_in_value_set: vs_birads_4_5_lesion_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['76641', '76642']
+        lookback_days: 30
+        description: "Breast ultrasound identifying suspicious lesion requiring biopsy"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Ultrasound-guided breast biopsy requires suspicious lesion identified on prior imaging
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Breast Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"

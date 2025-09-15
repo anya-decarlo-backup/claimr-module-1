@@ -1,0 +1,136 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88300'
+    - '88302'
+    - '88304'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_surgical_pathology_routine_2025_09
+    - dx_in_value_set: vs_biopsy_evaluation_2025_09
+    - dx_in_value_set: vs_excision_specimen_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['11100', '11101', '19083', '19084']
+        lookback_days: 30
+        description: "Surgical biopsy or excision requiring pathologic evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Routine surgical pathology for biopsy and excision specimens
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88305'
+    - '88307'
+    - '88309'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_surgical_pathology_complex_2025_09
+    - dx_in_value_set: vs_malignancy_evaluation_2025_09
+    - dx_in_value_set: vs_organ_resection_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['19301', '19302', '44140', '44160']
+        lookback_days: 30
+        description: "Major surgical resection requiring comprehensive pathologic evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Complex surgical pathology for organ resections and malignancy evaluation
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88311'
+    - '88312'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_decalcification_pathology_2025_09
+    - dx_in_value_set: vs_bone_tissue_processing_2025_09
+    - dx_in_value_set: vs_calcified_tissue_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['20220', '20240', '20245']
+        lookback_days: 30
+        description: "Bone biopsy or resection requiring decalcification processing"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Decalcification and special processing for bone and calcified tissues
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88319'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_special_procedures_pathology_2025_09
+    - dx_in_value_set: vs_tissue_preparation_special_2025_09
+    - dx_in_value_set: vs_pathology_consultation_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Complex pathology case requiring special procedures or consultation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Special pathology procedures and expert consultation for complex cases
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"

@@ -1,0 +1,136 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88342'
+    - '88344'
+    - '88346'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_immunohistochemistry_cancer_2025_09
+    - dx_in_value_set: vs_tumor_classification_2025_09
+    - dx_in_value_set: vs_cancer_biomarkers_2025_09
+    - dx_in_value_set: vs_metastatic_workup_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Tissue biopsy with malignancy requiring immunohistochemical characterization"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Immunohistochemistry for cancer classification and biomarker analysis
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88360'
+    - '88361'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_morphometric_analysis_ihc_2025_09
+    - dx_in_value_set: vs_quantitative_immunostaining_2025_09
+    - dx_in_value_set: vs_her2_quantification_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88342', '88344']
+        lookback_days: 30
+        description: "Initial immunohistochemistry requiring quantitative analysis"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Morphometric analysis for quantitative immunohistochemistry evaluation
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88348'
+    - '88349'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_electron_microscopy_ihc_2025_09
+    - dx_in_value_set: vs_ultrastructural_pathology_2025_09
+    - dx_in_value_set: vs_rare_tumor_diagnosis_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Tissue biopsy with diagnostic uncertainty requiring electron microscopy"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Electron microscopy for rare tumor diagnosis and ultrastructural analysis
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88350'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_special_immunostains_2025_09
+    - dx_in_value_set: vs_infectious_disease_ihc_2025_09
+    - dx_in_value_set: vs_viral_pathogen_detection_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Tissue biopsy with suspected infectious etiology"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Special immunostains for infectious organism identification
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"

@@ -1,0 +1,136 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93224'
+    - '93225'
+    - '93226'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_holter_monitoring_indication_2025_09
+    - dx_in_value_set: vs_palpitations_2025_09
+    - dx_in_value_set: vs_syncope_evaluation_2025_09
+    - dx_in_value_set: vs_arrhythmia_suspected_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93000', '93005']
+        lookback_days: 90
+        description: "Resting ECG with clinical symptoms requiring extended monitoring"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Holter monitoring requires symptoms suggestive of arrhythmia with normal or inconclusive resting ECG
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93228'
+    - '93229'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_event_monitor_indication_2025_09
+    - dx_in_value_set: vs_infrequent_palpitations_2025_09
+    - dx_in_value_set: vs_episodic_symptoms_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93224', '93225']
+        lookback_days: 90
+        description: "Prior Holter monitoring with infrequent or no captured events"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Event monitoring for infrequent symptoms when Holter monitoring is inadequate
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93015'
+    - '93016'
+    - '93017'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_exercise_stress_test_2025_09
+    - dx_in_value_set: vs_chest_pain_evaluation_2025_09
+    - dx_in_value_set: vs_coronary_artery_disease_screening_2025_09
+    - dx_in_value_set: vs_preoperative_cardiac_clearance_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['93000', '93005']
+        lookback_days: 90
+        description: "Resting ECG and clinical risk assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Exercise stress testing requires intermediate pretest probability of CAD or preoperative evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93040'
+    - '93041'
+    - '93042'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_rhythm_strip_indication_2025_09
+    - dx_in_value_set: vs_arrhythmia_documentation_2025_09
+    - dx_in_value_set: vs_pacemaker_check_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Rhythm strip for arrhythmia documentation or pacemaker evaluation
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '23', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"

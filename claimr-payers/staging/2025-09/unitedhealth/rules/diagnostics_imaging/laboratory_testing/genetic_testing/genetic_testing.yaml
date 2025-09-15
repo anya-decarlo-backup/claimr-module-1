@@ -1,0 +1,136 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '81162'
+    - '81163'
+    - '81164'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_brca_testing_indication_2025_09
+    - dx_in_value_set: vs_hereditary_breast_cancer_2025_09
+    - dx_in_value_set: vs_ovarian_cancer_family_history_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['96040']
+        lookback_days: 90
+        description: "Genetic counseling with family history assessment and risk evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: BRCA1/2 testing requires genetic counseling and appropriate family history or personal risk factors
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '81292'
+    - '81293'
+    - '81294'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mlt1_testing_indication_2025_09
+    - dx_in_value_set: vs_lynch_syndrome_screening_2025_09
+    - dx_in_value_set: vs_colorectal_cancer_hereditary_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['96040']
+        lookback_days: 90
+        description: "Genetic counseling with colorectal cancer family history assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: MLH1 testing for Lynch syndrome requires genetic counseling and appropriate clinical criteria
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '81406'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_molecular_cytogenetics_2025_09
+    - dx_in_value_set: vs_chromosomal_microarray_2025_09
+    - dx_in_value_set: vs_developmental_delay_genetic_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 18
+    - prior_service_required:
+        cpt: ['96040']
+        lookback_days: 90
+        description: "Genetic counseling for developmental delay or congenital anomalies"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Chromosomal microarray for pediatric developmental delay or congenital anomalies
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '81425'
+    - '81426'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_genome_sequencing_indication_2025_09
+    - dx_in_value_set: vs_undiagnosed_genetic_condition_2025_09
+    - dx_in_value_set: vs_complex_phenotype_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['96040']
+        lookback_days: 90
+        description: "Genetic counseling and prior targeted genetic testing with negative results"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Genome sequencing for undiagnosed conditions after negative targeted testing
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"

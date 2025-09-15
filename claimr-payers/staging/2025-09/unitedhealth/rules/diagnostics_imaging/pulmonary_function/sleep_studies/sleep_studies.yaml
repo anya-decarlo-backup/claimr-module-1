@@ -1,0 +1,136 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95810'
+    - '95811'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_polysomnography_indication_2025_09
+    - dx_in_value_set: vs_sleep_apnea_suspected_2025_09
+    - dx_in_value_set: vs_sleep_disorder_evaluation_2025_09
+    - dx_in_value_set: vs_excessive_daytime_sleepiness_2025_09
+    all_of:
+    - min_age: 2
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['99213', '99214']
+        lookback_days: 90
+        description: "Sleep medicine evaluation with clinical symptoms and risk factors"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Polysomnography for sleep apnea diagnosis with clinical symptoms and risk assessment
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95807'
+    - '95808'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_home_sleep_study_2025_09
+    - dx_in_value_set: vs_sleep_apnea_screening_2025_09
+    - dx_in_value_set: vs_portable_sleep_monitoring_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 75
+    - prior_service_required:
+        cpt: ['99213', '99214']
+        lookback_days: 90
+        description: "Sleep evaluation with moderate to high pretest probability of OSA"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Home sleep apnea testing for uncomplicated OSA screening in appropriate candidates
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '12']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95782'
+    - '95783'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mslt_indication_2025_09
+    - dx_in_value_set: vs_narcolepsy_evaluation_2025_09
+    - dx_in_value_set: vs_hypersomnia_evaluation_2025_09
+    all_of:
+    - min_age: 6
+    - max_age: 75
+    - prior_service_required:
+        cpt: ['95810', '95811']
+        lookback_days: 90
+        description: "Polysomnography with adequate sleep and normal or treated sleep apnea"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Multiple Sleep Latency Test for narcolepsy or hypersomnia evaluation after PSG
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95800'
+    - '95801'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cpap_titration_2025_09
+    - dx_in_value_set: vs_sleep_apnea_treatment_2025_09
+    - dx_in_value_set: vs_positive_airway_pressure_2025_09
+    all_of:
+    - min_age: 2
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['95810', '95811']
+        lookback_days: 90
+        description: "Polysomnography confirming moderate to severe sleep apnea"
+  logic:
+    outcome: PA_REQUIRED
+    notes: CPAP titration study for sleep apnea treatment optimization
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Pulmonary Function Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"

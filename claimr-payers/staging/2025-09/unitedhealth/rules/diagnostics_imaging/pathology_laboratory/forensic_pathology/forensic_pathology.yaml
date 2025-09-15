@@ -1,0 +1,92 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88040'
+    - '88045'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_autopsy_indication_2025_09
+    - dx_in_value_set: vs_sudden_death_evaluation_2025_09
+    - dx_in_value_set: vs_forensic_examination_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Autopsy and forensic pathology examination for sudden or unexplained death
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88104'
+    - '88106'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cytopathology_autopsy_2025_09
+    - dx_in_value_set: vs_postmortem_examination_2025_09
+    - dx_in_value_set: vs_forensic_cytology_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88040', '88045']
+        lookback_days: 7
+        description: "Autopsy examination requiring cytologic evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cytopathology examination as part of forensic autopsy evaluation
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88125'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_forensic_consultation_2025_09
+    - dx_in_value_set: vs_pathology_expert_opinion_2025_09
+    - dx_in_value_set: vs_medicolegal_examination_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Forensic pathology consultation for medicolegal cases
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"

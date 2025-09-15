@@ -1,0 +1,135 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '83036'
+    - '83037'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hemoglobin_a1c_monitoring_2025_09
+    - dx_in_value_set: vs_diabetes_management_2025_09
+    - dx_in_value_set: vs_glycemic_control_assessment_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['99213', '99214']
+        lookback_days: 90
+        description: "Diabetes management visit or prediabetes evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Hemoglobin A1c for diabetes monitoring or prediabetes screening
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '83735'
+    - '83736'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_magnesium_deficiency_2025_09
+    - dx_in_value_set: vs_electrolyte_imbalance_2025_09
+    - dx_in_value_set: vs_malabsorption_evaluation_2025_09
+    all_of:
+    - min_age: 1
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['80047', '80048']
+        lookback_days: 30
+        description: "Basic metabolic panel with abnormal results or clinical symptoms"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Magnesium testing for suspected deficiency or electrolyte imbalance evaluation
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '84132'
+    - '84133'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_potassium_monitoring_2025_09
+    - dx_in_value_set: vs_hyperkalemia_hypokalemia_2025_09
+    - dx_in_value_set: vs_diuretic_monitoring_2025_09
+    all_of:
+    - min_age: 1
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['80047', '80048']
+        lookback_days: 30
+        description: "Basic metabolic panel or medication requiring electrolyte monitoring"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Potassium monitoring for electrolyte imbalance or medication management
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '84460'
+    - '84466'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_alanine_aminotransferase_2025_09
+    - dx_in_value_set: vs_liver_function_monitoring_2025_09
+    - dx_in_value_set: vs_hepatotoxic_medication_2025_09
+    all_of:
+    - min_age: 1
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['80076']
+        lookback_days: 90
+        description: "Hepatic function panel or medication requiring liver monitoring"
+  logic:
+    outcome: PA_REQUIRED
+    notes: ALT monitoring for liver function assessment or hepatotoxic medication management
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Laboratory Testing Guidelines"
+    last_verified: "2025-09-14T18:03:39-07:00"

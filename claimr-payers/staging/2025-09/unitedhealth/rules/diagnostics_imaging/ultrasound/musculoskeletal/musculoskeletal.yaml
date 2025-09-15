@@ -1,0 +1,129 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76881'
+    - '76882'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_shoulder_ultrasound_indication_2025_09
+    - dx_in_value_set: vs_rotator_cuff_tear_suspected_2025_09
+    - dx_in_value_set: vs_shoulder_impingement_2025_09
+    - dx_in_value_set: vs_shoulder_pain_chronic_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['99213', '99214']
+        lookback_days: 60
+        description: "Orthopedic or sports medicine evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Shoulder ultrasound requires rotator cuff pathology suspicion and specialist evaluation
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76885'
+    - '76886'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_hip_ultrasound_indication_2025_09
+    - dx_in_value_set: vs_developmental_dysplasia_hip_2025_09
+    - dx_in_value_set: vs_hip_effusion_suspected_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 18
+  logic:
+    outcome: PA_REQUIRED
+    notes: Hip ultrasound primarily for pediatric developmental dysplasia or effusion evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76870'
+    - '76872'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_scrotal_ultrasound_indication_2025_09
+    - dx_in_value_set: vs_testicular_mass_2025_09
+    - dx_in_value_set: vs_scrotal_pain_acute_2025_09
+    - dx_in_value_set: vs_testicular_torsion_suspected_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Scrotal ultrasound requires testicular mass, acute pain, or torsion suspicion
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '23', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76942'
+    - '76998'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ultrasound_guided_procedure_2025_09
+    - dx_in_value_set: vs_joint_injection_guidance_2025_09
+    - dx_in_value_set: vs_soft_tissue_biopsy_guidance_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['20610', '20611']
+        lookback_days: 30
+        description: "Planned procedure requiring ultrasound guidance"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Ultrasound guidance requires concurrent procedure and clinical necessity for imaging guidance
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"

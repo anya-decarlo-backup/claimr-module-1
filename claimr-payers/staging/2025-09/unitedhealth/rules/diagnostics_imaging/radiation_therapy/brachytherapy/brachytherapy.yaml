@@ -1,0 +1,139 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77750'
+    - '77761'
+    - '77762'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_prostate_brachytherapy_2025_09
+    - dx_in_value_set: vs_prostate_cancer_localized_2025_09
+    - dx_in_value_set: vs_low_risk_prostate_cancer_2025_09
+    - dx_in_value_set: vs_intermediate_risk_prostate_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 180
+        description: "Prostate biopsy confirming adenocarcinoma"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Prostate brachytherapy requires tissue diagnosis and appropriate risk stratification
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Radiation Oncology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77770'
+    - '77771'
+    - '77772'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_gynecologic_brachytherapy_2025_09
+    - dx_in_value_set: vs_cervical_cancer_2025_09
+    - dx_in_value_set: vs_endometrial_cancer_2025_09
+    - dx_in_value_set: vs_vaginal_cancer_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 180
+        description: "Tissue diagnosis confirming gynecologic malignancy"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Gynecologic brachytherapy requires tissue diagnosis and multidisciplinary evaluation
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Radiation Oncology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77778'
+    - '77789'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_breast_brachytherapy_2025_09
+    - dx_in_value_set: vs_breast_cancer_early_stage_2025_09
+    - dx_in_value_set: vs_accelerated_partial_breast_2025_09
+    all_of:
+    - min_age: 50
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['19301', '19302']
+        lookback_days: 90
+        description: "Breast conserving surgery with clear margins"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Breast brachytherapy requires early-stage disease and appropriate patient selection
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Radiation Oncology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77790'
+    - '77799'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_skin_brachytherapy_2025_09
+    - dx_in_value_set: vs_non_melanoma_skin_cancer_2025_09
+    - dx_in_value_set: vs_keloid_treatment_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305']
+        lookback_days: 90
+        description: "Tissue diagnosis or clinical indication for brachytherapy"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Skin brachytherapy requires appropriate lesion characteristics and patient selection
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Radiation Oncology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"

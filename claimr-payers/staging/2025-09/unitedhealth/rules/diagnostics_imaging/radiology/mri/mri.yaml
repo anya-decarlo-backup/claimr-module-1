@@ -1,0 +1,179 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '70551'
+    - '70552'
+    - '70553'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_brain_mri_indication_2025_09
+    - dx_in_value_set: vs_multiple_sclerosis_suspected_2025_09
+    - dx_in_value_set: vs_brain_tumor_suspected_2025_09
+    - dx_in_value_set: vs_seizure_disorder_evaluation_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['70450', '70460']
+        lookback_days: 60
+        description: "Prior CT head or clinical neurologic evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Brain MRI requires neurologic indication and prior imaging or specialist evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - MRI"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '72141'
+    - '72142'
+    - '72156'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cervical_spine_mri_indication_2025_09
+    - dx_in_value_set: vs_cervical_disc_herniation_2025_09
+    - dx_in_value_set: vs_cervical_stenosis_2025_09
+    - dx_in_value_set: vs_cervical_myelopathy_mri_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['99213', '99214']
+        lookback_days: 90
+        description: "Conservative therapy trial minimum 6 weeks"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cervical spine MRI requires failed conservative therapy and neurologic symptoms
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - MRI"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '72148'
+    - '72149'
+    - '72158'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_lumbar_spine_mri_indication_2025_09
+    - dx_in_value_set: vs_lumbar_disc_herniation_2025_09
+    - dx_in_value_set: vs_lumbar_stenosis_2025_09
+    - dx_in_value_set: vs_sciatica_radiculopathy_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['97110', '97112']
+        lookback_days: 90
+        description: "Physical therapy trial minimum 6 weeks"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Lumbar spine MRI requires failed conservative therapy including PT and persistent symptoms
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - MRI"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '73721'
+    - '73722'
+    - '73723'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_knee_mri_indication_2025_09
+    - dx_in_value_set: vs_meniscal_tear_suspected_2025_09
+    - dx_in_value_set: vs_acl_injury_suspected_2025_09
+    - dx_in_value_set: vs_knee_pain_mechanical_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 75
+    - prior_service_required:
+        cpt: ['73560', '73564']
+        lookback_days: 30
+        description: "Prior knee X-ray"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Knee MRI requires mechanical symptoms, failed conservative therapy, or surgical planning
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - MRI"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '73718'
+    - '73719'
+    - '73720'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_shoulder_mri_indication_2025_09
+    - dx_in_value_set: vs_rotator_cuff_tear_suspected_2025_09
+    - dx_in_value_set: vs_shoulder_impingement_2025_09
+    - dx_in_value_set: vs_labral_tear_suspected_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 75
+    - prior_service_required:
+        cpt: ['73030', '73060']
+        lookback_days: 30
+        description: "Prior shoulder X-ray and conservative therapy"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Shoulder MRI requires failed conservative therapy and surgical consideration
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - MRI"
+    last_verified: "2025-09-14T16:40:03-07:00"

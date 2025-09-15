@@ -1,0 +1,131 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '75561'
+    - '75562'
+    - '75563'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cardiac_mri_indication_2025_09
+    - dx_in_value_set: vs_cardiomyopathy_evaluation_mri_2025_09
+    - dx_in_value_set: vs_myocarditis_suspected_2025_09
+    - dx_in_value_set: vs_cardiac_mass_evaluation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 90
+        description: "Prior echocardiogram with inconclusive results"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac MRI requires specific indication when echocardiography is inadequate or inconclusive
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Cardiac Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '75565'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cardiac_mri_viability_2025_09
+    - dx_in_value_set: vs_myocardial_infarction_viability_2025_09
+    - dx_in_value_set: vs_ischemic_cardiomyopathy_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['78451', '78452']
+        lookback_days: 180
+        description: "Prior nuclear stress test or viability study"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac MRI viability assessment when nuclear imaging is contraindicated or inconclusive
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Cardiac Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '75557'
+    - '75559'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_congenital_heart_disease_mri_2025_09
+    - dx_in_value_set: vs_adult_congenital_heart_disease_2025_09
+    - dx_in_value_set: vs_great_vessel_anomaly_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 80
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac MRI for congenital heart disease evaluation and great vessel assessment
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Cardiac Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '75555'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cardiac_mri_stress_2025_09
+    - dx_in_value_set: vs_coronary_artery_disease_mri_2025_09
+    - dx_in_value_set: vs_chest_pain_stress_mri_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['93320', '93321']
+        lookback_days: 180
+        description: "Prior stress testing contraindicated or inconclusive"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac MRI stress testing when other stress modalities are contraindicated or inconclusive
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Advanced Cardiac Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"

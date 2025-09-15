@@ -1,0 +1,136 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78000'
+    - '78001'
+    - '78003'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_thyroid_nodule_evaluation_2025_09
+    - dx_in_value_set: vs_hyperthyroidism_evaluation_2025_09
+    - dx_in_value_set: vs_thyroid_cancer_suspected_2025_09
+    - dx_in_value_set: vs_goiter_evaluation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['84439', '84443']
+        lookback_days: 90
+        description: "Thyroid function tests (TSH, T4) and thyroid ultrasound"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Thyroid scan requires abnormal thyroid function tests and ultrasound evaluation
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Thyroid"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78006'
+    - '78007'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_thyroid_uptake_hyperthyroid_2025_09
+    - dx_in_value_set: vs_graves_disease_suspected_2025_09
+    - dx_in_value_set: vs_toxic_multinodular_goiter_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['84439', '84481']
+        lookback_days: 60
+        description: "Suppressed TSH and elevated T3/T4"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Thyroid uptake study requires biochemical hyperthyroidism and treatment planning
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Thyroid"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78015'
+    - '78016'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_thyroid_cancer_metastases_2025_09
+    - dx_in_value_set: vs_differentiated_thyroid_cancer_2025_09
+    - dx_in_value_set: vs_thyroglobulin_elevated_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 365
+        description: "Prior thyroidectomy for thyroid cancer and elevated thyroglobulin"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Whole body thyroid scan requires prior thyroid cancer treatment and surveillance indication
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Thyroid"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '79005'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_radioiodine_therapy_indication_2025_09
+    - dx_in_value_set: vs_hyperthyroidism_refractory_2025_09
+    - dx_in_value_set: vs_thyroid_cancer_ablation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['78006', '78007']
+        lookback_days: 90
+        description: "Thyroid uptake study and failed medical therapy or surgical indication"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Radioiodine therapy requires uptake study, failed medical therapy, or post-surgical ablation
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Thyroid"
+    last_verified: "2025-09-14T16:48:53-07:00"

@@ -1,0 +1,141 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78451'
+    - '78452'
+    - '78453'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_myocardial_perfusion_imaging_2025_09
+    - dx_in_value_set: vs_coronary_artery_disease_evaluation_2025_09
+    - dx_in_value_set: vs_chest_pain_intermediate_risk_2025_09
+    - dx_in_value_set: vs_preoperative_cardiac_risk_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93015', '93016']
+        lookback_days: 90
+        description: "Exercise stress test with abnormal or inconclusive results"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Nuclear stress testing requires abnormal exercise stress test or inability to exercise adequately
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93350'
+    - '93351'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_stress_echocardiography_2025_09
+    - dx_in_value_set: vs_wall_motion_assessment_2025_09
+    - dx_in_value_set: vs_viability_assessment_2025_09
+    - dx_in_value_set: vs_valvular_disease_stress_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 90
+        description: "Resting echocardiogram with clinical indication for stress assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Stress echocardiography for wall motion assessment when nuclear imaging contraindicated
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78454'
+    - '78455'
+    - '78456'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_myocardial_viability_2025_09
+    - dx_in_value_set: vs_hibernating_myocardium_2025_09
+    - dx_in_value_set: vs_ischemic_cardiomyopathy_2025_09
+    - dx_in_value_set: vs_revascularization_planning_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['78451', '78452']
+        lookback_days: 90
+        description: "Perfusion imaging showing fixed defects requiring viability assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Viability imaging for hibernating myocardium assessment prior to revascularization
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78472'
+    - '78473'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cardiac_function_assessment_2025_09
+    - dx_in_value_set: vs_ejection_fraction_evaluation_2025_09
+    - dx_in_value_set: vs_cardiomyopathy_evaluation_2025_09
+    - dx_in_value_set: vs_chemotherapy_cardiotoxicity_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 90
+        description: "Echocardiogram with suboptimal image quality or discordant results"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cardiac function assessment when echocardiography inadequate or serial monitoring needed
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"

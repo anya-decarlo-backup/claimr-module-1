@@ -1,0 +1,99 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77058'
+    - '77059'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_breast_mri_high_risk_2025_09
+    - dx_in_value_set: vs_brca_mutation_screening_2025_09
+    - dx_in_value_set: vs_breast_cancer_family_history_strong_2025_09
+    - dx_in_value_set: vs_chest_radiation_mantle_2025_09
+    all_of:
+    - min_age: 25
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Breast MRI screening for high-risk patients with BRCA mutations or strong family history
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Breast Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77058'
+    - '77059'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_breast_mri_staging_2025_09
+    - dx_in_value_set: vs_breast_cancer_newly_diagnosed_2025_09
+    - dx_in_value_set: vs_invasive_lobular_carcinoma_2025_09
+    - dx_in_value_set: vs_multifocal_breast_cancer_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['19083', '19084']
+        lookback_days: 60
+        description: "Tissue diagnosis of breast cancer"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Breast MRI for staging newly diagnosed breast cancer or evaluating extent of disease
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Breast Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77058'
+    - '77059'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_breast_mri_problem_solving_2025_09
+    - dx_in_value_set: vs_breast_lesion_inconclusive_2025_09
+    - dx_in_value_set: vs_mammography_ultrasound_discordant_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['77066', '76642']
+        lookback_days: 90
+        description: "Prior mammography and breast ultrasound with inconclusive findings"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Breast MRI for problem-solving when mammography and ultrasound are inconclusive
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Breast Imaging Guidelines"
+    last_verified: "2025-09-14T16:54:21-07:00"

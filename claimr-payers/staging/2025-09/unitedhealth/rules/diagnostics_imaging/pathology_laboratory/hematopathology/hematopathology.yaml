@@ -1,0 +1,139 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88184'
+    - '88185'
+    - '88187'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_flow_cytometry_indication_2025_09
+    - dx_in_value_set: vs_hematologic_malignancy_2025_09
+    - dx_in_value_set: vs_lymphoma_leukemia_evaluation_2025_09
+    - dx_in_value_set: vs_immunophenotyping_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['85025', '85027']
+        lookback_days: 30
+        description: "Complete blood count with abnormal findings suggesting hematologic disorder"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Flow cytometry for hematologic malignancy evaluation and immunophenotyping
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88237'
+    - '88239'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bone_marrow_biopsy_2025_09
+    - dx_in_value_set: vs_hematologic_disorder_evaluation_2025_09
+    - dx_in_value_set: vs_cytopenias_evaluation_2025_09
+    - dx_in_value_set: vs_myelodysplastic_syndrome_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['85025', '85027']
+        lookback_days: 90
+        description: "Persistent cytopenias or abnormal blood counts requiring bone marrow evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Bone marrow biopsy evaluation for hematologic disorders and cytopenias
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88271'
+    - '88272'
+    - '88273'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_molecular_pathology_heme_2025_09
+    - dx_in_value_set: vs_genetic_rearrangement_2025_09
+    - dx_in_value_set: vs_clonality_assessment_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88237', '88239']
+        lookback_days: 30
+        description: "Bone marrow or tissue biopsy requiring molecular characterization"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Molecular pathology for hematologic malignancy characterization and clonality assessment
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88280'
+    - '88283'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_chromosome_analysis_2025_09
+    - dx_in_value_set: vs_cytogenetic_evaluation_2025_09
+    - dx_in_value_set: vs_karyotype_analysis_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88237', '88239']
+        lookback_days: 30
+        description: "Hematologic malignancy requiring cytogenetic analysis for prognosis"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Chromosome analysis for hematologic malignancy prognosis and treatment planning
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"

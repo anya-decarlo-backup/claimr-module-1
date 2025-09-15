@@ -1,0 +1,128 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45378'
+    - '45380'
+    - '45385'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_colonoscopy_screening_2025_09
+    - dx_in_value_set: vs_colorectal_cancer_screening_2025_09
+    - dx_in_value_set: vs_average_risk_screening_2025_09
+    all_of:
+    - min_age: 45
+    - max_age: 75
+  logic:
+    outcome: PA_REQUIRED
+    notes: Screening colonoscopy for average-risk adults aged 45-75 per USPSTF guidelines
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Endoscopy Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45378'
+    - '45380'
+    - '45385'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_diagnostic_colonoscopy_2025_09
+    - dx_in_value_set: vs_lower_gi_bleeding_2025_09
+    - dx_in_value_set: vs_change_bowel_habits_2025_09
+    - dx_in_value_set: vs_abdominal_pain_chronic_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Diagnostic colonoscopy requires specific GI symptoms or bleeding evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Endoscopy Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45384'
+    - '45385'
+    - '45388'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_therapeutic_colonoscopy_2025_09
+    - dx_in_value_set: vs_polyp_removal_2025_09
+    - dx_in_value_set: vs_colonic_bleeding_intervention_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['45378']
+        lookback_days: 30
+        description: "Diagnostic colonoscopy identifying polyps or bleeding source"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Therapeutic colonoscopy requires diagnostic procedure identifying lesions requiring intervention
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Endoscopy Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45330'
+    - '45331'
+    - '45335'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_flexible_sigmoidoscopy_2025_09
+    - dx_in_value_set: vs_left_sided_symptoms_2025_09
+    - dx_in_value_set: vs_rectal_bleeding_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Flexible sigmoidoscopy for left-sided colonic symptoms or limited screening
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Endoscopy Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"

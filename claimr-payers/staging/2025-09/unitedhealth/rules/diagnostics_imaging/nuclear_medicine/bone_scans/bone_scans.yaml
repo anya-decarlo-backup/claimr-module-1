@@ -1,0 +1,137 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78300'
+    - '78305'
+    - '78306'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bone_metastases_suspected_2025_09
+    - dx_in_value_set: vs_prostate_cancer_staging_2025_09
+    - dx_in_value_set: vs_breast_cancer_staging_2025_09
+    - dx_in_value_set: vs_lung_cancer_bone_mets_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 180
+        description: "Tissue diagnosis of primary malignancy"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Bone scan for metastatic evaluation requires tissue-confirmed malignancy with high bone metastasis risk
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Bone Scan"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78315'
+    - '78320'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bone_pain_unexplained_2025_09
+    - dx_in_value_set: vs_stress_fracture_suspected_2025_09
+    - dx_in_value_set: vs_osteomyelitis_suspected_2025_09
+    - dx_in_value_set: vs_avascular_necrosis_suspected_2025_09
+    all_of:
+    - min_age: 12
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['73060', '73070', '73560']
+        lookback_days: 60
+        description: "Prior X-rays negative or inconclusive"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Bone scan for benign conditions requires negative/inconclusive X-rays and persistent symptoms
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Bone Scan"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78350'
+    - '78351'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_bone_tumor_suspected_2025_09
+    - dx_in_value_set: vs_primary_bone_malignancy_2025_09
+    - dx_in_value_set: vs_osteosarcoma_suspected_2025_09
+    all_of:
+    - min_age: 5
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['73060', '73070']
+        lookback_days: 30
+        description: "Plain radiographs showing suspicious bone lesion"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Bone scan for primary bone tumors requires suspicious radiographic findings and staging evaluation
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Bone Scan"
+    last_verified: "2025-09-14T16:48:53-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78399'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_paget_disease_suspected_2025_09
+    - dx_in_value_set: vs_alkaline_phosphatase_elevated_2025_09
+    - dx_in_value_set: vs_bone_deformity_unexplained_2025_09
+    all_of:
+    - min_age: 40
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['84100', '84105']
+        lookback_days: 90
+        description: "Elevated alkaline phosphatase and bone-specific markers"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Bone scan for Paget disease requires elevated bone markers and clinical suspicion
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Nuclear Medicine Guidelines - Bone Scan"
+    last_verified: "2025-09-14T16:48:53-07:00"

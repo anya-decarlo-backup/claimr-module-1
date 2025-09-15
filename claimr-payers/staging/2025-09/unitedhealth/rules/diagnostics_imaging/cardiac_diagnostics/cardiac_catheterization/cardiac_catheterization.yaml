@@ -1,0 +1,142 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93458'
+    - '93459'
+    - '93460'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_coronary_angiography_2025_09
+    - dx_in_value_set: vs_acute_coronary_syndrome_2025_09
+    - dx_in_value_set: vs_unstable_angina_2025_09
+    - dx_in_value_set: vs_myocardial_infarction_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['78451', '78452', '93350']
+        lookback_days: 90
+        description: "Abnormal stress testing indicating high-risk coronary disease"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Coronary angiography requires high-risk stress test or acute coronary syndrome
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93461'
+    - '93462'
+    - '93463'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_left_heart_catheterization_2025_09
+    - dx_in_value_set: vs_valvular_disease_assessment_2025_09
+    - dx_in_value_set: vs_cardiomyopathy_evaluation_2025_09
+    - dx_in_value_set: vs_hemodynamic_assessment_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 90
+        description: "Echocardiogram showing valvular disease or cardiomyopathy"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Left heart catheterization for hemodynamic assessment of valvular disease or cardiomyopathy
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93464'
+    - '93465'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_right_heart_catheterization_2025_09
+    - dx_in_value_set: vs_pulmonary_hypertension_2025_09
+    - dx_in_value_set: vs_heart_failure_evaluation_2025_09
+    - dx_in_value_set: vs_congenital_heart_disease_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 90
+        description: "Echocardiogram suggesting pulmonary hypertension or right heart dysfunction"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Right heart catheterization for pulmonary hypertension or right heart failure evaluation
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93566'
+    - '93567'
+    - '93568'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_intravascular_ultrasound_2025_09
+    - dx_in_value_set: vs_coronary_lesion_assessment_2025_09
+    - dx_in_value_set: vs_stent_optimization_2025_09
+    - dx_in_value_set: vs_plaque_characterization_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['93458', '93459']
+        lookback_days: 30
+        description: "Coronary angiography with intermediate lesions requiring further assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: IVUS for intermediate coronary lesions or stent optimization during PCI
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Cardiac Diagnostics Guidelines"
+    last_verified: "2025-09-14T17:48:25-07:00"

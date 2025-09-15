@@ -1,0 +1,103 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88104'
+    - '88106'
+    - '88108'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cytology_fluid_analysis_2025_09
+    - dx_in_value_set: vs_pleural_fluid_cytology_2025_09
+    - dx_in_value_set: vs_peritoneal_fluid_cytology_2025_09
+    - dx_in_value_set: vs_pericardial_fluid_cytology_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['32554', '49082', '33010']
+        lookback_days: 7
+        description: "Fluid collection procedure requiring cytologic evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cytologic examination of body fluids for malignancy evaluation
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88160'
+    - '88161'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cervical_cytology_2025_09
+    - dx_in_value_set: vs_pap_smear_abnormal_2025_09
+    - dx_in_value_set: vs_cervical_dysplasia_2025_09
+    all_of:
+    - min_age: 21
+    - max_age: 65
+    - prior_service_required:
+        cpt: ['88150', '88152']
+        lookback_days: 30
+        description: "Cervical cytology screening with abnormal results"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cervical cytology evaluation for dysplasia and malignancy screening
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88172'
+    - '88173'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_fine_needle_aspiration_2025_09
+    - dx_in_value_set: vs_thyroid_nodule_cytology_2025_09
+    - dx_in_value_set: vs_lymph_node_cytology_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['10021', '10022']
+        lookback_days: 7
+        description: "Fine needle aspiration biopsy requiring cytologic interpretation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Fine needle aspiration cytology for nodule and mass evaluation
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"

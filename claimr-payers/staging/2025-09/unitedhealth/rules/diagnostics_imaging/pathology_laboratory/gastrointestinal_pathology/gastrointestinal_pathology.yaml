@@ -1,0 +1,136 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88305'
+    - '88307'
+    - '88309'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_gi_biopsy_pathology_2025_09
+    - dx_in_value_set: vs_colorectal_polyp_evaluation_2025_09
+    - dx_in_value_set: vs_inflammatory_bowel_disease_2025_09
+    - dx_in_value_set: vs_gi_malignancy_suspected_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['43239', '45380', '45385']
+        lookback_days: 30
+        description: "Endoscopic biopsy or polypectomy requiring pathologic evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: GI pathology evaluation for endoscopic biopsies and polyp specimens
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24', '81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88342'
+    - '88344'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_mismatch_repair_proteins_2025_09
+    - dx_in_value_set: vs_lynch_syndrome_screening_2025_09
+    - dx_in_value_set: vs_colorectal_cancer_ihc_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Colorectal cancer pathology requiring Lynch syndrome screening"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Mismatch repair protein testing for Lynch syndrome screening in colorectal cancer
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88399'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_helicobacter_pylori_stain_2025_09
+    - dx_in_value_set: vs_gi_infectious_organisms_2025_09
+    - dx_in_value_set: vs_gastritis_evaluation_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Gastric biopsy with suspected H. pylori infection"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Special stains for H. pylori and other GI infectious organisms
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88368'
+    - '88369'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_her2_gastric_cancer_2025_09
+    - dx_in_value_set: vs_gastroesophageal_cancer_2025_09
+    - dx_in_value_set: vs_gi_cancer_biomarkers_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Gastric or esophageal adenocarcinoma requiring HER2 testing"
+  logic:
+    outcome: PA_REQUIRED
+    notes: HER2 testing for gastric and gastroesophageal junction adenocarcinoma
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T18:36:01-07:00"

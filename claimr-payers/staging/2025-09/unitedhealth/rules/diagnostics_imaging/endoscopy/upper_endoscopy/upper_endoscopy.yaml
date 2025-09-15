@@ -1,0 +1,103 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43235'
+    - '43239'
+    - '43240'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_upper_endoscopy_indication_2025_09
+    - dx_in_value_set: vs_dysphagia_2025_09
+    - dx_in_value_set: vs_upper_gi_bleeding_2025_09
+    - dx_in_value_set: vs_peptic_ulcer_disease_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: Upper endoscopy requires specific GI symptoms or bleeding evaluation
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Endoscopy Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43248'
+    - '43249'
+    - '43251'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_therapeutic_endoscopy_2025_09
+    - dx_in_value_set: vs_gi_bleeding_intervention_2025_09
+    - dx_in_value_set: vs_esophageal_varices_2025_09
+    - dx_in_value_set: vs_foreign_body_removal_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['43235']
+        lookback_days: 30
+        description: "Diagnostic endoscopy identifying therapeutic target"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Therapeutic endoscopy requires diagnostic endoscopy with identified lesion requiring intervention
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Endoscopy Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43270'
+    - '43274'
+    - '43276'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ercp_indication_2025_09
+    - dx_in_value_set: vs_biliary_obstruction_ercp_2025_09
+    - dx_in_value_set: vs_pancreatic_duct_evaluation_2025_09
+    - dx_in_value_set: vs_choledocholithiasis_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['74181', '74182']
+        lookback_days: 90
+        description: "MRCP or CT showing biliary/pancreatic pathology"
+  logic:
+    outcome: PA_REQUIRED
+    notes: ERCP requires imaging evidence of biliary or pancreatic pathology
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Endoscopy Guidelines"
+    last_verified: "2025-09-14T17:21:50-07:00"

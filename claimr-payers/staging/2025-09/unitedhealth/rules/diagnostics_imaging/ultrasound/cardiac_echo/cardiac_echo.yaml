@@ -1,0 +1,131 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93306'
+    - '93307'
+    - '93308'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_echocardiogram_indication_2025_09
+    - dx_in_value_set: vs_heart_failure_suspected_2025_09
+    - dx_in_value_set: vs_chest_pain_cardiac_evaluation_2025_09
+    - dx_in_value_set: vs_murmur_evaluation_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: Echocardiogram requires cardiac symptoms, abnormal ECG, or clinical suspicion of heart disease
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93312'
+    - '93313'
+    - '93314'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_transesophageal_echo_indication_2025_09
+    - dx_in_value_set: vs_endocarditis_suspected_2025_09
+    - dx_in_value_set: vs_atrial_fibrillation_cardioversion_2025_09
+    - dx_in_value_set: vs_prosthetic_valve_evaluation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93306', '93307']
+        lookback_days: 90
+        description: "Prior transthoracic echocardiogram with suboptimal images"
+  logic:
+    outcome: PA_REQUIRED
+    notes: TEE requires specific indication such as endocarditis, prosthetic valve, or inadequate TTE
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93320'
+    - '93321'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_stress_echocardiogram_indication_2025_09
+    - dx_in_value_set: vs_coronary_artery_disease_evaluation_2025_09
+    - dx_in_value_set: vs_chest_pain_stress_evaluation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93000', '93005']
+        lookback_days: 90
+        description: "Resting ECG and clinical risk assessment"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Stress echo requires intermediate pretest probability of CAD or abnormal resting studies
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93303'
+    - '93304'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pediatric_echocardiogram_2025_09
+    - dx_in_value_set: vs_congenital_heart_disease_2025_09
+    - dx_in_value_set: vs_pediatric_murmur_evaluation_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 18
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pediatric echocardiogram requires congenital heart disease suspicion or pathologic murmur
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['11', '21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - Ultrasound"
+    last_verified: "2025-09-14T16:54:21-07:00"

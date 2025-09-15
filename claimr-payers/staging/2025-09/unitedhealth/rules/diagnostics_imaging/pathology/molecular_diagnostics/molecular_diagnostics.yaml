@@ -1,0 +1,137 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88271'
+    - '88272'
+    - '88273'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_molecular_pathology_oncology_2025_09
+    - dx_in_value_set: vs_gene_rearrangement_testing_2025_09
+    - dx_in_value_set: vs_clonality_molecular_2025_09
+    - dx_in_value_set: vs_lymphoma_molecular_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Tissue biopsy with hematologic malignancy requiring molecular characterization"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Molecular pathology for hematologic malignancy characterization and clonality
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88275'
+    - '88280'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cytogenetic_analysis_2025_09
+    - dx_in_value_set: vs_chromosome_pathology_2025_09
+    - dx_in_value_set: vs_karyotype_malignancy_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88237', '88239']
+        lookback_days: 30
+        description: "Bone marrow or tissue requiring cytogenetic analysis"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Cytogenetic analysis for malignancy prognosis and treatment planning
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88283'
+    - '88285'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_fish_analysis_2025_09
+    - dx_in_value_set: vs_fluorescent_in_situ_2025_09
+    - dx_in_value_set: vs_gene_amplification_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Malignancy requiring FISH analysis for gene amplification or translocation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: FISH analysis for gene amplification and chromosomal translocation detection
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88291'
+    - '88299'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_tissue_preparation_molecular_2025_09
+    - dx_in_value_set: vs_nucleic_acid_extraction_2025_09
+    - dx_in_value_set: vs_molecular_specimen_prep_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 30
+        description: "Tissue specimen requiring molecular analysis preparation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Tissue preparation and nucleic acid extraction for molecular pathology
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['81']
+  _meta:
+    source: "UnitedHealth 2025.09 Pathology Guidelines"
+    last_verified: "2025-09-14T19:56:28-07:00"

@@ -1,0 +1,165 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '74150'
+    - '74160'
+    - '74170'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_abdominal_pain_ct_indication_2025_09
+    - dx_in_value_set: vs_suspected_appendicitis_2025_09
+    - dx_in_value_set: vs_bowel_obstruction_suspected_2025_09
+    - dx_in_value_set: vs_abdominal_mass_evaluation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: CT abdomen/pelvis requires clinical indication beyond routine screening
+  precedence: 70
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '24']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - CT"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '70450'
+    - '70460'
+    - '70470'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_head_trauma_ct_indication_2025_09
+    - dx_in_value_set: vs_stroke_suspected_2025_09
+    - dx_in_value_set: vs_severe_headache_neurologic_2025_09
+    - dx_in_value_set: vs_altered_mental_status_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 90
+  logic:
+    outcome: PA_REQUIRED
+    notes: CT head requires acute neurologic symptoms or trauma indication
+  precedence: 85
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '23']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - CT"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '71250'
+    - '71260'
+    - '71270'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_chest_pain_ct_indication_2025_09
+    - dx_in_value_set: vs_pulmonary_embolism_suspected_2025_09
+    - dx_in_value_set: vs_lung_nodule_evaluation_2025_09
+    - dx_in_value_set: vs_pneumonia_complicated_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+  logic:
+    outcome: PA_REQUIRED
+    notes: CT chest requires clinical indication such as PE suspicion, lung nodule, or complicated pneumonia
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '23']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - CT"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '72125'
+    - '72126'
+    - '72127'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cervical_spine_trauma_2025_09
+    - dx_in_value_set: vs_cervical_radiculopathy_2025_09
+    - dx_in_value_set: vs_cervical_myelopathy_2025_09
+    all_of:
+    - min_age: 16
+    - max_age: 80
+    - prior_service_required:
+        cpt: ['72040', '72050']
+        lookback_days: 30
+        description: "Prior cervical spine X-ray"
+  logic:
+    outcome: PA_REQUIRED
+    notes: CT cervical spine requires trauma, neurologic symptoms, or failed conservative therapy
+  precedence: 75
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22', '23']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - CT"
+    last_verified: "2025-09-14T16:40:03-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '75571'
+    - '75572'
+    - '75573'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ct_angiography_indication_2025_09
+    - dx_in_value_set: vs_vascular_disease_suspected_2025_09
+    - dx_in_value_set: vs_aneurysm_evaluation_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['93922', '93923']
+        lookback_days: 90
+        description: "Non-invasive vascular studies"
+  logic:
+    outcome: PA_REQUIRED
+    notes: CT angiography requires vascular pathology suspicion and prior non-invasive studies
+  precedence: 80
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Diagnostic Imaging Guidelines - CT"
+    last_verified: "2025-09-14T16:40:03-07:00"

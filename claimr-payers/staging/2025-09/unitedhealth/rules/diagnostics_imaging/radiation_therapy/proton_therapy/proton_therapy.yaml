@@ -1,0 +1,104 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77520'
+    - '77522'
+    - '77523'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_proton_therapy_indication_2025_09
+    - dx_in_value_set: vs_pediatric_cancer_proton_2025_09
+    - dx_in_value_set: vs_skull_base_tumor_2025_09
+    - dx_in_value_set: vs_spinal_cord_tumor_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 180
+        description: "Tissue diagnosis and radiation oncology evaluation"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Proton therapy requires specific indication where photon therapy poses unacceptable risk to critical structures
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Radiation Oncology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77525'
+    - '77526'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_pediatric_proton_therapy_2025_09
+    - dx_in_value_set: vs_pediatric_brain_tumor_2025_09
+    - dx_in_value_set: vs_pediatric_sarcoma_2025_09
+    - dx_in_value_set: vs_retinoblastoma_2025_09
+    all_of:
+    - min_age: 0
+    - max_age: 18
+    - prior_service_required:
+        cpt: ['88305', '88307']
+        lookback_days: 180
+        description: "Pediatric oncology evaluation and tissue diagnosis"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Pediatric proton therapy for growth and development preservation in critical anatomic locations
+  precedence: 95
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Radiation Oncology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77530'
+    - '77531'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_ocular_proton_therapy_2025_09
+    - dx_in_value_set: vs_uveal_melanoma_2025_09
+    - dx_in_value_set: vs_choroidal_melanoma_2025_09
+    all_of:
+    - min_age: 18
+    - max_age: 85
+    - prior_service_required:
+        cpt: ['92136', '92250']
+        lookback_days: 90
+        description: "Ophthalmologic evaluation with imaging confirming ocular tumor"
+  logic:
+    outcome: PA_REQUIRED
+    notes: Ocular proton therapy for uveal melanoma or other intraocular tumors requiring globe preservation
+  precedence: 90
+  effective_start: '2025-01-01'
+  place_of_service:
+    include: ['21', '22']
+  _meta:
+    source: "UnitedHealth 2025.09 Radiation Oncology Guidelines"
+    last_verified: "2025-09-14T17:05:50-07:00"
