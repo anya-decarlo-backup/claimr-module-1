@@ -1,0 +1,151 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '64400'
+    - '64405'
+    - '64415'
+    - '64420'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_chronic_pain_conditions_2025_09
+    - age_gte: 18
+    - age_lte: 89
+    - has_flag: conservative_therapy_failed_6_weeks
+    none_of:
+    - dx_in_value_set: vs_injection_contraindications_2025_09
+    - has_flag: active_infection_injection_site
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R pain management nerve blocks require prior authorization after failed conservative therapy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '24'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_pain_management_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_pain_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '62310'
+    - '62311'
+    - '62318'
+    - '62319'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_epidural_injection_indications_2025_09
+    - age_gte: 18
+    - age_lte: 89
+    - has_flag: conservative_therapy_failed_6_weeks
+    none_of:
+    - dx_in_value_set: vs_epidural_contraindications_2025_09
+    - has_flag: anticoagulation_therapy_active
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R pain management epidural injections require prior authorization with imaging guidance
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '24'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_pain_management_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_pain_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '64490'
+    - '64491'
+    - '64492'
+    - '64493'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_facet_joint_pain_2025_09
+    - age_gte: 18
+    - age_lte: 89
+    - has_flag: diagnostic_block_positive_response
+    none_of:
+    - dx_in_value_set: vs_facet_injection_contraindications_2025_09
+    - has_flag: previous_facet_injection_failed
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R pain management facet joint injections require prior authorization with positive diagnostic block
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '24'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_pain_management_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_pain_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '63650'
+    - '63655'
+    - '63661'
+    - '63662'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_spinal_cord_stimulator_indications_2025_09
+    - age_gte: 18
+    - age_lte: 89
+    - has_flag: failed_comprehensive_pain_management
+    - has_flag: psychological_evaluation_completed
+    none_of:
+    - dx_in_value_set: vs_scs_contraindications_2025_09
+    - has_flag: active_substance_abuse
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R pain management spinal cord stimulator requires prior authorization with comprehensive evaluation
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '22'
+  - '24'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_pain_management_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_pain_004

@@ -1,0 +1,155 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97110'
+    - '97112'
+    - '97116'
+    - '97530'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_neurological_pt_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: neurological_diagnosis_confirmed
+    - has_flag: functional_deficit_documented
+    none_of:
+    - dx_in_value_set: vs_neurological_pt_contraindications_2025_09
+    - has_flag: medical_instability_acute
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Neurological physical therapy requires prior authorization with confirmed diagnosis and functional deficits
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurological_pt_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_neuro_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97535'
+    - '97537'
+    - '97760'
+    - '97761'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_gait_training_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: gait_dysfunction_documented
+    - has_flag: mobility_impairment_present
+    none_of:
+    - dx_in_value_set: vs_gait_training_contraindications_2025_09
+    - has_flag: weight_bearing_contraindicated
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Neurological gait training requires prior authorization with documented gait dysfunction
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurological_pt_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_neuro_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97140'
+    - '97530'
+    - '97535'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_neuromuscular_reeducation_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: motor_control_impairment
+    - has_flag: coordination_deficit_present
+    none_of:
+    - dx_in_value_set: vs_neuromuscular_contraindications_2025_09
+    - has_flag: cognitive_impairment_severe
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Neuromuscular reeducation requires prior authorization with motor control and coordination deficits
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurological_pt_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_neuro_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97150'
+    - '97530'
+    - '97535'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_balance_training_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: balance_impairment_documented
+    - has_flag: fall_risk_assessment_positive
+    none_of:
+    - dx_in_value_set: vs_balance_training_contraindications_2025_09
+    - has_flag: vestibular_disorder_acute
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Neurological balance training requires prior authorization with documented balance impairment and fall risk
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_neurological_pt_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_neuro_004

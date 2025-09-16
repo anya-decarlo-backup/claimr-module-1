@@ -1,0 +1,155 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97530'
+    - '97535'
+    - '97537'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_cognitive_rehab_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: cognitive_impairment_documented
+    - has_flag: functional_cognitive_deficit
+    none_of:
+    - dx_in_value_set: vs_cognitive_rehab_contraindications_2025_09
+    - has_flag: severe_dementia_end_stage
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Cognitive rehabilitation requires prior authorization with documented cognitive impairment and functional deficits
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cognitive_rehab_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_cognitive_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97110'
+    - '97530'
+    - '97535'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_memory_training_indications_2025_09
+    - age_gte: 18
+    - age_lte: 89
+    - has_flag: memory_impairment_documented
+    - has_flag: compensatory_strategies_needed
+    none_of:
+    - dx_in_value_set: vs_memory_training_contraindications_2025_09
+    - has_flag: progressive_dementia_rapid
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Memory training requires prior authorization with documented memory impairment and need for compensatory strategies
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cognitive_rehab_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_cognitive_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97535'
+    - '97537'
+    - '97760'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_executive_function_training_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: executive_function_impairment
+    - has_flag: daily_living_impact_documented
+    none_of:
+    - dx_in_value_set: vs_executive_function_contraindications_2025_09
+    - has_flag: severe_behavioral_issues
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Executive function training requires prior authorization with documented impairment affecting daily living
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cognitive_rehab_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_cognitive_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97161'
+    - '97162'
+    - '97163'
+    - '97164'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_cognitive_evaluation_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: cognitive_assessment_needed
+    - has_flag: new_episode_care
+    none_of:
+    - dx_in_value_set: vs_cognitive_evaluation_contraindications_2025_09
+    - has_flag: recent_cognitive_evaluation_30_days
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Cognitive rehabilitation evaluation requires prior authorization for new episodes of care
+  precedence: 70
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cognitive_rehab_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_cognitive_004

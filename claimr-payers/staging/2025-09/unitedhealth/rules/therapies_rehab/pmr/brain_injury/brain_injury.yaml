@@ -1,0 +1,148 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97530'
+    - '97533'
+    - '97535'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_traumatic_brain_injury_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    - has_flag: cognitive_deficits_documented
+    none_of:
+    - dx_in_value_set: vs_vegetative_state_2025_09
+    - has_flag: cognitive_plateau_reached
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R brain injury cognitive rehabilitation requires prior authorization for therapeutic activities and self-care training
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_brain_injury_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_tbi_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '92507'
+    - '92508'
+    - '92526'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_traumatic_brain_injury_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    - has_flag: speech_language_deficits
+    none_of:
+    - dx_in_value_set: vs_severe_aphasia_chronic_2025_09
+    - has_flag: speech_therapy_plateau
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R brain injury speech-language pathology requires prior authorization for communication disorders
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_brain_injury_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_tbi_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97110'
+    - '97112'
+    - '97116'
+    - '97140'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_traumatic_brain_injury_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    - has_flag: motor_deficits_documented
+    none_of:
+    - dx_in_value_set: vs_complete_paralysis_chronic_2025_09
+    - has_flag: motor_recovery_plateau
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R brain injury motor rehabilitation requires prior authorization for therapeutic exercises and manual therapy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_brain_injury_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_tbi_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97542'
+    - '97545'
+    - '97546'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_traumatic_brain_injury_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    - has_flag: wheelchair_mobility_training_needed
+    none_of:
+    - has_flag: wheelchair_independence_achieved
+    - dx_in_value_set: vs_contraindications_mobility_training_2025_09
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R brain injury wheelchair and mobility training requires prior authorization for community reintegration
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_brain_injury_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_tbi_004

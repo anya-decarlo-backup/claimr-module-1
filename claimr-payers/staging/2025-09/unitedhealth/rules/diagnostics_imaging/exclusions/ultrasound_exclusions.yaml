@@ -1,0 +1,128 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76700'
+    - '76705'
+    - '76770'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_pregnancy_screening_2025_09
+    - dx_code: Z34.90
+    all_of:
+    - gestational_age_weeks_gt: 20
+    - gestational_age_weeks_lt: 24
+    none_of:
+    - dx_in_value_set: vs_high_risk_pregnancy_2025_09
+    - has_flag: fetal_anomaly_suspected
+  logic:
+    outcome: EXCLUDED
+    note: Routine abdominal ultrasound excluded for low-risk pregnancies 20-24 weeks without indication
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ultrasound_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_us_excl_001
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93880'
+    - '93882'
+    - '93886'
+  conditions:
+    all_of:
+    - age_lt: 50
+    none_of:
+    - dx_in_value_set: vs_stroke_tia_history_2025_09
+    - dx_in_value_set: vs_carotid_bruit_2025_09
+    - has_flag: cardiovascular_risk_factors_multiple
+  logic:
+    outcome: EXCLUDED
+    note: Carotid ultrasound excluded for patients under 50 without stroke risk factors
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ultrasound_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_us_excl_002
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '76856'
+    - '76857'
+    - '76830'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_gynecologic_screening_2025_09
+    - dx_code: Z01.419
+    none_of:
+    - dx_in_value_set: vs_pelvic_pain_2025_09
+    - dx_in_value_set: vs_abnormal_bleeding_2025_09
+    - dx_in_value_set: vs_infertility_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Pelvic ultrasound excluded for routine screening without symptoms
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ultrasound_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_us_excl_003
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93970'
+    - '93971'
+    - '93975'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_leg_pain_nonspecific_2025_09
+    - dx_code: M79.603
+    none_of:
+    - dx_in_value_set: vs_dvt_risk_factors_2025_09
+    - dx_in_value_set: vs_peripheral_vascular_disease_2025_09
+    - has_flag: swelling_unilateral
+  logic:
+    outcome: EXCLUDED
+    note: Lower extremity venous ultrasound excluded for nonspecific leg pain without DVT risk
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ultrasound_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_us_excl_004

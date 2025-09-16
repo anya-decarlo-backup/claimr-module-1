@@ -1,0 +1,150 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97113'
+    - '97116'
+    - '97530'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_aquatic_therapy_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: land_based_therapy_contraindicated
+    - has_flag: physician_referral_aquatic
+    none_of:
+    - dx_in_value_set: vs_aquatic_therapy_contraindications_2025_09
+    - has_flag: open_wounds_infection_risk
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Aquatic therapy requires prior authorization when land-based therapy is contraindicated
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_aquatic_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_aquatic_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97110'
+    - '97112'
+    - '97140'
+    - '97530'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_neurological_aquatic_therapy_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: neurological_condition_documented
+    - has_flag: buoyancy_assistance_required
+    none_of:
+    - dx_in_value_set: vs_neurological_aquatic_contraindications_2025_09
+    - has_flag: seizure_disorder_uncontrolled
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Neurological aquatic therapy requires prior authorization with documented neurological condition
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_aquatic_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_aquatic_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97535'
+    - '97537'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_orthopedic_aquatic_therapy_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: weight_bearing_restrictions
+    - has_flag: joint_protection_required
+    none_of:
+    - dx_in_value_set: vs_orthopedic_aquatic_contraindications_2025_09
+    - has_flag: acute_inflammation_active
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Orthopedic aquatic therapy requires prior authorization with weight-bearing restrictions
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_aquatic_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_aquatic_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97150'
+    - '97530'
+    - '97535'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_cardiac_pulmonary_aquatic_2025_09
+    - age_gte: 18
+    - age_lte: 89
+    - has_flag: cardiac_pulmonary_clearance
+    - has_flag: monitored_exercise_required
+    none_of:
+    - dx_in_value_set: vs_cardiac_aquatic_contraindications_2025_09
+    - has_flag: unstable_cardiac_condition
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Cardiac/pulmonary aquatic therapy requires prior authorization with medical clearance
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_aquatic_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_aquatic_004

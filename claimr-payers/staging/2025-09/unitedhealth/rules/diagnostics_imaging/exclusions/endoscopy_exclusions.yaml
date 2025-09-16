@@ -1,0 +1,62 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '45378'
+    - '45380'
+    - '45385'
+  conditions:
+    all_of:
+    - age_lt: 45
+    none_of:
+    - dx_in_value_set: vs_colon_cancer_family_history_2025_09
+    - dx_in_value_set: vs_gi_symptoms_significant_2025_09
+    - dx_in_value_set: vs_inflammatory_bowel_disease_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Colonoscopy excluded for patients under 45 without family history or symptoms
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_endoscopy_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_endo_excl_001
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '43235'
+    - '43239'
+    - '43249'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_dyspepsia_mild_2025_09
+    - dx_code: K30
+    none_of:
+    - dx_in_value_set: vs_upper_gi_alarm_symptoms_2025_09
+    - dx_in_value_set: vs_peptic_ulcer_history_2025_09
+    - has_flag: failed_ppi_therapy
+  logic:
+    outcome: EXCLUDED
+    note: Upper endoscopy excluded for mild dyspepsia without alarm symptoms or failed PPI therapy
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_endoscopy_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_endo_excl_002

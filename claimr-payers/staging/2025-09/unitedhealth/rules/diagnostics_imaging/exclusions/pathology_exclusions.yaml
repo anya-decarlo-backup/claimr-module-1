@@ -1,0 +1,95 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88305'
+    - '88307'
+    - '88309'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_screening_2025_09
+    - dx_code: Z00.00
+    none_of:
+    - dx_in_value_set: vs_cancer_suspected_2025_09
+    - dx_in_value_set: vs_abnormal_imaging_2025_09
+    - has_flag: clinical_suspicion_malignancy
+  logic:
+    outcome: EXCLUDED
+    note: Surgical pathology excluded for routine screening without clinical suspicion of malignancy
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pathology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_path_excl_001
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88342'
+    - '88346'
+    - '88348'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cosmetic_indications_2025_09
+    - dx_code: Z41.1
+    none_of:
+    - dx_in_value_set: vs_cancer_diagnosis_confirmed_2025_09
+    - dx_in_value_set: vs_therapeutic_decision_pending_2025_09
+    - has_flag: treatment_selection_required
+  logic:
+    outcome: EXCLUDED
+    note: Immunohistochemistry excluded for cosmetic procedures without therapeutic decision-making need
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pathology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_path_excl_002
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '88104'
+    - '88106'
+    - '88108'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_screening_2025_09
+    - dx_code: Z01.411
+    none_of:
+    - dx_in_value_set: vs_abnormal_pap_history_2025_09
+    - dx_in_value_set: vs_cervical_symptoms_2025_09
+    - has_flag: high_risk_hpv_positive
+  logic:
+    outcome: EXCLUDED
+    note: Cervical cytology excluded for routine screening without abnormal history or symptoms
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pathology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_path_excl_003

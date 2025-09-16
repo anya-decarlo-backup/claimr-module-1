@@ -1,0 +1,63 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '36200'
+    - '36215'
+    - '36216'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_screening_2025_09
+    - dx_code: Z00.00
+    none_of:
+    - dx_in_value_set: vs_vascular_disease_2025_09
+    - dx_in_value_set: vs_bleeding_source_unknown_2025_09
+    - has_flag: therapeutic_intervention_planned
+  logic:
+    outcome: EXCLUDED
+    note: Diagnostic angiography excluded for routine screening without vascular disease indication
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_interventional_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_interv_excl_001
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '75571'
+    - '75572'
+    - '75573'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_nonspecific_symptoms_2025_09
+    - dx_code: R06.02
+    none_of:
+    - dx_in_value_set: vs_pulmonary_embolism_suspected_2025_09
+    - dx_in_value_set: vs_dvt_confirmed_2025_09
+    - has_flag: wells_score_high_risk
+  logic:
+    outcome: EXCLUDED
+    note: CT pulmonary angiography excluded for nonspecific symptoms without PE risk factors
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_interventional_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_interv_excl_002

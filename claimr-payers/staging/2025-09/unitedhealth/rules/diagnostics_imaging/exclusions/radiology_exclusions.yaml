@@ -1,0 +1,125 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '70450'
+    - '70460'
+    - '70470'
+  conditions:
+    all_of:
+    - age_lt: 18
+    none_of:
+    - dx_in_value_set: vs_head_trauma_2025_09
+    - dx_in_value_set: vs_neurological_symptoms_acute_2025_09
+    - dx_in_value_set: vs_seizure_disorders_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Head CT excluded for pediatric patients without acute neurological indications - radiation exposure concerns
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_radiology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_rad_excl_001
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '71250'
+    - '71260'
+    - '71270'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_screening_asymptomatic_2025_09
+    - dx_code: Z87.891
+    none_of:
+    - dx_in_value_set: vs_lung_cancer_screening_criteria_2025_09
+    - dx_in_value_set: vs_pulmonary_symptoms_acute_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Chest CT excluded for routine screening without high-risk criteria - not cost-effective
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_radiology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_rad_excl_002
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '74150'
+    - '74160'
+    - '74170'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_nonspecific_abdominal_pain_2025_09
+    - dx_code: R10.9
+    none_of:
+    - dx_in_value_set: vs_acute_abdomen_2025_09
+    - dx_in_value_set: vs_cancer_surveillance_2025_09
+    - has_flag: failed_conservative_management
+  logic:
+    outcome: EXCLUDED
+    note: Abdominal CT excluded for nonspecific pain without acute findings - ultrasound preferred
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_radiology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_rad_excl_003
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '70551'
+    - '70552'
+    - '70553'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_headache_nonspecific_2025_09
+    - dx_code: G44.1
+    none_of:
+    - dx_in_value_set: vs_headache_red_flags_2025_09
+    - dx_in_value_set: vs_neurological_deficits_2025_09
+    - has_flag: sudden_onset_severe
+  logic:
+    outcome: EXCLUDED
+    note: Brain MRI excluded for routine headaches without red flag symptoms
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_radiology_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_rad_excl_004

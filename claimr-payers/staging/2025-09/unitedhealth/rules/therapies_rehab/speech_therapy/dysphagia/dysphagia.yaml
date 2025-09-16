@@ -1,0 +1,155 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '92526'
+    - '92610'
+    - '92611'
+    - '92612'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_dysphagia_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: swallowing_dysfunction_documented
+    - has_flag: aspiration_risk_present
+    none_of:
+    - dx_in_value_set: vs_dysphagia_contraindications_2025_09
+    - has_flag: acute_medical_instability
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Dysphagia therapy requires prior authorization with documented swallowing dysfunction and aspiration risk
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_dysphagia_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_speech_dysphagia_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '92520'
+    - '92521'
+    - '92522'
+    - '92523'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_swallow_study_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: swallowing_assessment_needed
+    - has_flag: clinical_dysphagia_symptoms
+    none_of:
+    - dx_in_value_set: vs_swallow_study_contraindications_2025_09
+    - has_flag: recent_swallow_study_30_days
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Swallowing studies require prior authorization with clinical dysphagia symptoms
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_dysphagia_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_speech_dysphagia_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '92507'
+    - '92508'
+    - '92526'
+    - '92799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_feeding_therapy_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: feeding_dysfunction_documented
+    - has_flag: nutritional_compromise_risk
+    none_of:
+    - dx_in_value_set: vs_feeding_therapy_contraindications_2025_09
+    - has_flag: behavioral_feeding_issues_only
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Feeding therapy requires prior authorization with documented dysfunction and nutritional risk
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_dysphagia_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_speech_dysphagia_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '92506'
+    - '92507'
+    - '92508'
+    - '92799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_speech_evaluation_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: speech_language_assessment_needed
+    - has_flag: new_episode_care
+    none_of:
+    - dx_in_value_set: vs_speech_evaluation_contraindications_2025_09
+    - has_flag: recent_speech_evaluation_30_days
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Speech-language evaluation requires prior authorization for new episodes of care
+  precedence: 70
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_dysphagia_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_speech_dysphagia_004

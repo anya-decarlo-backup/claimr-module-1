@@ -1,0 +1,94 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77065'
+    - '77066'
+    - '77067'
+  conditions:
+    all_of:
+    - age_lt: 40
+    - sex: F
+    none_of:
+    - dx_in_value_set: vs_breast_cancer_family_history_2025_09
+    - has_flag: brca_mutation
+    - dx_in_value_set: vs_breast_symptoms_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Mammography excluded for women under 40 without high-risk factors or symptoms
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_mammography_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_mammo_excl_001
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77063'
+    - '77065'
+    - '77066'
+  conditions:
+    all_of:
+    - screening_interval_months_lt: 12
+    none_of:
+    - dx_in_value_set: vs_breast_cancer_history_2025_09
+    - has_flag: high_risk_genetics
+    - dx_in_value_set: vs_breast_abnormality_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Annual mammography excluded for screening intervals <12 months without high-risk indication
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_mammography_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_mammo_excl_002
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77046'
+    - '77047'
+    - '77048'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_screening_2025_09
+    - dx_code: Z12.31
+    none_of:
+    - dx_in_value_set: vs_breast_mri_indications_2025_09
+    - has_flag: brca_mutation
+    - dx_in_value_set: vs_breast_cancer_high_risk_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Breast MRI excluded for routine screening without high-risk indications
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_mammography_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_mammo_excl_003

@@ -1,0 +1,126 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78306'
+    - '78315'
+    - '78320'
+  conditions:
+    all_of:
+    - age_lt: 35
+    - sex: F
+    none_of:
+    - dx_in_value_set: vs_chest_pain_cardiac_2025_09
+    - dx_in_value_set: vs_known_cad_2025_09
+    - has_flag: cardiac_risk_factors_multiple
+  logic:
+    outcome: EXCLUDED
+    note: Cardiac nuclear imaging excluded for low-risk women under 35 - radiation exposure concerns
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_nuclear_medicine_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_nucmed_excl_001
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78800'
+    - '78801'
+    - '78803'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_localized_bone_pain_2025_09
+    - dx_code: M25.50
+    none_of:
+    - dx_in_value_set: vs_cancer_history_2025_09
+    - dx_in_value_set: vs_metastatic_workup_2025_09
+    - has_flag: multiple_bone_lesions
+  logic:
+    outcome: EXCLUDED
+    note: Bone scan excluded for localized pain without cancer history - targeted imaging preferred
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_nuclear_medicine_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_nucmed_excl_002
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78070'
+    - '78071'
+    - '78072'
+  conditions:
+    all_of:
+    - age_lt: 18
+    none_of:
+    - dx_in_value_set: vs_thyroid_cancer_pediatric_2025_09
+    - dx_in_value_set: vs_hyperthyroidism_2025_09
+    - has_flag: thyroid_nodule_suspicious
+  logic:
+    outcome: EXCLUDED
+    note: Thyroid scan excluded for pediatric patients without specific indications - radiation exposure
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_nuclear_medicine_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_nucmed_excl_003
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '78452'
+    - '78453'
+    - '78454'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_screening_2025_09
+    - dx_code: Z00.00
+    none_of:
+    - dx_in_value_set: vs_heart_failure_2025_09
+    - dx_in_value_set: vs_cardiomyopathy_2025_09
+    - dx_in_value_set: vs_chemotherapy_cardiotoxic_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Cardiac function imaging excluded for routine screening without clinical indication
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_nuclear_medicine_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_nucmed_excl_004

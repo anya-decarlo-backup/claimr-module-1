@@ -1,0 +1,63 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '94010'
+    - '94060'
+    - '94070'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_screening_2025_09
+    - dx_code: Z00.00
+    none_of:
+    - dx_in_value_set: vs_respiratory_symptoms_2025_09
+    - dx_in_value_set: vs_asthma_copd_2025_09
+    - has_flag: occupational_exposure
+  logic:
+    outcome: EXCLUDED
+    note: Spirometry excluded for routine screening without respiratory symptoms or risk factors
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pulmonary_function_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pft_excl_001
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '95800'
+    - '95801'
+    - '95806'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_insomnia_simple_2025_09
+    - dx_code: G47.00
+    none_of:
+    - dx_in_value_set: vs_sleep_apnea_symptoms_2025_09
+    - dx_in_value_set: vs_obesity_severe_2025_09
+    - has_flag: witnessed_apneas
+  logic:
+    outcome: EXCLUDED
+    note: Sleep study excluded for simple insomnia without sleep apnea symptoms
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pulmonary_function_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pft_excl_002

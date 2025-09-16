@@ -1,0 +1,154 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97535'
+    - '97537'
+    - '97760'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_adaptive_equipment_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: functional_limitation_documented
+    - has_flag: equipment_training_required
+    none_of:
+    - dx_in_value_set: vs_adaptive_equipment_contraindications_2025_09
+    - has_flag: cognitive_impairment_severe
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Adaptive equipment training requires prior authorization with documented functional limitations
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '12'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_adaptive_equipment_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_adaptive_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97110'
+    - '97530'
+    - '97535'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_home_modification_assessment_2025_09
+    - age_gte: 18
+    - age_lte: 89
+    - has_flag: home_safety_assessment_needed
+    - has_flag: mobility_impairment_present
+    none_of:
+    - dx_in_value_set: vs_home_assessment_contraindications_2025_09
+    - has_flag: temporary_housing_situation
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Home modification assessment requires prior authorization with mobility impairment and safety needs
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '12'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_adaptive_equipment_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_adaptive_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97535'
+    - '97537'
+    - '97760'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_assistive_technology_training_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: assistive_device_prescribed
+    - has_flag: technology_training_needed
+    none_of:
+    - dx_in_value_set: vs_assistive_tech_contraindications_2025_09
+    - has_flag: device_not_available
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Assistive technology training requires prior authorization with prescribed device and training needs
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '12'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_adaptive_equipment_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_adaptive_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97161'
+    - '97162'
+    - '97163'
+    - '97164'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_adaptive_evaluation_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: adaptive_needs_assessment_required
+    - has_flag: new_episode_care
+    none_of:
+    - dx_in_value_set: vs_adaptive_evaluation_contraindications_2025_09
+    - has_flag: recent_adaptive_evaluation_30_days
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Adaptive equipment evaluation requires prior authorization for new episodes of care
+  precedence: 70
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '12'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_adaptive_equipment_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_adaptive_004

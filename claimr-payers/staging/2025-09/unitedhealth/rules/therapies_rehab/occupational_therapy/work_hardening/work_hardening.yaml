@@ -1,0 +1,150 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97545'
+    - '97546'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_work_hardening_indications_2025_09
+    - age_gte: 16
+    - age_lte: 65
+    - has_flag: work_related_injury
+    - has_flag: return_to_work_goal
+    none_of:
+    - dx_in_value_set: vs_work_hardening_contraindications_2025_09
+    - has_flag: permanent_disability_determination
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Work hardening requires prior authorization for work-related injuries with return-to-work goals
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_work_hardening_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_work_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97110'
+    - '97530'
+    - '97545'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_functional_capacity_evaluation_2025_09
+    - age_gte: 16
+    - age_lte: 65
+    - has_flag: work_capacity_assessment_needed
+    - has_flag: disability_determination_required
+    none_of:
+    - dx_in_value_set: vs_fce_contraindications_2025_09
+    - has_flag: acute_injury_unstable
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Functional capacity evaluation requires prior authorization for work capacity assessment
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_work_hardening_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_work_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97535'
+    - '97537'
+    - '97545'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_job_simulation_training_2025_09
+    - age_gte: 16
+    - age_lte: 65
+    - has_flag: specific_job_demands_identified
+    - has_flag: work_conditioning_completed
+    none_of:
+    - dx_in_value_set: vs_job_simulation_contraindications_2025_09
+    - has_flag: job_unavailable_return
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Job simulation training requires prior authorization with identified job demands and completed work conditioning
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_work_hardening_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_work_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97161'
+    - '97162'
+    - '97163'
+    - '97164'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_work_evaluation_indications_2025_09
+    - age_gte: 16
+    - age_lte: 65
+    - has_flag: work_related_evaluation_needed
+    - has_flag: new_episode_care
+    none_of:
+    - dx_in_value_set: vs_work_evaluation_contraindications_2025_09
+    - has_flag: recent_work_evaluation_30_days
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Work-related occupational therapy evaluation requires prior authorization for new episodes of care
+  precedence: 70
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_work_hardening_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_work_004

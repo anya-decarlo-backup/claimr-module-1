@@ -1,0 +1,63 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77301'
+    - '77302'
+    - '77303'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_benign_conditions_2025_09
+    - dx_code: D36.9
+    none_of:
+    - dx_in_value_set: vs_malignant_neoplasm_2025_09
+    - dx_in_value_set: vs_radiation_therapy_indications_2025_09
+    - has_flag: oncology_approved_plan
+  logic:
+    outcome: EXCLUDED
+    note: Radiation therapy planning excluded for benign conditions without oncology indication
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_radiation_therapy_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_rt_excl_001
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '77385'
+    - '77386'
+    - '77387'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_cosmetic_indications_2025_09
+    - dx_code: Z41.1
+    none_of:
+    - dx_in_value_set: vs_cancer_treatment_plan_2025_09
+    - dx_in_value_set: vs_palliative_care_indications_2025_09
+    - has_flag: multidisciplinary_tumor_board_approved
+  logic:
+    outcome: EXCLUDED
+    note: Radiation therapy delivery excluded for cosmetic purposes without cancer treatment indication
+  precedence: 95
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_radiation_therapy_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_rt_excl_002

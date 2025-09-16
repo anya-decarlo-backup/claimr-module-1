@@ -1,0 +1,127 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '70486'
+    - '70487'
+    - '70488'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_sinus_symptoms_mild_2025_09
+    - dx_code: J01.90
+    none_of:
+    - dx_in_value_set: vs_chronic_sinusitis_2025_09
+    - dx_in_value_set: vs_sinus_complications_2025_09
+    - has_flag: failed_medical_therapy
+  logic:
+    outcome: EXCLUDED
+    note: Sinus CT excluded for acute sinusitis without complications - conservative treatment preferred
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ct_mri_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ctmri_excl_001
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '72148'
+    - '72149'
+    - '72158'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_back_pain_nonspecific_2025_09
+    - dx_code: M54.9
+    none_of:
+    - dx_in_value_set: vs_radiculopathy_2025_09
+    - dx_in_value_set: vs_red_flag_back_pain_2025_09
+    - has_flag: neurological_deficits
+  logic:
+    outcome: EXCLUDED
+    note: Lumbar MRI excluded for nonspecific back pain without radiculopathy or red flags
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ct_mri_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ctmri_excl_002
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '73221'
+    - '73222'
+    - '73223'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_knee_pain_mild_2025_09
+    - dx_code: M25.561
+    none_of:
+    - dx_in_value_set: vs_knee_injury_acute_2025_09
+    - dx_in_value_set: vs_meniscal_tear_suspected_2025_09
+    - has_flag: mechanical_symptoms
+  logic:
+    outcome: EXCLUDED
+    note: Knee MRI excluded for mild pain without injury or mechanical symptoms
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ct_mri_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ctmri_excl_003
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '74177'
+    - '74178'
+    - '74181'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_screening_2025_09
+    - dx_code: Z12.72
+    none_of:
+    - dx_in_value_set: vs_colon_cancer_risk_high_2025_09
+    - dx_in_value_set: vs_gi_symptoms_significant_2025_09
+    - has_flag: failed_colonoscopy
+  logic:
+    outcome: EXCLUDED
+    note: CT colonography excluded for routine screening in average-risk patients - colonoscopy preferred
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_ct_mri_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ctmri_excl_004

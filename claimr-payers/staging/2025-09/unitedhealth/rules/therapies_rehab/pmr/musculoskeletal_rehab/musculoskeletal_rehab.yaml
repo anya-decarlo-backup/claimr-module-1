@@ -1,0 +1,149 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97110'
+    - '97112'
+    - '97113'
+    - '97116'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_musculoskeletal_disorders_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    - has_flag: functional_limitations_documented
+    none_of:
+    - dx_in_value_set: vs_chronic_pain_fibromyalgia_2025_09
+    - has_flag: therapy_plateau_reached
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R musculoskeletal rehabilitation requires prior authorization for therapeutic exercises and aquatic therapy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_musculoskeletal_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_msk_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97140'
+    - '97530'
+    - '97535'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_post_surgical_orthopedic_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    - has_flag: post_operative_rehab_indicated
+    none_of:
+    - has_flag: surgical_complications_active
+    - dx_in_value_set: vs_infection_post_surgical_2025_09
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R post-surgical orthopedic rehabilitation requires prior authorization for manual therapy and therapeutic activities
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_musculoskeletal_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_msk_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97032'
+    - '97033'
+    - '97035'
+    - '97039'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_chronic_musculoskeletal_pain_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    - has_flag: conservative_therapy_failed
+    none_of:
+    - has_flag: electrical_stimulation_contraindicated
+    - dx_in_value_set: vs_pacemaker_implanted_2025_09
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R chronic musculoskeletal pain modalities require prior authorization after failed conservative therapy
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_musculoskeletal_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_msk_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97760'
+    - '97761'
+    - '97763'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_orthotic_prosthetic_needs_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    - has_flag: device_training_indicated
+    none_of:
+    - has_flag: device_independence_achieved
+    - dx_in_value_set: vs_contraindications_device_use_2025_09
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R orthotic and prosthetic training requires prior authorization for device fitting and functional training
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_musculoskeletal_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_msk_004

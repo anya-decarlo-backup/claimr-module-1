@@ -1,0 +1,150 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97140'
+    - '97530'
+    - '97535'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_manual_therapy_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: joint_mobility_restriction
+    - has_flag: manual_therapy_appropriate
+    none_of:
+    - dx_in_value_set: vs_manual_therapy_contraindications_2025_09
+    - has_flag: acute_fracture_healing
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Manual therapy requires prior authorization with documented joint mobility restrictions
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_manual_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_manual_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97112'
+    - '97140'
+    - '97530'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_spinal_manual_therapy_2025_09
+    - age_gte: 18
+    - age_lte: 89
+    - has_flag: spinal_dysfunction_documented
+    - has_flag: conservative_therapy_failed
+    none_of:
+    - dx_in_value_set: vs_spinal_manual_contraindications_2025_09
+    - has_flag: spinal_instability_present
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Spinal manual therapy requires prior authorization after failed conservative therapy
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_manual_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_manual_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97110'
+    - '97140'
+    - '97530'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_extremity_manual_therapy_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: extremity_joint_restriction
+    - has_flag: functional_limitation_present
+    none_of:
+    - dx_in_value_set: vs_extremity_manual_contraindications_2025_09
+    - has_flag: joint_replacement_recent
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Extremity manual therapy requires prior authorization with joint restrictions and functional limitations
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_manual_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_manual_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97535'
+    - '97537'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_soft_tissue_mobilization_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: soft_tissue_restriction
+    - has_flag: scar_tissue_adhesions
+    none_of:
+    - dx_in_value_set: vs_soft_tissue_contraindications_2025_09
+    - has_flag: active_inflammation_acute
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Soft tissue mobilization requires prior authorization with documented restrictions and adhesions
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_manual_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_manual_004

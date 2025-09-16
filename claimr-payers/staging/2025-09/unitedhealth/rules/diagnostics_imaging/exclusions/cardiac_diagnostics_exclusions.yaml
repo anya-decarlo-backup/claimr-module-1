@@ -1,0 +1,93 @@
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93306'
+    - '93307'
+    - '93308'
+  conditions:
+    any_of:
+    - dx_in_value_set: vs_routine_screening_2025_09
+    - dx_code: Z00.00
+    none_of:
+    - dx_in_value_set: vs_cardiac_symptoms_2025_09
+    - dx_in_value_set: vs_heart_murmur_2025_09
+    - dx_in_value_set: vs_hypertension_2025_09
+  logic:
+    outcome: EXCLUDED
+    note: Echocardiogram excluded for routine screening without cardiac symptoms or risk factors
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiac_diagnostics_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_cardiac_excl_001
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93000'
+    - '93005'
+    - '93010'
+  conditions:
+    all_of:
+    - age_lt: 40
+    none_of:
+    - dx_in_value_set: vs_cardiac_symptoms_2025_09
+    - dx_in_value_set: vs_cardiac_risk_factors_2025_09
+    - has_flag: preoperative_clearance
+  logic:
+    outcome: EXCLUDED
+    note: EKG excluded for patients under 40 without cardiac symptoms or risk factors
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiac_diagnostics_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_cardiac_excl_002
+
+- type: EXCLUSION
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '93015'
+    - '93016'
+    - '93017'
+  conditions:
+    all_of:
+    - age_lt: 50
+    none_of:
+    - dx_in_value_set: vs_chest_pain_cardiac_2025_09
+    - dx_in_value_set: vs_cardiac_risk_factors_multiple_2025_09
+    - has_flag: abnormal_resting_ekg
+  logic:
+    outcome: EXCLUDED
+    note: Stress test excluded for patients under 50 without cardiac symptoms or multiple risk factors
+  precedence: 90
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_cardiac_diagnostics_exclusions_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_cardiac_excl_003

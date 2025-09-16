@@ -1,0 +1,151 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97110'
+    - '97112'
+    - '97116'
+    - '97530'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_hand_therapy_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: hand_upper_extremity_injury
+    - has_flag: functional_limitation_documented
+    none_of:
+    - dx_in_value_set: vs_hand_therapy_contraindications_2025_09
+    - has_flag: active_infection_hand
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Hand therapy requires prior authorization with documented hand/upper extremity injury and functional limitations
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hand_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_hand_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97535'
+    - '97537'
+    - '97760'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_splinting_fabrication_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: splint_orthotic_indicated
+    - has_flag: custom_fabrication_required
+    none_of:
+    - dx_in_value_set: vs_splinting_contraindications_2025_09
+    - has_flag: skin_integrity_compromised
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Hand therapy splinting and fabrication requires prior authorization with custom orthotic indication
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hand_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_hand_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97140'
+    - '97530'
+    - '97535'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_post_surgical_hand_therapy_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: hand_surgery_recent
+    - has_flag: surgeon_referral_present
+    none_of:
+    - dx_in_value_set: vs_post_surgical_contraindications_2025_09
+    - has_flag: surgical_complications_active
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Post-surgical hand therapy requires prior authorization with surgeon referral and recent hand surgery
+  precedence: 85
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hand_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_hand_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97161'
+    - '97162'
+    - '97163'
+    - '97164'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_ot_hand_evaluation_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: hand_function_assessment_needed
+    - has_flag: new_episode_care
+    none_of:
+    - dx_in_value_set: vs_ot_evaluation_contraindications_2025_09
+    - has_flag: recent_ot_evaluation_30_days
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Occupational therapy hand evaluation requires prior authorization for new episodes of care
+  precedence: 70
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_hand_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_ot_hand_004

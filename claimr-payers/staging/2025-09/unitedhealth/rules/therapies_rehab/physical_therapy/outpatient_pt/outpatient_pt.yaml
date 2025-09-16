@@ -1,0 +1,154 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97110'
+    - '97112'
+    - '97113'
+    - '97116'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_physical_therapy_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: physician_referral_required
+    any_of:
+    - visit_count_gte: 12
+    - has_flag: complex_rehabilitation_needs
+    none_of:
+    - dx_in_value_set: vs_pt_contraindications_2025_09
+    - has_flag: acute_fracture_unstable
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Physical therapy outpatient services require prior authorization after 12 visits or for complex cases
+  precedence: 75
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_physical_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_outpatient_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97140'
+    - '97150'
+    - '97530'
+    - '97535'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_therapeutic_activities_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: functional_limitation_documented
+    any_of:
+    - visit_count_gte: 8
+    - has_flag: specialized_equipment_required
+    none_of:
+    - dx_in_value_set: vs_therapeutic_activities_contraindications_2025_09
+    - has_flag: cognitive_impairment_severe
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Physical therapy therapeutic activities require prior authorization after 8 visits or specialized equipment
+  precedence: 75
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_physical_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_outpatient_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97161'
+    - '97162'
+    - '97163'
+    - '97164'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_pt_evaluation_indications_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: new_episode_care
+    none_of:
+    - dx_in_value_set: vs_pt_evaluation_contraindications_2025_09
+    - has_flag: recent_pt_evaluation_30_days
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Physical therapy evaluations require prior authorization for new episodes of care
+  precedence: 70
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_physical_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_outpatient_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97760'
+    - '97761'
+    - '97763'
+    - '97799'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_orthotic_prosthetic_training_2025_09
+    - age_gte: 3
+    - age_lte: 89
+    - has_flag: orthotic_prosthetic_device_prescribed
+    - has_flag: functional_training_required
+    none_of:
+    - dx_in_value_set: vs_orthotic_training_contraindications_2025_09
+    - has_flag: device_fitting_incomplete
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: Physical therapy orthotic/prosthetic training requires prior authorization with device prescription
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_physical_therapy_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pt_outpatient_004

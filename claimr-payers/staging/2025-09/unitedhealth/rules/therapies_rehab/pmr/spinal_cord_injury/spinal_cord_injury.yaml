@@ -1,0 +1,148 @@
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97110'
+    - '97112'
+    - '97116'
+    - '97530'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_spinal_cord_injury_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    none_of:
+    - dx_in_value_set: vs_complete_sci_chronic_stable_2025_09
+    - has_flag: plateau_reached_no_progress
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R spinal cord injury rehabilitation requires prior authorization for therapeutic exercises and neuromuscular re-education
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_spinal_cord_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_sci_001
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97535'
+    - '97537'
+    - '97542'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_spinal_cord_injury_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    - has_flag: functional_goals_identified
+    none_of:
+    - dx_in_value_set: vs_complete_sci_asia_a_chronic_2025_09
+    - has_flag: maximum_benefit_achieved
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R spinal cord injury self-care and community reintegration training requires prior authorization
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_spinal_cord_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_sci_002
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97760'
+    - '97761'
+    - '97763'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_spinal_cord_injury_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    - has_flag: orthotic_training_indicated
+    none_of:
+    - has_flag: orthotic_independence_achieved
+    - dx_in_value_set: vs_contraindications_orthotic_2025_09
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R spinal cord injury orthotic training requires prior authorization for device fitting and training
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_spinal_cord_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_sci_003
+
+- type: PRIOR_AUTH
+  scope:
+    carrier_id: crr_7f9b2e1a2b3c
+    lob: commercial_fully_insured
+    state: CA
+    plan_type: ''
+    market: ''
+  service_ref:
+    cpt:
+    - '97032'
+    - '97033'
+    - '97034'
+    - '97039'
+  conditions:
+    all_of:
+    - dx_in_value_set: vs_spinal_cord_injury_2025_09
+    - age_gte: 16
+    - age_lte: 89
+    - has_flag: spasticity_management_indicated
+    none_of:
+    - has_flag: electrical_stimulation_contraindicated
+    - dx_in_value_set: vs_pacemaker_implanted_2025_09
+  logic:
+    outcome: PRIOR_AUTH_REQUIRED
+    note: PM&R spinal cord injury electrical stimulation and modalities require prior authorization for spasticity management
+  precedence: 80
+  effective_start: '2025-01-01'
+  effective_end: '2025-12-31'
+  place_of_service:
+  - '11'
+  - '22'
+  - '62'
+  _meta:
+    source: sources/2025-09/unitedhealth/uhc_pmr_spinal_cord_2025.pdf
+    last_verified_at: '2025-09-11'
+    last_updated: '2025-09-11'
+  id: rule_pmr_sci_004
